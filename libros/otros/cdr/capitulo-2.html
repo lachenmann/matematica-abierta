@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Construir un modelo a partir de los racionales – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#de-una-definición-a-un-problema-de-existencia" id="toc-de-una-definición-a-un-problema-de-existencia" class="nav-link active" data-scroll-target="#de-una-definición-a-un-problema-de-existencia">De una definición a un problema de existencia</a></li>
+  <li><a href="#cortaduras-información-suficiente-para-identificar-una-posición" id="toc-cortaduras-información-suficiente-para-identificar-una-posición" class="nav-link" data-scroll-target="#cortaduras-información-suficiente-para-identificar-una-posición">Cortaduras: información suficiente para identificar una posición</a></li>
+  <li><a href="#ordenar-conjuntos-por-inclusión" id="toc-ordenar-conjuntos-por-inclusión" class="nav-link" data-scroll-target="#ordenar-conjuntos-por-inclusión">Ordenar conjuntos por inclusión</a></li>
+  <li><a href="#incluir-los-racionales-en-la-nueva-estructura" id="toc-incluir-los-racionales-en-la-nueva-estructura" class="nav-link" data-scroll-target="#incluir-los-racionales-en-la-nueva-estructura">Incluir los racionales en la nueva estructura</a></li>
+  <li><a href="#sumar-y-tomar-opuestos-de-cortaduras" id="toc-sumar-y-tomar-opuestos-de-cortaduras" class="nav-link" data-scroll-target="#sumar-y-tomar-opuestos-de-cortaduras">Sumar y tomar opuestos de cortaduras</a></li>
+  <li><a href="#multiplicar-primero-positivos-después-signos" id="toc-multiplicar-primero-positivos-después-signos" class="nav-link" data-scroll-target="#multiplicar-primero-positivos-después-signos">Multiplicar: primero positivos, después signos</a></li>
+  <li><a href="#el-supremo-como-unión" id="toc-el-supremo-como-unión" class="nav-link" data-scroll-target="#el-supremo-como-unión">El supremo como unión</a></li>
+  <li><a href="#qué-se-construyó-y-qué-significa-la-conclusión" id="toc-qué-se-construyó-y-qué-significa-la-conclusión" class="nav-link" data-scroll-target="#qué-se-construyó-y-qué-significa-la-conclusión">Qué se construyó y qué significa la conclusión</a></li>
+  <li><a href="#problemas-y-soluciones-del-capítulo" id="toc-problemas-y-soluciones-del-capítulo" class="nav-link" data-scroll-target="#problemas-y-soluciones-del-capítulo">Problemas y soluciones del capítulo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Construir un modelo a partir de los racionales</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/cdr/capitulo-1.html">← El problema de definir un sistema numérico</a> · <a href="../../../libros/otros/la-construccion-de-los-reales.html">Índice del libro</a> · <a href="../../../libros/otros/cdr/capitulo-3.html">Siguiente →</a></p>
+<p>La aritmética racional ofrece un punto de partida concreto: <span class="math inline">\(\mathbb Q\)</span>, con sus cuatro operaciones habituales y su orden. El conjunto de racionales no negativos cuyo cuadrado es menor que dos ya nos mostró una dificultad: su menor cota superior tendría que ocupar una posición que ninguna fracción representa. Vamos a describir esa posición mediante información racional y a construir, con el mismo procedimiento, todo un cuerpo ordenado completo.</p>
+<p>Utilizaremos <strong>cortaduras inferiores</strong>: conjuntos de racionales que reúnen toda la información situada bajo una posición. La pertenencia a uno de esos conjuntos se decide mediante propiedades racionales; a partir de ella definiremos el orden y las operaciones. Al construir la suma, el opuesto y el producto tendremos que comprobar que sus resultados siguen perteneciendo a la misma familia y que cumplen las leyes exigidas a un cuerpo.</p>
+<p>En las verificaciones extensas conviene seguir una misma pregunta: qué propiedad del objeto nuevo permite recuperar la regla de cálculo conocida. El cierre descendente permitirá reajustar testigos; la posibilidad de encontrar un elemento mayor dentro de cada corte dará margen para las desigualdades estrictas; la aproximación racional finita proporcionará los opuestos y los recíprocos.</p>
+<p>Nos bastará la propiedad arquimediana de la aritmética racional, que se demuestra sin apelar a los reales. Si <span class="math inline">\(p/q&gt;0\)</span> con <span class="math inline">\(p,q\)</span> enteros positivos, entonces <span class="math inline">\(p/q\le p\)</span> y existe un entero mayor que esa fracción. También podemos encontrar racionales positivos tan pequeños como se quiera: se tiene <span class="math inline">\(1/n&lt; p/q\)</span> cuando <span class="math inline">\(np&gt;q\)</span>. Éstos son los instrumentos aritméticos con los que reduciremos las anchuras de nuestros intervalos. Una sucesión de intervalos puede sugerir una convergencia, pero la prueba que utilizaremos se detiene siempre después de un número finito de pasos calculado para la tolerancia elegida.</p>
+<section id="de-una-definición-a-un-problema-de-existencia" class="level2">
+<h2 class="anchored" data-anchor-id="de-una-definición-a-un-problema-de-existencia">De una definición a un problema de existencia</h2>
+<p>La imagen de una recta separada en dos partes sugiere reunir en un conjunto toda la información inferior. Para convertirla en una construcción necesitamos condiciones de pertenencia que se expresen enteramente con racionales. Esas condiciones serán las que utilicemos después en las pruebas.</p>
+<p>La definición del capítulo anterior fija las condiciones de llegada. El problema de existencia consiste en elegir objetos y operaciones que permitan verificar cada una de ellas. La elección de los racionales como material inicial pone a nuestra disposición cálculos exactos y un orden total; la nueva construcción deberá proporcionar además la propiedad del supremo.</p>
+<p>Ya contamos con un cuerpo ordenado conocido: los racionales. Su aritmética está disponible y sus elementos se comparan entre sí. El problema es la completitud. Una descripción intuitiva habla de huecos en la recta racional; el trabajo formal debe reemplazar esa imagen por objetos cuya existencia y propiedades podamos justificar sin recurrir a los reales.</p>
+<p>Adoptamos <span class="math inline">\(\mathbb Q\)</span> como punto de partida y presuponemos su aritmética, el buen orden de los naturales y la teoría elemental de conjuntos. La construcción de naturales, enteros y racionales pertenece a una etapa fundacional anterior. Con esas herramientas examinaremos qué información necesita un número nuevo y cómo operar con ella.</p>
+<p>La estrategia consiste en cambiar el tipo de objeto que llamaremos número. En vez de buscar una fracción que ocupe cada hueco, utilizaremos un conjunto de fracciones para describir una posición. Luego definiremos suma, producto y orden entre esos conjuntos.</p>
+</section>
+<section id="cortaduras-información-suficiente-para-identificar-una-posición" class="level2">
+<h2 class="anchored" data-anchor-id="cortaduras-información-suficiente-para-identificar-una-posición">Cortaduras: información suficiente para identificar una posición</h2>
+<p>La primera operación que investigaremos será comparar estos conjuntos. El cierre descendente resultará decisivo para probar que dos cortaduras cualesquiera se ordenan por inclusión.</p>
+<p>Una cortadura de Dedekind es un subconjunto <span class="math inline">\(A\)</span> de <span class="math inline">\(\mathbb Q\)</span> con un elemento interior y un elemento exterior, cerrado hacia abajo y con la propiedad de que cada uno de sus elementos es superado por otro elemento del mismo conjunto. El cierre hacia abajo significa que, junto con una fracción, el conjunto contiene todas las fracciones menores. La última propiedad proporciona margen para aumentar un testigo permaneciendo dentro de la cortadura.</p>
+<p>El elemento interior proporciona información inferior y el exterior asegura que esa información está acotada en el orden racional. El cierre descendente reúne todas las fracciones menores que las ya admitidas. La posibilidad de aumentar cada elemento fija una convención uniforme para la frontera y hará posible transformar representaciones exactas en testigos estrictos.</p>
+<p>Para un racional conocido, por ejemplo <span class="math inline">\(2\)</span>, podemos formar</p>
+<p><span class="math display">\[C_2=\{q\in\mathbb Q:q&lt;2\}.\]</span></p>
+<p>Este conjunto tiene una frontera racional, pero no incluye el propio <span class="math inline">\(2\)</span>. Si <span class="math inline">\(q&lt;2\)</span>, el punto medio <span class="math inline">\((q+2)/2\)</span> sigue siendo racional, está por encima de <span class="math inline">\(q\)</span> y queda por debajo de <span class="math inline">\(2\)</span>. Por eso no hay un último elemento de <span class="math inline">\(C_2\)</span>.</p>
+<p>El dibujo de una recta partida en dos ayuda a comprender la intención. Sin embargo, si escribimos <span class="math inline">\(\{q\in\mathbb Q:q&lt;x\}\)</span> con un real arbitrario <span class="math inline">\(x\)</span> para definir todas las cortaduras, ya estamos suponiendo el objeto que queremos construir. Conviene distinguir expresamente esa imagen intuitiva de la definición mediante propiedades de subconjuntos racionales. Consideremos ahora <span class="math inline">\(\{q\in\mathbb Q:q^2&lt;2\}\)</span> como ejemplo asociado a la raíz de dos. Esa expresión no satisface la definición: contiene <span class="math inline">\(0\)</span>, pero no contiene <span class="math inline">\(-2\)</span>, aunque <span class="math inline">\(-2&lt;0\)</span>. La reparación es incluir todo el lado negativo:</p>
+<p><span class="math display">\[H=\{q\in\mathbb Q:q&lt;0\ \text{o}\ q^2&lt;2\}.\]</span></p>
+<p>En la parte no negativa, elevar al cuadrado conserva el orden; por eso el segundo criterio describe correctamente la porción situada bajo la frontera buscada. En la parte negativa, usar sólo el cuadrado recortaría también el extremo izquierdo, justamente lo que una cortadura descendente no puede hacer.</p>
+<p>No necesitamos conocer previamente <span class="math inline">\(\sqrt2\)</span> para definir <span class="math inline">\(H\)</span>: sólo intervienen racionales, el orden y el número <span class="math inline">\(2\)</span>. Más adelante comprobaremos que este conjunto satisface los cuatro axiomas de cortadura; cuando el producto esté construido, demostraremos además que <span class="math inline">\(H^2=C_2\)</span>. Es entonces cuando podemos interpretar <span class="math inline">\(H\)</span> como una raíz cuadrada positiva.</p>
+<section id="cortaduras-y-separación-de-sus-lados" class="level3">
+<h3 class="anchored" data-anchor-id="cortaduras-y-separación-de-sus-lados">Cortaduras y separación de sus lados</h3>
+<p>Una cortadura es un conjunto <span class="math inline">\(A\subseteq\mathbb Q\)</span> tal que:</p>
+<p><span class="math display">\[A\ne\varnothing,\quad A\ne\mathbb Q,\]</span> <span class="math display">\[\forall r\in A\ \forall s\in\mathbb Q\quad(s&lt;r\Rightarrow s\in A),\]</span> <span class="math display">\[\forall r\in A\ \exists s\in A\quad r&lt;s.\]</span></p>
+<p>Denotamos por <span class="math inline">\(D\)</span> el conjunto de todas las cortaduras. Si <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(b\in\mathbb Q\setminus A\)</span>, necesariamente <span class="math inline">\(a&lt;b\)</span>: la igualdad contradice las pertenencias; si <span class="math inline">\(b&lt;a\)</span>, el cierre descendente obligaría a <span class="math inline">\(b\in A\)</span>. En particular, todo racional exterior es una cota superior racional de <span class="math inline">\(A\)</span>.</p>
+<p>Para <span class="math inline">\(r\in\mathbb Q\)</span>, ponemos</p>
+<p><span class="math display">\[C_r=\{q\in\mathbb Q:q&lt;r\}.\]</span></p>
+<p>Es no vacío porque contiene <span class="math inline">\(r-1\)</span>, propio porque no contiene <span class="math inline">\(r\)</span>, descendente por transitividad y sin máximo porque <span class="math inline">\((q+r)/2\)</span> pertenece a <span class="math inline">\(C_r\)</span> y supera a cualquier <span class="math inline">\(q\in C_r\)</span>. Así <span class="math inline">\(D\)</span> existe como subconjunto no vacío de <span class="math inline">\(\mathcal P(\mathbb Q)\)</span>.</p>
+<p>Una descripción <span class="math inline">\(A=\{q:q&lt;x\}\)</span> con un real preexistente <span class="math inline">\(x\)</span> no forma parte de esta definición. Será una interpretación legítima después de construir un modelo, o una representación dentro de otro cuerpo ordenado completo en el isomorfismo con las cortaduras.</p>
+</section>
+<section id="el-ejemplo-cuadrático-corregido-y-una-cortadura-no-racional" class="level3">
+<h3 class="anchored" data-anchor-id="el-ejemplo-cuadrático-corregido-y-una-cortadura-no-racional">El ejemplo cuadrático corregido y una cortadura no racional</h3>
+<p>El primer conjunto que podríamos considerar,</p>
+<p><span class="math display">\[T=\{q\in\mathbb Q:q^2&lt;2\},\]</span></p>
+<p>no es descendente: <span class="math inline">\(0\in T\)</span>, <span class="math inline">\(-2&lt;0\)</span> y <span class="math inline">\(-2\notin T\)</span>. La corrección es</p>
+<p><span class="math display">\[H=\{q\in\mathbb Q:q&lt;0\ \text{o}\ q^2&lt;2\}.\]</span></p>
+<p>Contiene todos los negativos y es propio porque <span class="math inline">\(2\notin H\)</span>. Si <span class="math inline">\(r\in H\)</span> y <span class="math inline">\(s&lt;r\)</span>, cuando <span class="math inline">\(s&lt;0\)</span> ya pertenece; si <span class="math inline">\(s\ge0\)</span>, también <span class="math inline">\(r&gt;0\)</span> y <span class="math inline">\(s^2&lt;r^2&lt;2\)</span>. El cierre descendente queda probado sin multiplicar desigualdades por negativos.</p>
+<p>Si <span class="math inline">\(r&lt;0\)</span>, el racional <span class="math inline">\(0\)</span> pertenece a <span class="math inline">\(H\)</span> y lo supera. Si <span class="math inline">\(r\ge0\)</span> pertenece a <span class="math inline">\(H\)</span>, elegimos</p>
+<p><span class="math display">\[\delta=\min\left(1,\frac{2-r^2}{2(2r+1)}\right)&gt;0.\]</span></p>
+<p>Como <span class="math inline">\(\delta\le1\)</span>,</p>
+<p><span class="math display">\[(r+\delta)^2\le r^2+\delta(2r+1)\le r^2+\frac{2-r^2}{2}&lt;2.\]</span></p>
+<p>Por tanto <span class="math inline">\(r+\delta\in H\)</span> y no hay máximo. Esto prueba que <span class="math inline">\(H\in D\)</span>.</p>
+<p>La comprobación siguiente de <span class="math inline">\(H^2=C_2\)</span> utiliza el producto positivo, el refinamiento racional y la compatibilidad de la inclusión racional con el producto, desarrollados más adelante en este capítulo. Puede leerse al concluir esas construcciones. Para testigos positivos <span class="math inline">\(a,b\in H\)</span>, <span class="math inline">\((ab)^2=a^2b^2&lt;4\)</span>; como <span class="math inline">\(ab&gt;0\)</span>, esto fuerza <span class="math inline">\(ab&lt;2\)</span>. Luego <span class="math inline">\(H\odot H\subseteq C_2\)</span>. A la inversa, para <span class="math inline">\(0\le q&lt;2\)</span> refinamos el par admisible <span class="math inline">\([1,2]\)</span> de <span class="math inline">\(H\)</span> con anchura menor que <span class="math inline">\((2-q)/8\)</span>. Obtenemos <span class="math inline">\(1\le a&lt;p\le2\)</span>, <span class="math inline">\(a\in H\)</span>, <span class="math inline">\(p\notin H\)</span>, por lo que <span class="math inline">\(p^2\ge2\)</span>. Entonces</p>
+<p><span class="math display">\[p^2-a^2=(p-a)(p+a)&lt;4\frac{2-q}{8}=\frac{2-q}{2},\]</span></p>
+<p><span class="math display">\[a^2&gt;2-\frac{2-q}{2}&gt;q.\]</span></p>
+<p>Los testigos <span class="math inline">\(a,a\)</span> colocan <span class="math inline">\(q\)</span> en <span class="math inline">\(H\odot H\)</span>. Los negativos están incluidos por definición. La cortadura <span class="math inline">\(H\)</span> es positiva, y ahora —sólo después de esta prueba— podemos llamarla <span class="math inline">\(\sqrt{C_2}\)</span> o <span class="math inline">\(\sqrt2\)</span> en el modelo construido.</p>
+<p>No coincide con ninguna <span class="math inline">\(C_r\)</span>. Si lo hiciera, la preservación del producto daría <span class="math inline">\(C_{r^2}=C_2\)</span>, y la inyectividad de <span class="math inline">\(\iota\)</span> daría <span class="math inline">\(r^2=2\)</span>. Pero no existe tal racional: escribir <span class="math inline">\(r=m/n\)</span> en términos reducidos con <span class="math inline">\(n&gt;0\)</span> conduce a <span class="math inline">\(m^2=2n^2\)</span>; <span class="math inline">\(m\)</span> es par, digamos <span class="math inline">\(m=2k\)</span>, y entonces <span class="math inline">\(n^2=2k^2\)</span> fuerza a <span class="math inline">\(n\)</span> par, contradiciendo que la fracción esté reducida. Se usa el hecho elemental de que el cuadrado de un entero impar es impar, deducido de <span class="math inline">\((2k+1)^2=2(2k^2+2k)+1\)</span>.</p>
+<p>Así la inclusión racional no es sobreyectiva. No se usó una raíz real preexistente para rellenar el hueco: se construyó un conjunto racional que, mediante las operaciones probadas, desempeña ese papel.</p>
+<p>Aquí aparece el primero de los grandes cambios de perspectiva: una frontera que no podemos nombrar mediante un racional puede, sin embargo, quedar perfectamente determinada por los racionales que caen bajo ella. El ejemplo cuadrático muestra además por qué las condiciones de la definición no son ornamentales: omitir todos los negativos destruiría el cierre descendente. La construcción gana rigor precisamente cuando dejamos de confiar en la imagen de una recta y examinamos qué pertenece al conjunto.</p>
+</section>
+</section>
+<section id="ordenar-conjuntos-por-inclusión" class="level2">
+<h2 class="anchored" data-anchor-id="ordenar-conjuntos-por-inclusión">Ordenar conjuntos por inclusión</h2>
+<p>La inclusión de racionales en la estructura nueva exige distinguir dos niveles: la fracción original y el conjunto que la representa. La compatibilidad de las operaciones se demostrará, no se supondrá.</p>
+<p>Sea <span class="math inline">\(D\)</span> el conjunto de todas las cortaduras. Definimos</p>
+<p><span class="math display">\[A\le B\iff A\subseteq B.\]</span></p>
+<p>El orden estricto significa inclusión estricta. La relación no compara el número de elementos de los conjuntos. Ambas cortaduras pueden ser infinitas; lo relevante es qué racionales admite cada una.</p>
+<p>La inclusión es reflexiva porque todo elemento de <span class="math inline">\(A\)</span> está en <span class="math inline">\(A\)</span>. Es antisimétrica porque si cada uno de los dos conjuntos está incluido en el otro tienen exactamente los mismos elementos. Es transitiva porque pertenecer a <span class="math inline">\(A\)</span>, luego a <span class="math inline">\(B\)</span> y luego a <span class="math inline">\(C\)</span> asegura pertenecer a <span class="math inline">\(C\)</span>.</p>
+<p>Estas tres propiedades producen un orden parcial. Para que sea total falta comparabilidad. En un conjunto de subconjuntos arbitrarios, la inclusión no suele ser total: <span class="math inline">\(\{0\}\)</span> y <span class="math inline">\(\{1\}\)</span> no están incluidos uno en el otro. La comparabilidad aparece aquí por la propiedad descendente de las cortaduras.</p>
+<p>Si dos cortaduras fueran incomparables, existiría un racional <span class="math inline">\(r\)</span> admitido por <span class="math inline">\(A\)</span> y rechazado por <span class="math inline">\(B\)</span>, y otro <span class="math inline">\(s\)</span> admitido por <span class="math inline">\(B\)</span> y rechazado por <span class="math inline">\(A\)</span>. Los racionales <span class="math inline">\(r,s\)</span> no son iguales. Si <span class="math inline">\(r&lt;s\)</span>, el descenso de <span class="math inline">\(B\)</span> obliga a admitir <span class="math inline">\(r\)</span>; si <span class="math inline">\(s&lt;r\)</span>, el descenso de <span class="math inline">\(A\)</span> obliga a admitir <span class="math inline">\(s\)</span>. Cualquiera de las dos posibilidades contradice las pertenencias elegidas. Esta contradicción demuestra que toda pareja de cortaduras es comparable. La prueba de comparabilidad exige examinar ambos casos y precisar el alcance de la negación inicial. No se niega sólo una inclusión: para afirmar incomparabilidad deben fallar las dos. La total ordenación de los racionales basta para demostrar total ordenación de las cortaduras; no hay un argumento que utilice el orden de los reales como premisa.</p>
+<section id="orden-total-e-inclusión-de-los-racionales" class="level3">
+<h3 class="anchored" data-anchor-id="orden-total-e-inclusión-de-los-racionales">Orden total e inclusión de los racionales</h3>
+<p>Definimos <span class="math inline">\(A\le B\)</span> si <span class="math inline">\(A\subseteq B\)</span>, y <span class="math inline">\(A&lt;B\)</span> si la inclusión es estricta. La inclusión es reflexiva, antisimétrica y transitiva por las propiedades de pertenencia a conjuntos.</p>
+<p>Para demostrar comparabilidad, supongamos que ninguna de las dos inclusiones <span class="math inline">\(A\subseteq B\)</span>, <span class="math inline">\(B\subseteq A\)</span> se cumple. Existen entonces <span class="math inline">\(r\in A\setminus B\)</span> y <span class="math inline">\(s\in B\setminus A\)</span>. No son iguales. Si <span class="math inline">\(r&lt;s\)</span>, el cierre descendente de <span class="math inline">\(B\)</span> implica <span class="math inline">\(r\in B\)</span>; si <span class="math inline">\(s&lt;r\)</span>, el de <span class="math inline">\(A\)</span> implica <span class="math inline">\(s\in A\)</span>. Ambos casos contradicen la elección. Por tanto las cortaduras están totalmente ordenadas. La prueba utiliza el orden total de <span class="math inline">\(\mathbb Q\)</span>, no el de un cuerpo de reales aún inexistente.</p>
+<p>La función <span class="math inline">\(\iota:\mathbb Q\to D\)</span>, <span class="math inline">\(\iota(r)=C_r\)</span>, satisface</p>
+<p><span class="math display">\[r\le s\iff C_r\subseteq C_s.\]</span></p>
+<p>La implicación directa es inmediata. Si <span class="math inline">\(r&gt;s\)</span>, el racional <span class="math inline">\(s\)</span> pertenece a <span class="math inline">\(C_r\)</span> y no a <span class="math inline">\(C_s\)</span>, de modo que la inclusión inversa es imposible. Si <span class="math inline">\(r&lt;s\)</span>, el propio <span class="math inline">\(r\)</span> pertenece a <span class="math inline">\(C_s\setminus C_r\)</span>, por lo que la inclusión es estricta. Esto prueba preservación y reflexión del orden, así como inyectividad.</p>
+<p>Los elementos de <span class="math inline">\(\mathbb Q\)</span> son fracciones y los de <span class="math inline">\(D\)</span> son conjuntos de fracciones. Identificaremos <span class="math inline">\(r\)</span> con <span class="math inline">\(C_r\)</span> sólo cuando la inclusión de estructuras esté justificada. Hasta aquí tenemos una inclusión de conjuntos ordenados; aún falta probar que preserve las operaciones de cuerpo.</p>
+<p>La inclusión compara la información racional que contienen dos cortaduras. El cierre descendente obliga a admitir cada fracción menor que una ya admitida; por eso dos cortaduras quedan siempre anidadas. Este orden será el que deban respetar la suma y el producto que construiremos a continuación.</p>
+</section>
+</section>
+<section id="incluir-los-racionales-en-la-nueva-estructura" class="level2">
+<h2 class="anchored" data-anchor-id="incluir-los-racionales-en-la-nueva-estructura">Incluir los racionales en la nueva estructura</h2>
+<p>Una frontera no tiene por qué ser racional, pero siempre podemos rodearla por dos racionales suficientemente próximos. Este refinamiento finito será el instrumento clave para demostrar la existencia de opuestos e inversos.</p>
+<p>Los elementos de <span class="math inline">\(\mathbb Q\)</span> son fracciones; los de <span class="math inline">\(D\)</span> son subconjuntos. Que deseemos recuperar los racionales dentro del sistema nuevo no los convierte automáticamente en los mismos objetos. Se necesita una función que asocie a cada racional su cortadura correspondiente:</p>
+<p><span class="math display">\[\iota:\mathbb Q\longrightarrow D,\qquad \iota(r)=C_r.\]</span></p>
+<p>Debemos probar que esta aplicación es inyectiva y que preserva y refleja el orden. La segunda exigencia puede expresarse mediante una equivalencia: <span class="math inline">\(r\le s\)</span> si y sólo si <span class="math inline">\(\iota(r)\le\iota(s)\)</span>.</p>
+<p>La diferencia con la imagen intuitiva anterior es el dominio del parámetro: ahora <span class="math inline">\(r\)</span> es racional. Ya existe y podemos compararlo con otros racionales, de modo que la descripción de <span class="math inline">\(C_r\)</span> es una definición legítima. Si <span class="math inline">\(r&lt;s\)</span>, el racional <span class="math inline">\(r\)</span> pertenece a <span class="math inline">\(C_s\)</span> y no a <span class="math inline">\(C_r\)</span>. Esa única fracción basta para distinguir ambas cortaduras y mostrar que la inclusión es estricta. Si <span class="math inline">\(r&gt;s\)</span>, el racional <span class="math inline">\(s\)</span> prueba que <span class="math inline">\(C_r\)</span> no puede estar incluido en <span class="math inline">\(C_s\)</span>. Así obtenemos las dos direcciones de la equivalencia y también la inyectividad.</p>
+<p>Hasta este momento la función conserva el orden. Hablar de una inclusión de cuerpos requiere algo más: deben definirse las operaciones en <span class="math inline">\(D\)</span> y comprobarse</p>
+<p><span class="math display">\[C_r+C_s=C_{r+s},\qquad C_rC_s=C_{rs}.\]</span></p>
+<p>Las demostraciones de la compatibilidad aditiva y multiplicativa completan estas verificaciones. Sólo después de ellas es legítimo identificar a un racional con su representante dentro del cuerpo construido.</p>
+<section id="aproximación-racional-finita" class="level3">
+<h3 class="anchored" data-anchor-id="aproximación-racional-finita">Aproximación racional finita</h3>
+<p>Llamamos admisible a un par <span class="math inline">\([a,b]\)</span> con <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\notin A\)</span>. Para todo <span class="math inline">\(\varepsilon\in\mathbb Q_{&gt;0}\)</span> existe un par admisible de anchura <span class="math inline">\(b-a&lt;\varepsilon\)</span>.</p>
+<p>Partimos de cualquiera, disponible por la definición de cortaduras. Si <span class="math inline">\(m=(a+b)/2\)</span> pertenece a <span class="math inline">\(A\)</span>, sustituimos <span class="math inline">\(a\)</span> por <span class="math inline">\(m\)</span>; de lo contrario sustituimos <span class="math inline">\(b\)</span> por <span class="math inline">\(m\)</span>. Cada paso conserva la admisibilidad y divide la anchura por dos. Tras <span class="math inline">\(n\)</span> pasos, ésta es <span class="math inline">\((b_0-a_0)/2^n\)</span>.</p>
+<p>Existe un <span class="math inline">\(n\)</span> natural con esa anchura menor que <span class="math inline">\(\varepsilon\)</span>. En efecto, los enteros positivos superan cualquier racional, como se comprueba escribiéndolo como cociente de enteros con denominador positivo. Además <span class="math inline">\(2^n\ge n+1\)</span> por inducción. Elegir <span class="math inline">\(n+1&gt;(b_0-a_0)/\varepsilon\)</span> basta. Es un procedimiento finito; no se afirma convergencia de una sucesión de puntos ni se usa completitud.</p>
+<p>El refinamiento puede mantenerse dentro de un par inicial. Lo usaremos también para conservar un extremo inferior positivo, sin cambiar de corte.</p>
+<p>Cada bisección conserva un racional interior y otro exterior, y reduce a la mitad la anchura entre ellos. Una tolerancia racional determina cuántas repeticiones necesitamos: al terminar disponemos de dos testigos adecuados para una estimación concreta. Usaremos esa libertad al demostrar la existencia del opuesto y, con un extremo inferior positivo, la del recíproco.</p>
+</section>
+</section>
+<section id="sumar-y-tomar-opuestos-de-cortaduras" class="level2">
+<h2 class="anchored" data-anchor-id="sumar-y-tomar-opuestos-de-cortaduras">Sumar y tomar opuestos de cortaduras</h2>
+<p>El paso del orden a las operaciones aditivas ya está preparado. La suma y el opuesto deben respetar la forma de los cortes incluso cuando sus extremos no están incluidos.</p>
+<p>La suma de cortaduras se define por testigos racionales:</p>
+<p><span class="math display">\[A+B=\{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad q&lt;a+b\}.\]</span></p>
+<p>La comparación <span class="math inline">\(q&lt;a+b\)</span> ocurre en <span class="math inline">\(\mathbb Q\)</span>. El lado izquierdo nombra una operación nueva entre cortaduras; el lado derecho utiliza la suma racional ya conocida. Esta distinción de niveles permite construir una operación sin presuponerla.</p>
+<p>El cero nuevo es <span class="math inline">\(C_0=\{q\in\mathbb Q:q&lt;0\}\)</span>. El opuesto se escribe</p>
+<p><span class="math display">\[-A=\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A\quad q&lt;-p\}.\]</span></p>
+<p>Para visualizar la operación, tomamos el complemento de la cortadura y lo reflejamos. La desigualdad estricta bajo <span class="math inline">\(-p\)</span> realiza una parte decisiva del trabajo: si el complemento tiene un primer elemento, la reflexión literal tendría un máximo. La fórmula evita incluir esa frontera. No basta que la suma se parezca a una cortadura: debemos probar que realmente lo es. Un elemento <span class="math inline">\(a\in A\)</span> y otro <span class="math inline">\(b\in B\)</span> proporcionan un testigo de no vacuidad. Racionales exteriores <span class="math inline">\(u\notin A\)</span>, <span class="math inline">\(v\notin B\)</span> acotan todos los testigos por <span class="math inline">\(u+v\)</span> y garantizan que el resultado no es todo <span class="math inline">\(\mathbb Q\)</span>. El descenso usa el mismo par de testigos; un punto medio bajo <span class="math inline">\(a+b\)</span> prueba ausencia de máximo. La demostración que sigue desarrolla, una por una, las cuatro condiciones de cortadura.</p>
+<p>Ese apartado demuestra además una igualdad útil: la suma coincide con el conjunto de todas las sumas exactas <span class="math inline">\(a+b\)</span>, con <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span>. La ausencia de máximo permite superar una suma exacta con nuevos testigos; el cierre descendente permite reajustar un sumando cuando partimos de una desigualdad estricta. Esta igualdad reduce la asociatividad a la asociatividad racional, sin saltarse la buena definición.</p>
+<p>El inverso aditivo tiene un paso más delicado. Es fácil ver que todo elemento de <span class="math inline">\(A+(-A)\)</span> es negativo: un elemento de <span class="math inline">\(A\)</span> queda estrictamente por debajo de todo racional exterior. Para probar que aparecen <strong>todos</strong> los negativos, necesitamos acercar un racional interior y uno exterior lo suficiente. El refinamiento racional utiliza bisección finita para lograr cualquier anchura racional prescrita; la estructura aditiva emplea esa anchura para encontrar un testigo de cada <span class="math inline">\(q&lt;0\)</span>.</p>
+<p>La bisección produce, tras un número finito de pasos, el margen racional requerido por la prueba. Con ella queda probado <span class="math inline">\(A+(-A)=C_0\)</span> y, junto con asociatividad, conmutatividad y unidad, la estructura de grupo abeliano aditivo.</p>
+<section id="suma-buena-definición-conmutatividad-y-asociatividad" class="level3">
+<h3 class="anchored" data-anchor-id="suma-buena-definición-conmutatividad-y-asociatividad">Suma: buena definición, conmutatividad y asociatividad</h3>
+<p>Definimos la suma mediante testigos racionales:</p>
+<p><span class="math display">\[A+B=\{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad q&lt;a+b\}.\]</span></p>
+<p>Es no vacío: dados <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span>, contiene <span class="math inline">\(a+b-1\)</span>. Es propio: dados <span class="math inline">\(u\notin A\)</span>, <span class="math inline">\(v\notin B\)</span>, todo testigo satisface <span class="math inline">\(a&lt;u\)</span>, <span class="math inline">\(b&lt;v\)</span>; por tanto todos sus elementos son menores que <span class="math inline">\(u+v\)</span>, que queda fuera. Si <span class="math inline">\(q&lt;a+b\)</span> y <span class="math inline">\(t&lt;q\)</span>, el mismo testigo incluye a <span class="math inline">\(t\)</span>. Finalmente <span class="math inline">\((q+a+b)/2\)</span> está entre <span class="math inline">\(q\)</span> y <span class="math inline">\(a+b\)</span> y pertenece a la suma. Se cumplen las cuatro condiciones de cortadura.</p>
+<p>Una forma equivalente, útil para las leyes algebraicas, es</p>
+<p><span class="math display">\[A+B=\{a+b:a\in A,\ b\in B\}.\]</span></p>
+<p>Si <span class="math inline">\(q&lt;a+b\)</span>, tomamos <span class="math inline">\(a'=q-b&lt;a\)</span>, que pertenece a <span class="math inline">\(A\)</span>, y obtenemos <span class="math inline">\(q=a'+b\)</span>. A la inversa, si <span class="math inline">\(q=a+b\)</span>, la ausencia de máximo permite <span class="math inline">\(a'&gt;a\)</span> en <span class="math inline">\(A\)</span>; entonces <span class="math inline">\(q&lt;a'+b\)</span> y cumple la definición estricta. Esta equivalencia no se obtiene suprimiendo arbitrariamente un signo estricto: necesita el cierre descendente y la ausencia de máximo.</p>
+<p>La conmutatividad sigue de <span class="math inline">\(a+b=b+a\)</span> en <span class="math inline">\(\mathbb Q\)</span>. Usando la forma equivalente, los elementos de <span class="math inline">\((A+B)+C\)</span> son exactamente las sumas <span class="math inline">\((a+b)+c\)</span>, y los de <span class="math inline">\(A+(B+C)\)</span> son <span class="math inline">\(a+(b+c)\)</span>, con <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span>, <span class="math inline">\(c\in C\)</span>. La asociatividad racional prueba igualdad de conjuntos.</p>
+</section>
+<section id="cero-opuesto-y-estructura-aditiva" class="level3">
+<h3 class="anchored" data-anchor-id="cero-opuesto-y-estructura-aditiva">Cero, opuesto y estructura aditiva</h3>
+<p>Ponemos <span class="math inline">\(0_D=C_0\)</span>. Si <span class="math inline">\(q\in A+C_0\)</span>, hay <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b&lt;0\)</span> con <span class="math inline">\(q&lt;a+b&lt;a\)</span>, de modo que <span class="math inline">\(q\in A\)</span>. Si <span class="math inline">\(q\in A\)</span>, elegimos <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(q&lt;a\)</span> y <span class="math inline">\(b=(q-a)/2&lt;0\)</span>; entonces <span class="math inline">\(q&lt;a+b\)</span>. Esto prueba <span class="math inline">\(A+C_0=A\)</span>.</p>
+<p>El opuesto utiliza racionales exteriores a la cortadura:</p>
+<p><span class="math display">\[-A=\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A\quad q&lt;-p\}.\]</span></p>
+<p>Es no vacío: para un <span class="math inline">\(p\notin A\)</span>, contiene <span class="math inline">\(-p-1\)</span>. Si <span class="math inline">\(a\in A\)</span>, cualquier <span class="math inline">\(p\notin A\)</span> supera a <span class="math inline">\(a\)</span>, por lo que <span class="math inline">\(-p&lt;-a\)</span>; así <span class="math inline">\(-a\notin-A\)</span> y el conjunto es propio. El cierre descendente y la ausencia de máximo siguen tomando el mismo testigo y un punto medio bajo <span class="math inline">\(-p\)</span>.</p>
+<p>Demostremos <span class="math inline">\(A+(-A)=C_0\)</span>. Si <span class="math inline">\(q\)</span> pertenece a la suma, existen <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in-A\)</span> y <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(q&lt;a+b\)</span> y <span class="math inline">\(b&lt;-p\)</span>. Como <span class="math inline">\(a&lt;p\)</span>, resulta <span class="math inline">\(q&lt;a-p&lt;0\)</span>.</p>
+<p>Para la inclusión contraria, sea <span class="math inline">\(q&lt;0\)</span>. El refinamiento racional da <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(p-a&lt;-q\)</span>, es decir, <span class="math inline">\(q-a&lt;-p\)</span>. Elegimos un racional <span class="math inline">\(b\)</span> estrictamente entre <span class="math inline">\(q-a\)</span> y <span class="math inline">\(-p\)</span>. Entonces <span class="math inline">\(b\in-A\)</span> y <span class="math inline">\(q&lt;a+b\)</span>, como necesitábamos. No se empleó una traslación de desigualdades entre cortaduras ni un axioma de grupo sin demostrar.</p>
+<p>Por la prueba de las leyes de la suma y esta identidad, <span class="math inline">\((D,+,C_0)\)</span> es un grupo abeliano. Los inversos son únicos: si <span class="math inline">\(A+B=C_0=A+C\)</span>, sumar <span class="math inline">\(-A\)</span> y usar asociatividad da <span class="math inline">\(B=C\)</span>. En consecuencia <span class="math inline">\(-(-A)=A\)</span> y <span class="math inline">\(-(A+B)=(-A)+(-B)\)</span>, pues la suma propuesta es un inverso de <span class="math inline">\(A+B\)</span>.</p>
+<p>El orden es compatible con traslación. De <span class="math inline">\(A\subseteq B\)</span>, cada testigo de <span class="math inline">\(A+Z\)</span> es testigo de <span class="math inline">\(B+Z\)</span>, así que <span class="math inline">\(A+Z\subseteq B+Z\)</span>. Si <span class="math inline">\(A&lt;B\)</span> y las sumas fueran iguales, cancelar <span class="math inline">\(Z\)</span> daría <span class="math inline">\(A=B\)</span>. Por tanto</p>
+<p><span class="math display">\[A&lt;B\iff A+Z&lt;B+Z.\]</span></p>
+<p>La dirección inversa se obtiene trasladando por <span class="math inline">\(-Z\)</span>. En particular,</p>
+<p><span class="math display">\[A&lt;B\iff C_0&lt;B-A.\]</span></p>
+<p>Esta equivalencia se deriva aquí de la buena definición explícita de la suma y de la cancelación ya probada; no se presupone antes.</p>
+<p>Si <span class="math inline">\(A&gt;C_0\)</span>, hay un racional positivo en <span class="math inline">\(A\)</span>: un elemento de <span class="math inline">\(A\setminus C_0\)</span> es no negativo y, si fuera cero, la ausencia de máximo proporciona uno mayor. Si <span class="math inline">\(A&lt;C_0\)</span>, trasladar por <span class="math inline">\(-A\)</span> da <span class="math inline">\(-A&gt;C_0\)</span>.</p>
+</section>
+<section id="compatibilidad-de-la-inclusión-racional-con-la-suma" class="level3">
+<h3 class="anchored" data-anchor-id="compatibilidad-de-la-inclusión-racional-con-la-suma">Compatibilidad de la inclusión racional con la suma</h3>
+<p>Para <span class="math inline">\(r,s\in\mathbb Q\)</span>,</p>
+<p><span class="math display">\[C_r+C_s=C_{r+s},\qquad -C_r=C_{-r}.\]</span></p>
+<p>En la primera igualdad, cualquier testigo <span class="math inline">\(a&lt;r\)</span>, <span class="math inline">\(b&lt;s\)</span> implica <span class="math inline">\(q&lt;a+b&lt;r+s\)</span>. Si <span class="math inline">\(q&lt;r+s\)</span>, ponemos <span class="math inline">\(\delta=(r+s-q)/4\)</span>, <span class="math inline">\(a=r-\delta\)</span>, <span class="math inline">\(b=s-\delta\)</span>; son testigos y <span class="math inline">\(a+b&gt;q\)</span>.</p>
+<p>En la segunda, <span class="math inline">\(p\notin C_r\)</span> equivale a <span class="math inline">\(p\ge r\)</span>, así que <span class="math inline">\(q&lt;-p\)</span> implica <span class="math inline">\(q&lt;-r\)</span>. Para todo <span class="math inline">\(q&lt;-r\)</span> sirve el testigo <span class="math inline">\(p=r\)</span>, exterior a <span class="math inline">\(C_r\)</span>. Obsérvese por qué la desigualdad estricta es indispensable: la reflexión literal de todo el complemento incluiría la frontera <span class="math inline">\(-r\)</span> y produciría un conjunto con máximo.</p>
+<p>La suma es una operación cerrada entre cortaduras, asociativa y conmutativa, con cero y opuestos, que respeta las traslaciones del orden. El argumento que relaciona testigos estrictos y sumas exactas reúne dos propiedades de nuestros objetos: el descenso reajusta un sumando y la posibilidad de aumentarlo recupera la holgura estricta. Esa misma combinación reaparecerá al comparar perfiles racionales en el capítulo de unicidad.</p>
+</section>
+</section>
+<section id="multiplicar-primero-positivos-después-signos" class="level2">
+<h2 class="anchored" data-anchor-id="multiplicar-primero-positivos-después-signos">Multiplicar: primero positivos, después signos</h2>
+<p>El producto presenta una dificultad adicional: no está permitido multiplicar desigualdades ignorando los signos. Por eso construiremos primero el producto de objetos no negativos, y sólo después extenderemos a todos.</p>
+<p>El producto se define primero para cortaduras no negativas:</p>
+<p><span class="math display">\[A\odot B=C_0\cup\{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad a&gt;0,\ b&gt;0,\ q&lt;ab\}.\]</span></p>
+<p>La inclusión explícita de todos los negativos garantiza un lado inferior completo. Las restricciones positivas sobre <span class="math inline">\(a,b\)</span> evitan que la multiplicación de testigos racionales negativos produzca valores enormes sin representar el producto buscado. Por ejemplo, si multiplicáramos arbitrariamente todos los negativos de dos cortaduras, obtendríamos productos positivos sin cota, incluso cuando ambas cortaduras representaran cantidades pequeñas.</p>
+<p>Cuando uno de los factores es <span class="math inline">\(C_0\)</span>, no tiene elementos positivos: la segunda parte de la definición queda vacía y el producto es justamente <span class="math inline">\(C_0\)</span>. Cuando ambos factores son positivos, existen testigos cuyo producto es positivo, y el resultado supera estrictamente a cero.</p>
+<p>La fórmula anterior define el producto <strong>únicamente para factores no negativos</strong>. Después de demostrar las leyes en ese dominio, extenderemos la operación a todos los signos: para dos factores negativos se multiplicarán sus opuestos positivos; para signos diferentes se tomará el opuesto del producto positivo. Habrá que comprobar que esa extensión está bien definida y que las leyes siguen siendo válidas. La unidad multiplicativa será <span class="math inline">\(C_1\)</span>.</p>
+<p><strong>Corrección del recíproco.</strong> La fórmula que aparece para el inverso,</p>
+<p><span class="math display">\[\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A,\ p&gt;0,\ q&lt;1/p\},\]</span></p>
+<p>sirve cuando <span class="math inline">\(A&gt;C_0\)</span>. Si se aplica a una cortadura negativa, todo racional positivo queda fuera de <span class="math inline">\(A\)</span>, y los testigos <span class="math inline">\(p\)</span> pueden aproximarse arbitrariamente a cero. El conjunto resultante sería todo <span class="math inline">\(\mathbb Q\)</span>, no una cortadura. Por ello la corrección completa exige dos casos: el recíproco positivo <span class="math inline">\(J_A\)</span> para <span class="math inline">\(A&gt;C_0\)</span> y <span class="math inline">\(-J_{-A}\)</span> para <span class="math inline">\(A&lt;C_0\)</span>. El cero se excluye.</p>
+<p>La condición <span class="math inline">\(p&gt;0\)</span> no es una justificación completa del dominio de <span class="math inline">\(A\)</span>. Cambiarla por <span class="math inline">\(p\ne0\)</span> tampoco soluciona el caso negativo. En la construcción del recíproco se prueba la buena definición y la identidad <span class="math inline">\(AA^{-1}=C_1\)</span>, y se explica el contraejemplo que obliga a introducir el caso de signo faltante.</p>
+<p>Las fórmulas del producto aún no son suficientes para que las cortaduras constituyan un cuerpo. Debemos comprobar sus leyes de manera explícita. Primero se demuestra asociatividad y distributividad en el cono no negativo mediante testigos. La parte pedagógicamente decisiva de la distributividad consiste en reunir dos testigos distintos del mismo factor: si <span class="math inline">\(a_1,a_2\in A\)</span>, su máximo sigue perteneciendo a <span class="math inline">\(A\)</span> y puede dominar ambos productos.</p>
+<p>Después representamos una cortadura arbitraria como diferencia de dos no negativas. Una prueba de independencia de representación permite extender el producto; las leyes ya verificadas en el cono y las leyes del grupo aditivo producen las leyes en todo <span class="math inline">\(D\)</span>. Esa construcción justifica los cuatro casos de signos de la multiplicación. No se da por cierta la distributividad general para demostrar esa misma distributividad.</p>
+<p>Con los inversos no nulos y <span class="math inline">\(C_0\ne C_1\)</span> queda un cuerpo. Su multiplicación restringida a los elementos distintos de cero es un grupo abeliano; la multiplicación de todo el conjunto no lo es, porque cero no es invertible. La precisión evita convertir una abreviación textual en un axioma falso.</p>
+<p>El orden también debe conectarse con las operaciones. La suma preserva inclusión por sus testigos; la cancelación vuelve estricta la traslación cuando la inclusión original es estricta. Un producto de positivos es positivo por la fórmula del cono. Si <span class="math inline">\(A&lt;B\)</span> y <span class="math inline">\(Z&gt;0_D\)</span>, la diferencia <span class="math inline">\((B-A)Z\)</span> es positiva y la distributividad da <span class="math inline">\(BZ-AZ&gt;0_D\)</span>, por lo que <span class="math inline">\(AZ&lt;BZ\)</span>. Sólo ahora queda justificado el término <strong>cuerpo ordenado</strong>.</p>
+<section id="producto-de-cortaduras-no-negativas" class="level3">
+<h3 class="anchored" data-anchor-id="producto-de-cortaduras-no-negativas">Producto de cortaduras no negativas</h3>
+<p>Para <span class="math inline">\(A,B\ge C_0\)</span>, definimos, siguiendo la definición de producto positivo,</p>
+<p><span class="math display">\[A\odot B=C_0\ \cup\ \{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad a&gt;0,\ b&gt;0,\ q&lt;ab\}.\]</span></p>
+<p>Es no vacío porque contiene <span class="math inline">\(C_0\)</span>. Elegimos racionales positivos <span class="math inline">\(u\notin A\)</span>, <span class="math inline">\(v\notin B\)</span>: basta aumentar racionales exteriores hasta que sean positivos. Para cualquier testigo positivo, <span class="math inline">\(a&lt;u\)</span>, <span class="math inline">\(b&lt;v\)</span>, luego <span class="math inline">\(ab&lt;uv\)</span> y <span class="math inline">\(uv\)</span> queda fuera. El cierre descendente vale en cada una de las dos partes y se conserva al unirlas. Si <span class="math inline">\(q&lt;0\)</span>, hay un racional entre <span class="math inline">\(q\)</span> y cero en <span class="math inline">\(C_0\)</span>; si <span class="math inline">\(q\ge0\)</span> y <span class="math inline">\(q&lt;ab\)</span>, hay un racional entre <span class="math inline">\(q\)</span> y <span class="math inline">\(ab\)</span> incluido por ese testigo. Así el producto pertenece a <span class="math inline">\(D\)</span> y es no negativo.</p>
+<p>Si uno de los factores es <span class="math inline">\(C_0\)</span>, no tiene testigos positivos, por lo que <span class="math inline">\(A\odot C_0=C_0\)</span>. Si ambos son estrictamente positivos, elegimos <span class="math inline">\(a,b&gt;0\)</span> en ellos; el racional <span class="math inline">\(ab/2&gt;0\)</span> pertenece al producto. Éste es entonces estrictamente positivo.</p>
+<p>La conmutatividad sigue de la simetría de los testigos. También hay monotonía no estricta en cada factor no negativo: ampliar una cortadura no elimina testigos positivos. No usamos aún multiplicación de desigualdades en <span class="math inline">\(D\)</span>.</p>
+<p>Un detalle útil: si <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span> son positivos, el racional <span class="math inline">\(ab\)</span> mismo pertenece a <span class="math inline">\(A\odot B\)</span>. Basta reemplazar <span class="math inline">\(a\)</span> por un <span class="math inline">\(a'&gt;a\)</span> en <span class="math inline">\(A\)</span> y usar <span class="math inline">\(ab&lt;a'b\)</span>.</p>
+</section>
+<section id="leyes-algebraicas-en-el-cono-no-negativo" class="level3">
+<h3 class="anchored" data-anchor-id="leyes-algebraicas-en-el-cono-no-negativo">Leyes algebraicas en el cono no negativo</h3>
+<p><strong>Asociatividad.</strong> Si alguno de <span class="math inline">\(A,B,C\ge C_0\)</span> es cero, ambos productos iterados son cero por el producto positivo. Supongamos que los tres son positivos. Para un racional <span class="math inline">\(q\ge0\)</span>, pertenecer a <span class="math inline">\((A\odot B)\odot C\)</span> equivale a existir <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span>, <span class="math inline">\(c\in C\)</span>, todos positivos, con <span class="math inline">\(q&lt;abc\)</span>.</p>
+<p>En efecto, de <span class="math inline">\(q&lt;pc\)</span>, con <span class="math inline">\(p&gt;0\)</span> en <span class="math inline">\(A\odot B\)</span>, obtenemos <span class="math inline">\(p&lt;ab\)</span> y por tanto <span class="math inline">\(q&lt;abc\)</span>. A la inversa, dado <span class="math inline">\(q&lt;abc\)</span>, elegimos un racional <span class="math inline">\(p\)</span> con <span class="math inline">\(q/c&lt;p&lt;ab\)</span> y <span class="math inline">\(p&gt;0\)</span>; pertenece a <span class="math inline">\(A\odot B\)</span> y da <span class="math inline">\(q&lt;pc\)</span>. Los racionales negativos pertenecen a todas las cortaduras de producto no negativo por definición. El mismo criterio de triple testigo describe <span class="math inline">\(A\odot(B\odot C)\)</span>, y la asociatividad racional prueba la igualdad.</p>
+<p><strong>Unidad.</strong> <span class="math inline">\(1_D=C_1\)</span> satisface <span class="math inline">\(A\odot C_1=A\)</span>. Si <span class="math inline">\(q\ge0\)</span> pertenece al producto, sus testigos cumplen <span class="math inline">\(0&lt;b&lt;1\)</span> y <span class="math inline">\(q&lt;ab&lt;a\in A\)</span>, así que <span class="math inline">\(q\in A\)</span>. Si <span class="math inline">\(q\ge0\)</span> pertenece a <span class="math inline">\(A\)</span>, elegimos <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(a&gt;q\)</span> y un racional <span class="math inline">\(b\)</span> con <span class="math inline">\(q/a&lt;b&lt;1\)</span> y <span class="math inline">\(b&gt;0\)</span>; entonces <span class="math inline">\(q&lt;ab\)</span>. Los racionales negativos pertenecen a ambos conjuntos. Para <span class="math inline">\(A=C_0\)</span> vale la identidad de cero anterior.</p>
+<p><strong>Distributividad no negativa.</strong> Para <span class="math inline">\(A,B,C\ge C_0\)</span>,</p>
+<p><span class="math display">\[A\odot(B+C)=(A\odot B)+(A\odot C).\]</span></p>
+<p>Si cualquiera de los factores relevantes es cero, las identidades de cero y suma reducen la afirmación inmediatamente. Consideremos <span class="math inline">\(A,B,C&gt;C_0\)</span>. Ambas partes contienen <span class="math inline">\(C_0\)</span> por monotonía aditiva y el producto positivo.</p>
+<p>Sea <span class="math inline">\(q\ge0\)</span> en la parte izquierda. Hay <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(d\in B+C\)</span> positivos con <span class="math inline">\(q&lt;ad\)</span>. La definición de suma proporciona <span class="math inline">\(b\in B\)</span>, <span class="math inline">\(c\in C\)</span> con <span class="math inline">\(d&lt;b+c\)</span>. Como <span class="math inline">\(B,C\)</span> contienen racionales positivos, podemos escoger un racional positivo en cada corte. Sustituimos cada testigo anterior por el máximo entre él y el positivo correspondiente; el máximo sigue perteneciendo a la misma cortadura. Obtenemos así dos racionales positivos <span class="math inline">\(b,c\)</span> cuya suma no es menor que el testigo <span class="math inline">\(d\)</span>. Puesto que el primer factor <span class="math inline">\(a\)</span> es positivo, se conserva la desigualdad estricta y resulta <span class="math inline">\(q&lt;a(b+c)=ab+ac\)</span>. El detalle final del producto positivo garantiza <span class="math inline">\(ab\in A\odot B\)</span> y <span class="math inline">\(ac\in A\odot C\)</span>, así que <span class="math inline">\(q\)</span> pertenece a la parte derecha.</p>
+<p>A la inversa, si <span class="math inline">\(q\ge0\)</span> pertenece a la suma derecha, hay <span class="math inline">\(u\in A\odot B\)</span>, <span class="math inline">\(v\in A\odot C\)</span> con <span class="math inline">\(q&lt;u+v\)</span>. Para cada <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> podemos conseguir testigos positivos <span class="math inline">\(a_1,b\)</span> y <span class="math inline">\(a_2,c\)</span> con <span class="math inline">\(u&lt;a_1b\)</span>, <span class="math inline">\(v&lt;a_2c\)</span>. Si alguno de los racionales intermedios es negativo, no necesita un testigo especial: como los cortes factores son estrictamente positivos, <strong>cualquier</strong> par de testigos positivos produce un producto que supera a ese racional. Si el valor intermedio es no negativo, la definición de pertenencia al corte producto ofrece sus testigos. Reunimos finalmente las dos elecciones mediante <span class="math inline">\(a=\max(a_1,a_2)\in A\)</span>. Entonces</p>
+<p><span class="math display">\[q&lt;u+v&lt;a(b+c).\]</span></p>
+<p>El racional positivo <span class="math inline">\(b+c\)</span> pertenece a <span class="math inline">\(B+C\)</span> por la forma equivalente de la suma. El máximo escogido no es intercambiable con el mínimo: necesitamos un elemento de <span class="math inline">\(A\)</span> que <strong>supere simultáneamente</strong> a los dos testigos iniciales para que ambas desigualdades puedan sumarse. Por ello <span class="math inline">\(q\)</span> pertenece al producto izquierdo. Esto prueba la igualdad para todos los racionales.</p>
+<p>La afirmación de cero de este párrafo incluye también los casos <span class="math inline">\(B=C=C_0\)</span> o un solo sumando cero; si <span class="math inline">\(A=C_0\)</span>, el producto de ambos lados se reduce a <span class="math inline">\(C_0+C_0=C_0\)</span>. No queda ningún caso de frontera delegado a una regla de signos no probada.</p>
+</section>
+<section id="extensión-con-signos-y-leyes-en-todo-d" class="level3">
+<h3 class="anchored" data-anchor-id="extensión-con-signos-y-leyes-en-todo-d">Extensión con signos y leyes en todo D</h3>
+<p>Partimos de una definición por cuatro casos. Para auditar sus leyes sin una enumeración opaca de signos, construiremos primero la misma operación de una forma equivalente.</p>
+<p>Todo <span class="math inline">\(X\in D\)</span> se puede escribir <span class="math inline">\(X=P-Q\)</span> con <span class="math inline">\(P,Q\ge C_0\)</span>: si <span class="math inline">\(X\ge C_0\)</span>, usamos <span class="math inline">\((P,Q)=(X,C_0)\)</span>; si <span class="math inline">\(X&lt;C_0\)</span>, usamos <span class="math inline">\((P,Q)=(C_0,-X)\)</span>. Por ahora el signo menos es la operación de grupo aditivo ya demostrada.</p>
+<p>Para <span class="math inline">\(T\ge C_0\)</span>, definimos</p>
+<p><span class="math display">\[h_T(P-Q)=(P\odot T)-(Q\odot T).\]</span></p>
+<p>Está bien definida. Si <span class="math inline">\(P-Q=P'-Q'\)</span>, la ley de grupo implica <span class="math inline">\(P+Q'=P'+Q\)</span>. Multiplicando esta igualdad entre cortaduras no negativas por <span class="math inline">\(T\)</span> y usando exclusivamente las leyes del producto no negativo, obtenemos</p>
+<p><span class="math display">\[(P\odot T)+(Q'\odot T)=(P'\odot T)+(Q\odot T).\]</span></p>
+<p>La cancelación aditiva da igualdad de las dos diferencias que definen <span class="math inline">\(h_T\)</span>. Obsérvese el orden lógico: en esta operación auxiliar solo multiplicamos cortaduras no negativas por un factor no negativo. La distributividad utilizada es precisamente la que ya hemos demostrado en ese cono; no estamos suponiendo una multiplicación general de diferencias.</p>
+<p>Además <span class="math inline">\(h_T\)</span> es aditiva: para <span class="math inline">\(X=P-Q\)</span>, <span class="math inline">\(Y=R-S\)</span>, la representación <span class="math inline">\((P+R)-(Q+S)\)</span> de <span class="math inline">\(X+Y\)</span>, junto con distributividad no negativa, proporciona</p>
+<p><span class="math display">\[h_T(X+Y)=h_T(X)+h_T(Y).\]</span></p>
+<p>En particular <span class="math inline">\(h_T(-X)=-h_T(X)\)</span>. Para <span class="math inline">\(T,U\ge C_0\)</span>, la misma distributividad da <span class="math inline">\(h_{T+U}(X)=h_T(X)+h_U(X)\)</span>.</p>
+<p>Para <span class="math inline">\(Y=R-S\)</span> con <span class="math inline">\(R,S\ge C_0\)</span>, definimos ahora</p>
+<p><span class="math display">\[XY=h_R(X)-h_S(X).\]</span></p>
+<p>Tampoco depende de la representación de <span class="math inline">\(Y\)</span>. Si <span class="math inline">\(R-S=R'-S'\)</span>, tenemos <span class="math inline">\(R+S'=R'+S\)</span>. Aplicar la identidad de aditividad en el subíndice da <span class="math inline">\(h_R(X)+h_{S'}(X)=h_{R'}(X)+h_S(X)\)</span>, que prueba independencia. Esta es una <strong>segunda</strong> comprobación: la primera controló cómo escribíamos <span class="math inline">\(X\)</span>; la presente controla cómo escribimos <span class="math inline">\(Y\)</span>. Ambas preceden a las reglas de signo y a la distributividad general. Al desarrollar ambas representaciones,</p>
+<p><span class="math display">\[ (P-Q)(R-S)=\bigl(P\odot R+Q\odot S\bigr)-\bigl(P\odot S+Q\odot R\bigr).\]</span></p>
+<p>Todo el lado derecho es una cortadura porque ya están bien definidas suma, opuesto y productos no negativos. Elegir las representaciones según el signo reduce esta fórmula exactamente a</p>
+<p><span class="math display">\[
+AB=\begin{cases}
+A\odot B,&amp;A\ge C_0,\ B\ge C_0,\\
+-\bigl((-A)\odot B\bigr),&amp;A&lt;C_0,\ B\ge C_0,\\
+-\bigl(A\odot(-B)\bigr),&amp;A\ge C_0,\ B&lt;C_0,\\
+(-A)\odot(-B),&amp;A&lt;C_0,\ B&lt;C_0.
+\end{cases}
+\]</span></p>
+<p>La fórmula por diferencias recupera los cuatro casos de signo y abarca también los factores cero. No hemos propuesto una segunda multiplicación incompatible con la primera: hemos construido una operación bien definida y luego hemos demostrado que coincide con la regla por signos anunciada.</p>
+<p>La fórmula simétrica prueba conmutatividad. La aditividad de cada <span class="math inline">\(h_T\)</span> prueba <span class="math inline">\(X(Y+Z)=XY+XZ\)</span> mediante independencia de representaciones; también <span class="math inline">\((X+Y)Z=XZ+YZ\)</span>. Más explícitamente, para <span class="math inline">\(Y=R-S\)</span>, <span class="math inline">\(Z=T-U\)</span>, usamos la representación <span class="math inline">\((R+T)-(S+U)\)</span> de <span class="math inline">\(Y+Z\)</span> y la aditividad en el subíndice. No se multiplica una diferencia con reglas formales antes de justificarlas.</p>
+<p>Para asociatividad, escribimos <span class="math inline">\(X=P-Q\)</span>, <span class="math inline">\(Y=R-S\)</span>, <span class="math inline">\(Z=T-U\)</span> con seis cortaduras no negativas. Expandir <span class="math inline">\((XY)Z\)</span> por la definición y las leyes del producto no negativo da la diferencia entre</p>
+<p><span class="math display">\[P\odot R\odot T+Q\odot S\odot T+P\odot S\odot U+Q\odot R\odot U\]</span></p>
+<p><span class="math display">\[P\odot R\odot U+Q\odot S\odot U+P\odot S\odot T+Q\odot R\odot T.\]</span></p>
+<p>Expandir <span class="math inline">\(X(YZ)\)</span> da las mismas cuatro sumas positivas y las mismas cuatro negativas, reordenadas. El número total de términos procede de elegir, en cada uno de los tres factores, la parte positiva o la parte que se resta. Los términos con un número par de elecciones negativas aparecen con signo positivo; los demás, con signo negativo. Conmutatividad y asociatividad de la suma, y asociatividad en el cono, prueban igualdad. Cada término involucra productos de cortaduras no negativas ya legitimados.</p>
+<p>Por las leyes del producto no negativo, <span class="math inline">\(XC_1=(P\odot C_1)-(Q\odot C_1)=P-Q=X\)</span>. También <span class="math inline">\(XC_0=C_0\)</span>. Como <span class="math inline">\(0\in C_1\)</span> y <span class="math inline">\(0\notin C_0\)</span>, las unidades son distintas. Disponemos de un anillo conmutativo no trivial; la existencia de inversos multiplicativos se demostrará ahora.</p>
+</section>
+<section id="el-recíproco-positivo-y-su-extensión-por-signos" class="level3">
+<h3 class="anchored" data-anchor-id="el-recíproco-positivo-y-su-extensión-por-signos">El recíproco positivo y su extensión por signos</h3>
+<p>Para <span class="math inline">\(A&gt;C_0\)</span> definimos</p>
+<p><span class="math display">\[J_A=\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A\quad p&gt;0,\ q&lt;1/p\}.\]</span></p>
+<p>Esta fórmula es válida <strong>únicamente para el caso positivo</strong>. Toda <span class="math inline">\(p\notin A\)</span> supera a cualquier <span class="math inline">\(a_0&gt;0\)</span> en <span class="math inline">\(A\)</span>. El conjunto <span class="math inline">\(J_A\)</span> es no vacío y positivo: para un <span class="math inline">\(p&gt;0\)</span> exterior, contiene <span class="math inline">\(1/(2p)&gt;0\)</span> y todos los negativos. Es propio: todos sus elementos son menores que <span class="math inline">\(1/a_0\)</span>, que queda fuera. Cierre descendente y ausencia de máximo se prueban con el mismo testigo y un punto medio inferior a <span class="math inline">\(1/p\)</span>. Por tanto <span class="math inline">\(J_A\in D\)</span>.</p>
+<p>Probemos <span class="math inline">\(A\odot J_A=C_1\)</span>. Si <span class="math inline">\(q\ge0\)</span> pertenece al producto, hay <span class="math inline">\(a&gt;0\)</span> en <span class="math inline">\(A\)</span>, <span class="math inline">\(b&gt;0\)</span> en <span class="math inline">\(J_A\)</span> y un <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(b&lt;1/p\)</span>, tales que <span class="math inline">\(q&lt;ab\)</span>. Como <span class="math inline">\(a&lt;p\)</span>, resulta <span class="math inline">\(q&lt;ab&lt;a/p&lt;1\)</span>. Los negativos también están en <span class="math inline">\(C_1\)</span>.</p>
+<p>Para la inclusión contraria, sea <span class="math inline">\(0\le q&lt;1\)</span>. Fijamos <span class="math inline">\(a_0&gt;0\)</span> en <span class="math inline">\(A\)</span> y refinamos un par admisible inicial <span class="math inline">\([a_0,p_0]\)</span> hasta obtener <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(p\notin A\)</span>, <span class="math inline">\(a\ge a_0\)</span> y</p>
+<p><span class="math display">\[p-a&lt;(1-q)a_0.\]</span></p>
+<p>Todos esos racionales son positivos, y</p>
+<p><span class="math display">\[\frac ap=1-\frac{p-a}{p}&gt;1-(1-q)=q,\]</span></p>
+<p>porque <span class="math inline">\(p&gt;a\ge a_0\)</span>. Elegimos un racional <span class="math inline">\(b\)</span> entre <span class="math inline">\(q/a\)</span> y <span class="math inline">\(1/p\)</span>, positivo incluso cuando <span class="math inline">\(q=0\)</span>. Así <span class="math inline">\(b\in J_A\)</span> y <span class="math inline">\(q&lt;ab\)</span>. Los <span class="math inline">\(q&lt;0\)</span> pertenecen al producto por definición. Se prueba la igualdad.</p>
+<p>Para <span class="math inline">\(A\ne C_0\)</span>, definimos finalmente</p>
+<p><span class="math display">\[A^{-1}=\begin{cases}J_A,&amp;A&gt;C_0,\\-J_{-A},&amp;A&lt;C_0.\end{cases}\]</span></p>
+<p>En el segundo caso, <span class="math inline">\(-A&gt;C_0\)</span> por la estructura aditiva. El producto por signos de la extensión multiplicativa a todos los signos da</p>
+<p><span class="math display">\[A\bigl(-J_{-A}\bigr)=(-A)\odot J_{-A}=C_1.\]</span></p>
+<p>No definimos inverso para <span class="math inline">\(C_0\)</span>, pues <span class="math inline">\(C_0X=C_0\ne C_1\)</span> para todo <span class="math inline">\(X\)</span>. Los inversos no nulos son únicos por asociatividad y unidad. Así <span class="math inline">\(D\)</span> es un cuerpo.</p>
+<p>La restricción es necesaria, no decorativa. Si <span class="math inline">\(A=C_{-1}\)</span> y aplicáramos la fórmula positiva sin restringir <span class="math inline">\(A\)</span>, todos los <span class="math inline">\(p&gt;0\)</span> quedarían fuera. Para cualquier <span class="math inline">\(q\in\mathbb Q\)</span> podríamos elegir un <span class="math inline">\(p&gt;0\)</span> suficientemente pequeño con <span class="math inline">\(q&lt;1/p\)</span>; el resultado sería <span class="math inline">\(\mathbb Q\)</span>, que ni siquiera es una cortadura. Lo mismo ocurre para <span class="math inline">\(A=C_0\)</span>. Cambiar <span class="math inline">\(p&gt;0\)</span> por <span class="math inline">\(p\ne0\)</span> no repara esa definición general: los <span class="math inline">\(p&gt;0\)</span> siguen proporcionando todos los racionales.</p>
+</section>
+<section id="cuerpo-ordenado-e-inclusión-de-cuerpos" class="level3">
+<h3 class="anchored" data-anchor-id="cuerpo-ordenado-e-inclusión-de-cuerpos">Cuerpo ordenado e inclusión de cuerpos</h3>
+<p>La compatibilidad con suma ya está demostrada en la estructura aditiva. Si <span class="math inline">\(A&lt;B\)</span> y <span class="math inline">\(Z&gt;C_0\)</span>, entonces <span class="math inline">\(B-A&gt;C_0\)</span>. Por el producto positivo, <span class="math inline">\((B-A)Z&gt;C_0\)</span>; por distributividad,</p>
+<p><span class="math display">\[BZ-AZ=(B-A)Z&gt;C_0.\]</span></p>
+<p>Aplicar la equivalencia de la estructura aditiva da <span class="math inline">\(AZ&lt;BZ\)</span>. Esto prueba la compatibilidad con multiplicación por positivos sin presuponerla para justificar las operaciones.</p>
+<p>Para completar la inclusión racional, sean <span class="math inline">\(r,s\ge0\)</span>. Si uno es cero, <span class="math inline">\(C_r\odot C_s=C_{rs}\)</span> por el caso cero. Si ambos son positivos, todo testigo de producto es menor que <span class="math inline">\(rs\)</span>, por lo que el producto queda incluido en <span class="math inline">\(C_{rs}\)</span>. Para un <span class="math inline">\(z\ge0\)</span> con <span class="math inline">\(z&lt;rs\)</span>, escogemos</p>
+<p><span class="math display">\[0&lt;\eta\le\min\left(\frac r2,\frac s2,1,\frac{rs-z}{2(r+s+1)}\right).\]</span></p>
+<p>Los racionales <span class="math inline">\(a=r-\eta&gt;0\)</span>, <span class="math inline">\(b=s-\eta&gt;0\)</span> pertenecen a <span class="math inline">\(C_r,C_s\)</span>, y</p>
+<p><span class="math display">\[ab=rs-\eta(r+s)+\eta^2&gt;z.\]</span></p>
+<p>Los negativos están incluidos automáticamente. Por tanto <span class="math inline">\(C_r\odot C_s=C_{rs}\)</span>. La compatibilidad de la inclusión racional con la suma y los casos de signo de la extensión multiplicativa a todos los signos extienden la identidad a todo <span class="math inline">\(r,s\in\mathbb Q\)</span>. Quedan probadas preservación de suma, producto, opuesto, cero, uno y orden; para <span class="math inline">\(r\ne0\)</span>, la unicidad del inverso implica <span class="math inline">\(C_r^{-1}=C_{1/r}\)</span>.</p>
+<p>La multiplicación no vuelve a todo <span class="math inline">\(D\)</span> un grupo: cero no tiene inverso. La estructura multiplicativa de grupo abeliano corresponde a <span class="math inline">\(D\setminus\{C_0\}\)</span>; la aditiva sí corresponde a todo <span class="math inline">\(D\)</span>.</p>
+<p>El producto nos obligó a separar tres problemas que en la aritmética escolar suelen pasar inadvertidos: qué racionales sirven como testigos, cómo se extiende una operación inicialmente positiva a números de cualquier signo y dónde se permite tomar inversos. Controlar esas tres cuestiones evita fórmulas que producen todo <span class="math inline">\(\mathbb Q\)</span> en lugar de una cortadura. Ahora tenemos todas las leyes de cuerpo y la compatibilidad multiplicativa del orden: sólo resta comprobar la propiedad que faltaba en los racionales originales.</p>
+</section>
+</section>
+<section id="el-supremo-como-unión" class="level2">
+<h2 class="anchored" data-anchor-id="el-supremo-como-unión">El supremo como unión</h2>
+<p>Las cortaduras forman ya un cuerpo ordenado. La propiedad que motivó ampliar los racionales requiere todavía una prueba: dada una familia con elementos y una cota superior común, debemos producir su menor cota superior. El orden por inclusión sugiere reunir toda la información racional que aporta cada miembro de la familia.</p>
+<p>Un cuerpo aún no es necesariamente completo. Debemos mostrar que toda familia no vacía de cortaduras que admita una cota superior tiene una menor cota superior <em>dentro del conjunto de cortaduras</em>.</p>
+<p><strong>Teorema de completitud.</strong> Sea <span class="math inline">\(V\)</span> una familia no vacía de cortaduras que tiene una cota superior <span class="math inline">\(U\in D\)</span>. La candidata a supremo es</p>
+<p><span class="math display">\[S=\bigcup_{A\in V}A.\]</span></p>
+<p>Hay tres niveles distintos: <span class="math inline">\(V\)</span> es un conjunto de cortaduras; cada <span class="math inline">\(A\in V\)</span> es un conjunto de racionales; <span class="math inline">\(S\)</span> es el conjunto de racionales que aparecen en al menos una de ellas. No se unen números reales preexistentes ni se toma el supremo racional de una frontera aún desconocida.</p>
+<p>Antes de demostrar minimalidad, debemos asegurar que la candidata es una cortadura. Elegir una <span class="math inline">\(A_0\in V\)</span> y un racional suyo prueba no vacuidad. La cota común implica <span class="math inline">\(A\subseteq U\)</span> para cada miembro; al unirlos, <span class="math inline">\(S\subseteq U\ne\mathbb Q\)</span>, lo que prueba que la unión sigue siendo propia. Para descenso y ausencia de máximo, un racional de <span class="math inline">\(S\)</span> se coloca primero en alguno de los cortes que lo contienen y se utiliza allí la propiedad correspondiente. Los testigos obtenidos vuelven a pertenecer a la unión.</p>
+<p>La hipótesis de cota común no se puede omitir. Las cortaduras <span class="math inline">\(C_n\)</span> son todas propias, pero su unión cuando <span class="math inline">\(n\)</span> recorre los naturales contiene cada racional. Tampoco se puede omitir que la familia sea no vacía. Estos ejemplos aclaran por qué la afirmación correcta no es «toda unión de cortaduras es una cortadura».</p>
+<p>Una vez probado <span class="math inline">\(S\in D\)</span>, cada miembro de <span class="math inline">\(V\)</span> está incluido en <span class="math inline">\(S\)</span>, así que <span class="math inline">\(S\)</span> es cota superior. Para cualquier otra cota superior <span class="math inline">\(C\in D\)</span>, todos los miembros de <span class="math inline">\(V\)</span> están incluidos en <span class="math inline">\(C\)</span>; por la propiedad de unión, también <span class="math inline">\(S\subseteq C\)</span>. Eso es exactamente ser la menor cota superior. No hay que encontrar una fórmula para una frontera escalar: la operación de conjuntos produce directamente el objeto requerido.</p>
+<p>La prueba de la unión no utiliza multiplicación. Esto ayuda a comprender la arquitectura del argumento: la completitud del orden puede verificarse independientemente, mientras que llamar a la estructura «cuerpo ordenado completo» exige haber saldado todas las obligaciones algebraicas anteriores. La demostración detallada que sigue precisará el dominio de las familias consideradas y justificará, una por una, las cuatro propiedades que su unión debe satisfacer para ser una cortadura.</p>
+<section id="comparación-de-las-dos-definiciones-de-suma-sobre-cortaduras" class="level3">
+<h3 class="anchored" data-anchor-id="comparación-de-las-dos-definiciones-de-suma-sobre-cortaduras">Comparación de las dos definiciones de suma sobre cortaduras</h3>
+<p>La <strong>suma mediante testigos</strong> que hemos construido,</p>
+<p><span class="math display">\[A+B=\{q\in\mathbb Q:\exists a\in A\;\exists b\in B\quad q&lt;a+b\},\]</span></p>
+<p>coincide con la suma definida mediante recintos en el apéndice A: allí se unen los conjuntos <span class="math inline">\(C_{a+b}\)</span>, donde <span class="math inline">\([a,u]\)</span> y <span class="math inline">\([b,v]\)</span> recorren intervalos racionales admisibles de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>. Cada par de racionales interiores puede completarse con extremos exteriores; inversamente, todo intervalo admisible aporta sus extremos inferiores como testigos. En cambio, <strong>no inferimos sin demostración</strong> que las expresiones de producto, en particular para signos diferentes, sean literalmente intercambiables. La coincidencia del producto y del recíproco exige una demostración independiente, presentada después de concluir ambas construcciones.</p>
+<p>La construcción seguida aquí usa testigos racionales; la vía alternativa mediante recintos, presentada en el primer apéndice, define las operaciones de otra manera. Debemos probar la coincidencia de ambos procedimientos, no suponerla por la semejanza de sus expresiones.</p>
+</section>
+<section id="completitud-mediante-unión" class="level3">
+<h3 class="anchored" data-anchor-id="completitud-mediante-unión">Completitud mediante unión</h3>
+<p>Sea <span class="math inline">\(V\subseteq D\)</span>, <span class="math inline">\(V\ne\varnothing\)</span>, y supongamos que existe <span class="math inline">\(U\in D\)</span> con <span class="math inline">\(A\subseteq U\)</span> para todo <span class="math inline">\(A\in V\)</span>. Definimos</p>
+<p><span class="math display">\[S=\bigcup_{A\in V}A.\]</span></p>
+<p><strong>No vacío.</strong> Elegimos <span class="math inline">\(A_0\in V\)</span> y luego <span class="math inline">\(q\in A_0\)</span>, que existe porque <span class="math inline">\(A_0\)</span> es cortadura. Entonces <span class="math inline">\(q\in S\)</span>. La no vacuidad de la familia es indispensable: una unión de una familia vacía sería vacía.</p>
+<p><strong>Propio.</strong> Todo <span class="math inline">\(q\in S\)</span> pertenece a algún <span class="math inline">\(A\in V\)</span>, y por tanto a <span class="math inline">\(U\)</span>. Así <span class="math inline">\(S\subseteq U\ne\mathbb Q\)</span>. Un racional exterior a <span class="math inline">\(U\)</span> es también exterior a <span class="math inline">\(S\)</span>. Que cada miembro sea propio, por separado, no bastaría: la unión de todos los <span class="math inline">\(C_n\)</span>, con <span class="math inline">\(n\in\mathbb N\)</span>, es <span class="math inline">\(\mathbb Q\)</span>. La cota común es la hipótesis que evita ese problema.</p>
+<p><strong>Descendente.</strong> Si <span class="math inline">\(p\in S\)</span> y <span class="math inline">\(q\in\mathbb Q\)</span> satisface <span class="math inline">\(q&lt;p\)</span>, existe un <span class="math inline">\(A\in V\)</span> con <span class="math inline">\(p\in A\)</span>. Por su cierre descendente, <span class="math inline">\(q\in A\subseteq S\)</span>.</p>
+<p><strong>Sin máximo.</strong> Si <span class="math inline">\(p\in S\)</span>, elegimos un <span class="math inline">\(A\in V\)</span> que lo contiene. Hay <span class="math inline">\(q\in A\)</span> con <span class="math inline">\(p&lt;q\)</span>, por lo que <span class="math inline">\(q\in S\)</span>. No basta escribir que existe un racional mayor: el testigo debe pertenecer a <span class="math inline">\(S\)</span>.</p>
+<p>Por estas cuatro verificaciones, <span class="math inline">\(S\in D\)</span>. Además, cada <span class="math inline">\(A\in V\)</span> está incluido en <span class="math inline">\(S\)</span>, así que <span class="math inline">\(S\)</span> es cota superior. Si <span class="math inline">\(C\in D\)</span> es cualquier cota superior de <span class="math inline">\(V\)</span>, entonces <span class="math inline">\(A\subseteq C\)</span> para todo <span class="math inline">\(A\in V\)</span> y, por la propiedad de unión, <span class="math inline">\(S\subseteq C\)</span>. De ahí</p>
+<p><span class="math display">\[S=\sup_D V.\]</span></p>
+<p>Se obtiene un cuerpo ordenado completo. La demostración de la unión sólo necesitó el orden de inclusión y las condiciones de cortadura; el hecho de que sea un <strong>cuerpo</strong> completo utiliza además la buena definición de suma y producto, sus leyes algebraicas, la existencia de inversos y la compatibilidad con el orden. Podemos adoptar <span class="math inline">\(D\)</span> como modelo de <span class="math inline">\(\mathbb R\)</span>. No fue necesario hablar de un isomorfismo con un cuerpo de reales supuesto de antemano para demostrar existencia.</p>
+<p>La unión reúne exactamente los racionales admitidos por algún miembro de la familia. La cota común mantiene esa información dentro de una cortadura propia y la existencia de un miembro garantiza un elemento interior. Así obtenemos el supremo mediante una operación de conjuntos que sirve para toda familia del dominio del teorema.</p>
+</section>
+</section>
+<section id="qué-se-construyó-y-qué-significa-la-conclusión" class="level2">
+<h2 class="anchored" data-anchor-id="qué-se-construyó-y-qué-significa-la-conclusión">Qué se construyó y qué significa la conclusión</h2>
+<p>La existencia que acabamos de probar consiste en un objeto concreto con todas las propiedades exigidas. Queda pendiente, y ésa será la pregunta siguiente, si cualquier otro objeto con los mismos axiomas tiene exactamente la misma estructura.</p>
+<p><strong>Conclusión de existencia.</strong> El conjunto <span class="math inline">\(D\)</span> de cortaduras, dotado de las operaciones que acabamos de construir y del orden por inclusión, es un cuerpo ordenado completo. Hemos exhibido un modelo de los números reales sin suponer que existiera de antemano un sistema real. La construcción de <span class="math inline">\(D\)</span> prueba así la existencia. Esta distinción importa: la construcción ha resuelto el problema de <strong>existencia</strong>, mientras que la cuestión de si cualquier otra realización posee la misma estructura exige el teorema de unicidad del capítulo siguiente.</p>
+<p>Si se usa el símbolo <span class="math inline">\(\mathbb R\)</span> para otro cuerpo ordenado completo ya elegido, la afirmación de isomorfismo necesita un teorema de unicidad. Demostraremos esta identificación por medio de un isomorfismo: a cada elemento de ese cuerpo le asocia el conjunto de racionales que quedan por debajo; la completitud permite recuperar cada cortadura como un supremo y muestra que la correspondencia conserva las operaciones. Esa comparación se realiza <strong>después</strong> de la construcción. Su justificación completa exigirá un argumento distinto del utilizado para demostrar la existencia.</p>
+<p>El aprendizaje central consiste en reconocer cuándo una fórmula describe un objeto legítimo y cuándo sólo sugiere una interpretación. Las imágenes de una recta cortada sirven para orientar, pero las propiedades de conjuntos y las operaciones racionales sostienen la prueba. La construcción convierte esa diferencia en una herramienta: cada número nuevo queda determinado por la información racional situada bajo él, y la unión de esa información proporciona los supremos que faltaban.</p>
+</section>
+<section id="problemas-y-soluciones-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-y-soluciones-del-capítulo">Problemas y soluciones del capítulo</h2>
+<section id="ejercicio-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h3>
+<p>Demuestra desde sus cuatro axiomas que <span class="math inline">\(C_r\)</span> es cortadura para cualquier <span class="math inline">\(r\in\mathbb Q\)</span>. Determina si <span class="math inline">\(r\)</span> pertenece a <span class="math inline">\(C_r\)</span> y explica por qué importa ese detalle.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(C_r\)</span> contiene <span class="math inline">\(r-1\)</span> y no contiene <span class="math inline">\(r\)</span>; así es no vacío y propio. Si <span class="math inline">\(q&lt;r\)</span> y <span class="math inline">\(p&lt;q\)</span>, por transitividad <span class="math inline">\(p&lt;r\)</span>, luego <span class="math inline">\(p\in C_r\)</span>. Si <span class="math inline">\(q\in C_r\)</span>, el racional <span class="math inline">\(t=(q+r)/2\)</span> satisface <span class="math inline">\(q&lt;t&lt;r\)</span>; de ahí que <span class="math inline">\(C_r\)</span> no tenga máximo. El propio <span class="math inline">\(r\)</span> queda excluido. Esto permite usar una convención única para las fronteras racionales: dos cortaduras principales quedan determinadas por sus cotas racionales sin que el elemento frontera pueda convertirse en el máximo del lado inferior.</p>
+</section>
+<section id="ejercicio-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h3>
+<p>Sea <span class="math inline">\(A\subseteq\mathbb Q\)</span> no vacío, propio y descendente. ¿La ausencia de máximo se deduce de las otras tres condiciones? Da un contraejemplo y repara el conjunto para que sea una cortadura.</p>
+<p><strong>Solución razonada.</strong> No se deduce. El conjunto <span class="math inline">\(A=\{q\in\mathbb Q:q\le0\}\)</span> contiene <span class="math inline">\(-1\)</span>, es propio y es descendente, pero tiene máximo <span class="math inline">\(0\)</span>. La reparación es <span class="math inline">\(C_0=\{q:q&lt;0\}\)</span>: en él, para cualquier <span class="math inline">\(q&lt;0\)</span>, el punto medio <span class="math inline">\(q/2\)</span> es racional, supera <span class="math inline">\(q\)</span> y sigue siendo negativo. Por ello la cuarta condición es lógicamente independiente de las otras tres.</p>
+</section>
+<section id="ejercicio-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3">Ejercicio 3</h3>
+<p>Analiza <span class="math inline">\(T=\{q\in\mathbb Q:q^2&lt;2\}\)</span>: identifica el axioma de cortadura que falla. Prueba que <span class="math inline">\(H=\{q\in\mathbb Q:q&lt;0\ \mathrm{o}\ q^2&lt;2\}\)</span> es una cortadura sin utilizar <span class="math inline">\(\sqrt2\)</span> real.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(0\in T\)</span> porque <span class="math inline">\(0^2&lt;2\)</span>, pero <span class="math inline">\(-2&lt;0\)</span> y <span class="math inline">\((-2)^2=4&gt;2\)</span>, así que <span class="math inline">\(-2\notin T\)</span>. El cierre descendente falla. Para <span class="math inline">\(H\)</span>, todos los racionales negativos pertenecen al conjunto, y <span class="math inline">\(2\notin H\)</span>, de manera que <span class="math inline">\(H\)</span> es no vacío y propio. Si <span class="math inline">\(r\in H\)</span> y <span class="math inline">\(s&lt;r\)</span>, el caso <span class="math inline">\(s&lt;0\)</span> es inmediato. Si <span class="math inline">\(s\ge0\)</span>, entonces <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(r^2&lt;2\)</span> y <span class="math inline">\(s^2&lt;r^2&lt;2\)</span>; también <span class="math inline">\(s\in H\)</span>. Para el axioma sin máximo, si <span class="math inline">\(r&lt;0\)</span>, sirve <span class="math inline">\(0\in H\)</span>. Si <span class="math inline">\(r\ge0\)</span> y <span class="math inline">\(r^2&lt;2\)</span>, fijamos</p>
+<p><span class="math display">\[\delta=\min\left(1,\frac{2-r^2}{2(2r+1)}\right)&gt;0.\]</span></p>
+<p>Como <span class="math inline">\(\delta\le1\)</span>, obtenemos <span class="math inline">\((r+\delta)^2\le r^2+(2r+1)\delta\le r^2+(2-r^2)/2&lt;2\)</span>, por lo que <span class="math inline">\(r+\delta\in H\)</span> supera a <span class="math inline">\(r\)</span>. Sólo se empleó aritmética racional.</p>
+</section>
+<section id="ejercicio-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4">Ejercicio 4</h3>
+<p>Demuestra que la inclusión entre cortaduras es total. A continuación prueba que <span class="math inline">\(r&lt;s\iff C_r\subsetneq C_s\)</span> para racionales.</p>
+<p><strong>Solución razonada.</strong> La inclusión es un orden parcial no estricto. Si dos cortaduras <span class="math inline">\(A,B\)</span> fueran incomparables, existirían <span class="math inline">\(r\in A\setminus B\)</span> y <span class="math inline">\(s\in B\setminus A\)</span>. Como <span class="math inline">\(r\ne s\)</span>, o bien <span class="math inline">\(r&lt;s\)</span>, y el cierre descendente de <span class="math inline">\(B\)</span> obliga a <span class="math inline">\(r\in B\)</span>, o bien <span class="math inline">\(s&lt;r\)</span>, y el de <span class="math inline">\(A\)</span> obliga a <span class="math inline">\(s\in A\)</span>. Ambas alternativas contradicen los testigos. La relación es total. Si <span class="math inline">\(r&lt;s\)</span>, entonces <span class="math inline">\(C_r\subseteq C_s\)</span> y <span class="math inline">\(r\in C_s\setminus C_r\)</span>, así que la inclusión es estricta. Si <span class="math inline">\(C_r\subsetneq C_s\)</span> no es posible <span class="math inline">\(s\le r\)</span>, pues implicaría <span class="math inline">\(C_s\subseteq C_r\)</span>. Luego <span class="math inline">\(r&lt;s\)</span>.</p>
+</section>
+<section id="ejercicio-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5">Ejercicio 5</h3>
+<p>Justifica que para cualquier cortadura <span class="math inline">\(A\)</span>, un par admisible <span class="math inline">\([a,b]\)</span> y un racional <span class="math inline">\(\varepsilon&gt;0\)</span> existe un par admisible <span class="math inline">\([u,v]\subseteq[a,b]\)</span> con <span class="math inline">\(v-u&lt;\varepsilon\)</span>. No invoques límites ni completitud de <span class="math inline">\(D\)</span>.</p>
+<p><strong>Solución razonada.</strong> Partimos de <span class="math inline">\([a_0,b_0]=[a,b]\)</span> admisible. En cada etapa usamos el punto medio racional <span class="math inline">\(m=(a_n+b_n)/2\)</span>: si <span class="math inline">\(m\in A\)</span>, tomamos <span class="math inline">\([m,b_n]\)</span>; si <span class="math inline">\(m\notin A\)</span>, tomamos <span class="math inline">\([a_n,m]\)</span>. Los extremos conservan las pertenencias y la anchura al cabo de <span class="math inline">\(n\)</span> pasos es <span class="math inline">\((b-a)/2^n\)</span>. Puesto que <span class="math inline">\(2^n\ge n+1\)</span>, elegimos natural <span class="math inline">\(n\)</span> con <span class="math inline">\(n+1&gt;(b-a)/\varepsilon\)</span>, posible por la propiedad arquimediana de <span class="math inline">\(\mathbb Q\)</span>. Entonces <span class="math inline">\((b-a)/2^n&lt;\varepsilon\)</span>. Todas las operaciones son finitas; en particular, no se ha usado que los racionales tengan supremos.</p>
+</section>
+<section id="ejercicio-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6">Ejercicio 6</h3>
+<p>Compara los conjuntos <span class="math inline">\(\{q:\exists a\in A,b\in B\ q&lt;a+b\}\)</span> y <span class="math inline">\(\{a+b:a\in A,b\in B\}\)</span>. Demuestra su igualdad indicando dónde se usan la ausencia de máximo y el cierre descendente.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(q&lt;a+b\)</span>, definimos <span class="math inline">\(a'=q-b\)</span>. Como <span class="math inline">\(a'&lt;a\)</span> y <span class="math inline">\(a\in A\)</span>, el cierre descendente da <span class="math inline">\(a'\in A\)</span>, y <span class="math inline">\(q=a'+b\)</span> es una suma exacta. Recíprocamente, si <span class="math inline">\(q=a+b\)</span> con <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span>, la ausencia de máximo de <span class="math inline">\(A\)</span> proporciona <span class="math inline">\(a'\in A\)</span> con <span class="math inline">\(a'&gt;a\)</span>; entonces <span class="math inline">\(q&lt;a'+b\)</span>. El primer sentido usa descendencia y el segundo usa ausencia de máximo. Sin esas hipótesis no se justifica retirar la desigualdad estricta.</p>
+</section>
+<section id="ejercicio-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7">Ejercicio 7</h3>
+<p>Demuestra <span class="math inline">\(C_r+C_s=C_{r+s}\)</span> y <span class="math inline">\(-C_r=C_{-r}\)</span> para racionales. Identifica por qué en el opuesto la desigualdad debe ser estricta.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(q\in C_r+C_s\)</span>, hay <span class="math inline">\(a&lt;r\)</span>, <span class="math inline">\(b&lt;s\)</span> con <span class="math inline">\(q&lt;a+b&lt;r+s\)</span>, por lo que <span class="math inline">\(q\in C_{r+s}\)</span>. Si <span class="math inline">\(q&lt;r+s\)</span>, sea <span class="math inline">\(\delta=(r+s-q)/4&gt;0\)</span> y elijamos <span class="math inline">\(a=r-\delta\in C_r\)</span>, <span class="math inline">\(b=s-\delta\in C_s\)</span>. Entonces <span class="math inline">\(a+b=r+s-2\delta&gt;q\)</span>, así que <span class="math inline">\(q\in C_r+C_s\)</span>. Para el opuesto, <span class="math inline">\(p\notin C_r\)</span> significa <span class="math inline">\(p\ge r\)</span>. Por eso <span class="math inline">\(q&lt;-p\)</span> implica <span class="math inline">\(q&lt;-r\)</span>, y se tiene <span class="math inline">\(-C_r\subseteq C_{-r}\)</span>. Si <span class="math inline">\(q&lt;-r\)</span>, vale el testigo exterior <span class="math inline">\(p=r\)</span>, de modo que se obtiene la otra inclusión. Si usáramos <span class="math inline">\(q\le-p\)</span>, con <span class="math inline">\(p=r\)</span> incluiríamos <span class="math inline">\(-r\)</span>, que sería máximo del conjunto resultante.</p>
+</section>
+<section id="ejercicio-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8">Ejercicio 8</h3>
+<p>Partiendo de la fórmula de <span class="math inline">\(-A\)</span> y del refinamiento finito, prueba <span class="math inline">\(A+(-A)=C_0\)</span>. Señala qué parte de la prueba necesitaría la aproximación arbitrariamente fina.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(q\in A+(-A)\)</span>, existen <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in-A\)</span> y un racional <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(q&lt;a+b\)</span> y <span class="math inline">\(b&lt;-p\)</span>. Como <span class="math inline">\(a&lt;p\)</span>, resulta <span class="math inline">\(q&lt;a-p&lt;0\)</span>; esto da <span class="math inline">\(A+(-A)\subseteq C_0\)</span>. Para la inclusión contraria, dado <span class="math inline">\(q&lt;0\)</span>, el refinamiento del ejercicio 5 produce <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(0&lt;p-a&lt;-q\)</span>. De ahí <span class="math inline">\(q-a&lt;-p\)</span>. Elegimos un racional <span class="math inline">\(b\)</span> estrictamente entre ambos. Cumple <span class="math inline">\(b&lt;-p\)</span>, luego <span class="math inline">\(b\in-A\)</span>, y <span class="math inline">\(q&lt;a+b\)</span>. Así <span class="math inline">\(q\in A+(-A)\)</span>. La segunda inclusión necesita encontrar el par interior–exterior con anchura menor que <span class="math inline">\(-q\)</span>; ahí se utiliza la precisión arbitraria del refinamiento.</p>
+</section>
+<section id="ejercicio-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9">Ejercicio 9</h3>
+<p>Justifica la equivalencia <span class="math inline">\(A&lt;B\iff A+Z&lt;B+Z\)</span> desde la inclusión y la estructura aditiva, sin suponer previamente la compatibilidad del producto.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(A\subseteq B\)</span>, cualquier par de testigos <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(z\in Z\)</span> de <span class="math inline">\(A+Z\)</span> también sirve en <span class="math inline">\(B+Z\)</span>; por tanto <span class="math inline">\(A+Z\subseteq B+Z\)</span>. Si <span class="math inline">\(A\subsetneq B\)</span> y las sumas fueran iguales, adicionar <span class="math inline">\(-Z\)</span> a ambos lados y usar asociatividad y neutralidad probadas en las leyes de asociatividad, unidad y opuesto aditivo daría <span class="math inline">\(A=B\)</span>, contradicción. La inclusión trasladada es entonces estricta. A la inversa, si <span class="math inline">\(A+Z&lt;B+Z\)</span>, trasladamos por <span class="math inline">\(-Z\)</span> y recuperamos <span class="math inline">\(A&lt;B\)</span>. No se empleó la regla multiplicativa del orden ni se supuso que <span class="math inline">\(D\)</span> fuese ya un cuerpo.</p>
+</section>
+<section id="ejercicio-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10">Ejercicio 10</h3>
+<p>Explica por qué <span class="math inline">\(\{q:\exists a\in A,b\in B,\ q&lt;ab\}\)</span> no define correctamente el producto positivo de cortaduras cualesquiera. Examina <span class="math inline">\(A=B=C_0\)</span> y describe el problema de tomar testigos negativos arbitrariamente pequeños.</p>
+<p><strong>Solución razonada.</strong> En <span class="math inline">\(C_0\)</span> se encuentran todos los racionales negativos. Si <span class="math inline">\(q&gt;0\)</span> es cualquier racional, escogemos <span class="math inline">\(a=b=-N\)</span> con <span class="math inline">\(N\in\mathbb N\)</span> y <span class="math inline">\(N^2&gt;q\)</span>; entonces <span class="math inline">\(q&lt;ab=N^2\)</span>, de modo que <span class="math inline">\(q\)</span> pertenece al conjunto candidato. Los racionales no positivos también pertenecen: tomando <span class="math inline">\(N\)</span> mayor se satisface la desigualdad. La expresión sería <span class="math inline">\(\mathbb Q\)</span>, no una cortadura. Además, la frase «testigos negativos arbitrariamente pequeños» puede inducir a confusión: el fenómeno defectuoso utiliza testigos negativos de <strong>módulo arbitrariamente grande</strong>. La fórmula correcta para factores no negativos se restringe a <span class="math inline">\(a,b&gt;0\)</span> y agrega todos los negativos mediante <span class="math inline">\(C_0\)</span>.</p>
+</section>
+<section id="ejercicio-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11">Ejercicio 11</h3>
+<p>Dados <span class="math inline">\(A,B&gt;C_0\)</span>, prueba que el producto <span class="math inline">\(A\odot B\)</span> definido con testigos positivos es una cortadura positiva. Determina <span class="math inline">\(A\odot C_0\)</span>.</p>
+<p><strong>Solución razonada.</strong> Tomamos <span class="math inline">\(A,B&gt;C_0\)</span> y definimos <span class="math inline">\(P=C_0\cup\{q:\exists a\in A,b\in B,\ a,b&gt;0,\ q&lt;ab\}\)</span>. Contiene <span class="math inline">\(C_0\)</span> y es no vacío. Elegimos racionales exteriores positivos <span class="math inline">\(u\notin A\)</span>, <span class="math inline">\(v\notin B\)</span>: como cada cortadura es propia, tomamos exteriores y los aumentamos hasta hacerlos positivos. Todo testigo positivo satisface <span class="math inline">\(a&lt;u\)</span>, <span class="math inline">\(b&lt;v\)</span>, luego <span class="math inline">\(ab&lt;uv\)</span>; así <span class="math inline">\(uv\notin P\)</span>, y el conjunto es propio. Descendencia se hereda de las desigualdades estrictas. Si <span class="math inline">\(q&lt;0\)</span>, existe <span class="math inline">\(t\in C_0\)</span> entre <span class="math inline">\(q\)</span> y <span class="math inline">\(0\)</span>; si <span class="math inline">\(q\ge0\)</span> y <span class="math inline">\(q&lt;ab\)</span>, existe <span class="math inline">\(t=(q+ab)/2\)</span> entre <span class="math inline">\(q\)</span> y <span class="math inline">\(ab\)</span> que también está en <span class="math inline">\(P\)</span>. Por tanto no hay máximo. Dados <span class="math inline">\(a&gt;0\)</span> en <span class="math inline">\(A\)</span> y <span class="math inline">\(b&gt;0\)</span> en <span class="math inline">\(B\)</span>, el racional <span class="math inline">\(ab/2&gt;0\)</span> pertenece a <span class="math inline">\(P\)</span>, de modo que <span class="math inline">\(P&gt;C_0\)</span>. Para <span class="math inline">\(B=C_0\)</span> no hay <span class="math inline">\(b&gt;0\)</span>, así que por definición <span class="math inline">\(A\odot C_0=C_0\)</span>.</p>
+</section>
+<section id="ejercicio-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12">Ejercicio 12</h3>
+<p>Al demostrar <span class="math inline">\(A\odot(B+C)=(A\odot B)+(A\odot C)\)</span> con <span class="math inline">\(A,B,C&gt;C_0\)</span>, se obtienen dos testigos posiblemente diferentes <span class="math inline">\(a_1,a_2\in A\)</span>. Explica rigurosamente cómo elegir uno solo y concluir la inclusión no trivial.</p>
+<p><strong>Solución razonada.</strong> Para la inclusión <span class="math inline">\((A\odot B)+(A\odot C)\subseteq A\odot(B+C)\)</span> consideramos primero <span class="math inline">\(q\ge0\)</span> del lado izquierdo. Existen <span class="math inline">\(u\in A\odot B\)</span>, <span class="math inline">\(v\in A\odot C\)</span> con <span class="math inline">\(q&lt;u+v\)</span>. Como los factores originales son positivos, incluso si <span class="math inline">\(u\)</span> o <span class="math inline">\(v\)</span> es negativo podemos escoger testigos positivos <span class="math inline">\(a_1\in A,b\in B\)</span> y <span class="math inline">\(a_2\in A,c\in C\)</span> que satisfacen <span class="math inline">\(u&lt;a_1b\)</span> y <span class="math inline">\(v&lt;a_2c\)</span>. Tomamos <span class="math inline">\(a=\max(a_1,a_2)\in A\)</span>. La positividad racional permite</p>
+<p><span class="math display">\[q&lt;u+v&lt;a_1b+a_2c\le a(b+c).\]</span></p>
+<p>La caracterización de la suma mediante sumas exactas, ya demostrada, asegura <span class="math inline">\(b+c\in B+C\)</span>, por lo cual <span class="math inline">\(q\in A\odot(B+C)\)</span>. Los racionales negativos pertenecen automáticamente a ambos conjuntos. La elección <span class="math inline">\(a=\max(a_1,a_2)\)</span> es el paso que permite usar <strong>un solo testigo de <span class="math inline">\(A\)</span></strong> en el producto izquierdo. La otra inclusión se obtiene descomponiendo un testigo positivo <span class="math inline">\(d\in B+C\)</span> como suma de racionales de <span class="math inline">\(B,C\)</span>, elevándolos a positivos si fuese necesario; con <span class="math inline">\(q&lt;ad\)</span> se obtiene <span class="math inline">\(q&lt;ab+ac\)</span> y los dos productos racionales exactos pertenecen respectivamente a <span class="math inline">\(A\odot B\)</span>, <span class="math inline">\(A\odot C\)</span>. No se invoca distributividad entre cortaduras antes de demostrarla.</p>
+</section>
+<section id="ejercicio-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13">Ejercicio 13</h3>
+<p>Considera <span class="math inline">\(A=C_{-1}\)</span>. Prueba que la expresión <span class="math inline">\(\{q:\exists p\notin A,\ p&gt;0,\ q&lt;1/p\}\)</span> es todo <span class="math inline">\(\mathbb Q\)</span>. Formula el recíproco correcto de una cortadura negativa.</p>
+<p><strong>Solución razonada.</strong> Para <span class="math inline">\(A=C_{-1}=\{q:q&lt;-1\}\)</span> todo <span class="math inline">\(p&gt;0\)</span> está fuera de <span class="math inline">\(A\)</span>. Sea <span class="math inline">\(q\in\mathbb Q\)</span> cualquiera. Elegimos <span class="math inline">\(p\in\mathbb Q\)</span> con <span class="math inline">\(p&gt;0\)</span> y <span class="math inline">\(p&lt;1/(|q|+1)\)</span>. Entonces <span class="math inline">\(1/p&gt;|q|+1&gt;q\)</span>, así que la fórmula incluye a <span class="math inline">\(q\)</span>. Produce <span class="math inline">\(\mathbb Q\)</span> y no es una cortadura. La definición correcta es: si <span class="math inline">\(A&gt;C_0\)</span>, usamos <span class="math inline">\(J_A=\{q:\exists p\notin A,\ p&gt;0,\ q&lt;1/p\}\)</span>; si <span class="math inline">\(A&lt;C_0\)</span>, definimos <span class="math inline">\(A^{-1}=-J_{-A}\)</span>. No se define recíproco para <span class="math inline">\(A=C_0\)</span>. El segundo caso funciona porque <span class="math inline">\(-A&gt;C_0\)</span>, resultado ya demostrado por las leyes del grupo aditivo y del orden.</p>
+</section>
+<section id="ejercicio-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14">Ejercicio 14</h3>
+<p>Para <span class="math inline">\(A&gt;C_0\)</span>, demuestra <span class="math inline">\(A\odot J_A=C_1\)</span>, donde <span class="math inline">\(J_A\)</span> es la cortadura definida por los recíprocos de racionales positivos exteriores a <span class="math inline">\(A\)</span>. Debes probar las dos inclusiones y controlar los denominadores.</p>
+<p><strong>Solución razonada.</strong> Para <span class="math inline">\(A&gt;C_0\)</span>, existe <span class="math inline">\(a_0&gt;0\)</span> con <span class="math inline">\(a_0\in A\)</span>. Toda cota exterior racional <span class="math inline">\(p\notin A\)</span> cumple <span class="math inline">\(p&gt;a_0&gt;0\)</span>. El conjunto <span class="math inline">\(J_A\)</span> es cortadura: para uno de esos <span class="math inline">\(p\)</span>, contiene <span class="math inline">\(1/(2p)&gt;0\)</span>; es propio porque todos sus elementos son menores que <span class="math inline">\(1/a_0\)</span>; cerradura descendente y ausencia de máximo proceden del mismo testigo <span class="math inline">\(q&lt;1/p\)</span> y del punto medio. Sean <span class="math inline">\(q\ge0\)</span> y <span class="math inline">\(q\in A\odot J_A\)</span>. Hay <span class="math inline">\(a&gt;0\)</span> en <span class="math inline">\(A\)</span>, <span class="math inline">\(b&gt;0\)</span> en <span class="math inline">\(J_A\)</span> y <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(q&lt;ab\)</span> y <span class="math inline">\(b&lt;1/p\)</span>. Como <span class="math inline">\(a&lt;p\)</span>, se sigue <span class="math inline">\(q&lt;ab&lt;a/p&lt;1\)</span>; los negativos también pertenecen a <span class="math inline">\(C_1\)</span>. Para la otra inclusión, dado <span class="math inline">\(0\le q&lt;1\)</span> refinamos dentro de un intervalo admisible <span class="math inline">\([a_0,p_0]\)</span> hasta conseguir <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(p\notin A\)</span> con <span class="math inline">\(a\ge a_0\)</span> y <span class="math inline">\(p-a&lt;(1-q)a_0\)</span>. Entonces</p>
+<p><span class="math display">\[\frac ap=1-\frac{p-a}{p}&gt;q.\]</span></p>
+<p>Se puede elegir racional <span class="math inline">\(b\)</span> con <span class="math inline">\(\max(0,q/a)&lt;b&lt;1/p\)</span>, pues <span class="math inline">\(q/a&lt;1/p\)</span> y <span class="math inline">\(p&gt;0\)</span>. Por construcción <span class="math inline">\(b\in J_A\)</span> y <span class="math inline">\(q&lt;ab\)</span>. Se concluye <span class="math inline">\(A\odot J_A=C_1\)</span>, con todos los denominadores estrictamente positivos. El caso negativo se reduce al positivo y a la regla de signos demostrada en la extensión multiplicativa a todos los signos.</p>
+</section>
+<section id="ejercicio-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15">Ejercicio 15</h3>
+<p>Sea <span class="math inline">\(V\subseteq D\)</span> no vacío y acotado superiormente. Prueba que <span class="math inline">\(\bigcup V\)</span> es cortadura y su supremo. Explica con un contraejemplo por qué «acotado superiormente» no puede omitirse.</p>
+<p><strong>Solución razonada.</strong> Sea <span class="math inline">\(S=\bigcup_{A\in V}A\)</span>. Elegimos <span class="math inline">\(A_0\in V\)</span> y <span class="math inline">\(q\in A_0\)</span>, obteniendo <span class="math inline">\(q\in S\)</span>. La cota superior <span class="math inline">\(U\in D\)</span> satisface <span class="math inline">\(A\subseteq U\)</span> para todo <span class="math inline">\(A\in V\)</span>, por lo que <span class="math inline">\(S\subseteq U\ne\mathbb Q\)</span>; así <span class="math inline">\(S\)</span> es propio. Si <span class="math inline">\(p\in S\)</span> y <span class="math inline">\(q&lt;p\)</span>, hay <span class="math inline">\(A\in V\)</span> con <span class="math inline">\(p\in A\)</span>, y la descendencia de ese <span class="math inline">\(A\)</span> proporciona <span class="math inline">\(q\in S\)</span>. Si <span class="math inline">\(p\in S\)</span>, un <span class="math inline">\(A\in V\)</span> que lo contiene ofrece <span class="math inline">\(r\in A\)</span> con <span class="math inline">\(r&gt;p\)</span>; el testigo pertenece a <span class="math inline">\(S\)</span> y demuestra ausencia de máximo. Por tanto <span class="math inline">\(S\in D\)</span>. Cada <span class="math inline">\(A\in V\)</span> está contenido en <span class="math inline">\(S\)</span>, de modo que <span class="math inline">\(S\)</span> es cota superior; si <span class="math inline">\(T\in D\)</span> es otra, entonces contiene todas las <span class="math inline">\(A\)</span> y por consiguiente <span class="math inline">\(S\subseteq T\)</span>. Esto demuestra minimalidad y <span class="math inline">\(S=\sup_D V\)</span>. Sin cota común, la familia <span class="math inline">\(\{C_n:n\in\mathbb N\}\)</span> tiene unión <span class="math inline">\(\mathbb Q\)</span>, ya que dado <span class="math inline">\(q\in\mathbb Q\)</span> existe natural <span class="math inline">\(n&gt;q\)</span>. Por eso la cota común no es una condición ornamental.</p>
+</section>
+<section id="ejercicio-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16">Ejercicio 16</h3>
+<p>Prueba, dentro de <span class="math inline">\(D\)</span>, que la cortadura <span class="math inline">\(H\)</span> del ejercicio 3 satisface <span class="math inline">\(H^2=C_2\)</span> y que no es de la forma <span class="math inline">\(C_r\)</span> para ningún racional <span class="math inline">\(r\)</span>.</p>
+<p><strong>Solución razonada.</strong> Del ejercicio 3 sabemos que <span class="math inline">\(H\in D\)</span>; además <span class="math inline">\(H&gt;C_0\)</span> porque <span class="math inline">\(0\in H\)</span>. Si <span class="math inline">\(a,b&gt;0\)</span> están en <span class="math inline">\(H\)</span>, entonces <span class="math inline">\(a^2,b^2&lt;2\)</span>, por lo que <span class="math inline">\((ab)^2&lt;4\)</span> y <span class="math inline">\(ab&lt;2\)</span>. Cada testigo del producto pertenece a <span class="math inline">\(C_2\)</span>: se obtiene <span class="math inline">\(H\odot H\subseteq C_2\)</span>. Para la otra inclusión basta tratar <span class="math inline">\(0\le q&lt;2\)</span>, porque los negativos pertenecen por definición. Partimos del intervalo admisible <span class="math inline">\([1,2]\)</span> de <span class="math inline">\(H\)</span> y refinamos hasta conseguir <span class="math inline">\(a\in H\)</span>, <span class="math inline">\(p\notin H\)</span>, <span class="math inline">\(1\le a&lt;p\le2\)</span> y <span class="math inline">\(p-a&lt;(2-q)/8\)</span>. Como <span class="math inline">\(p^2\ge2\)</span>,</p>
+<p><span class="math display">\[p^2-a^2=(p-a)(p+a)&lt;4\frac{2-q}{8}=\frac{2-q}{2},\]</span></p>
+<p>así <span class="math inline">\(a^2&gt;2-(2-q)/2&gt;q\)</span>. Los testigos positivos <span class="math inline">\(a,a\)</span> muestran que <span class="math inline">\(q\in H\odot H\)</span> y se concluye <span class="math inline">\(H^2=C_2\)</span>. Si <span class="math inline">\(H=C_r\)</span> para algún racional, la preservación del producto implicaría <span class="math inline">\(C_{r^2}=C_2\)</span> y, por inyectividad, <span class="math inline">\(r^2=2\)</span>. Pero si <span class="math inline">\(r=m/n\)</span> fuese una fracción reducida con <span class="math inline">\(n&gt;0\)</span>, <span class="math inline">\(m^2=2n^2\)</span> obliga a que <span class="math inline">\(m\)</span> sea par y, después de escribir <span class="math inline">\(m=2k\)</span>, a que <span class="math inline">\(n\)</span> también lo sea. Contradicción. Por ello <span class="math inline">\(H\)</span> no representa ningún racional.</p>
+</section>
+<section id="ejercicio-17-profundización" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-profundización">Ejercicio 17 — Profundización</h3>
+<p>Esta actividad anticipa la identificación de un cuerpo completo con sus cortaduras, que más adelante justificaremos en su totalidad. Su solución incluye los argumentos necesarios para intentarla desde aquí.</p>
+<p>Sea <span class="math inline">\(F\)</span> un cuerpo ordenado completo. Para <span class="math inline">\(x\in F\)</span> define <span class="math inline">\(A_x=\{r\in\mathbb Q:r_F&lt;x\}\)</span>. Demuestra que esta función es inyectiva y sobreyectiva sobre <span class="math inline">\(D\)</span>, indicando en qué pasos usas la propiedad arquimediana, densidad y completitud.</p>
+<p><strong>Solución razonada.</strong> La propiedad arquimediana se obtiene de la completitud de <span class="math inline">\(F\)</span>: si los naturales <span class="math inline">\(n_F\)</span> tuvieran una cota superior, su supremo <span class="math inline">\(u\)</span> permitiría encontrar <span class="math inline">\(n_F&gt;u-1_F\)</span>, y entonces <span class="math inline">\((n+1)_F&gt;u\)</span>, contradicción. En consecuencia hay enteros por debajo y encima de cada <span class="math inline">\(x\in F\)</span>. La densidad racional se obtiene escalando cualquier intervalo <span class="math inline">\(x&lt;y\)</span> por un natural <span class="math inline">\(n\)</span> tal que <span class="math inline">\(n_F(y-x)&gt;1_F\)</span> y escogiendo el primer entero <span class="math inline">\(m_F\)</span> mayor que <span class="math inline">\(n_Fx\)</span>; entonces <span class="math inline">\(x&lt;(m/n)_F&lt;y\)</span>. Para cada <span class="math inline">\(x\)</span>, el conjunto <span class="math inline">\(A_x=\{r:r_F&lt;x\}\)</span> es cortadura: es no vacío y propio por cotas enteras, descendente por el orden y sin máximo por densidad. Si <span class="math inline">\(x&lt;y\)</span>, la densidad proporciona un racional entre ambos, que está en <span class="math inline">\(A_y\)</span> pero no en <span class="math inline">\(A_x\)</span>; de ahí la inyectividad. Si <span class="math inline">\(A\in D\)</span>, el conjunto <span class="math inline">\(E=\{r_F:r\in A\}\)</span> es no vacío y está acotado superiormente por <span class="math inline">\(p_F\)</span> para cualquier <span class="math inline">\(p\notin A\)</span>. La completitud permite tomar <span class="math inline">\(x=\sup_FE\)</span>. Si <span class="math inline">\(r\in A\)</span>, un <span class="math inline">\(s\in A\)</span> mayor que <span class="math inline">\(r\)</span> satisface <span class="math inline">\(r_F&lt;s_F\le x\)</span>, luego <span class="math inline">\(r\in A_x\)</span>. Recíprocamente, si <span class="math inline">\(r_F&lt;x\)</span>, <span class="math inline">\(r_F\)</span> no es cota superior de <span class="math inline">\(E\)</span>, de modo que existe <span class="math inline">\(s\in A\)</span> con <span class="math inline">\(r_F&lt;s_F\)</span> y por descendencia <span class="math inline">\(r\in A\)</span>. Se obtiene <span class="math inline">\(A=A_x\)</span>. Se ha probado biyección; la preservación de operaciones requiere las pruebas adicionales del isomorfismo con las cortaduras y no se deduce de la mera biyección ordenada.</p>
+</section>
+<section id="ejercicio-18-exploración-de-una-construcción-alternativa" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-exploración-de-una-construcción-alternativa">Ejercicio 18 — Exploración de una construcción alternativa</h3>
+<p>Este problema adelanta la suma mediante recintos, que se construirá cuidadosamente en el primer apéndice. Para abordarlo ahora basta saber que esa suma reúne todos los racionales estrictamente menores que las sumas de los extremos inferiores de intervalos admisibles de ambas cortaduras.</p>
+<p>Prueba directamente que la suma de cortaduras definida en la construcción por recintos mediante recintos racionales admisibles es idéntica a la suma por testigos de la construcción por testigos. Explica qué sí y qué no demuestra esta comparación.</p>
+<p><strong>Solución razonada.</strong> La suma por testigos es</p>
+<p><span class="math display">\[A+_{\mathrm{test}}B=\{q:\exists a\in A,\,b\in B,\ q&lt;a+b\}.\]</span></p>
+<p>La suma por recintos de la construcción por recintos une los conjuntos <span class="math inline">\(C_{a+b}\)</span> cuando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son los extremos inferiores de intervalos racionales admisibles de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>. Cada <span class="math inline">\(a\in A\)</span> se puede completar con un exterior <span class="math inline">\(u\notin A\)</span> y cada <span class="math inline">\(b\in B\)</span> con <span class="math inline">\(v\notin B\)</span>; se tienen entonces los intervalos admisibles <span class="math inline">\([a,u]\)</span>, <span class="math inline">\([b,v]\)</span>. A la inversa, cualquier intervalo admisible proporciona extremos inferiores pertenecientes a las cortaduras. Luego ambos procedimientos recorren exactamente los mismos pares de testigos y producen</p>
+<p><span class="math display">\[\bigcup_{a\in A,b\in B} C_{a+b}=A+_{\mathrm{test}}B.\]</span></p>
+<p>Esta igualdad prueba que <strong>las sumas</strong> coinciden. No verifica por sí misma los axiomas de cuerpo de ninguno de los dos procedimientos ni identifica automáticamente las fórmulas para producto y recíproco. La coincidencia de los productos y los recíprocos se justificará en el tercer apéndice, una vez construidas por separado ambas estructuras de cuerpo ordenado completo. Esa comparación posterior no puede emplearse como premisa de ninguna de las construcciones.</p>
+<hr>
+<p><a href="../../../libros/otros/cdr/capitulo-1.html">← El problema de definir un sistema numérico</a> · <a href="../../../libros/otros/la-construccion-de-los-reales.html">Índice del libro</a> · <a href="../../../libros/otros/cdr/capitulo-3.html">Siguiente →</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

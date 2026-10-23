@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>El problema de definir un sistema numérico – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#el-problema-de-definición" id="toc-el-problema-de-definición" class="nav-link active" data-scroll-target="#el-problema-de-definición">El problema de definición</a></li>
+  <li><a href="#estructura-de-cuerpo" id="toc-estructura-de-cuerpo" class="nav-link" data-scroll-target="#estructura-de-cuerpo">Estructura de cuerpo</a></li>
+  <li><a href="#orden-total-y-cuerpo-ordenado" id="toc-orden-total-y-cuerpo-ordenado" class="nav-link" data-scroll-target="#orden-total-y-cuerpo-ordenado">Orden total y cuerpo ordenado</a></li>
+  <li><a href="#cotas-superiores-y-supremos" id="toc-cotas-superiores-y-supremos" class="nav-link" data-scroll-target="#cotas-superiores-y-supremos">Cotas superiores y supremos</a></li>
+  <li><a href="#cotas-inferiores-e-ínfimos" id="toc-cotas-inferiores-e-ínfimos" class="nav-link" data-scroll-target="#cotas-inferiores-e-ínfimos">Cotas inferiores e ínfimos</a></li>
+  <li><a href="#un-supremo-exterior-al-conjunto" id="toc-un-supremo-exterior-al-conjunto" class="nav-link" data-scroll-target="#un-supremo-exterior-al-conjunto">Un supremo exterior al conjunto</a></li>
+  <li><a href="#la-propiedad-del-supremo" id="toc-la-propiedad-del-supremo" class="nav-link" data-scroll-target="#la-propiedad-del-supremo">La propiedad del supremo</a></li>
+  <li><a href="#por-qué-los-racionales-no-son-completos" id="toc-por-qué-los-racionales-no-son-completos" class="nav-link" data-scroll-target="#por-qué-los-racionales-no-son-completos">Por qué los racionales no son completos</a></li>
+  <li><a href="#existencia-y-unicidad" id="toc-existencia-y-unicidad" class="nav-link" data-scroll-target="#existencia-y-unicidad">Existencia y unicidad</a></li>
+  <li><a href="#problemas-y-soluciones-del-capítulo" id="toc-problemas-y-soluciones-del-capítulo" class="nav-link" data-scroll-target="#problemas-y-soluciones-del-capítulo">Problemas y soluciones del capítulo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">El problema de definir un sistema numérico</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/cdr/nota-al-lector.html">← Nota al lector</a> · <a href="../../../libros/otros/la-construccion-de-los-reales.html">Índice del libro</a> · <a href="../../../libros/otros/cdr/capitulo-2.html">Siguiente →</a></p>
+<p>Una fracción permite calcular y un punto dibujado permite orientarse. Para fundamentar esas acciones necesitamos precisar qué estructura sostiene las operaciones y las comparaciones. Buscamos un conjunto con dos operaciones, un orden compatible con ellas y una propiedad que permita recuperar la menor cota superior de los conjuntos adecuados. Esas tres exigencias darán contenido matemático al nombre de sistema real.</p>
+<p>Los axiomas fijan las propiedades de la estructura buscada; los teoremas muestran sus consecuencias. Este reparto organiza la tarea: primero precisaremos las condiciones, después construiremos un objeto que las satisfaga y finalmente compararemos cualesquiera dos realizaciones mediante una correspondencia que preserve sus operaciones y su orden.</p>
+<section id="el-problema-de-definición" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-de-definición">El problema de definición</h2>
+<p>Para caracterizar un sistema numérico debemos especificar sus operaciones, las leyes que cumplen y las relaciones que enlazan sus elementos. En el caso real, la aritmética y el orden se reúnen con una propiedad de existencia de cotas mínimas. La formulación que concentra esas exigencias es la siguiente:</p>
+<blockquote class="blockquote">
+<p>Un sistema de números reales es un cuerpo ordenado que satisface la propiedad del supremo. La descripción axiomática fija la estructura buscada. La existencia de un modelo y la unicidad hasta isomorfismo son dos teoremas con obligaciones propias: el primero exhibe un conjunto con operaciones y orden que cumplen los axiomas; el segundo construye una identificación entre dos realizaciones cualesquiera. En el capítulo siguiente partiremos de la aritmética racional para producir el modelo.</p>
+</blockquote>
+<section id="caracterización-existencia-e-identificación" class="level3">
+<h3 class="anchored" data-anchor-id="caracterización-existencia-e-identificación">Caracterización, existencia e identificación</h3>
+<p>La frase «los reales son un cuerpo ordenado completo» reúne <strong>tres exigencias</strong>: leyes para dos operaciones, una relación de orden compatible y existencia de supremos para los conjuntos apropiados. Cada exigencia se formula para un sistema todavía no identificado con un conjunto particular. Una vez precisados los axiomas, se distinguen dos obligaciones de naturaleza diferente: exhibir al menos una realización y demostrar que cualesquiera dos realizaciones están relacionadas por un único isomorfismo de cuerpos ordenados.</p>
+<p>Esto impide utilizar en la prueba de existencia la recta real como objeto previamente disponible. En cambio, una vez construido un modelo, sí puede emplearse para ilustrar el comportamiento del supremo. El ejemplo con <span class="math inline">\(\pi\)</span> de la sección «Por qué los racionales no son completos» pertenece a este segundo plano.</p>
+</section>
+</section>
+<section id="estructura-de-cuerpo" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-de-cuerpo">Estructura de cuerpo</h2>
+<p>Un cuerpo es un conjunto <span class="math inline">\(F\)</span>, equipado con operaciones <span class="math inline">\(+,·:F\times F\to F\)</span>, y elementos <span class="math inline">\(0,1\in F\)</span>, tales que, para cualesquiera <span class="math inline">\(a,b,c\in F\)</span>:</p>
+<p><span class="math display">\[
+(a+b)+c=a+(b+c),\qquad (ab)c=a(bc),
+\]</span> <span class="math display">\[
+a+b=b+a,\qquad ab=ba,
+\]</span> <span class="math display">\[
+a+0=a,\qquad a1=a,
+\]</span> <span class="math display">\[
+\exists(-a)\in F:\ a+(-a)=0,
+\]</span> <span class="math display">\[
+a\ne0\Longrightarrow\exists a^{-1}\in F:\ aa^{-1}=1,
+\]</span> <span class="math display">\[
+a(b+c)=ab+ac.
+\]</span></p>
+<p>Exigimos además <span class="math inline">\(0\ne1\)</span>. Sin esta condición, el conjunto de un solo elemento satisface las otras fórmulas y no representa un cuerpo en el sentido requerido. La clausura está incluida en que las operaciones sean funciones <span class="math inline">\(F\times F\to F\)</span>. Esta condición distingue un cuerpo genuino de la estructura trivial y debe figurar expresamente entre sus axiomas.</p>
+<p>La distributividad se escribe <span class="math inline">\(a(b+c)=ab+ac\)</span>. La presencia de los paréntesis es estructural: no puede sustituirse por <span class="math inline">\(ab+c\)</span>, que sería otra expresión.</p>
+<section id="consecuencias-algebraicas" class="level3">
+<h3 class="anchored" data-anchor-id="consecuencias-algebraicas">Consecuencias algebraicas</h3>
+<p>Derivemos ahora algunas consecuencias de los axiomas, sin utilizar propiedades de los números reales que todavía no hemos construido.</p>
+<p>Los neutros son únicos. Si <span class="math inline">\(e\)</span> es otro neutro aditivo, <span class="math inline">\(e=e+0=0\)</span>; si <span class="math inline">\(u\)</span> es otro neutro multiplicativo, <span class="math inline">\(u=u1=1\)</span>. Si <span class="math inline">\(b,c\)</span> son inversos aditivos de <span class="math inline">\(a\)</span>,</p>
+<p><span class="math display">\[b=b+0=b+(a+c)=(b+a)+c=c.\]</span></p>
+<p>Si <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(ab=ac=1\)</span>, entonces</p>
+<p><span class="math display">\[b=b(ac)=(ba)c=c.\]</span></p>
+<p>Sumar <span class="math inline">\(-a\)</span> a ambos miembros demuestra la cancelación aditiva; multiplicar por <span class="math inline">\(a^{-1}\)</span> demuestra la multiplicativa cuando <span class="math inline">\(a\ne0\)</span>.</p>
+<p>Por distributividad,</p>
+<p><span class="math display">\[a0=a(0+0)=a0+a0,\]</span></p>
+<p>y la cancelación aditiva da <span class="math inline">\(a0=0\)</span>. En consecuencia, cero no tiene inverso multiplicativo: <span class="math inline">\(0b=0\ne1\)</span>. Si <span class="math inline">\(ab=0\)</span> y <span class="math inline">\(a\ne0\)</span>, al multiplicar por <span class="math inline">\(a^{-1}\)</span> se obtiene <span class="math inline">\(b=0\)</span>; un cuerpo no tiene divisores de cero.</p>
+<p>Asimismo,</p>
+<p><span class="math display">\[a(-b)+ab=a((-b)+b)=0,\]</span></p>
+<p>por lo que <span class="math inline">\(a(-b)=-(ab)\)</span>. Aplicando la igualdad con <span class="math inline">\(a=-1\)</span>, o de nuevo la unicidad del inverso aditivo, se obtiene <span class="math inline">\((-a)(-b)=ab\)</span>. Finalmente, <span class="math inline">\(-(-a)=a\)</span>. Definimos <span class="math inline">\(a-b=a+(-b)\)</span> y, para <span class="math inline">\(b\ne0\)</span>, <span class="math inline">\(a/b=ab^{-1}\)</span>.</p>
+</section>
+<section id="cancelación-y-dominio-de-las-operaciones" class="level3">
+<h3 class="anchored" data-anchor-id="cancelación-y-dominio-de-las-operaciones">Cancelación y dominio de las operaciones</h3>
+<p>La igualdad <span class="math inline">\(a0=0\)</span> no aparece entre los axiomas de cuerpo: se <strong>deduce</strong> usando la distributividad y la cancelación aditiva. Su prueba ilustra una técnica útil: escribir una expresión de dos formas, cancelar un término y recuperar la propiedad buscada. Aquí el paso decisivo es cancelar <span class="math inline">\(a0\)</span> en <span class="math inline">\(a0=a0+a0\)</span>; no es lícito argumentar simplemente que «multiplicar por cero da cero», porque justamente se pretende fundamentar esa regla.</p>
+<p>La definición de <span class="math inline">\(a/b=ab^{-1}\)</span> también contiene una condición de dominio: <span class="math inline">\(b\ne0\)</span>. En particular, escribir <span class="math inline">\(1/0\)</span> no designa un elemento del cuerpo. El hecho de que <span class="math inline">\(0\)</span> carezca de inverso se deduce de <span class="math inline">\(0b=0\)</span> y <span class="math inline">\(0\ne1\)</span>; no es una convención arbitraria.</p>
+</section>
+</section>
+<section id="orden-total-y-cuerpo-ordenado" class="level2">
+<h2 class="anchored" data-anchor-id="orden-total-y-cuerpo-ordenado">Orden total y cuerpo ordenado</h2>
+<p>Un orden total estricto en <span class="math inline">\(X\)</span> es una relación <span class="math inline">\(&lt;\)</span> transitiva que satisface la tricotomía: para cada <span class="math inline">\(x,y\in X\)</span>, exactamente una de las proposiciones <span class="math inline">\(x&lt;y\)</span>, <span class="math inline">\(x=y\)</span>, <span class="math inline">\(y&lt;x\)</span> es verdadera. Definimos</p>
+<p><span class="math display">\[x\le y\iff x&lt;y\ \text{o}\ x=y.\]</span> La tricotomía excluye <span class="math inline">\(x&lt;x\)</span> y que simultáneamente <span class="math inline">\(x&lt;y\)</span> e <span class="math inline">\(y&lt;x\)</span>. La relación <span class="math inline">\(\le\)</span> es reflexiva; es antisimétrica por tricotomía; y es transitiva al separar los casos de igualdad de aquel en que ambas desigualdades son estrictas. La irreflexividad y transitividad caracterizan un orden parcial estricto; no obligan a que dos elementos diferentes sean comparables. Por ejemplo, en <span class="math inline">\(\mathcal P(\{1,2\})\)</span> la inclusión estricta cumple esas propiedades, pero <span class="math inline">\(\{1\}\)</span> y <span class="math inline">\(\{2\}\)</span> son incomparables. Un orden total estricto agrega la comparabilidad de cada par distinto. La relación <span class="math inline">\(\le\)</span> definida arriba es la versión no estricta, de modo que su antisimetría no significa que dos elementos distintos no puedan estar ordenados: significa que <span class="math inline">\(x\le y\)</span> y <span class="math inline">\(y\le x\)</span> implican <span class="math inline">\(x=y\)</span>. La diferencia con un orden parcial es, por tanto, la exigencia adicional de que cada par sea comparable.</p>
+<p>Un cuerpo ordenado es un cuerpo con un orden total que satisface</p>
+<p><span class="math display">\[x&lt;y\Longrightarrow x+z&lt;y+z,\]</span> <span class="math display">\[x&lt;y\ \text{y}\ 0&lt;z\Longrightarrow xz&lt;yz.\]</span></p>
+<p>La condición <span class="math inline">\(0&lt;z\)</span> es indispensable. Admitir <span class="math inline">\(z=0\)</span> daría <span class="math inline">\(0&lt;0\)</span>. Si el factor fuese negativo el orden se invertiría, y si fuese cero la desigualdad estricta desaparecería.</p>
+<p><strong>Prueba de necesidad.</strong> Si <span class="math inline">\(1&lt;2\)</span> y tomamos <span class="math inline">\(z=0\)</span>, sus productos satisfacen <span class="math inline">\(1z=2z=0\)</span>, no <span class="math inline">\(1z&lt;2z\)</span>. Si <span class="math inline">\(z=-1\)</span>, obtenemos <span class="math inline">\(-1&gt;-2\)</span>: el sentido se invierte. La regla válida divide los casos <span class="math inline">\(z&gt;0\)</span>, <span class="math inline">\(z=0\)</span> y <span class="math inline">\(z&lt;0\)</span>.</p>
+<section id="reglas-de-signo-y-desigualdades" class="level3">
+<h3 class="anchored" data-anchor-id="reglas-de-signo-y-desigualdades">Reglas de signo y desigualdades</h3>
+<p>La invariancia por traslación funciona en ambos sentidos: a una desigualdad trasladada se le suma <span class="math inline">\(-z\)</span>. Por tanto, <span class="math inline">\(x&lt;y\iff0&lt;y-x\)</span>. Si <span class="math inline">\(z&gt;0\)</span>, multiplicar después por <span class="math inline">\(z^{-1}&gt;0\)</span> dará también la recíproca; primero justificamos su positividad.</p>
+<p>Si <span class="math inline">\(a&gt;0\)</span>, multiplicar <span class="math inline">\(0&lt;a\)</span> por <span class="math inline">\(a\)</span> da <span class="math inline">\(0&lt;a^2\)</span>. Si <span class="math inline">\(a&lt;0\)</span>, entonces <span class="math inline">\(-a&gt;0\)</span>, y <span class="math inline">\(a^2=(-a)^2&gt;0\)</span>. Así, todo cuadrado no nulo es positivo. Puesto que <span class="math inline">\(1\ne0\)</span> y <span class="math inline">\(1^2=1\)</span>, se sigue <span class="math inline">\(1&gt;0\)</span>.</p>
+<p>Si <span class="math inline">\(a&gt;0\)</span>, su inverso es no nulo. Si fuese negativo, <span class="math inline">\(-a^{-1}&gt;0\)</span>, y el producto de dos positivos daría <span class="math inline">\(a(-a^{-1})=-1&gt;0\)</span>, contrario a <span class="math inline">\(1&gt;0\)</span>. En efecto, tomar opuestos de la desigualdad que afirma que la unidad es positiva demuestra que su opuesto es negativo; no puede ser simultáneamente positivo. Luego <span class="math inline">\(a^{-1}&gt;0\)</span>.</p>
+<p>Si <span class="math inline">\(x&lt;y\)</span> y <span class="math inline">\(z&lt;0\)</span>, entonces <span class="math inline">\(-z&gt;0\)</span>, por lo que <span class="math inline">\(x(-z)&lt;y(-z)\)</span>. Al cambiar signos mediante traslación se obtiene <span class="math inline">\(yz&lt;xz\)</span>. Si <span class="math inline">\(z=0\)</span>, ambos productos son iguales. Estas tres posibilidades agotan la tricotomía. Las versiones con <span class="math inline">\(\le\)</span> se deducen añadiendo el caso de igualdad.</p>
+<p>En particular, <span class="math inline">\(2=1+1&gt;0\)</span>, <span class="math inline">\(1/2&gt;0\)</span>, y si <span class="math inline">\(u&lt;v\)</span>,</p>
+<p><span class="math display">\[u&lt;\frac{u+v}{2}&lt;v,\]</span></p>
+<p>pues las diferencias respecto de los extremos son <span class="math inline">\((v-u)/2&gt;0\)</span>. Este cálculo funciona en cualquier cuerpo ordenado y no utiliza completitud.</p>
+</section>
+<section id="el-signo-del-factor" class="level3">
+<h3 class="anchored" data-anchor-id="el-signo-del-factor">El signo del factor</h3>
+<p>En la multiplicación de una desigualdad estricta hay que inspeccionar el <strong>signo del factor</strong> antes de operar. Con factor positivo se conserva <span class="math inline">\(&lt;\)</span>; con factor negativo se invierte; con factor nulo ambos productos son iguales. La sola hipótesis <span class="math inline">\(x&lt;y\)</span> no determina la relación entre <span class="math inline">\(xz\)</span> y <span class="math inline">\(yz\)</span> cuando no se conoce el signo de <span class="math inline">\(z\)</span>. Esta separación en tres casos no es una recomendación de cálculo: corresponde exactamente a la tricotomía del orden.</p>
+<p>La totalidad del orden se expresa mediante la condición lógica <span class="math inline">\(x&lt;y\lor x=y\lor y&lt;x\)</span>. Un dibujo puede representar una comparación concreta; la condición debe cumplirse para cada par de elementos del conjunto, con independencia de la representación elegida.</p>
+</section>
+</section>
+<section id="cotas-superiores-y-supremos" class="level2">
+<h2 class="anchored" data-anchor-id="cotas-superiores-y-supremos">Cotas superiores y supremos</h2>
+<p>Sea <span class="math inline">\(A\subseteq X\)</span>, donde <span class="math inline">\(X\)</span> está totalmente ordenado. Un elemento <span class="math inline">\(u\in X\)</span> es una cota superior de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[\forall a\in A,\quad a\le u.\]</span></p>
+<p>Un elemento <span class="math inline">\(s\in X\)</span> es el supremo de <span class="math inline">\(A\)</span> en <span class="math inline">\(X\)</span> si es cota superior y es menor o igual que toda cota superior de <span class="math inline">\(A\)</span>. Se escribe <span class="math inline">\(s=\sup_X A\)</span>. La segunda condición equivale a</p>
+<p><span class="math display">\[\forall y\in X,\quad y&lt;s\Longrightarrow\exists a\in A:\ y&lt;a.\]</span></p>
+<p>En efecto, si <span class="math inline">\(s\)</span> es la menor cota superior y <span class="math inline">\(y&lt;s\)</span>, <span class="math inline">\(y\)</span> no puede ser cota superior; negar <span class="math inline">\(\forall a\in A:a\le y\)</span> da, por tricotomía, un <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(y&lt;a\)</span>. Recíprocamente, si esta condición se cumple y <span class="math inline">\(u\)</span> es cota superior, no puede ocurrir <span class="math inline">\(u&lt;s\)</span>, pues habría <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(u&lt;a\)</span>. Por tricotomía, <span class="math inline">\(s\le u\)</span>. <span class="math inline">\(y\)</span> recorre el conjunto ambiente <span class="math inline">\(X\)</span>; no se restringe a <span class="math inline">\(A\)</span>. Se necesita <span class="math inline">\(y&lt;a\)</span>, no meramente <span class="math inline">\(y\le a\)</span>. Esta precisión en el dominio del cuantificador es esencial para caracterizar el supremo.</p>
+<p><strong>Por qué importa la desigualdad estricta.</strong> Consideremos <span class="math inline">\(X=\mathbb Z\)</span>, <span class="math inline">\(A=\{1\}\)</span> y la candidata <span class="math inline">\(s=2\)</span>. Es una cota superior, pero no el supremo (que es <span class="math inline">\(1\)</span>). Sin embargo, si reemplazamos <span class="math inline">\(y&lt;a\)</span> por <span class="math inline">\(y\le a\)</span>, todo entero <span class="math inline">\(y&lt;2\)</span> satisface <span class="math inline">\(y\le1\)</span>. La versión debilitada aceptaría erróneamente <span class="math inline">\(s=2\)</span>. El supremo es único: si <span class="math inline">\(s,t\)</span> lo son, entonces <span class="math inline">\(s\le t\)</span> y <span class="math inline">\(t\le s\)</span>, luego <span class="math inline">\(s=t\)</span>. Si <span class="math inline">\(s\in A\)</span>, es también el máximo. Recíprocamente, un máximo <span class="math inline">\(m\)</span> es cota superior, y cualquier cota superior <span class="math inline">\(u\)</span> cumple <span class="math inline">\(m\le u\)</span> por pertenecer <span class="math inline">\(m\)</span> a <span class="math inline">\(A\)</span>; luego <span class="math inline">\(m=\sup_X A\)</span>.</p>
+<section id="el-ejemplo-finito" class="level3">
+<h3 class="anchored" data-anchor-id="el-ejemplo-finito">El ejemplo finito</h3>
+<p>Para</p>
+<p><span class="math display">\[A=\{1,2,3,4,5\}\subset\mathbb Z,\]</span></p>
+<p><span class="math inline">\(27\)</span> es cota superior, puesto que todos los elementos de <span class="math inline">\(A\)</span> son menores que <span class="math inline">\(27\)</span>. Su supremo en <span class="math inline">\(\mathbb Z\)</span> es <span class="math inline">\(5\)</span>: es cota superior y pertenece a <span class="math inline">\(A\)</span>, por lo que es máximo y, en consecuencia, supremo. Alternativamente, para cada <span class="math inline">\(y\in\mathbb Z\)</span> con <span class="math inline">\(y&lt;5\)</span>, el testigo <span class="math inline">\(a=5\)</span> pertenece a <span class="math inline">\(A\)</span> y satisface <span class="math inline">\(y&lt;a\)</span>. Este razonamiento incluye los enteros negativos y cero; no basta comprobar <span class="math inline">\(y=1,2,3,4\)</span>.</p>
+<p><strong>Alcance de la caracterización.</strong> La formulación del supremo como menor cota superior no necesita operaciones algebraicas. En cambio, la equivalencia con la condición «todo <span class="math inline">\(y&lt;s\)</span> es superado por un <span class="math inline">\(a\in A\)</span>» utiliza totalidad. Para verlo, en el orden parcial <span class="math inline">\(X=\mathcal P(\{1,2\})\)</span> por inclusión, el conjunto <span class="math inline">\(A=\{\{1\},\{2\}\}\)</span> tiene supremo <span class="math inline">\(s=\{1,2\}\)</span>, pero si <span class="math inline">\(y=\{1\}\subsetneq s\)</span>, no existe <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(y\subsetneq a\)</span>. Por tanto, la caracterización empleada arriba no se extiende automáticamente a órdenes parciales.</p>
+</section>
+<section id="lectura-de-los-cuantificadores-del-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="lectura-de-los-cuantificadores-del-supremo">Lectura de los cuantificadores del supremo</h3>
+<p>La condición <span class="math inline">\(\forall y\in X\,(y&lt;s\Rightarrow\exists a\in A\;y&lt;a)\)</span> expresa que <strong>ningún elemento del ambiente situado por debajo de <span class="math inline">\(s\)</span> sirve como cota superior</strong>. El testigo <span class="math inline">\(a\)</span> puede depender de <span class="math inline">\(y\)</span>; no se exige un mismo <span class="math inline">\(a\)</span> que supere simultáneamente todos los elementos inferiores a <span class="math inline">\(s\)</span>.</p>
+<p>¿Por qué es necesario <span class="math inline">\(y\in X\)</span>? Sea <span class="math inline">\(A=\{q\in\mathbb Q:0&lt;q&lt;1\}\)</span> y tomemos la falsa candidata <span class="math inline">\(s=2\)</span>. Todo <span class="math inline">\(y\in A\)</span> admite <span class="math inline">\(a=(y+1)/2\in A\)</span> con <span class="math inline">\(y&lt;a\)</span>. Así, si se restringiera erróneamente <span class="math inline">\(y\)</span> a <span class="math inline">\(A\)</span>, la condición se cumpliría para <span class="math inline">\(s=2\)</span>, que no es el supremo. La definición correcta detecta el fallo escogiendo, por ejemplo, <span class="math inline">\(y=3/2\in\mathbb Q\setminus A\)</span>: ningún <span class="math inline">\(a\in A\)</span> lo supera.</p>
+<p>Esta prueba de estrés muestra que <strong>el conjunto ambiente es parte del enunciado</strong>. Más adelante, cambiar el ambiente de <span class="math inline">\(\mathbb Q\)</span> a <span class="math inline">\(\mathbb R\)</span> cambiará la pregunta sobre el supremo, incluso cuando el subconjunto considerado conserve exactamente los mismos elementos.</p>
+</section>
+</section>
+<section id="cotas-inferiores-e-ínfimos" class="level2">
+<h2 class="anchored" data-anchor-id="cotas-inferiores-e-ínfimos">Cotas inferiores e ínfimos</h2>
+<p>Un elemento <span class="math inline">\(l\in X\)</span> es cota inferior de <span class="math inline">\(A\)</span> si <span class="math inline">\(l\le a\)</span> para todo <span class="math inline">\(a\in A\)</span>. El ínfimo es la mayor de las cotas inferiores. Equivalentemente, <span class="math inline">\(t=\inf_X A\)</span> si es cota inferior y</p>
+<p><span class="math display">\[\forall y\in X,\quad t&lt;y\Longrightarrow\exists a\in A:\ a&lt;y.\]</span></p>
+<p>Si <span class="math inline">\(t\)</span> es la mayor cota inferior, cualquier <span class="math inline">\(y&gt;t\)</span> deja de ser cota inferior y existe tal <span class="math inline">\(a\)</span>. A la inversa, una cota inferior <span class="math inline">\(l&gt;t\)</span> contradiría la condición, al producir <span class="math inline">\(a&lt;l\)</span>. La unicidad sigue de <span class="math inline">\(t\le t'\)</span> y <span class="math inline">\(t'\le t\)</span>. Cuando el ínfimo pertenece al subconjunto, es su mínimo; el argumento es el dual de la prueba para máximos.</p>
+</section>
+<section id="un-supremo-exterior-al-conjunto" class="level2">
+<h2 class="anchored" data-anchor-id="un-supremo-exterior-al-conjunto">Un supremo exterior al conjunto</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[A=\{q\in\mathbb Q:0&lt;q&lt;1\}.\]</span></p>
+<p>El conjunto es no vacío, pues <span class="math inline">\(1/2\in A\)</span>, y <span class="math inline">\(1\)</span> es una cota superior. Aunque <span class="math inline">\(1\notin A\)</span>, se tiene <span class="math inline">\(\sup_{\mathbb Q}A=1\)</span>.</p>
+<p>Sea <span class="math inline">\(y\in\mathbb Q\)</span>, <span class="math inline">\(y&lt;1\)</span>. Si <span class="math inline">\(y\le0\)</span>, tomamos <span class="math inline">\(a=1/2\)</span>; así <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(y&lt;a\)</span>. Si <span class="math inline">\(0&lt;y&lt;1\)</span>, tomamos</p>
+<p><span class="math display">\[a=\frac{1+y}{2}.\]</span></p>
+<p>Es racional y</p>
+<p><span class="math display">\[a-y=\frac{1-y}{2}&gt;0,\qquad 1-a=\frac{1-y}{2}&gt;0.\]</span></p>
+<p>Por tanto, <span class="math inline">\(0&lt;y&lt;a&lt;1\)</span>, y <span class="math inline">\(a\in A\)</span>. La caracterización del supremo concluye la prueba.</p>
+<p>La separación del caso <span class="math inline">\(y\le0\)</span> es necesaria para cubrir el cuantificador sobre todo <span class="math inline">\(\mathbb Q\)</span>. Para <span class="math inline">\(y\le-1\)</span>, el punto medio <span class="math inline">\((1+y)/2\)</span> no pertenece a <span class="math inline">\(A\)</span>. Si <span class="math inline">\(y=p/q\)</span>, <span class="math inline">\(q\ne0\)</span>, la fórmula correctamente parentizada es</p>
+<p><span class="math display">\[a=\frac12\left(1+\frac pq\right)=\frac{p+q}{2q}.\]</span></p>
+<p>No se requiere la densidad de los racionales entre números reales para esta prueba: la clausura racional y las reglas de desigualdades bastan. El conjunto no tiene máximo, pues para cada <span class="math inline">\(q\in A\)</span>, <span class="math inline">\((1+q)/2\in A\)</span> es mayor. El supremo se calcula en el <strong>ambiente</strong> <span class="math inline">\(\mathbb Q\)</span>: <span class="math inline">\(1\)</span> puede ser el menor de todos los racionales que acotan <span class="math inline">\(A\)</span> aun sin pertenecer al intervalo. Esto distingue «máximo», que exige pertenencia al subconjunto, de «supremo», que no la exige. La existencia de este supremo particular no hace completo a <span class="math inline">\(\mathbb Q\)</span>.</p>
+<section id="variación-del-argumento-del-punto-medio" class="level3">
+<h3 class="anchored" data-anchor-id="variación-del-argumento-del-punto-medio">Variación del argumento del punto medio</h3>
+<p>Sean <span class="math inline">\(\alpha,\beta\in\mathbb Q\)</span> con <span class="math inline">\(\alpha&lt;\beta\)</span> y</p>
+<p><span class="math display">\[I_{\alpha,\beta}=\{q\in\mathbb Q:\alpha&lt;q&lt;\beta\}.\]</span></p>
+<p>El razonamiento precedente demuestra también <span class="math inline">\(\sup_{\mathbb Q}I_{\alpha,\beta}=\beta\)</span>. En efecto, <span class="math inline">\(\beta\)</span> es cota superior. Si <span class="math inline">\(y&lt;\beta\)</span> y <span class="math inline">\(y\le\alpha\)</span>, se toma <span class="math inline">\(a=(\alpha+\beta)/2\)</span>; si <span class="math inline">\(\alpha&lt;y&lt;\beta\)</span>, se toma <span class="math inline">\(a=(y+\beta)/2\)</span>. En ambos casos <span class="math inline">\(a\in I_{\alpha,\beta}\)</span> y <span class="math inline">\(y&lt;a\)</span>. El método es general: cuando una fórmula de aproximación sólo sirve para una parte del dominio, se separan los casos hasta cubrir todo el cuantificador.</p>
+<p>El extremo superior pertenece al ambiente racional pero no al intervalo. Por ello, la existencia del supremo no implica la existencia de un máximo.</p>
+</section>
+</section>
+<section id="la-propiedad-del-supremo" class="level2">
+<h2 class="anchored" data-anchor-id="la-propiedad-del-supremo">La propiedad del supremo</h2>
+<p>Un cuerpo ordenado <span class="math inline">\(F\)</span> es completo si cada subconjunto <span class="math inline">\(A\subseteq F\)</span>, no vacío y acotado superiormente en <span class="math inline">\(F\)</span>, tiene supremo en <span class="math inline">\(F\)</span>.</p>
+<p>Consideremos por qué ambas hipótesis son indispensables. El conjunto vacío tiene como cota superior a todo elemento, pero no tiene una menor cota superior en un cuerpo ordenado: si <span class="math inline">\(u\)</span> fuese la menor, <span class="math inline">\(u-1&lt;u\)</span> también sería cota superior. El cuerpo entero <span class="math inline">\(F\)</span> no está acotado superiormente, porque para cualquier <span class="math inline">\(u\in F\)</span>, <span class="math inline">\(u+1\in F\)</span> es mayor. La completitud no garantiza supremos para ninguno de estos casos.</p>
+<p>La propiedad del supremo puede formularse en cualquier conjunto ordenado. Por ejemplo, todo <span class="math inline">\(A\subseteq\mathbb Z\)</span> no vacío y acotado superiormente tiene máximo. Dada una cota superior entera <span class="math inline">\(u\)</span>, el conjunto <span class="math inline">\(B=\{u-a:a\in A\}\subseteq\mathbb N_0\)</span> es no vacío. Por buen orden, tiene mínimo <span class="math inline">\(b_0\)</span>; entonces <span class="math inline">\(u-b_0\in A\)</span> es mayor o igual que cada elemento de <span class="math inline">\(A\)</span> y constituye su supremo en <span class="math inline">\(\mathbb Z\)</span>. No obstante, <span class="math inline">\(\mathbb Z\)</span> no es un cuerpo porque <span class="math inline">\(2\)</span> carece de inverso multiplicativo entero. Lo que caracteriza a los reales es la <strong>conjunción</strong> de estructura de cuerpo, orden compatible y completitud de orden.</p>
+<p>La completitud por supremos tampoco debe confundirse sin más con completitud de sucesiones de Cauchy. La equivalencia entre formulaciones requiere una estructura de proximidad y las hipótesis adecuadas; no se presupone aquí como resultado anterior.</p>
+<p>La completitud proporciona también ínfimos de subconjuntos no vacíos acotados inferiormente. Si <span class="math inline">\(A\)</span> es uno de ellos, entonces <span class="math inline">\(-A=\{-a:a\in A\}\)</span> es no vacío y está acotado superiormente. Sea <span class="math inline">\(s=\sup(-A)\)</span>. De <span class="math inline">\(-a\le s\)</span> se sigue <span class="math inline">\(-s\le a\)</span>. Para cualquier cota inferior <span class="math inline">\(l\)</span> de <span class="math inline">\(A\)</span>, <span class="math inline">\(-l\)</span> es cota superior de <span class="math inline">\(-A\)</span>, de modo que <span class="math inline">\(s\le-l\)</span>, es decir, <span class="math inline">\(l\le-s\)</span>. Luego</p>
+<p><span class="math display">\[\inf A=-\sup(-A).\]</span></p>
+<section id="el-alcance-de-la-propiedad-del-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="el-alcance-de-la-propiedad-del-supremo">El alcance de la propiedad del supremo</h3>
+<p>La propiedad del supremo asegura, para cada subconjunto con elementos y una cota superior, la existencia de un menor elemento entre todas sus cotas superiores dentro del ambiente. Su alcance es universal y comprende también los conjuntos cuyo supremo queda fuera de ellos. De hecho, <span class="math inline">\(\mathbb Q\)</span> contiene supremos como el del intervalo de la sección «Un supremo exterior al conjunto», pero basta encontrar <strong>un solo</strong> subconjunto racional no vacío y acotado superiormente sin supremo racional para demostrar que <span class="math inline">\(\mathbb Q\)</span> carece de completitud.</p>
+<p>Las dos hipótesis del axioma, <span class="math inline">\(A\ne\varnothing\)</span> y «<span class="math inline">\(A\)</span> acotado superiormente», restringen su alcance. No afirman que el vacío o todo el cuerpo tengan supremo.</p>
+</section>
+</section>
+<section id="por-qué-los-racionales-no-son-completos" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-los-racionales-no-son-completos">Por qué los racionales no son completos</h2>
+<p>Consideremos el conjunto</p>
+<p><span class="math display">\[A=\{q\in\mathbb Q:q&lt;\pi\}.\]</span></p>
+<p><strong>Hipótesis externas declaradas:</strong> el ejemplo se interpreta en un sistema real ya disponible, con un elemento <span class="math inline">\(\pi\)</span> que satisface <span class="math inline">\(0&lt;\pi&lt;4\)</span> y <span class="math inline">\(\pi\notin\mathbb Q\)</span>. La densidad racional puede deducirse de la propiedad del supremo; más adelante se dará su demostración completa. La definición y la irracionalidad de <span class="math inline">\(\pi\)</span> no se demostrarán aquí: son datos externos de este ejemplo. El ejemplo es una ilustración posterior a la existencia de un modelo, no una construcción de ese modelo. Su presentación matemática debe leerse, pues, como un análisis <strong>condicional</strong> dentro de una realización real disponible, mientras que la construcción de cortaduras que sigue demostrará la existencia sin depender de <span class="math inline">\(\pi\)</span>. Para evitar circularidad, la propiedad de densidad racional se deducirá previamente de la completitud de un cuerpo ordenado; no se utilizará como premisa para construir el cuerpo de cortaduras.</p>
+<p><span class="math inline">\(A\)</span> es no vacío, pues <span class="math inline">\(0\in A\)</span>, y está acotado superiormente en <span class="math inline">\(\mathbb Q\)</span>, pues <span class="math inline">\(4\)</span> es cota superior. Sea <span class="math inline">\(s\in\mathbb Q\)</span>. Como <span class="math inline">\(s\ne\pi\)</span>, hay dos casos:</p>
+<ul>
+<li>Si <span class="math inline">\(s&lt;\pi\)</span>, la densidad produce <span class="math inline">\(q\in\mathbb Q\)</span> con <span class="math inline">\(s&lt;q&lt;\pi\)</span>. Entonces <span class="math inline">\(q\in A\)</span>, y <span class="math inline">\(s\)</span> no es cota superior.</li>
+<li>Si <span class="math inline">\(\pi&lt;s\)</span>, la densidad produce <span class="math inline">\(t\in\mathbb Q\)</span> con <span class="math inline">\(\pi&lt;t&lt;s\)</span>. Para todo <span class="math inline">\(q\in A\)</span>, <span class="math inline">\(q&lt;\pi&lt;t\)</span>, de modo que <span class="math inline">\(t\)</span> es una cota superior menor que <span class="math inline">\(s\)</span>. Así <span class="math inline">\(s\)</span> no es la menor cota superior.</li>
+</ul>
+<p>Ningún racional es supremo de <span class="math inline">\(A\)</span> en <span class="math inline">\(\mathbb Q\)</span>. La mera afirmación <span class="math inline">\(\pi\notin\mathbb Q\)</span> no habría excluido, por sí sola, otras candidatas.</p>
+<p>En cambio, <strong>el mismo conjunto de racionales</strong>, considerado como subconjunto de <span class="math inline">\(\mathbb R\)</span>, tiene supremo <span class="math inline">\(\pi\)</span>. Es cota superior por definición. Si <span class="math inline">\(y\in\mathbb R\)</span>, <span class="math inline">\(y&lt;\pi\)</span>, la densidad proporciona <span class="math inline">\(q\in\mathbb Q\)</span> con <span class="math inline">\(y&lt;q&lt;\pi\)</span>, por lo que <span class="math inline">\(q\in A\)</span>. La caracterización del supremo da el resultado.</p>
+<p>El conjunto <span class="math inline">\(A\)</span> sigue formado exclusivamente por racionales al cambiar el ambiente de <span class="math inline">\(\mathbb Q\)</span> a <span class="math inline">\(\mathbb R\)</span>. Esto importa: la expresión <span class="math inline">\(\mathbb Q\cap(-\infty,\pi)\)</span> designa <strong>el mismo subconjunto</strong>, aunque ahora se lo considere dentro de un conjunto ambiente mayor. No lo sustituiremos por el conjunto de todos los reales menores que <span class="math inline">\(\pi\)</span>, que sería otro objeto.</p>
+<p>Si se cambia además el conjunto a <span class="math inline">\(B=\{x\in\mathbb R:x&lt;\pi\}\)</span>, también <span class="math inline">\(\sup_{\mathbb R}B=\pi\)</span>, pero la prueba puede usar directamente <span class="math inline">\(b=(y+\pi)/2\)</span>: para <span class="math inline">\(y&lt;\pi\)</span>, se tiene <span class="math inline">\(y&lt;b&lt;\pi\)</span>. Es otro conjunto y conviene mantener explícita la diferencia.</p>
+<section id="un-contraejemplo-racional-sin-recurrir-a-pi" class="level3">
+<h3 class="anchored" data-anchor-id="un-contraejemplo-racional-sin-recurrir-a-pi">Un contraejemplo racional sin recurrir a <span class="math inline">\(\pi\)</span></h3>
+<p>El ejemplo anterior depende de hechos sobre <span class="math inline">\(\pi\)</span> que no estamos demostrando en este capítulo. Puede obtenerse, sin embargo, un contraejemplo <strong>interno a la aritmética racional</strong>.</p>
+<p><strong>Proposición.</strong> El conjunto</p>
+<p><span class="math display">\[S=\{q\in\mathbb Q: q\ge0\text{ y }q^2&lt;2\}\]</span></p>
+<p>es no vacío y acotado superiormente en <span class="math inline">\(\mathbb Q\)</span>, pero no admite supremo en <span class="math inline">\(\mathbb Q\)</span>.</p>
+<p><strong>Demostración.</strong> Se tiene <span class="math inline">\(1\in S\)</span>. Además, <span class="math inline">\(2\)</span> es una cota superior: si <span class="math inline">\(q\ge2\)</span>, entonces <span class="math inline">\(q^2\ge4&gt;2\)</span>, por lo cual <span class="math inline">\(q\notin S\)</span>.</p>
+<p>En primer lugar, <strong>ningún racional tiene cuadrado igual a <span class="math inline">\(2\)</span></strong>. Si <span class="math inline">\((p/q)^2=2\)</span> con <span class="math inline">\(p,q\in\mathbb Z\)</span>, <span class="math inline">\(q\ne0\)</span> y la fracción reducida, entonces <span class="math inline">\(p^2=2q^2\)</span>. De aquí <span class="math inline">\(p\)</span> es par; escribiendo <span class="math inline">\(p=2k\)</span> resulta <span class="math inline">\(q^2=2k^2\)</span>, y <span class="math inline">\(q\)</span> también es par. Esto contradice que la fracción esté reducida.</p>
+<p>Sea ahora <span class="math inline">\(s\in\mathbb Q\)</span>. Si <span class="math inline">\(s\le0\)</span>, no es cota superior porque <span class="math inline">\(1\in S\)</span>. Supongamos <span class="math inline">\(s&gt;0\)</span>. Como <span class="math inline">\(s^2\ne2\)</span>, debemos distinguir dos casos.</p>
+<p>Si <span class="math inline">\(s^2&lt;2\)</span>, elijamos un racional <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[\delta&lt;1,\qquad\delta&lt;\frac{2-s^2}{2s+1}.\]</span></p>
+<p>Entonces <span class="math inline">\(t=s+\delta\)</span> es racional, <span class="math inline">\(t&gt;s\)</span> y</p>
+<p><span class="math display">\[t^2=s^2+2s\delta+\delta^2&lt;s^2+(2s+1)\delta&lt;2.\]</span></p>
+<p>Por tanto <span class="math inline">\(t\in S\)</span> y <span class="math inline">\(s\)</span> no es cota superior.</p>
+<p>Si <span class="math inline">\(s^2&gt;2\)</span>, elijamos un racional <span class="math inline">\(\delta\)</span> con</p>
+<p><span class="math display">\[0&lt;\delta&lt;s,\qquad \delta&lt;\frac{s^2-2}{2s}.\]</span></p>
+<p>Poniendo <span class="math inline">\(b=s-\delta\)</span>, se tiene <span class="math inline">\(0&lt;b&lt;s\)</span> y</p>
+<p><span class="math display">\[b^2=s^2-2s\delta+\delta^2&gt;s^2-2s\delta&gt;2.\]</span></p>
+<p>Para todo <span class="math inline">\(q\in S\)</span> necesariamente <span class="math inline">\(q&lt;b\)</span>: si <span class="math inline">\(q\ge b&gt;0\)</span>, entonces <span class="math inline">\(q^2\ge b^2&gt;2\)</span>, contradicción. Así <span class="math inline">\(b\)</span> es una cota superior racional estrictamente menor que <span class="math inline">\(s\)</span>, de modo que <span class="math inline">\(s\)</span> no es la menor cota superior.</p>
+<p>Se han descartado todos los candidatos racionales a supremo. En consecuencia, <span class="math inline">\(S\)</span> no tiene supremo en <span class="math inline">\(\mathbb Q\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La demostración no ha utilizado <span class="math inline">\(\sqrt2\)</span> como número real ya construido; sólo ha demostrado que ningún racional tiene cuadrado <span class="math inline">\(2\)</span> y ha perturbado racionalmente cada candidato <span class="math inline">\(s\)</span>. La técnica reutilizable es doble: si el candidato queda por debajo del valor cuadrático buscado, se produce un elemento del conjunto mayor; si queda por encima, se produce una cota superior menor. La ventaja de este argumento es que demuestra la incompletitud racional sin presuponer un número irracional previamente construido.</p>
+</section>
+</section>
+<section id="existencia-y-unicidad" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad">Existencia y unicidad</h2>
+<p>La caracterización axiomática nos ha dejado dos obligaciones: construir al menos un cuerpo ordenado completo y demostrar que dos cualesquiera son isomorfos. Los siguientes capítulos satisfacen ambas, en ese orden. En los capítulos siguientes demostraremos:</p>
+<ol type="1">
+<li>Existe un cuerpo ordenado completo, construido como un conjunto de cortaduras racionales.</li>
+<li>Para dos cuerpos ordenados completos <span class="math inline">\(F,G\)</span>, existe un único isomorfismo de cuerpos ordenados <span class="math inline">\(F\to G\)</span>.</li>
+</ol>
+<p>Podemos pensar en dos tableros de ajedrez fabricados con materiales diferentes: las piezas no son idénticas como objetos, pero las reglas del juego establecen correspondencias entre sus movimientos. La comparación es ilustrativa; en matemáticas debemos construir la función que preserve todas las operaciones y el orden y probar sus propiedades.</p>
+<p>Las actividades propuestas permiten comprobar la comprensión de la lógica de cada definición y de las pruebas obtenidas.</p>
+</section>
+<section id="problemas-y-soluciones-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-y-soluciones-del-capítulo">Problemas y soluciones del capítulo</h2>
+<section id="ejercicio-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h3>
+<p>Explica por qué la división usual <span class="math inline">\(a/b\)</span> (con <span class="math inline">\(b\ne0\)</span>) no es una operación binaria <span class="math inline">\(\mathbb Z\times\mathbb Z\to\mathbb Z\)</span>. Indica qué exige que una ley sea una operación <em>bien definida</em> sobre un conjunto.</p>
+<p><strong>Solución razonada.</strong> Una operación binaria sobre <span class="math inline">\(\mathbb Z\)</span> debe asignar a <strong>cada</strong> par de enteros una salida entera. La regla de división con denominador no nulo falla dos veces como aplicación <span class="math inline">\(\mathbb Z\times\mathbb Z\to\mathbb Z\)</span>: no está definida para pares <span class="math inline">\((a,0)\)</span> y, aun si restringimos el segundo componente a los enteros no nulos, <span class="math inline">\(1/2\)</span> no pertenece a <span class="math inline">\(\mathbb Z\)</span>. En cambio, multiplicación y suma sí asignan enteros a todos los pares de enteros.</p>
+<p>Para decir que una operación está bien definida hay que fijar su dominio y codominio, demostrar que produce una salida en el codominio para <strong>todo</strong> elemento del dominio y que la salida no cambia cuando un objeto tiene dos representaciones distintas. En la construcción de la copia racional de un cuerpo ordenado, ese último control será esencial: dos fracciones que representen el mismo racional deberán producir exactamente la misma imagen.</p>
+</section>
+<section id="ejercicio-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h3>
+<p>En un cuerpo <span class="math inline">\(F\)</span>, demuestra a partir de los axiomas que <span class="math inline">\(a0=0\)</span> para todo <span class="math inline">\(a\in F\)</span>. Deduce que <span class="math inline">\(0\)</span> no tiene inverso multiplicativo.</p>
+<p><strong>Solución razonada.</strong> La distributividad proporciona <span class="math inline">\(a0=a(0+0)=a0+a0\)</span>. Sumando el inverso aditivo de <span class="math inline">\(a0\)</span> a ambos lados, la asociatividad permite cancelar la misma expresión y obtener <span class="math inline">\(0=a0\)</span>. Si <span class="math inline">\(0\)</span> tuviera inverso multiplicativo <span class="math inline">\(b\)</span>, se cumpliría <span class="math inline">\(0b=1\)</span>. Pero acabamos de demostrar <span class="math inline">\(0b=0\)</span>, con lo que <span class="math inline">\(0=1\)</span>, contrario al axioma de cuerpo. Es importante que el argumento empiece con una ley <em>postulada</em> (distributividad) y termine con una consecuencia <em>derivada</em> (producto por cero).</p>
+</section>
+<section id="ejercicio-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3">Ejercicio 3</h3>
+<p>Supón que se eliminara de los axiomas de cuerpo la exigencia <span class="math inline">\(0\ne1\)</span>. Demuestra que en una estructura que satisface los demás axiomas, si <span class="math inline">\(0=1\)</span> entonces todo elemento es cero. Explica por qué dicha exigencia es indispensable.</p>
+<p><strong>Solución razonada.</strong> Supongamos <span class="math inline">\(0=1\)</span>. Para cualquier <span class="math inline">\(a\)</span> en la estructura, el neutro multiplicativo da <span class="math inline">\(a=a1=a0\)</span>. La demostración del ejercicio 2 utiliza sólo distributividad e inversos aditivos, de modo que sigue siendo válida aun sin exigir <span class="math inline">\(0\ne1\)</span>: <span class="math inline">\(a0=0\)</span>. Por tanto <span class="math inline">\(a=0\)</span> para todo <span class="math inline">\(a\)</span>. La estructura sólo puede tener un elemento. La condición <span class="math inline">\(0\ne1\)</span> excluye este caso degenerado; no se deduce de las demás identidades.</p>
+</section>
+<section id="ejercicio-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4">Ejercicio 4</h3>
+<p>Sean <span class="math inline">\(x&lt;y\)</span> en un cuerpo ordenado. Determina la relación entre <span class="math inline">\(xz\)</span> y <span class="math inline">\(yz\)</span> si (a) <span class="math inline">\(z&gt;0\)</span>, (b) <span class="math inline">\(z=0\)</span>, (c) <span class="math inline">\(z&lt;0\)</span>. Justifica cada caso a partir de los axiomas.</p>
+<p><strong>Solución razonada.</strong> (a) Para <span class="math inline">\(z&gt;0\)</span>, el axioma de compatibilidad multiplicativa da directamente <span class="math inline">\(xz&lt;yz\)</span>. (b) Para <span class="math inline">\(z=0\)</span>, el ejercicio 2 da <span class="math inline">\(xz=yz=0\)</span>; una desigualdad estricta es imposible. (c) Para <span class="math inline">\(z&lt;0\)</span>, se tiene <span class="math inline">\(-z&gt;0\)</span>, por lo cual <span class="math inline">\(x(-z)&lt;y(-z)\)</span>. Multiplicando por <span class="math inline">\(-1\)</span> las dos expresiones en la igualdad algebraica de signos —o sumando sus opuestos— se obtiene <span class="math inline">\(yz&lt;xz\)</span>. Estos son todos los casos por tricotomía. La división por <span class="math inline">\(z\)</span> exige además que <span class="math inline">\(z\ne0\)</span>; si <span class="math inline">\(z&lt;0\)</span>, también invierte la desigualdad.</p>
+</section>
+<section id="ejercicio-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5">Ejercicio 5</h3>
+<p>En <span class="math inline">\(X=\mathcal P(\{1,2\})\)</span> ordenado por inclusión, considera <span class="math inline">\(A=\{\{1\},\{2\}\}\)</span>. Determina su supremo y demuestra por qué la caracterización mediante <span class="math inline">\(y&lt;s\Rightarrow\exists a\in A\;(y&lt;a)\)</span> no puede trasladarse sin más a este orden parcial.</p>
+<p><strong>Solución razonada.</strong> Una cota superior de <span class="math inline">\(A\)</span> en el orden de inclusión debe contener simultáneamente <span class="math inline">\(\{1\}\)</span> y <span class="math inline">\(\{2\}\)</span>. La única que lo hace dentro de <span class="math inline">\(X\)</span> es <span class="math inline">\(s=\{1,2\}\)</span>, luego es el supremo. Tomemos <span class="math inline">\(y=\{1\}\subsetneq s\)</span>. Ningún miembro de <span class="math inline">\(A\)</span> contiene <em>estrictamente</em> a <span class="math inline">\(y\)</span>: uno es igual a <span class="math inline">\(y\)</span> y el otro es incomparable con él. Por tanto falla la condición <span class="math inline">\(y&lt;s\Rightarrow\exists a\in A\;(y&lt;a)\)</span>. No contradice la definición de supremo: la equivalencia con esa caracterización se demostró utilizando tricotomía, que el orden parcial no satisface.</p>
+</section>
+<section id="ejercicio-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6">Ejercicio 6</h3>
+<p>Sea <span class="math inline">\(A=\{q\in\mathbb Q:0&lt;q&lt;1\}\)</span> y la candidata <span class="math inline">\(s=2\)</span>. Demuestra que si en la caracterización del supremo se reemplaza <span class="math inline">\(\forall y\in\mathbb Q\)</span> por <span class="math inline">\(\forall y\in A\)</span>, <span class="math inline">\(s\)</span> satisface erróneamente la condición resultante. Encuentra un <span class="math inline">\(y\in\mathbb Q\setminus A\)</span> que muestre el fallo.</p>
+<p><strong>Solución razonada.</strong> Para cada <span class="math inline">\(y\in A\)</span>, el racional <span class="math inline">\(a=(y+1)/2\)</span> cumple <span class="math inline">\(y&lt;a&lt;1\)</span>, por lo que <span class="math inline">\(a\in A\)</span>. Así, con el dominio incorrecto <span class="math inline">\(y\in A\)</span>, la condición de aproximación se cumple para <span class="math inline">\(s=2\)</span>: todos los elementos de <span class="math inline">\(A\)</span> están por debajo de <span class="math inline">\(2\)</span> y cada uno tiene sucesor mayor dentro de <span class="math inline">\(A\)</span>. Sin embargo, <span class="math inline">\(2\)</span> no es la menor cota superior, porque <span class="math inline">\(1\)</span> ya acota <span class="math inline">\(A\)</span>. La definición correcta toma <strong>todos</strong> los <span class="math inline">\(y\in\mathbb Q\)</span> inferiores a la candidata. Por ejemplo, <span class="math inline">\(y=3/2&lt;2\)</span> y ningún <span class="math inline">\(a\in A\)</span> satisface <span class="math inline">\(3/2&lt;a\)</span>. La candidata queda descartada.</p>
+</section>
+<section id="ejercicio-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7">Ejercicio 7</h3>
+<p>En <span class="math inline">\(X=\mathbb Z\)</span> considera <span class="math inline">\(A=\{1\}\)</span> y <span class="math inline">\(s=2\)</span>. Comprueba que <span class="math inline">\(s\)</span> es cota superior y que para todo entero <span class="math inline">\(y&lt;s\)</span> existe <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(y\le a\)</span>. ¿Por qué esto no implica <span class="math inline">\(s=\sup_X A\)</span>? Escribe la desigualdad que falta.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(s=2\)</span> es cota superior de <span class="math inline">\(A=\{1\}\)</span>, pues <span class="math inline">\(1\le2\)</span>. Si <span class="math inline">\(y\in\mathbb Z\)</span> y <span class="math inline">\(y&lt;2\)</span>, entonces <span class="math inline">\(y\le1\)</span>, de modo que el único <span class="math inline">\(a=1\in A\)</span> verifica <span class="math inline">\(y\le a\)</span>. Con la desigualdad débil, la condición no descarta <span class="math inline">\(s=2\)</span>. El supremo verdadero es <span class="math inline">\(1\)</span>, que pertenece a <span class="math inline">\(A\)</span> y es máximo. La caracterización válida exige <span class="math inline">\(y&lt;a\)</span>, no <span class="math inline">\(y\le a\)</span>: tomando <span class="math inline">\(y=1&lt;2\)</span> no existe <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(1&lt;a\)</span>. De este modo se recupera el carácter <em>mínimo</em> de la cota superior.</p>
+</section>
+<section id="ejercicio-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8">Ejercicio 8</h3>
+<p>Para <span class="math inline">\(A=\{-3,0,4\}\subseteq\mathbb Z\)</span>, determina el máximo, mínimo, supremo e ínfimo y demuestra las afirmaciones usando las definiciones, no la posición de los números en una recta.</p>
+<p><strong>Solución razonada.</strong> La comparación de los tres enteros muestra que <span class="math inline">\(-3\le0\le4\)</span>. Como <span class="math inline">\(4\in A\)</span> y todo <span class="math inline">\(a\in A\)</span> satisface <span class="math inline">\(a\le4\)</span>, el entero <span class="math inline">\(4\)</span> es un máximo. Toda cota superior <span class="math inline">\(u\)</span> de <span class="math inline">\(A\)</span> debe satisfacer <span class="math inline">\(4\le u\)</span>, pues <span class="math inline">\(4\in A\)</span>. Luego <span class="math inline">\(\sup_{\mathbb Z}A=\max A=4\)</span>. Del mismo modo, <span class="math inline">\(-3\)</span> pertenece al conjunto y es menor o igual que todos sus elementos, por lo que es un mínimo; cualquier cota inferior <span class="math inline">\(l\)</span> satisface <span class="math inline">\(l\le-3\)</span>. Así <span class="math inline">\(\inf_{\mathbb Z}A=\min A=-3\)</span>. La demostración utiliza pertenencia y desigualdades, no una figura de recta.</p>
+</section>
+<section id="ejercicio-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9">Ejercicio 9</h3>
+<p>Sean <span class="math inline">\(\alpha,\beta\in\mathbb Q\)</span> y <span class="math inline">\(\alpha&lt;\beta\)</span>. Prueba que el intervalo racional abierto <span class="math inline">\(I=\{q\in\mathbb Q:\alpha&lt;q&lt;\beta\}\)</span> tiene supremo <span class="math inline">\(\beta\)</span> e ínfimo <span class="math inline">\(\alpha\)</span>, pero no tiene máximo ni mínimo.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(I\)</span> no está vacío, porque <span class="math inline">\(m=(\alpha+\beta)/2\)</span> es racional y <span class="math inline">\(\alpha&lt;m&lt;\beta\)</span>. Todo elemento de <span class="math inline">\(I\)</span> es menor que <span class="math inline">\(\beta\)</span>, por lo que <span class="math inline">\(\beta\)</span> es cota superior. Si <span class="math inline">\(y&lt;\beta\)</span> y <span class="math inline">\(y\le\alpha\)</span>, el testigo <span class="math inline">\(a=m\)</span> cumple <span class="math inline">\(a\in I\)</span> y <span class="math inline">\(y&lt;a\)</span>. Si <span class="math inline">\(\alpha&lt;y&lt;\beta\)</span>, usamos <span class="math inline">\(a=(y+\beta)/2\in I\)</span>, con <span class="math inline">\(y&lt;a\)</span>. La caracterización del supremo da <span class="math inline">\(\sup_{\mathbb Q}I=\beta\)</span>. Aplicando el razonamiento dual (o sustituyendo <span class="math inline">\(q\)</span> por <span class="math inline">\(-q\)</span>) se obtiene <span class="math inline">\(\inf_{\mathbb Q}I=\alpha\)</span>. Finalmente, dado <span class="math inline">\(q\in I\)</span>, <span class="math inline">\((q+\beta)/2\)</span> es otro elemento de <span class="math inline">\(I\)</span> mayor que <span class="math inline">\(q\)</span>, y <span class="math inline">\((\alpha+q)/2\)</span> es uno menor. Ningún elemento puede ser máximo ni mínimo.</p>
+</section>
+<section id="ejercicio-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10">Ejercicio 10</h3>
+<p>Si <span class="math inline">\(s=\sup_F A\)</span> existe en un cuerpo ordenado <span class="math inline">\(F\)</span> y <span class="math inline">\(t\in F\)</span>, prueba que <span class="math inline">\(\sup_F(A+t)=s+t\)</span>, donde <span class="math inline">\(A+t=\{a+t:a\in A\}\)</span>.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(s+t\)</span> es cota superior de <span class="math inline">\(A+t\)</span>: si <span class="math inline">\(a\le s\)</span>, el axioma de traslación da <span class="math inline">\(a+t\le s+t\)</span>. Sea <span class="math inline">\(u\)</span> otra cota superior de <span class="math inline">\(A+t\)</span>. De <span class="math inline">\(a+t\le u\)</span> para todo <span class="math inline">\(a\in A\)</span>, restamos <span class="math inline">\(t\)</span> y obtenemos <span class="math inline">\(a\le u-t\)</span>; luego <span class="math inline">\(u-t\)</span> es cota superior de <span class="math inline">\(A\)</span>. Por la minimalidad de <span class="math inline">\(s\)</span>, <span class="math inline">\(s\le u-t\)</span>. Sumando <span class="math inline">\(t\)</span> se obtiene <span class="math inline">\(s+t\le u\)</span>. Así <span class="math inline">\(s+t\)</span> es la menor cota superior. No se ha utilizado completitud para demostrar esta regla: basta suponer que <span class="math inline">\(s\)</span> ya existe.</p>
+</section>
+<section id="ejercicio-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11">Ejercicio 11</h3>
+<p>Si <span class="math inline">\(s=\sup_F A\)</span> y <span class="math inline">\(z&gt;0\)</span>, prueba que <span class="math inline">\(\sup_F(zA)=zs\)</span>. ¿Qué ocurre cuando <span class="math inline">\(z&lt;0\)</span>? Expresa el resultado mediante <span class="math inline">\(\inf_F A\)</span> cuando éste existe. Explica por qué <span class="math inline">\(z=0\)</span> no sirve para conservar desigualdades estrictas.</p>
+<p><strong>Solución razonada.</strong> Para <span class="math inline">\(z&gt;0\)</span>, todo <span class="math inline">\(a\in A\)</span> cumple <span class="math inline">\(za\le zs\)</span>, por lo que <span class="math inline">\(zs\)</span> es cota superior de <span class="math inline">\(zA\)</span>. Si <span class="math inline">\(u\)</span> es otra cota superior, <span class="math inline">\(za\le u\)</span> para todo <span class="math inline">\(a\in A\)</span>. Como <span class="math inline">\(z^{-1}&gt;0\)</span>, multiplicar por <span class="math inline">\(z^{-1}\)</span> conserva el orden: <span class="math inline">\(a\le u/z\)</span>. Por tanto <span class="math inline">\(s\le u/z\)</span> y <span class="math inline">\(zs\le u\)</span>. Así <span class="math inline">\(\sup_F(zA)=zs\)</span>.</p>
+<p>Si <span class="math inline">\(z&lt;0\)</span> y existe <span class="math inline">\(m=\inf_FA\)</span>, para cada <span class="math inline">\(a\in A\)</span> la desigualdad <span class="math inline">\(m\le a\)</span> se invierte al multiplicar por <span class="math inline">\(z\)</span>, dando <span class="math inline">\(za\le zm\)</span>; toda otra cota superior <span class="math inline">\(u\)</span> de <span class="math inline">\(zA\)</span> induce una cota inferior <span class="math inline">\(u/z\)</span> de <span class="math inline">\(A\)</span> (la división por un negativo invierte), luego <span class="math inline">\(u/z\le m\)</span>, es decir <span class="math inline">\(zm\le u\)</span>. En consecuencia, <span class="math inline">\(\sup_F(zA)=z\inf_FA\)</span>. Si <span class="math inline">\(z=0\)</span> y <span class="math inline">\(A\ne\varnothing\)</span>, <span class="math inline">\(zA=\{0\}\)</span> y su supremo es <span class="math inline">\(0\)</span>, pero ninguna desigualdad estricta entre productos subsiste; el argumento de multiplicación por inversos no puede aplicarse a <span class="math inline">\(z=0\)</span>.</p>
+</section>
+<section id="ejercicio-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12">Ejercicio 12</h3>
+<p>Demuestra que el conjunto vacío no tiene supremo en un cuerpo ordenado y que el cuerpo completo tampoco está acotado superiormente. Relaciona los dos ejemplos con las hipótesis del axioma del supremo.</p>
+<p><strong>Solución razonada.</strong> Todo elemento <span class="math inline">\(u\in F\)</span> es cota superior del vacío, porque la afirmación <span class="math inline">\(\forall a\in\varnothing\;(a\le u)\)</span> es vacuamente verdadera. Si existiera la <em>menor</em> de estas cotas, digamos <span class="math inline">\(s\)</span>, también <span class="math inline">\(s-1\)</span> sería cota superior y <span class="math inline">\(s-1&lt;s\)</span>, contradicción. Por otra parte, <span class="math inline">\(F\)</span> no está acotado superiormente: dado cualquier supuesto límite superior <span class="math inline">\(u\)</span>, el elemento <span class="math inline">\(u+1\in F\)</span> satisface <span class="math inline">\(u&lt;u+1\)</span> porque <span class="math inline">\(1&gt;0\)</span>. El axioma del supremo exige simultáneamente que el conjunto sea no vacío y tenga cota superior. No afirma la existencia de supremo en ninguno de los dos casos examinados.</p>
+</section>
+<section id="ejercicio-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13">Ejercicio 13</h3>
+<p>Si <span class="math inline">\(F\)</span> es un cuerpo ordenado completo y <span class="math inline">\(A\subseteq F\)</span> es no vacío y acotado inferiormente, demuestra que <span class="math inline">\(\inf_F A=-\sup_F(-A)\)</span>. Identifica en qué paso se usa la completitud.</p>
+<p><strong>Solución razonada.</strong> Como <span class="math inline">\(A\)</span> es no vacío y acotado inferiormente, <span class="math inline">\(-A=\{-a:a\in A\}\)</span> es no vacío y está acotado superiormente; la completitud se usa <strong>ahora</strong> para asegurar que <span class="math inline">\(s=\sup_F(-A)\)</span> existe. Para cada <span class="math inline">\(a\in A\)</span> se cumple <span class="math inline">\(-a\le s\)</span>, luego <span class="math inline">\(-s\le a\)</span> al cambiar signos: <span class="math inline">\(-s\)</span> es cota inferior de <span class="math inline">\(A\)</span>. Si <span class="math inline">\(l\)</span> es cualquier otra cota inferior, <span class="math inline">\(l\le a\)</span> para todo <span class="math inline">\(a\in A\)</span> implica <span class="math inline">\(-a\le-l\)</span> para todo <span class="math inline">\(a\in A\)</span>, de modo que <span class="math inline">\(-l\)</span> es cota superior de <span class="math inline">\(-A\)</span>. Por la minimalidad de <span class="math inline">\(s\)</span>, <span class="math inline">\(s\le-l\)</span>, de donde <span class="math inline">\(l\le-s\)</span>. Así <span class="math inline">\(-s\)</span> es la mayor cota inferior: <span class="math inline">\(\inf_FA=-\sup_F(-A)\)</span>.</p>
+</section>
+<section id="ejercicio-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14">Ejercicio 14</h3>
+<p>Sea <span class="math inline">\(c\in\mathbb Q\)</span>, <span class="math inline">\(c&gt;0\)</span>, y supón que <span class="math inline">\(c\)</span> no es el cuadrado de ningún racional. Prueba directamente que <span class="math inline">\(S_c=\{q\in\mathbb Q:q\ge0,\ q^2&lt;c\}\)</span> no tiene supremo racional. No presupongas la existencia de <span class="math inline">\(\sqrt c\)</span> como real. Elige después <span class="math inline">\(c=3\)</span> como caso concreto.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(S_c\)</span> contiene <span class="math inline">\(0\)</span> y es acotado superiormente; por ejemplo, el racional <span class="math inline">\(M=c+1\)</span> sirve, porque <span class="math inline">\(M&gt;0\)</span> y <span class="math inline">\(M^2=c^2+2c+1&gt;c\)</span>, y todo racional <span class="math inline">\(q\ge M\)</span> cumple <span class="math inline">\(q^2\ge M^2&gt;c\)</span>.</p>
+<p>Sea <span class="math inline">\(s\in\mathbb Q\)</span> candidato. Si <span class="math inline">\(s&lt;0\)</span>, <span class="math inline">\(0\in S_c\)</span> lo descarta; si <span class="math inline">\(s=0\)</span>, se elige un racional positivo <span class="math inline">\(q&lt;\min(1,c/(1+c))\)</span>, que satisface <span class="math inline">\(q^2&lt;q&lt;c\)</span> cuando <span class="math inline">\(q&lt;1\)</span> (y por tanto <span class="math inline">\(q\in S_c\)</span>), de modo que <span class="math inline">\(s=0\)</span> tampoco es cota superior. Para <span class="math inline">\(s&gt;0\)</span>, la hipótesis asegura <span class="math inline">\(s^2\ne c\)</span>.</p>
+<p>Si <span class="math inline">\(s^2&lt;c\)</span>, tomamos un racional <span class="math inline">\(0&lt;\delta&lt;\min\{1,(c-s^2)/(2s+1)\}\)</span>. Entonces <span class="math inline">\(t=s+\delta&gt;s\)</span> y <span class="math inline">\(t^2&lt;s^2+(2s+1)\delta&lt;c\)</span>, así <span class="math inline">\(t\in S_c\)</span>: <span class="math inline">\(s\)</span> no es cota superior. Si <span class="math inline">\(s^2&gt;c\)</span>, tomamos <span class="math inline">\(0&lt;\delta&lt;\min\{s,(s^2-c)/(2s)\}\)</span>. Para <span class="math inline">\(b=s-\delta&gt;0\)</span> se tiene <span class="math inline">\(b^2&gt;s^2-2s\delta&gt;c\)</span>. Todo elemento no negativo <span class="math inline">\(q\)</span> con <span class="math inline">\(q^2&lt;c\)</span> debe satisfacer <span class="math inline">\(q&lt;b\)</span>, pues lo contrario implicaría <span class="math inline">\(q^2\ge b^2&gt;c\)</span>. Así <span class="math inline">\(b\)</span> es una cota superior menor que <span class="math inline">\(s\)</span>. Ningún racional es supremo de <span class="math inline">\(S_c\)</span>.</p>
+<p>Para <span class="math inline">\(c=3\)</span> las hipótesis se verifican porque <span class="math inline">\(3\)</span> no es cuadrado de racional alguno. En efecto, si <span class="math inline">\((p/q)^2=3\)</span> con <span class="math inline">\(p,q\)</span> enteros coprimos y <span class="math inline">\(q\ne0\)</span>, entonces <span class="math inline">\(p^2=3q^2\)</span>. Un cuadrado de entero deja resto <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span> al dividir por <span class="math inline">\(3\)</span>; por ello, de <span class="math inline">\(3\mid p^2\)</span> se sigue <span class="math inline">\(3\mid p\)</span>. Escribiendo <span class="math inline">\(p=3k\)</span> se deduce <span class="math inline">\(q^2=3k^2\)</span>, de modo que <span class="math inline">\(3\mid q\)</span>, contradicción con la coprimalidad. No hemos usado <span class="math inline">\(\sqrt3\)</span> como elemento de un cuerpo real ya existente.</p>
+<p><strong>Orientación para los ejercicios 15–18.</strong> Hasta aquí hemos estudiado los axiomas y sus consecuencias, pero todavía no hemos construido el cuerpo de cortaduras. Los cuatro ejercicios finales anticipan nociones que desarrollaremos en el capítulo siguiente y en los apéndices. No son prerrequisitos para iniciar el capítulo II. Quien prefiera una lectura estrictamente deductiva puede resolver los ejercicios 15 y 17 después de estudiar las cortaduras y la propiedad del supremo por unión; el 16, después del apéndice sobre recintos; y el 18, después del capítulo de unicidad. Las soluciones se conservan aquí completas, para que el lector pueda utilizarlas también como una primera exploración.</p>
+<p>Para poder abordar ahora esos problemas, adelantemos <strong>solo las definiciones</strong>, no las propiedades que todavía tendremos que demostrar. Una <em>cortadura inferior</em> es un conjunto de racionales no vacío y distinto de todos los racionales, cerrado hacia abajo y sin elemento máximo. La <em>cortadura principal</em> de un racional <span class="math inline">\(r\)</span> es <span class="math inline">\(C_r=\{q\in\mathbb Q:q&lt;r\}\)</span>. Denotaremos por <span class="math inline">\(D\)</span> el conjunto de todas las cortaduras y lo ordenaremos por inclusión. Un par racional <span class="math inline">\([\ell,u]\)</span>, con <span class="math inline">\(\ell&lt;u\)</span>, es un <em>recinto</em> de una cortadura <span class="math inline">\(A\)</span> si <span class="math inline">\(C_\ell\subseteq A\subseteq C_u\)</span>; será un <em>intervalo admisible</em> de <span class="math inline">\(A\)</span> si <span class="math inline">\(\ell\in A\)</span> y <span class="math inline">\(u\notin A\)</span>. La distinción entre recinto y admisibilidad se demostrará y utilizará cuidadosamente en el primer apéndice. Aquí no damos por construidas las operaciones sobre cortaduras ni la completitud de <span class="math inline">\(D\)</span>: son precisamente resultados que se justificarán más adelante.</p>
+</section>
+<section id="ejercicio-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15">Ejercicio 15</h3>
+<p>Para <span class="math inline">\(r\in\mathbb Q\)</span>, sea <span class="math inline">\(C_r=\{q\in\mathbb Q:q&lt;r\}\)</span>. Verifica que <span class="math inline">\(C_r\)</span> es una cortadura y demuestra <span class="math inline">\(C_r\subsetneq C_s\iff r&lt;s\)</span>.</p>
+<p><strong>Solución razonada.</strong> <span class="math inline">\(C_r\)</span> es no vacía porque <span class="math inline">\(r-1\in C_r\)</span>, y propia porque <span class="math inline">\(r\notin C_r\)</span>. Si <span class="math inline">\(q\in C_r\)</span> y <span class="math inline">\(p&lt;q\)</span>, entonces <span class="math inline">\(p&lt;r\)</span>, de modo que <span class="math inline">\(p\in C_r\)</span>. Si <span class="math inline">\(q\in C_r\)</span>, el punto medio <span class="math inline">\(q'=(q+r)/2\)</span> cumple <span class="math inline">\(q&lt;q'&lt;r\)</span>, por lo que <span class="math inline">\(q'\in C_r\)</span>; no hay máximo. Para el orden, si <span class="math inline">\(r&lt;s\)</span>, todo racional menor que <span class="math inline">\(r\)</span> es menor que <span class="math inline">\(s\)</span>, así <span class="math inline">\(C_r\subseteq C_s\)</span>; además, <span class="math inline">\(r\in C_s\setminus C_r\)</span>, luego la inclusión es estricta. Recíprocamente, si <span class="math inline">\(C_r\subsetneq C_s\)</span> y <span class="math inline">\(s\le r\)</span>, tendríamos <span class="math inline">\(C_s\subseteq C_r\)</span>, contradicción. Por tricotomía debe ser <span class="math inline">\(r&lt;s\)</span>.</p>
+</section>
+<section id="ejercicio-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16">Ejercicio 16</h3>
+<p>Para <span class="math inline">\(H=C_0\)</span>, demuestra que <span class="math inline">\([0,1]\)</span> es un <em>recinto</em> en el sentido de la definición de las cortaduras, pero no un intervalo admisible. Transfórmalo en uno admisible mediante un ensanchamiento racional. Explica por qué la distinción importa al definir la suma de cortaduras.</p>
+<p><strong>Solución razonada.</strong> Para <span class="math inline">\(H=C_0\)</span>, se cumple <span class="math inline">\(C_0\subseteq H\subseteq C_1\)</span>, así <span class="math inline">\([0,1]\)</span> es un recinto. Pero <span class="math inline">\(0\notin C_0\)</span>, de modo que su extremo inferior no pertenece a <span class="math inline">\(H\)</span>: el intervalo no es admisible. Si <span class="math inline">\(\eta&gt;0\)</span> es racional, <span class="math inline">\([-\eta,1+\eta]\)</span> sí es admisible: <span class="math inline">\(-\eta&lt;0\)</span>, por lo que <span class="math inline">\(-\eta\in C_0\)</span>, mientras que <span class="math inline">\(1+\eta&gt;0\)</span>, de modo que <span class="math inline">\(1+\eta\notin C_0\)</span>. Las operaciones de la construcción mediante recintos se definen usando extremos admisibles; aplicar una fórmula de suma o producto directamente a un recinto arbitrario puede emplear datos que no satisfacen las hipótesis de esa definición. Por esta razón, en la construcción alternativa por recintos se ensancha primero el intervalo hasta hacerlo admisible, antes de introducir sus extremos en las operaciones.</p>
+</section>
+<section id="ejercicio-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17">Ejercicio 17</h3>
+<p>Sea <span class="math inline">\(\mathcal A=\{C_r:r\in\mathbb Q,\ r&lt;1\}\)</span>, una familia de cortaduras. Prueba directamente que <span class="math inline">\(\bigcup\mathcal A=C_1\)</span> y deduce <span class="math inline">\(\sup_D\mathcal A=C_1\)</span> en el conjunto ordenado <span class="math inline">\(D\)</span> de cortaduras.</p>
+<p><strong>Solución razonada.</strong> Sea <span class="math inline">\(U=\bigcup_{r&lt;1}C_r\)</span>. Si <span class="math inline">\(t\in U\)</span>, existe <span class="math inline">\(r\in\mathbb Q\)</span> con <span class="math inline">\(r&lt;1\)</span> y <span class="math inline">\(t&lt;r\)</span>. Por transitividad, <span class="math inline">\(t&lt;1\)</span>, luego <span class="math inline">\(t\in C_1\)</span>. En sentido contrario, dado <span class="math inline">\(t&lt;1\)</span>, el racional <span class="math inline">\(r=(t+1)/2\)</span> cumple <span class="math inline">\(t&lt;r&lt;1\)</span>, así <span class="math inline">\(t\in C_r\subseteq U\)</span>. Por doble inclusión <span class="math inline">\(U=C_1\)</span>. Cada <span class="math inline">\(C_r\)</span> de la familia está contenido en <span class="math inline">\(C_1\)</span>, y si <span class="math inline">\(T\)</span> es otra cortadura que contiene a todos los <span class="math inline">\(C_r\)</span>, contiene también su unión <span class="math inline">\(C_1\)</span>. Por tanto <span class="math inline">\(C_1=\sup_D\mathcal A\)</span>. Se ha usado el orden por inclusión, no un cálculo con límites reales.</p>
+</section>
+<section id="ejercicio-18-para-retomar-después-del-capítulo-de-unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-para-retomar-después-del-capítulo-de-unicidad">Ejercicio 18 — Para retomar después del capítulo de unicidad</h3>
+<p>Este ejercicio anticipa un resultado que todavía no hemos demostrado. Conviene volver a él después del tercer capítulo, cuando dispongamos de la construcción por supremos y del teorema de unicidad.</p>
+<p>Sean <span class="math inline">\(F,G\)</span> cuerpos ordenados completos y <span class="math inline">\(\varphi:F\to G\)</span> el isomorfismo construido en las etapas de la prueba de unicidad. Explica por qué cualquier isomorfismo de cuerpos ordenados <span class="math inline">\(\theta:F\to G\)</span> coincide con <span class="math inline">\(\varphi\)</span>. Escribe explícitamente qué se conserva en los racionales y por qué sus conjuntos de racionales inferiores determinan cada elemento.</p>
+<p><strong>Solución razonada.</strong> Sea <span class="math inline">\(\theta:F\to G\)</span> un isomorfismo de cuerpos ordenados. Por conservar el neutro multiplicativo y ambas operaciones, fija las copias de <span class="math inline">\(1\)</span>, de los naturales (sumas repetidas de <span class="math inline">\(1\)</span>), de los enteros (opuestos) y de los racionales (inversos de enteros no nulos). Por tanto <span class="math inline">\(\theta(q_F)=q_G\)</span> para cada <span class="math inline">\(q\in\mathbb Q\)</span>. Además, como preserva y refleja el orden,</p>
+<p><span class="math display">\[q_G&lt;\theta(x)\iff\theta(q_F)&lt;\theta(x)\iff q_F&lt;x.\]</span></p>
+<p>La construcción del isomorfismo mediante <span class="math inline">\(\varphi\)</span> establece precisamente <span class="math inline">\(q_G&lt;\varphi(x)\iff q_F&lt;x\)</span>. Luego <span class="math inline">\(\theta(x)\)</span> y <span class="math inline">\(\varphi(x)\)</span> tienen los mismos racionales estrictamente inferiores. Si fueran distintos, la densidad racional en <span class="math inline">\(G\)</span> produciría un racional situado estrictamente entre ambos, perteneciente a uno de esos conjuntos inferiores y no al otro. Es imposible. Así <span class="math inline">\(\theta(x)=\varphi(x)\)</span> para todo <span class="math inline">\(x\in F\)</span>. La unicidad no significa que los cuerpos tengan los mismos elementos como conjuntos, sino que hay una sola correspondencia que conserva su estructura de cuerpo ordenado.</p>
+<hr>
+<p><a href="../../../libros/otros/cdr/nota-al-lector.html">← Nota al lector</a> · <a href="../../../libros/otros/la-construccion-de-los-reales.html">Índice del libro</a> · <a href="../../../libros/otros/cdr/capitulo-2.html">Siguiente →</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

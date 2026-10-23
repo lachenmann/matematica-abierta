@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Medir una suma y controlar un error – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#una-suma-puede-cancelar-parte-de-sus-términos" id="toc-una-suma-puede-cancelar-parte-de-sus-términos" class="nav-link active" data-scroll-target="#una-suma-puede-cancelar-parte-de-sus-términos">Una suma puede cancelar parte de sus términos</a></li>
+  <li><a href="#la-desigualdad-triangular-por-cuadrados-y-raíces" id="toc-la-desigualdad-triangular-por-cuadrados-y-raíces" class="nav-link" data-scroll-target="#la-desigualdad-triangular-por-cuadrados-y-raíces">La desigualdad triangular por cuadrados y raíces</a></li>
+  <li><a href="#la-desigualdad-inversa-mide-cuánto-pueden-cambiar-las-magnitudes" id="toc-la-desigualdad-inversa-mide-cuánto-pueden-cambiar-las-magnitudes" class="nav-link" data-scroll-target="#la-desigualdad-inversa-mide-cuánto-pueden-cambiar-las-magnitudes">La desigualdad inversa mide cuánto pueden cambiar las magnitudes</a></li>
+  <li><a href="#por-qué-aparecen-triángulos" id="toc-por-qué-aparecen-triángulos" class="nav-link" data-scroll-target="#por-qué-aparecen-triángulos">Por qué aparecen triángulos</a></li>
+  <li><a href="#la-suma-de-dos-sucesiones-convergentes" id="toc-la-suma-de-dos-sucesiones-convergentes" class="nav-link" data-scroll-target="#la-suma-de-dos-sucesiones-convergentes">La suma de dos sucesiones convergentes</a></li>
+  <li><a href="#una-norma-especifica-qué-entendemos-por-magnitud" id="toc-una-norma-especifica-qué-entendemos-por-magnitud" class="nav-link" data-scroll-target="#una-norma-especifica-qué-entendemos-por-magnitud">Una norma especifica qué entendemos por magnitud</a></li>
+  <li><a href="#la-desigualdad-triangular-y-la-estabilidad-de-los-límites" id="toc-la-desigualdad-triangular-y-la-estabilidad-de-los-límites" class="nav-link" data-scroll-target="#la-desigualdad-triangular-y-la-estabilidad-de-los-límites">La desigualdad triangular y la estabilidad de los límites</a></li>
+  <li><a href="#problemas-y-soluciones-del-capítulo" id="toc-problemas-y-soluciones-del-capítulo" class="nav-link" data-scroll-target="#problemas-y-soluciones-del-capítulo">Problemas y soluciones del capítulo</a></li>
+  <li><a href="#problemas-de-síntesis" id="toc-problemas-de-síntesis" class="nav-link" data-scroll-target="#problemas-de-síntesis">Problemas de síntesis</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Medir una suma y controlar un error</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/cdr/capitulo-3.html">← ¿Qué significa que los reales sean únicos?</a> · <a href="../../../libros/otros/la-construccion-de-los-reales.html">Índice del libro</a> · <a href="../../../libros/otros/cdr/apendice-a.html">Siguiente →</a></p>
+<p>Una aproximación adquiere utilidad cuando podemos controlar su error. Si sumamos dos cantidades aproximadas, la desigualdad triangular permite repartir una tolerancia entre los dos errores y obtener una cota para el resultado. Partiremos del valor absoluto y demostraremos la estimación que sostiene ese procedimiento:</p>
+<p><span class="math display">\[|a+b|\le |a|+|b|.\]</span></p>
+<p>El resultado asegura que sumar errores no puede producir una magnitud mayor que la suma de sus magnitudes individuales. Es una afirmación simple de recordar y sorprendentemente fértil: controla la diferencia entre dos valores absolutos, explica una propiedad geométrica de los triángulos y permite demostrar que la suma de sucesiones convergentes también converge.</p>
+<p>Debemos, sin embargo, distinguir contextos. La desigualdad escalar vale en <strong>todo cuerpo ordenado</strong>, incluso uno en el que no existan raíces de todos los positivos. La longitud euclídea de vectores necesita otras pruebas, y una norma general tiene sus propios axiomas. Al separar estos niveles veremos cómo un razonamiento algebraico elemental llega a convertirse en una herramienta del análisis.</p>
+<p>Como preliminar algebraico, recordemos que en un cuerpo ordenado los elementos <span class="math inline">\(2,4\)</span> son positivos y no nulos. El cuadrado de un elemento negativo también es positivo, pues <span class="math inline">\((-x)^2=x^2&gt;0\)</span> si <span class="math inline">\(x\ne0\)</span>; por consiguiente <span class="math inline">\(x^2=0\)</span> implica <span class="math inline">\(x=0\)</span>. Usaremos estas propiedades sin suponer todavía la existencia de raíces cuadradas para todos los elementos positivos.</p>
+<section id="una-suma-puede-cancelar-parte-de-sus-términos" class="level2">
+<h2 class="anchored" data-anchor-id="una-suma-puede-cancelar-parte-de-sus-términos">Una suma puede cancelar parte de sus términos</h2>
+<p>Para <span class="math inline">\(a=3\)</span> y <span class="math inline">\(b=2\)</span>, sumar conserva toda la magnitud: <span class="math inline">\(|a+b|=5=|a|+|b|\)</span>. Para <span class="math inline">\(a=3\)</span> y <span class="math inline">\(b=-2\)</span>, la suma vale <span class="math inline">\(1\)</span>, aunque las magnitudes individuales siguen sumando <span class="math inline">\(5\)</span>. Cuando los signos se oponen, una parte se cancela. La desigualdad triangular expresa la cota que funciona en todos los casos:</p>
+<p><span class="math display">\[
+\forall a,b\in\mathbb R,\qquad |a+b|\le|a|+|b|.
+\]</span></p>
+<p>El miembro izquierdo mide el resultado de sumar; el derecho mide cada término antes de sumarlos. El signo <span class="math inline">\(\le\)</span> admite tanto igualdad como cancelación. Por ejemplo, para <span class="math inline">\(a=4,b=-4\)</span>, el miembro izquierdo es cero y el derecho es ocho. El nombre geométrico se comprenderá después; empezaremos por el caso escalar, que es anterior a cualquier construcción de normas vectoriales.</p>
+<p>Para leer la fórmula necesitamos precisar el valor absoluto. Si <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(|x|=x\)</span>; si <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(|x|=-x\)</span>. El resultado es siempre no negativo, y sólo es cero cuando <span class="math inline">\(x=0\)</span>. Por eso «hacer positivo» debe entenderse con atención al cero. La distancia de <span class="math inline">\(-3\)</span> al origen es <span class="math inline">\(3\)</span>, y la de <span class="math inline">\(0\)</span> al origen es <span class="math inline">\(0\)</span>.</p>
+<p>Una observación elemental es <span class="math inline">\(x\le|x|\)</span>. Para <span class="math inline">\(x\ge0\)</span> hay igualdad; para <span class="math inline">\(x&lt;0\)</span>, el miembro izquierdo es negativo y el derecho positivo. También <span class="math inline">\(-x\le|x|\)</span>, lo que produce una cota por ambos lados: <span class="math inline">\(-|x|\le x\le|x|\)</span>.</p>
+</section>
+<section id="la-desigualdad-triangular-por-cuadrados-y-raíces" class="level2">
+<h2 class="anchored" data-anchor-id="la-desigualdad-triangular-por-cuadrados-y-raíces">La desigualdad triangular por cuadrados y raíces</h2>
+<p>La prueba por cuadrados compara dos cantidades que podremos desarrollar con la distributividad. El paso de regreso a sus magnitudes exige usar que el cuadrado es estrictamente creciente entre elementos no negativos. Esta propiedad de orden permitirá comprender exactamente qué hace la notación de raíz.</p>
+<p>Para demostrar la desigualdad, comparemos dos expansiones cuadráticas. Al desarrollar <span class="math inline">\((a+b)^2\)</span>, el término cuyo signo cambia es <span class="math inline">\(2ab\)</span>. Los cuadrados <span class="math inline">\(a^2\)</span> y <span class="math inline">\(b^2\)</span> son no negativos. Si reemplazamos <span class="math inline">\(ab\)</span> por <span class="math inline">\(|a||b|\)</span>, ese término no disminuye. La identidad <span class="math inline">\(|ab|=|a||b|\)</span> se demuestra atendiendo a los signos: con dos factores positivos o dos negativos, el producto es positivo y las magnitudes multiplicadas valen <span class="math inline">\(ab\)</span>; con signos opuestos valen <span class="math inline">\(-ab\)</span>; si hay un cero, todos esos productos se anulan. Aplicando <span class="math inline">\(x\le|x|\)</span> a <span class="math inline">\(x=ab\)</span>, obtenemos <span class="math inline">\(ab\le|a||b|\)</span>. Este razonamiento no requiere multiplicar desigualdades por factores de signo desconocido.</p>
+<p>Como <span class="math inline">\(2&gt;0\)</span>, podemos duplicar esa desigualdad y sumar los cuadrados:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(a+b)^2&amp;=a^2+2ab+b^2\\
+&amp;\le |a|^2+2|a||b|+|b|^2\\
+&amp;=(|a|+|b|)^2.
+\end{aligned}
+\]</span></p>
+<p>Podemos comparar ahora las raíces no negativas de ambos miembros; este paso exige dos justificaciones. La primera es que <span class="math inline">\(\sqrt{z^2}=|z|\)</span>: <span class="math inline">\(|z|\)</span> es no negativo, su cuadrado es <span class="math inline">\(z^2\)</span> y ninguna otra raíz no negativa puede tener el mismo cuadrado. La segunda es que, entre números no negativos, el orden de los cuadrados conserva el orden original. Si <span class="math inline">\(0\le u&lt;v\)</span>, entonces <span class="math inline">\(v^2-u^2=(v-u)(v+u)&gt;0\)</span>; por tanto, <span class="math inline">\(u^2\le v^2\)</span> impide <span class="math inline">\(u&gt;v\)</span>.</p>
+<p>Aplicando esas razones a los cuadrados que ya tenemos,</p>
+<p><span class="math display">\[
+|a+b|\le\bigl||a|+|b|\bigr|=|a|+|b|.
+\]</span></p>
+<p>La última igualdad usa que la suma de dos números no negativos es no negativa. Permanece válida si ambos son cero. Tomar raíces de cuadrados no exige que todo positivo de un cuerpo ordenado tenga raíz: aquí los radicandos ya son cuadrados. La existencia de raíces para reales no negativos en general se demuestra por supremos en la demostración complementaria, como una ampliación distinta.</p>
+<p><strong>Cuándo hay igualdad.</strong> La diferencia de los cuadrados de ambos miembros de la triangular es <span class="math inline">\(2(|a||b|-ab)\)</span>. Se anula exactamente cuando <span class="math inline">\(ab\ge0\)</span>. En la recta hay igualdad si los signos coinciden o si uno de los números es cero; con signos opuestos y ambos no nulos hay desigualdad estricta. Por ejemplo, <span class="math inline">\(a=-3,b=-2\)</span> también da igualdad, aunque ambos números sean negativos.</p>
+<p>Una segunda demostración, que encontraremos entre las variantes matemáticas, suma las cotas <span class="math inline">\(-|a|\le a\le|a|\)</span> y <span class="math inline">\(-|b|\le b\le|b|\)</span>. Su interés es mostrar la triangular como una afirmación sobre cotas dobles. Esta alternativa ilumina el argumento de orden sin sustituir el camino por cuadrados seguido antes.</p>
+<section id="valor-absoluto-y-casos-de-signo" class="level3">
+<h3 class="anchored" data-anchor-id="valor-absoluto-y-casos-de-signo">Valor absoluto y casos de signo</h3>
+<p>Para <span class="math inline">\(x\)</span> en un cuerpo ordenado <span class="math inline">\(F\)</span>, definimos <span class="math inline">\(|x|=x\)</span> si <span class="math inline">\(x\ge0\)</span> y <span class="math inline">\(|x|=-x\)</span> si <span class="math inline">\(x&lt;0\)</span>. Los dos casos son exhaustivos y disjuntos por totalidad del orden; la regla asigna un único elemento. De ella se deducen <span class="math inline">\(|x|\ge0\)</span>, <span class="math inline">\(|x|=0\iff x=0\)</span>, <span class="math inline">\(|-x|=|x|\)</span>, <span class="math inline">\(|x|^2=x^2\)</span> y <span class="math inline">\(-|x|\le x\le|x|\)</span>.</p>
+<p>Si <span class="math inline">\(x\ge0\)</span>, las primeras afirmaciones se reducen a <span class="math inline">\(x\ge0\)</span>, y <span class="math inline">\(-x\le x\)</span> porque <span class="math inline">\(2x\ge0\)</span>. Si <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(-x&gt;0\)</span>, <span class="math inline">\(x=-|x|&lt;|x|\)</span> y <span class="math inline">\((-x)^2=x^2\)</span>. Para la simetría, si <span class="math inline">\(x&gt;0\)</span> se tiene <span class="math inline">\(|-x|=-(-x)=x\)</span>; si <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(-x&gt;0\)</span> da <span class="math inline">\(|-x|=-x\)</span>; para <span class="math inline">\(x=0\)</span> ambos lados son cero. La igualdad <span class="math inline">\(|x|=0\)</span> en cada rama exige <span class="math inline">\(x=0\)</span>. Estas verificaciones cubren también los casos de borde que la expresión informal «hacer positivo» puede ocultar.</p>
+</section>
+<section id="producto-y-control-de-signos" class="level3">
+<h3 class="anchored" data-anchor-id="producto-y-control-de-signos">Producto y control de signos</h3>
+<p>Para todo <span class="math inline">\(a,b\in F\)</span>, <span class="math inline">\(|ab|=|a||b|\)</span> y <span class="math inline">\(ab\le|a||b|\)</span>. Si alguno es cero, ambos productos de la igualdad son cero. Si ambos son positivos, <span class="math inline">\(ab&gt;0\)</span> y los dos lados valen <span class="math inline">\(ab\)</span>. Si ambos son negativos, <span class="math inline">\(ab=(-a)(-b)&gt;0\)</span> y <span class="math inline">\(|a||b|=(-a)(-b)=ab\)</span>. Si tienen signos opuestos, <span class="math inline">\(ab&lt;0\)</span> y <span class="math inline">\(|a||b|=-ab=|ab|\)</span>. La desigualdad resulta de aplicar el valor absoluto a <span class="math inline">\(x=ab\)</span>.</p>
+<p>No se multiplica <span class="math inline">\(a\le|a|\)</span> por un <span class="math inline">\(b\)</span> de signo desconocido. Multiplicar una desigualdad por un negativo invierte su sentido; el análisis de signos evita esa inferencia ilegítima.</p>
+</section>
+<section id="cotas-dobles-y-equivalencias" class="level3">
+<h3 class="anchored" data-anchor-id="cotas-dobles-y-equivalencias">Cotas dobles y equivalencias</h3>
+<p>Para <span class="math inline">\(c\ge0\)</span> y <span class="math inline">\(t\in F\)</span>,</p>
+<p><span class="math display">\[
+|t|\le c\iff -c\le t\le c.
+\]</span></p>
+<p>La dirección directa usa <span class="math inline">\(-|t|\le t\le|t|\)</span> y <span class="math inline">\(-|t|\ge-c\)</span>. Para la recíproca, si <span class="math inline">\(t\ge0\)</span>, <span class="math inline">\(|t|=t\le c\)</span>; si <span class="math inline">\(t&lt;0\)</span>, <span class="math inline">\(t\ge-c\)</span> equivale, al negar ambos miembros, a <span class="math inline">\(-t\le c\)</span>, y <span class="math inline">\(|t|=-t\)</span>. Para <span class="math inline">\(c&gt;0\)</span>, el mismo razonamiento con desigualdades estrictas demuestra</p>
+<p><span class="math display">\[
+|t|&lt;c\iff -c&lt;t&lt;c.
+\]</span></p>
+<p>Con <span class="math inline">\(c=0\)</span>, la versión no estricta exige <span class="math inline">\(t=0\)</span>; la estricta tiene ambos miembros falsos. No se convierte una cadena no estricta en una estricta.</p>
+</section>
+<section id="cuadrados-y-raíces-de-cuadrados" class="level3">
+<h3 class="anchored" data-anchor-id="cuadrados-y-raíces-de-cuadrados">Cuadrados y raíces de cuadrados</h3>
+<p>Para <span class="math inline">\(0\le u&lt;v\)</span>, <span class="math inline">\(v^2-u^2=(v-u)(v+u)&gt;0\)</span> porque ambos factores son positivos. Por consiguiente, para <span class="math inline">\(u,v\ge0\)</span>,</p>
+<p><span class="math display">\[
+u\le v\iff u^2\le v^2.
+\]</span></p>
+<p>La dirección directa incluye el caso <span class="math inline">\(u=v\)</span>; la recíproca excluye <span class="math inline">\(u&gt;v\)</span> por el resultado estricto. Todo cuadrado <span class="math inline">\(z^2\)</span> posee una raíz no negativa, <span class="math inline">\(|z|\)</span>, por las propiedades elementales del valor absoluto. Si <span class="math inline">\(r\ge0\)</span> y <span class="math inline">\(r^2=z^2=|z|^2\)</span>, la equivalencia anterior en ambas direcciones da <span class="math inline">\(r=|z|\)</span>. Es legítimo escribir <span class="math inline">\(\sqrt{z^2}=|z|\)</span>, incluso si <span class="math inline">\(F\)</span> no posee raíces de todos sus positivos. Además, si dos cuadrados están ordenados, sus raíces no negativas conservan el orden. Esta comparación basta para el argumento escalar y no usa completitud.</p>
+</section>
+<section id="la-desigualdad-triangular-mediante-cuadrados" class="level3">
+<h3 class="anchored" data-anchor-id="la-desigualdad-triangular-mediante-cuadrados">La desigualdad triangular mediante cuadrados</h3>
+<p>Sean <span class="math inline">\(a,b\in F\)</span>. Por la identidad <span class="math inline">\(|ab|=|a||b|\)</span>, <span class="math inline">\(ab\le|a||b|\)</span>; multiplicamos por <span class="math inline">\(2&gt;0\)</span> y sumamos <span class="math inline">\(a^2=|a|^2\)</span> y <span class="math inline">\(b^2=|b|^2\)</span>. Las expansiones distributivas dan</p>
+<p><span class="math display">\[
+(a+b)^2=a^2+2ab+b^2
+\le |a|^2+2|a||b|+|b|^2=(|a|+|b|)^2.
+\]</span></p>
+<p>Cada miembro es el cuadrado de un elemento no negativo explícito. La monotonía estricta del cuadrado en ese dominio permite comparar esos elementos y garantiza que son las raíces no negativas correspondientes. Aplicamos esa propiedad para obtener:</p>
+<p><span class="math display">\[
+|a+b|=\sqrt{(a+b)^2}
+\le\sqrt{(|a|+|b|)^2}=\bigl||a|+|b|\bigr|=|a|+|b|.
+\]</span></p>
+<p>La última igualdad usa <span class="math inline">\(|a|+|b|\ge0\)</span>, incluyendo <span class="math inline">\(a=b=0\)</span>. Las palabras «positivo» o «estrictamente positivo» no justifican excluir ese caso. La demostración funciona en cualquier cuerpo ordenado: no depende de la completitud ni de haber construido raíces cuadradas para todos los positivos.</p>
+</section>
+<section id="igualdad-en-la-recta" class="level3">
+<h3 class="anchored" data-anchor-id="igualdad-en-la-recta">Igualdad en la recta</h3>
+<p>Para <span class="math inline">\(a,b\in F\)</span>,</p>
+<p><span class="math display">\[
+|a+b|=|a|+|b|\iff ab\ge0.
+\]</span></p>
+<p>La diferencia de los cuadrados de ambos miembros es <span class="math inline">\(2(|a||b|-ab)\)</span>. Ambos miembros son no negativos; por la monotonía del cuadrado entre elementos no negativos, su igualdad equivale a <span class="math inline">\(|a||b|=ab\)</span>. Por la identidad <span class="math inline">\(|ab|=|a||b|\)</span>, esto equivale a <span class="math inline">\(|ab|=ab\)</span>, es decir, a <span class="math inline">\(ab\ge0\)</span>. Incluye los ceros y los signos iguales.</p>
+<p>La desigualdad triangular aparece aquí sin recurrir a la completitud. La notación de raíz no debe engañarnos: al pasar de <span class="math inline">\((a+b)^2\)</span> a <span class="math inline">\(|a+b|\)</span> sólo tomamos la raíz no negativa de un cuadrado que ya existe. Por otra parte, el caso de igualdad revela el papel de los signos: dos sumandos pueden reforzarse o cancelarse. La prueba por cotas del apéndice proporciona otro camino al mismo resultado, pero no reemplaza la vía por cuadrados que hemos seguido.</p>
+</section>
+</section>
+<section id="la-desigualdad-inversa-mide-cuánto-pueden-cambiar-las-magnitudes" class="level2">
+<h2 class="anchored" data-anchor-id="la-desigualdad-inversa-mide-cuánto-pueden-cambiar-las-magnitudes">La desigualdad inversa mide cuánto pueden cambiar las magnitudes</h2>
+<p>Si dos números están próximos, sus valores absolutos no pueden estar más lejos que ellos. La afirmación precisa es</p>
+<p><span class="math display">\[
+\bigl||a|-|b|\bigr|\le|a-b|.
+\]</span></p>
+<p>Hay dos niveles de barras: primero se calculan <span class="math inline">\(|a|\)</span> y <span class="math inline">\(|b|\)</span>; luego se toma la magnitud de su diferencia. Por ejemplo, <span class="math inline">\(a=3,b=7\)</span> produce <span class="math inline">\(|3-7|=4\)</span> en ambos miembros. Para <span class="math inline">\(a=3,b=-7\)</span>, las magnitudes difieren en cuatro, pero los números distan diez.</p>
+<p>La desigualdad triangular inversa se deduce directamente de la desigualdad que acabamos de probar. Escribimos <span class="math inline">\(a=(a-b)+b\)</span> y aplicamos la cota ya demostrada:</p>
+<p><span class="math display">\[
+|a|\le|a-b|+|b|,\qquad |a|-|b|\le|a-b|.
+\]</span></p>
+<p>Todavía falta controlar cuánto puede ser negativo <span class="math inline">\(|a|-|b|\)</span>. Intercambiar <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> proporciona <span class="math inline">\(|b|-|a|\le|b-a|\)</span>. Como <span class="math inline">\(b-a=-(a-b)\)</span> y el valor absoluto no cambia al negar su argumento, <span class="math inline">\(|b-a|=|a-b|\)</span>. Negando la desigualdad intercambiada queda</p>
+<p><span class="math display">\[
+-|a-b|\le|a|-|b|\le|a-b|.
+\]</span></p>
+<p>Para terminar necesitamos interpretar una cota simétrica. Si <span class="math inline">\(c\ge0\)</span>, las condiciones <span class="math inline">\(-c\le t\le c\)</span> y <span class="math inline">\(|t|\le c\)</span> son equivalentes. Si <span class="math inline">\(t\ge0\)</span>, basta su cota superior; si <span class="math inline">\(t&lt;0\)</span>, su cota inferior equivale a <span class="math inline">\(-t\le c\)</span>, y <span class="math inline">\(-t=|t|\)</span>. La dirección contraria usa <span class="math inline">\(-|t|\le t\le|t|\)</span>. Tomando <span class="math inline">\(t=|a|-|b|\)</span> y <span class="math inline">\(c=|a-b|\)</span>, obtenemos la desigualdad inversa.</p>
+<section id="desigualdad-triangular-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="desigualdad-triangular-inversa">Desigualdad triangular inversa</h3>
+<p>Para <span class="math inline">\(a,b\in F\)</span>, escribimos <span class="math inline">\(a=(a-b)+b\)</span>. Por la desigualdad triangular,</p>
+<p><span class="math display">\[
+|a|\le|a-b|+|b|,\qquad |a|-|b|\le|a-b|.
+\]</span></p>
+<p>Intercambiando <span class="math inline">\(a,b\)</span>, <span class="math inline">\(|b|-|a|\le|b-a|=|a-b|\)</span>, donde la igualdad se deduce de la simetría del valor absoluto, y no únicamente del ejemplo <span class="math inline">\(a=3,b=7\)</span>. Negar la última desigualdad produce <span class="math inline">\(-|a-b|\le|a|-|b|\)</span>. En conjunto,</p>
+<p><span class="math display">\[
+-|a-b|\le|a|-|b|\le|a-b|.
+\]</span></p>
+<p>Aplicamos la equivalencia entre valor absoluto y cotas dobles con <span class="math inline">\(t=|a|-|b|\)</span> y <span class="math inline">\(c=|a-b|\ge0\)</span> para concluir <span class="math inline">\(\bigl||a|-|b|\bigr|\le|a-b|\)</span>. No se usa la desigualdad inversa para demostrar la triangular.</p>
+</section>
+<section id="sumas-finitas" class="level3">
+<h3 class="anchored" data-anchor-id="sumas-finitas">Sumas finitas</h3>
+<p>Para <span class="math inline">\(m\ge1\)</span> y <span class="math inline">\(x_1,\ldots,x_m\in F\)</span>, <span class="math inline">\(|\sum_{j=1}^m x_j|\le\sum_{j=1}^m|x_j|\)</span>. Para <span class="math inline">\(m=1\)</span> hay igualdad. Si vale para <span class="math inline">\(m\)</span>, la desigualdad triangular aplicada a <span class="math inline">\(\sum_{j=1}^m x_j\)</span> y <span class="math inline">\(x_{m+1}\)</span> da la cota para <span class="math inline">\(m+1\)</span>, tras sustituir la hipótesis inductiva. La suma vacía vale cero y satisface también la cota.</p>
+<p>La desigualdad triangular inversa permite controlar un error después de aplicar el valor absoluto. Si dos cantidades distan poco, sus magnitudes también distan poco: <span class="math inline">\(\bigl||a|-|b|\bigr|\le |a-b|\)</span>. El punto de la prueba fue obtener las dos desigualdades en sentidos opuestos, no elegir arbitrariamente cuál de los dos valores absolutos era mayor. La misma técnica sirve para estimar sumas finitas.</p>
+</section>
+</section>
+<section id="por-qué-aparecen-triángulos" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-aparecen-triángulos">Por qué aparecen triángulos</h2>
+<p>La prueba escalar anterior utilizó únicamente sumas, productos y el orden de un cuerpo. Cuando se pasa a vectores, la palabra «longitud» introduce un objeto nuevo: una función que asigna a cada vector un número no negativo. Antes de transportar la desigualdad debemos construir esa función y comprobar las propiedades que necesitamos de ella. Esta etapa muestra por qué una analogía geométrica puede orientar una demostración sin reemplazarla.</p>
+<p>La geometría es una aplicación, no una sustitución literal de letras. Entre la magnitud escalar y la longitud de un vector tendremos que construir las raíces necesarias y probar Cauchy–Schwarz.</p>
+<p>Imaginemos dos vectores del plano colocados uno a continuación del otro. El primero lleva del punto <span class="math inline">\(A\)</span> al punto <span class="math inline">\(C\)</span>, y el segundo de <span class="math inline">\(C\)</span> a <span class="math inline">\(B\)</span>. Su suma lleva de <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span>. Los tres segmentos delimitan un triángulo cuando los puntos no son colineales. Si usamos la longitud euclídea,</p>
+<p><span class="math display">\[
+\|u+v\|_2\le\|u\|_2+\|v\|_2,
+\]</span></p>
+<p>el segmento directo no supera la suma de los otros dos. La afirmación vale para cualquiera de los lados del triángulo al nombrar de nuevo los puntos. La longitud de <span class="math inline">\(u+v\)</span> no tiene que ser siempre la mayor de las tres: en el dibujo particular puede serlo, pero por ejemplo <span class="math inline">\(u=(2,0),v=(-1,0)\)</span> da longitudes <span class="math inline">\(1,2,1\)</span>. La prueba escalar anterior cuantifica sobre números; introducir vectores en su fórmula no demuestra una nueva desigualdad. Para el plano definimos <span class="math inline">\(\|u\|_2=\sqrt{u_1^2+u_2^2}\)</span> y el producto escalar <span class="math inline">\(u\cdot v=u_1v_1+u_2v_2\)</span>. La identidad</p>
+<p><span class="math display">\[
+\|u\|_2^2\|v\|_2^2-(u\cdot v)^2=(u_1v_2-u_2v_1)^2\ge0
+\]</span></p>
+<p>demuestra <span class="math inline">\(u\cdot v\le\|u\|_2\|v\|_2\)</span>. Al expandir el cuadrado de la longitud de la suma, obtenemos</p>
+<p><span class="math display">\[
+\|u+v\|_2^2\le(\|u\|_2+\|v\|_2)^2.
+\]</span></p>
+<p>La comparación entre números no negativos permite tomar raíces y concluir la triangular vectorial. Este razonamiento demuestra la desigualdad vectorial mediante Cauchy–Schwarz, sin pretender deducirla de la versión escalar por un mero cambio de símbolos.</p>
+<p>Vale la pena preguntarse cuándo hay igualdad. En la geometría euclídea, si ambos vectores son no nulos, deben tener la misma dirección y el mismo sentido. Se admite también un vector nulo. Que el triángulo tenga área cero no caracteriza por sí solo esa igualdad: con <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(-1,0)\)</span>, la suma tiene longitud cero y las longitudes individuales suman dos. La orientación decide si el recorrido intermedio avanza hacia el destino o retrocede.</p>
+<p>Si se define una métrica <span class="math inline">\(d\)</span>, la triangular se escribe <span class="math inline">\(d(A,B)\le d(A,C)+d(C,B)\)</span>. Esta formulación compara tres distancias sin presuponer rectas, flechas o caminos mínimos. En el plano euclídeo coincide con la intuición del recorrido directo; la sola definición de métrica no garantiza que existan curvas que alcancen una distancia mínima.</p>
+<section id="raíz-de-un-real-no-negativo" class="level3">
+<h3 class="anchored" data-anchor-id="raíz-de-un-real-no-negativo">Raíz de un real no negativo</h3>
+<p>Para todo <span class="math inline">\(c\in\mathbb R\)</span>, <span class="math inline">\(c\ge0\)</span>, existe un único <span class="math inline">\(s\ge0\)</span> con <span class="math inline">\(s^2=c\)</span>. Para <span class="math inline">\(c=0\)</span>, <span class="math inline">\(s=0\)</span> y su unicidad procede de la estricta monotonía del cuadrado entre elementos no negativos. Sea <span class="math inline">\(c&gt;0\)</span>. El conjunto <span class="math inline">\(S=\{x\in\mathbb R:x\ge0,\ x^2\le c\}\)</span> contiene cero. Es acotado superiormente por <span class="math inline">\(c+1\)</span>, pues <span class="math inline">\((c+1)^2&gt;c\)</span> y la monotonía del cuadrado excluye de <span class="math inline">\(S\)</span> cualquier <span class="math inline">\(x&gt;c+1\)</span>. Sea <span class="math inline">\(s=\sup S\)</span>. Es positivo: <span class="math inline">\(x=c/(c+1)&gt;0\)</span> pertenece a <span class="math inline">\(S\)</span>, puesto que <span class="math inline">\(c&lt;(c+1)^2\)</span> implica <span class="math inline">\(x^2&lt;c\)</span>; el denominador es positivo.</p>
+<p>Si <span class="math inline">\(s^2&lt;c\)</span>, sea <span class="math inline">\(d=c-s^2&gt;0\)</span> y elijamos <span class="math inline">\(h=\min\{1,d/[2(2s+1)]\}&gt;0\)</span>. Todos los denominadores son positivos. Como <span class="math inline">\(h\le1\)</span>,</p>
+<p><span class="math display">\[
+(s+h)^2-s^2=2sh+h^2\le(2s+1)h\le d/2&lt;d.
+\]</span></p>
+<p>Así, <span class="math inline">\(s+h\in S\)</span> y <span class="math inline">\(s+h&gt;s\)</span>, contradicción. Si <span class="math inline">\(s^2&gt;c\)</span>, sea <span class="math inline">\(d=s^2-c&gt;0\)</span> y <span class="math inline">\(h=\min\{s/2,d/(4s)\}&gt;0\)</span>. Entonces <span class="math inline">\(s-h\ge s/2&gt;0\)</span> y</p>
+<p><span class="math display">\[
+(s-h)^2=s^2-2sh+h^2\ge s^2-d/2&gt;c.
+\]</span></p>
+<p>Todo <span class="math inline">\(x\in S\)</span> debe cumplir <span class="math inline">\(x\le s-h\)</span>: si <span class="math inline">\(x&gt;s-h\)</span>, la monotonía estricta de cuadrados daría <span class="math inline">\(x^2&gt;(s-h)^2&gt;c\)</span>. Por tanto <span class="math inline">\(s-h\)</span> sería una cota superior menor que <span class="math inline">\(s\)</span>, otra contradicción. Queda <span class="math inline">\(s^2=c\)</span>. Dos raíces no negativas son iguales por la monotonía del cuadrado entre elementos no negativos. La función <span class="math inline">\(c\mapsto\sqrt c\)</span> preserva el orden, nuevamente por la monotonía del cuadrado entre elementos no negativos. No usa continuidad, límites, triangular, inversa ni Cauchy–Schwarz.</p>
+</section>
+<section id="cauchyschwarz-en-el-plano" class="level3">
+<h3 class="anchored" data-anchor-id="cauchyschwarz-en-el-plano">Cauchy–Schwarz en el plano</h3>
+<p>Para <span class="math inline">\(u=(u_1,u_2),v=(v_1,v_2)\in\mathbb R^2\)</span>, definimos <span class="math inline">\(u\cdot v=u_1v_1+u_2v_2\)</span> y <span class="math inline">\(\|u\|_2=\sqrt{u_1^2+u_2^2}\)</span>. El radicando es no negativo y el teorema de existencia y unicidad de raíces no negativas, demostrado antes en este capítulo, legitima la definición. Sean <span class="math inline">\(U=\|u\|_2\)</span> y <span class="math inline">\(V=\|v\|_2\)</span>. La expansión algebraica verifica</p>
+<p><span class="math display">\[
+U^2V^2-(u\cdot v)^2=(u_1v_2-u_2v_1)^2\ge0.
+\]</span></p>
+<p>Como <span class="math inline">\(|u\cdot v|\)</span> y <span class="math inline">\(UV\)</span> son no negativos, la monotonía del cuadrado implica <span class="math inline">\(|u\cdot v|\le UV\)</span>; en particular <span class="math inline">\(u\cdot v\le UV\)</span>. La igualdad en la versión absoluta equivale a <span class="math inline">\(u_1v_2-u_2v_1=0\)</span>. Si <span class="math inline">\(u\ne0\)</span>, eligiendo una coordenada <span class="math inline">\(u_i\ne0\)</span> y poniendo <span class="math inline">\(\lambda=v_i/u_i\)</span>, la identidad de determinante cero fuerza la otra coordenada <span class="math inline">\(v_j=\lambda u_j\)</span>. Para <span class="math inline">\(u=0\)</span> el determinante se anula para cualquier <span class="math inline">\(v\)</span>. No presupone la desigualdad triangular vectorial.</p>
+</section>
+<section id="triangular-euclídea-e-igualdad" class="level3">
+<h3 class="anchored" data-anchor-id="triangular-euclídea-e-igualdad">Triangular euclídea e igualdad</h3>
+<p>Para <span class="math inline">\(u,v\in\mathbb R^2\)</span>, la expansión del cuadrado y la desigualdad de Cauchy–Schwarz recién demostrada dan</p>
+<p><span class="math display">\[
+\|u+v\|_2^2=U^2+2u\cdot v+V^2\le U^2+2UV+V^2=(U+V)^2.
+\]</span></p>
+<p>Por la monotonía del cuadrado entre elementos no negativos, <span class="math inline">\(\|u+v\|_2\le U+V\)</span>. Hay igualdad exactamente cuando <span class="math inline">\(u\cdot v=UV\)</span>. Si alguno es cero, hay igualdad. Si ambos son no nulos, esta condición implica igualdad absoluta en el caso de igualdad de Cauchy–Schwarz, por lo que <span class="math inline">\(v=\lambda u\)</span>; además <span class="math inline">\(\lambda U^2=u\cdot v=UV&gt;0\)</span>, y <span class="math inline">\(\lambda&gt;0\)</span>. Recíprocamente, para <span class="math inline">\(\lambda&gt;0\)</span> se tiene <span class="math inline">\(V=\lambda U\)</span> porque ambos lados son no negativos y sus cuadrados coinciden. Entonces <span class="math inline">\(u\cdot v=\lambda U^2=UV\)</span> y hay igualdad.</p>
+<p>La descripción exacta es: algún vector nulo, o vectores no nulos con la misma dirección y el mismo sentido. La mera área cero no basta: <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(-1,0)\)</span> producen <span class="math inline">\(\|u+v\|_2=0&lt;2=U+V\)</span>. La caracterización tampoco vale para toda norma: en <span class="math inline">\(\ell^1\)</span> del plano, <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(0,1)\)</span> tienen igualdad y no son paralelos.</p>
+<p>Para comprobar que la longitud euclídea es realmente una norma, además de la triangular ya probada, verificamos las otras cláusulas. La raíz es no negativa por definición. Si <span class="math inline">\(\|u\|_2=0\)</span>, entonces <span class="math inline">\(u_1^2+u_2^2=0\)</span>; ambos sumandos no negativos deben ser cero, y cada coordenada es cero. La recíproca es inmediata por la definición. Para todo <span class="math inline">\(\lambda\in\mathbb R\)</span>, los números <span class="math inline">\(\|\lambda u\|_2\)</span> y <span class="math inline">\(|\lambda|\|u\|_2\)</span> son no negativos y sus cuadrados valen <span class="math inline">\(\lambda^2(u_1^2+u_2^2)\)</span>; por la monotonía del cuadrado entre elementos no negativos son iguales, incluso si <span class="math inline">\(\lambda=0\)</span>. Se han verificado así las tres cláusulas antes de utilizar la longitud como ejemplo de norma.</p>
+<p>Para pasar de una magnitud escalar a la longitud de un vector hubo que pagar dos deudas. La primera es justificar las raíces de todos los positivos con la propiedad del supremo; la segunda es demostrar la desigualdad de Cauchy–Schwarz mediante una identidad algebraica y deducir de ella la triangular euclídea. Este camino explica también por qué la condición de igualdad depende de la norma: no basta dibujar dos vectores colineales, hay que distinguir si tienen o no el mismo sentido.</p>
+</section>
+</section>
+<section id="la-suma-de-dos-sucesiones-convergentes" class="level2">
+<h2 class="anchored" data-anchor-id="la-suma-de-dos-sucesiones-convergentes">La suma de dos sucesiones convergentes</h2>
+<p>Al pasar a sucesiones no basta manipular símbolos de límites: fijada una tolerancia, deben elegirse índices que controlen simultáneamente los errores de ambos sumandos.</p>
+<p>Volvamos a los números reales para estudiar una consecuencia analítica de la desigualdad. Una sucesión es una función de los naturales positivos en los reales. Sus primeros términos orientan la intuición, pero una lista finita no determina ni la sucesión ni su límite. Como ejemplo, definamos <span class="math inline">\(a_n=3+10^{-n}\)</span> y <span class="math inline">\(b_n=2-10^{-n}\)</span>. La primera converge a tres, la segunda a dos y su suma es exactamente cinco en todo índice.</p>
+<p>La definición precisa de <span class="math inline">\(a_n\to a\)</span> exige que para cada <span class="math inline">\(\varepsilon&gt;0\)</span> exista un índice <span class="math inline">\(N\)</span> tal que todos los <span class="math inline">\(n\ge N\)</span> cumplan <span class="math inline">\(|a_n-a|&lt;\varepsilon\)</span>. La tolerancia se fija antes del índice. Un índice puede depender de la tolerancia; no puede depender del término concreto que después se examina. Para comprobar los ejemplos anteriores, <span class="math inline">\(10^n\ge n\)</span> para <span class="math inline">\(n\ge1\)</span> por inducción: vale en <span class="math inline">\(n=1\)</span> y <span class="math inline">\(10^{n+1}\ge10n\ge n+1\)</span>. De modo que <span class="math inline">\(10^{-n}\le1/n\)</span>. Por la propiedad arquimediana elegimos <span class="math inline">\(N&gt;1/\varepsilon\)</span>, y para todo <span class="math inline">\(n\ge N\)</span> ambos errores, <span class="math inline">\(|a_n-3|\)</span> y <span class="math inline">\(|b_n-2|\)</span>, son menores que <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Si <span class="math inline">\(a_n\to a\)</span> y <span class="math inline">\(b_n\to b\)</span>, queremos que el error de su suma sea pequeño. La identidad algebraica reagrupa ese error:</p>
+<p><span class="math display">\[
+|(a_n+b_n)-(a+b)|=|(a_n-a)+(b_n-b)|
+\le|a_n-a|+|b_n-b|.
+\]</span></p>
+<p>Cada sumando de la derecha ya es controlable por una hipótesis de convergencia. Fijado <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos <span class="math inline">\(N_a\)</span> para que el primer error sea menor que <span class="math inline">\(\varepsilon/2\)</span>, y <span class="math inline">\(N_b\)</span> para que el segundo sea menor que <span class="math inline">\(\varepsilon/2\)</span>. A partir de <span class="math inline">\(N=\max\{N_a,N_b\}\)</span>, ambos controles valen en el mismo índice. La suma de errores es menor que <span class="math inline">\(\varepsilon\)</span>, y queda <span class="math inline">\(a_n+b_n\to a+b\)</span>.</p>
+<p>La partición en mitades responde a un presupuesto de error. También servirían <span class="math inline">\(\varepsilon/3\)</span> y <span class="math inline">\(2\varepsilon/3\)</span>. En cambio, exigir a cada error solamente que sea menor que <span class="math inline">\(\varepsilon\)</span> produciría una cota <span class="math inline">\(2\varepsilon\)</span>, insuficiente para cerrar esa prueba con la tolerancia ya fijada. El mecanismo transferible combina una reagrupación algebraica, una estimación triangular y un índice común.</p>
+<p>La misma estimación reaparece cuando examinamos sucesiones de Cauchy. Demostraremos a continuación que la suma de dos sucesiones de Cauchy sigue siendo de Cauchy; la conclusión es distinta de afirmar que deba converger. Esto no implica que toda sucesión de Cauchy converja en cualquier espacio normado: la existencia del límite exige una hipótesis adicional de completitud.</p>
+<section id="suma-de-sucesiones-convergentes" class="level3">
+<h3 class="anchored" data-anchor-id="suma-de-sucesiones-convergentes">Suma de sucesiones convergentes</h3>
+<p>Para sucesiones <span class="math inline">\(a_n,b_n:\mathbb N_{\ge1}\to\mathbb R\)</span>, escribimos <span class="math inline">\(a_n\to a\)</span> cuando para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(N\in\mathbb N_{\ge1}\)</span> tal que para todo <span class="math inline">\(n\ge N\)</span> se cumple <span class="math inline">\(|a_n-a|&lt;\varepsilon\)</span>. Si <span class="math inline">\(a_n\to a\)</span> y <span class="math inline">\(b_n\to b\)</span>, entonces <span class="math inline">\(a_n+b_n\to a+b\)</span>.</p>
+<p>Fijado <span class="math inline">\(\varepsilon&gt;0\)</span>, la primera convergencia proporciona <span class="math inline">\(N_a\)</span> para tolerancia <span class="math inline">\(\varepsilon/2\)</span>, y la segunda <span class="math inline">\(N_b\)</span> para la misma tolerancia. Sea <span class="math inline">\(N=\max\{N_a,N_b\}\)</span>. Para todo <span class="math inline">\(n\ge N\)</span>, las dos estimaciones valen simultáneamente, y la reagrupación algebraica da</p>
+<p><span class="math display">\[
+|(a_n+b_n)-(a+b)|=|(a_n-a)+(b_n-b)|
+\le|a_n-a|+|b_n-b|&lt;\varepsilon/2+\varepsilon/2=\varepsilon.
+\]</span></p>
+<p>El índice depende de <span class="math inline">\(\varepsilon\)</span> y de ambas sucesiones; nunca se elige un índice distinto para cada sumando después de fijar <span class="math inline">\(n\)</span>. La misma prueba en un espacio normado utiliza la desigualdad triangular de la norma en lugar de la desigualdad escalar. No usa completitud ni unicidad del cuerpo ordenado completo.</p>
+</section>
+<section id="unicidad-de-límites-y-continuidad-de-la-norma" class="level3">
+<h3 class="anchored" data-anchor-id="unicidad-de-límites-y-continuidad-de-la-norma">Unicidad de límites y continuidad de la norma</h3>
+<p>Si una sucesión <span class="math inline">\(x_n\)</span> de un espacio normado converge a <span class="math inline">\(x\)</span> y a <span class="math inline">\(y\)</span>, y <span class="math inline">\(d=\|x-y\|&gt;0\)</span>, elegimos índices para que ambas distancias a partir de un máximo común sean menores que <span class="math inline">\(d/3\)</span>. Entonces</p>
+<p><span class="math display">\[
+d=\|(x-x_n)+(x_n-y)\|\le\|x-x_n\|+\|x_n-y\|&lt;2d/3&lt;d,
+\]</span></p>
+<p>contradicción. Queda <span class="math inline">\(d=0\)</span> y <span class="math inline">\(x=y\)</span>. Si <span class="math inline">\(x_n\to x\)</span>, la desigualdad triangular inversa para normas da <span class="math inline">\(|\|x_n\|-\|x\||\le\|x_n-x\|\)</span>; para cada <span class="math inline">\(\varepsilon&gt;0\)</span> el índice de la convergencia original hace el miembro derecho menor que <span class="math inline">\(\varepsilon\)</span>. Luego <span class="math inline">\(\|x_n\|\to\|x\|\)</span>. La unicidad de un límite dentro de un espacio no es la unicidad estructural del cuerpo del teorema de unicidad.</p>
+</section>
+<section id="suma-de-sucesiones-de-cauchy" class="level3">
+<h3 class="anchored" data-anchor-id="suma-de-sucesiones-de-cauchy">Suma de sucesiones de Cauchy</h3>
+<p>En un espacio normado, <span class="math inline">\(x_n\)</span> es de Cauchy si <span class="math inline">\(\forall\varepsilon&gt;0\ \exists N\ \forall m,n\ge N\)</span>, <span class="math inline">\(\|x_n-x_m\|&lt;\varepsilon\)</span>. Si <span class="math inline">\(x_n,y_n\)</span> son de Cauchy, para cada <span class="math inline">\(\varepsilon&gt;0\)</span> elegimos índices para <span class="math inline">\(\varepsilon/2\)</span> y su máximo común. Para <span class="math inline">\(m,n\)</span> mayores que ese máximo,</p>
+<p><span class="math display">\[
+\|(x_n+y_n)-(x_m+y_m)\|\le\|x_n-x_m\|+\|y_n-y_m\|&lt;\varepsilon.
+\]</span></p>
+<p>No se afirma que esas sucesiones converjan en cualquier espacio normado; eso requeriría completitud del espacio.</p>
+<p>El procedimiento vuelve a repartir una tolerancia y a reunir dos índices en uno común. La desigualdad triangular convierte entonces los controles individuales en un control sobre la suma. La misma idea prueba la estabilidad de la condición de Cauchy; la existencia de un límite para toda sucesión de Cauchy corresponde a la completitud del espacio.</p>
+</section>
+</section>
+<section id="una-norma-especifica-qué-entendemos-por-magnitud" class="level2">
+<h2 class="anchored" data-anchor-id="una-norma-especifica-qué-entendemos-por-magnitud">Una norma especifica qué entendemos por magnitud</h2>
+<p>Para un espacio vectorial real <span class="math inline">\(V\)</span>, una norma es una función <span class="math inline">\(\|\cdot\|:V\to\mathbb R\)</span> que satisface, para todos los vectores <span class="math inline">\(x,y\)</span> y escalares reales <span class="math inline">\(\lambda\)</span>,</p>
+<p><span class="math display">\[
+\|x\|\ge0,\quad \|x\|=0\iff x=0_V,\qquad
+\|\lambda x\|=|\lambda|\|x\|,\qquad
+\|x+y\|\le\|x\|+\|y\|.
+\]</span></p>
+<p>La primera cláusula distingue el vector cero. La segunda controla el cambio de escala y conserva la magnitud cuando se invierte el sentido. La tercera permite comparar una suma con sus términos. Equipar <span class="math inline">\(V\)</span> con una norma significa elegir una función que cumpla esas cláusulas; conocer sólo la estructura de espacio vectorial no determina una longitud única.</p>
+<p>La segunda propiedad recibe el nombre de <strong>homogeneidad absoluta</strong>: el factor es <span class="math inline">\(|\lambda|\)</span>, no <span class="math inline">\(\lambda\)</span>. Una norma no es lineal en un espacio no trivial, pues para <span class="math inline">\(x\ne0\)</span> la norma de <span class="math inline">\(-x\)</span> coincide con la de <span class="math inline">\(x\)</span>, mientras una aplicación lineal tendría que cambiar su signo.</p>
+<p>En <span class="math inline">\(\mathbb R^2\)</span>, tanto <span class="math inline">\(\|(x,y)\|_2=\sqrt{x^2+y^2}\)</span> como <span class="math inline">\(\|(x,y)\|_1=|x|+|y|\)</span> son normas. La segunda cumple la triangular sumando las dos desigualdades escalares por coordenadas. Bajo esa norma, <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(0,1)\)</span> tienen igualdad: <span class="math inline">\(\|u+v\|_1=2=\|u\|_1+\|v\|_1\)</span>, aunque no sean paralelos. La caracterización geométrica euclídea de la igualdad depende de la norma elegida.</p>
+<p>Los espacios de matrices y funciones ofrecen otros ejemplos. Una matriz puede medirse sumando las magnitudes de sus entradas. Como ejemplo infinito dimensional concreto, las funciones <span class="math inline">\(\mathbb N\to\mathbb R\)</span> de soporte finito pueden medirse sumando las magnitudes de sus valores; sus funciones indicadoras de un único índice constituyen una familia linealmente independiente infinita. Hay asimismo espacios de funciones de dimensión finita, como el de las funciones constantes. Estos ejemplos separan el objeto vectorial de su dibujo como flecha y evitan identificar «función» con «dimensión infinita».</p>
+<section id="norma-definición-y-homogeneidad" class="level3">
+<h3 class="anchored" data-anchor-id="norma-definición-y-homogeneidad">Norma: definición y homogeneidad</h3>
+<p>Sea <span class="math inline">\(V\)</span> un espacio vectorial real. Una norma es una función <span class="math inline">\(\|\cdot\|:V\to\mathbb R\)</span> tal que, para todos <span class="math inline">\(x,y\in V\)</span> y <span class="math inline">\(\lambda\in\mathbb R\)</span>, se cumplen:</p>
+<ol type="1">
+<li><span class="math inline">\(\|x\|\ge0\)</span> y <span class="math inline">\(\|x\|=0\iff x=0_V\)</span>;</li>
+<li><span class="math inline">\(\|\lambda x\|=|\lambda|\|x\|\)</span>;</li>
+<li><span class="math inline">\(\|x+y\|\le\|x\|+\|y\|\)</span>.</li>
+</ol>
+<p>Se llama espacio normado al par <span class="math inline">\((V,\|\cdot\|)\)</span>. Las cláusulas son requisitos universales, no propiedades deducidas de llamar «longitud» a una función arbitraria. La segunda es homogeneidad absoluta. Una norma en un espacio no trivial no es una aplicación lineal <span class="math inline">\(V\to\mathbb R\)</span>: para <span class="math inline">\(x\ne0\)</span>, la homogeneidad con <span class="math inline">\(\lambda=-1\)</span> exige <span class="math inline">\(\|-x\|=\|x\|&gt;0\)</span>, mientras que la linealidad exigiría <span class="math inline">\(\|-x\|=-\|x\|&lt;0\)</span>. El valor absoluto en <span class="math inline">\(\mathbb R\)</span> satisface las tres cláusulas: la definitud se deduce de su definición, la homogeneidad del producto de valores absolutos y la cota de las sumas de la desigualdad triangular. No se pretende «demostrar» la tercera cláusula para cualquier función positiva y homogénea.</p>
+</section>
+<section id="distancia-y-desigualdad-inversa-en-una-norma" class="level3">
+<h3 class="anchored" data-anchor-id="distancia-y-desigualdad-inversa-en-una-norma">Distancia y desigualdad inversa en una norma</h3>
+<p>Para un espacio normado, definimos <span class="math inline">\(d(x,y)=\|x-y\|\)</span>. La positividad y definitud exigidas por la definición de norma dan <span class="math inline">\(d(x,y)\ge0\)</span> y <span class="math inline">\(d(x,y)=0\iff x=y\)</span>. La homogeneidad con <span class="math inline">\(-1\)</span> da simetría. De <span class="math inline">\(x-z=(x-y)+(y-z)\)</span> y la tercera cláusula se obtiene <span class="math inline">\(d(x,z)\le d(x,y)+d(y,z)\)</span>. Por tanto <span class="math inline">\(d\)</span> es una métrica.</p>
+<p>Asimismo, <span class="math inline">\(\|x\|\le\|x-y\|+\|y\|\)</span> y <span class="math inline">\(\|y\|\le\|y-x\|+\|x\|\)</span>. La simetría y las cotas dobles producen <span class="math inline">\(|\|x\|-\|y\||\le\|x-y\|\)</span>. Esta prueba usa el axioma vectorial triangular, no sustituye vectores dentro de un teorema cuantificado sólo sobre números reales. En una métrica arbitraria se compara la distancia directa con la suma de dos distancias; la existencia de caminos minimizantes no se deduce de esos axiomas.</p>
+</section>
+<section id="matrices-funciones-y-ejemplos-de-normas" class="level3">
+<h3 class="anchored" data-anchor-id="matrices-funciones-y-ejemplos-de-normas">Matrices, funciones y ejemplos de normas</h3>
+<p>En <span class="math inline">\(\mathbb R^2\)</span>, <span class="math inline">\(\|(x,y)\|_1=|x|+|y|\)</span> es una norma: la no negatividad y definitud siguen de las propiedades del valor absoluto, la homogeneidad de la fórmula para <span class="math inline">\(|ab|\)</span>, y la triangular se obtiene sumando las desigualdades escalares demostradas para cada coordenada. En matrices reales <span class="math inline">\(r\times s\)</span>, con <span class="math inline">\(r,s\ge1\)</span> finitos, <span class="math inline">\(\|A\|_1=\sum_{i,j}|a_{ij}|\)</span> cumple las mismas propiedades entrada por entrada, con una suma finita.</p>
+<p>Sea <span class="math inline">\(c_{00}(\mathbb N)\)</span> el espacio de funciones <span class="math inline">\(f:\mathbb N\to\mathbb R\)</span> de soporte finito. Está cerrado bajo suma y multiplicación escalar: el soporte de una suma está contenido en la unión de los dos soportes finitos y el de un múltiplo está contenido en el soporte original. Definimos <span class="math inline">\(\|f\|_1=\sum_n|f(n)|\)</span>, suma finita independiente de añadir términos nulos. Si esta suma es cero, todos sus sumandos no negativos son cero, y <span class="math inline">\(f=0\)</span>; la homogeneidad y triangular se prueban sobre la unión finita de los soportes. Las funciones <span class="math inline">\(e_k(n)=1\)</span> si <span class="math inline">\(n=k\)</span>, y cero en otro caso, son linealmente independientes: evaluar una combinación finita en <span class="math inline">\(k\)</span> recupera su coeficiente. Este espacio es infinito dimensional. En cambio, las funciones constantes <span class="math inline">\(\mathbb R\to\mathbb R\)</span> forman un espacio de dimensión uno. Ser un espacio de funciones no obliga por sí solo a tener dimensión infinita.</p>
+<p>Los ejemplos de normas en matrices y funciones amplían la intuición geométrica: un vector no tiene por qué ser una flecha dibujable. Pero ninguna función que se llame magnitud merece automáticamente el nombre de norma. Debe anularse sólo en cero, ser absolutamente homogénea y cumplir la triangular. Al demostrar estas propiedades separadamente aprendemos a reconocer cuáles argumentos dependen de la estructura vectorial y cuáles de la función concreta escogida.</p>
+</section>
+</section>
+<section id="la-desigualdad-triangular-y-la-estabilidad-de-los-límites" class="level2">
+<h2 class="anchored" data-anchor-id="la-desigualdad-triangular-y-la-estabilidad-de-los-límites">La desigualdad triangular y la estabilidad de los límites</h2>
+<p>Una pregunta más difícil aparece al retirar el axioma triangular: ¿sigue siendo estable la suma de sucesiones convergentes? Los dos ejemplos siguientes mostrarán que, sin ese axioma, la estabilidad puede fallar, pero también puede conservarse. Lo decisivo será identificar qué estimación adicional poseen las funciones consideradas.</p>
+<p>Definamos <span class="math inline">\(p(x,y)=|x|+|y|+x^2/|y|\)</span> si <span class="math inline">\(xy\ne0\)</span>, y <span class="math inline">\(p(x,y)=|x|+|y|\)</span> si <span class="math inline">\(xy=0\)</span>. La segunda rama evita dividir por cero. La función es positiva fuera del origen y satisface <span class="math inline">\(p(\lambda v)=|\lambda|p(v)\)</span>, pero <span class="math inline">\(p(1,1)=3&gt;2=p(1,0)+p(0,1)\)</span>.</p>
+<p>Si definimos convergencia a <span class="math inline">\(z\)</span> mediante <span class="math inline">\(p(z_n-z)\to0\)</span>, las sucesiones <span class="math inline">\(u_n=(1/n,0)\)</span> y <span class="math inline">\(v_n=(0,1/n^2)\)</span> convergen a cero. Para la suma, el término nuevo <span class="math inline">\(x^2/|y|\)</span> vale uno, y <span class="math inline">\(p(u_n+v_n)=1+1/n+1/n^2\)</span>. Así, la suma no converge a cero. Tampoco tiene otro límite: como <span class="math inline">\(p(x,y)\ge|x|+|y|\)</span>, cualquier límite para <span class="math inline">\(p\)</span> tendría que coincidir con los límites cero de ambas coordenadas. El desarrollo comprueba formalmente esa exclusión y todas las dependencias.</p>
+<p>La ausencia de triangular no impone ese fallo en todos los casos. Por ejemplo, <span class="math inline">\(q(x,y)=(\sqrt{|x|}+\sqrt{|y|})^2\)</span> también es positiva y homogénea, y <span class="math inline">\(q(1,1)=4&gt;2=q(1,0)+q(0,1)\)</span>. Sin embargo,</p>
+<p><span class="math display">\[
+|x|+|y|\le q(x,y)\le2(|x|+|y|).
+\]</span></p>
+<p>Estas cotas hacen que converger para <span class="math inline">\(q\)</span> sea equivalente a converger en la norma <span class="math inline">\(\ell^1\)</span>. La suma de límites se conserva en ese caso. La triangular garantiza directamente una estimación uniforme que permite sumar errores; si se retira, hay que buscar otro control o aceptar que esa operación puede fallar.</p>
+<section id="retirar-la-triangular-puede-destruir-la-suma-de-límites" class="level3">
+<h3 class="anchored" data-anchor-id="retirar-la-triangular-puede-destruir-la-suma-de-límites">Retirar la triangular puede destruir la suma de límites</h3>
+<p>En <span class="math inline">\(\mathbb R^2\)</span> definimos una función <span class="math inline">\(p\)</span> por</p>
+<p><span class="math display">\[
+p(x,y)=\begin{cases}
+|x|+|y|+x^2/|y|,&amp;xy\ne0,\\
+|x|+|y|,&amp;xy=0.
+\end{cases}
+\]</span></p>
+<p>Es bien definida: en la primera rama <span class="math inline">\(y\ne0\)</span> y <span class="math inline">\(|y|&gt;0\)</span>; la segunda evita toda división por cero. Es no negativa y se anula exactamente en <span class="math inline">\((0,0)\)</span> porque <span class="math inline">\(p(x,y)\ge|x|+|y|\)</span>. Para <span class="math inline">\(\lambda\ne0\)</span>, la condición <span class="math inline">\(xy=0\)</span> se conserva al multiplicar ambas coordenadas por <span class="math inline">\(\lambda\)</span>. En la primera rama, <span class="math inline">\((\lambda x)^2/|\lambda y|=|\lambda|x^2/|y|\)</span>, usando <span class="math inline">\(\lambda^2=|\lambda|^2\)</span> y <span class="math inline">\(|\lambda y|=|\lambda||y|\)</span>. Las dos ramas dan <span class="math inline">\(p(\lambda v)=|\lambda|p(v)\)</span>; para <span class="math inline">\(\lambda=0\)</span> ambos miembros son cero. Sin embargo, <span class="math inline">\(p(1,1)=3&gt;2=p(1,0)+p(0,1)\)</span>, por lo que no es una norma.</p>
+<p>Definimos expresamente la relación <span class="math inline">\(z_n\to_p z\)</span> por <span class="math inline">\(p(z_n-z)\to0\)</span>, sin suponer que la función induzca una métrica. Sean <span class="math inline">\(u_n=(1/n,0)\)</span> y <span class="math inline">\(v_n=(0,1/n^2)\)</span>. Entonces <span class="math inline">\(p(u_n)=1/n\to0\)</span> y <span class="math inline">\(p(v_n)=1/n^2\to0\)</span>, mientras que</p>
+<p><span class="math display">\[
+p(u_n+v_n)=1/n+1/n^2+1&gt;1.
+\]</span></p>
+<p>La suma no converge a cero. Tampoco converge a otro <span class="math inline">\(w=(\alpha,\beta)\)</span>: si <span class="math inline">\(p(u_n+v_n-w)\to0\)</span>, la cota <span class="math inline">\(p\ge|x|+|y|\)</span> implica <span class="math inline">\(|1/n-\alpha|\to0\)</span> y <span class="math inline">\(|1/n^2-\beta|\to0\)</span>. Esas coordenadas ya convergen a cero; la unicidad de límites escalares, demostrada antes mediante la desigualdad triangular, obliga a <span class="math inline">\(\alpha=\beta=0\)</span>, caso excluido. Aquí se usa la propiedad arquimediana de <span class="math inline">\(\mathbb R\)</span> para <span class="math inline">\(1/n\to0\)</span>: dado <span class="math inline">\(\varepsilon&gt;0\)</span>, existe <span class="math inline">\(N&gt;1/\varepsilon\)</span>, y <span class="math inline">\(n\ge N\)</span> da <span class="math inline">\(1/n&lt;\varepsilon\)</span>; <span class="math inline">\(1/n^2\le1/n\)</span> para <span class="math inline">\(n\ge1\)</span>.</p>
+<p>La propiedad arquimediana utilizada aquí se deduce de la completitud del cuerpo ordenado: si <span class="math inline">\(\mathbb N\)</span> fuera acotado con supremo <span class="math inline">\(s\)</span>, <span class="math inline">\(s-1\)</span> no sería cota superior, de modo que algún <span class="math inline">\(n&gt;s-1\)</span> satisfaría <span class="math inline">\(n+1&gt;s\)</span>, contradicción.</p>
+</section>
+<section id="ausencia-de-triangular-sin-pérdida-de-suma-de-límites" class="level3">
+<h3 class="anchored" data-anchor-id="ausencia-de-triangular-sin-pérdida-de-suma-de-límites">Ausencia de triangular sin pérdida de suma de límites</h3>
+<p>Definimos <span class="math inline">\(q(x,y)=(\sqrt{|x|}+\sqrt{|y|})^2\)</span>, usando la existencia de raíces cuadradas no negativas en el cuerpo real completo. Es no negativa, definida y positiva fuera de cero. Es absolutamente homogénea: para <span class="math inline">\(t=|\lambda|\ge0\)</span>, <span class="math inline">\(\sqrt{t|x|}=\sqrt t\sqrt{|x|}\)</span> porque el miembro derecho es no negativo y su cuadrado vale <span class="math inline">\(t|x|\)</span>; la unicidad de raíz lo identifica. Al cuadrar la suma se obtiene <span class="math inline">\(q(\lambda v)=|\lambda|q(v)\)</span>, incluyendo <span class="math inline">\(\lambda=0\)</span>. Pero <span class="math inline">\(q(1,1)=4&gt;2=q(1,0)+q(0,1)\)</span>.</p>
+<p>Para <span class="math inline">\(A=\sqrt{|x|}\)</span> y <span class="math inline">\(B=\sqrt{|y|}\)</span>, <span class="math inline">\((A-B)^2\ge0\)</span> implica <span class="math inline">\(2AB\le A^2+B^2\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+|x|+|y|\le q(x,y)=|x|+|y|+2\sqrt{|x||y|}\le2(|x|+|y|).
+\]</span></p>
+<p>Así, <span class="math inline">\(z_n\to_q z\)</span>, definido mediante <span class="math inline">\(q(z_n-z)\to0\)</span>, equivale a convergencia para la norma <span class="math inline">\(\ell^1\)</span>: una dirección usa la primera cota y la otra usa la segunda con tolerancia <span class="math inline">\(\varepsilon/2\)</span>. La suma de dos sucesiones convergentes para <span class="math inline">\(q\)</span> converge a la suma de sus límites por la estabilidad de límites bajo suma en <span class="math inline">\(\ell^1\)</span> y esta equivalencia. La ausencia de la triangular permite que falle la suma de límites, como en el contraejemplo anterior; no obliga a que falle en toda función positiva y homogénea.</p>
+</section>
+<section id="segunda-prueba-escalar-por-cotas" class="level3">
+<h3 class="anchored" data-anchor-id="segunda-prueba-escalar-por-cotas">Segunda prueba escalar por cotas</h3>
+<p>Por las propiedades elementales del valor absoluto, <span class="math inline">\(-|a|\le a\le|a|\)</span> y <span class="math inline">\(-|b|\le b\le|b|\)</span>. La compatibilidad del orden con la suma da <span class="math inline">\(-(|a|+|b|)\le a+b\le|a|+|b|\)</span>. Por la equivalencia entre valor absoluto y cotas dobles, <span class="math inline">\(|a+b|\le|a|+|b|\)</span>. Esta presentación deja visible la función de las cotas inferior y superior. No se utiliza ningún resultado que se pretende demostrar después.</p>
+<p>Los dos ejemplos finales delimitan con exactitud el papel de la desigualdad triangular. Puede faltar y provocar el fracaso de la suma de límites, pero también puede faltar sin alterar las sucesiones convergentes cuando la función se compara por dos constantes con una norma auténtica. Esta diferencia evita convertir una posibilidad en una afirmación universal. La triangular no es solo una imagen geométrica agradable: es una hipótesis de estabilidad cuya presencia o ausencia debe examinarse en cada demostración.</p>
+</section>
+</section>
+<section id="problemas-y-soluciones-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-y-soluciones-del-capítulo">Problemas y soluciones del capítulo</h2>
+<section id="ejercicio-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h3>
+<p>Calcular <span class="math inline">\(|a+b|\)</span> y <span class="math inline">\(|a|+|b|\)</span> para <span class="math inline">\((a,b)=(3,2),(3,-2),(-3,-2),(4,-4),(0,0)\)</span>; describir cuándo hay igualdad.</p>
+<p><strong>Solución razonada.</strong> Los pares de valores son, respectivamente, <span class="math inline">\((5,5),(1,5),(5,5),(0,8),(0,0)\)</span>. En el primero, sumar positivos conserva magnitud. En el segundo y cuarto, los signos opuestos producen cancelación. En el tercero, la suma es <span class="math inline">\(-5\)</span>, cuya magnitud es cinco. El último obliga a admitir el cero en «no negativo». La condición general de igualdad es <span class="math inline">\(ab\ge0\)</span>, demostrada en el caso de igualdad escalar; no equivale a que ambos números sean positivos.</p>
+</section>
+<section id="ejercicio-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h3>
+<p>Auditar la pretendida prueba: «Como <span class="math inline">\(a\le|a|\)</span> y <span class="math inline">\(b\le|b|\)</span>, multiplicamos las dos desigualdades y obtenemos <span class="math inline">\(ab\le|a||b|\)</span>». Repararla.</p>
+<p><strong>Solución razonada.</strong> Multiplicar desigualdades miembro a miembro sin control de signos no es una regla válida. Por ejemplo, <span class="math inline">\(-3\le1\)</span> y <span class="math inline">\(-2\le1\)</span> son verdaderas, pero su producto sugeriría <span class="math inline">\(6\le1\)</span>, falso. La reparación aplica <span class="math inline">\(x\le|x|\)</span> al único número <span class="math inline">\(x=ab\)</span>, obteniendo <span class="math inline">\(ab\le|ab|\)</span>. Se demuestra <span class="math inline">\(|ab|=|a||b|\)</span> por cuatro combinaciones de signos y el caso cero: dos signos iguales dan producto positivo; signos opuestos hacen que ambas expresiones de magnitud valgan <span class="math inline">\(-ab\)</span>; un cero anula todo. Queda la cota requerida sin multiplicar por un factor de signo desconocido.</p>
+</section>
+<section id="ejercicio-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3">Ejercicio 3</h3>
+<p>Decidir si <span class="math inline">\(\sqrt{z^2}=z\)</span> para todo real <span class="math inline">\(z\)</span>, y si <span class="math inline">\(u^2\le v^2\)</span> implica <span class="math inline">\(u\le v\)</span> sin hipótesis adicionales.</p>
+<p><strong>Solución razonada.</strong> Para <span class="math inline">\(z=-3\)</span>, la raíz no negativa de <span class="math inline">\(z^2=9\)</span> es tres, no menos tres. La identidad correcta es <span class="math inline">\(\sqrt{z^2}=|z|\)</span>. Para <span class="math inline">\(u=2,v=-3\)</span>, los cuadrados satisfacen <span class="math inline">\(4\le9\)</span>, pero <span class="math inline">\(2\le-3\)</span> es falso. Si <span class="math inline">\(u,v\ge0\)</span>, la inferencia sí vale: <span class="math inline">\(u&gt;v\)</span> daría <span class="math inline">\(u^2-v^2=(u-v)(u+v)&gt;0\)</span>, contradiciendo la hipótesis. El signo de los números, no sólo el de sus cuadrados, controla esa recuperación del orden.</p>
+</section>
+<section id="ejercicio-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4">Ejercicio 4</h3>
+<p>Resolver <span class="math inline">\(|x-2|\le3\)</span> y <span class="math inline">\(|x-2|&lt;3\)</span>. Explicar la diferencia en sus extremos.</p>
+<p><strong>Solución razonada.</strong> La primera condición equivale a <span class="math inline">\(-3\le x-2\le3\)</span>, y al sumar dos a las tres partes queda <span class="math inline">\(-1\le x\le5\)</span>. La segunda equivale a <span class="math inline">\(-3&lt;x-2&lt;3\)</span>, por lo que <span class="math inline">\(-1&lt;x&lt;5\)</span>. En <span class="math inline">\(x=-1\)</span> o <span class="math inline">\(x=5\)</span> el valor absoluto es tres: se incluyen en la primera solución y se excluyen en la segunda. Las equivalencias usan <span class="math inline">\(3&gt;0\)</span> y los dos casos de signo del argumento, no una eliminación formal de barras.</p>
+</section>
+<section id="ejercicio-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5">Ejercicio 5</h3>
+<p>Probar <span class="math inline">\(||a|-|b||\le|a-b|\)</span> a partir de la triangular, sin suponer <span class="math inline">\(|a|\ge|b|\)</span>. Si <span class="math inline">\(|a-b|&lt;0.01\)</span>, obtener una cota para la diferencia de magnitudes.</p>
+<p><strong>Solución razonada.</strong> De <span class="math inline">\(a=(a-b)+b\)</span> y la triangular sale <span class="math inline">\(|a|-|b|\le|a-b|\)</span>. Intercambiar variables da <span class="math inline">\(|b|-|a|\le|b-a|=|a-b|\)</span>. Negando esta última desigualdad y combinando, <span class="math inline">\(-|a-b|\le|a|-|b|\le|a-b|\)</span>. La equivalencia de cota doble y valor absoluto produce el resultado, sin decidir cuál magnitud es mayor. Por transitividad, la hipótesis numérica da <span class="math inline">\(||a|-|b||&lt;0.01\)</span>. Esta cota estricta final procede del dato estricto, aunque la inversa sea no estricta.</p>
+</section>
+<section id="ejercicio-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6">Ejercicio 6</h3>
+<p>Para <span class="math inline">\(u,v\in\mathbb R^2\)</span> con longitud euclídea, determinar cuándo <span class="math inline">\(\|u+v\|_2=\|u\|_2+\|v\|_2\)</span>. ¿Basta que los tres puntos del dibujo sean colineales?</p>
+<p><strong>Solución razonada.</strong> Si uno es cero, hay igualdad. Para ambos no nulos, comparar los cuadrados reduce la igualdad a <span class="math inline">\(u\cdot v=\|u\|_2\|v\|_2&gt;0\)</span>. La identidad <span class="math inline">\(\|u\|_2^2\|v\|_2^2-(u\cdot v)^2=(u_1v_2-u_2v_1)^2\)</span> fuerza determinante cero, por lo que <span class="math inline">\(v=\lambda u\)</span>; se toma una coordenada <span class="math inline">\(u_i\ne0\)</span>, se define <span class="math inline">\(\lambda=v_i/u_i\)</span> y la otra coordenada sigue de la identidad. El producto escalar positivo exige <span class="math inline">\(\lambda&gt;0\)</span>. Recíprocamente, <span class="math inline">\(v=\lambda u\)</span> con <span class="math inline">\(\lambda&gt;0\)</span> hace <span class="math inline">\(\|v\|_2=\lambda\|u\|_2\)</span> y <span class="math inline">\(\|u+v\|_2=(1+\lambda)\|u\|_2\)</span>, luego hay igualdad. La colinealidad sola permite sentido contrario: <span class="math inline">\(u=(1,0),v=(-1,0)\)</span> da cero en el miembro izquierdo y dos en el derecho. Los puntos son colineales, pero la igualdad falla.</p>
+</section>
+<section id="ejercicio-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7">Ejercicio 7</h3>
+<p>En cualquier espacio normado, probar que para <span class="math inline">\(m\ge1\)</span> y <span class="math inline">\(x_0,\ldots,x_m\)</span>, <span class="math inline">\(\|x_m-x_0\|\le\sum_{j=1}^m\|x_j-x_{j-1}\|\)</span>.</p>
+<p><strong>Solución razonada.</strong> La identidad telescópica <span class="math inline">\(x_m-x_0=\sum_{j=1}^m(x_j-x_{j-1})\)</span> se verifica cancelando cada término intermedio. La cota para una suma finita se demuestra por inducción: para un sumando es igualdad; agregar uno más usa la triangular y luego la hipótesis inductiva. Aplicándola a los incrementos obtenemos la cota pedida. Este argumento sólo compara magnitudes de incrementos finitos; no presupone la existencia de una curva minimizante.</p>
+</section>
+<section id="ejercicio-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8">Ejercicio 8</h3>
+<p>Dados <span class="math inline">\(a_n\to a\)</span> y <span class="math inline">\(b_n\to b\)</span>, probar que <span class="math inline">\(a_n+b_n\to a+b\)</span> usando presupuestos <span class="math inline">\(\varepsilon/3\)</span> y <span class="math inline">\(2\varepsilon/3\)</span>. Explicar por qué se necesita un máximo de índices.</p>
+<p><strong>Solución razonada.</strong> Fijado <span class="math inline">\(\varepsilon&gt;0\)</span>, la primera hipótesis entrega <span class="math inline">\(N_a\)</span> con <span class="math inline">\(|a_n-a|&lt;\varepsilon/3\)</span> para <span class="math inline">\(n\ge N_a\)</span>, y la segunda <span class="math inline">\(N_b\)</span> con <span class="math inline">\(|b_n-b|&lt;2\varepsilon/3\)</span> para <span class="math inline">\(n\ge N_b\)</span>. Definimos <span class="math inline">\(N=\max(N_a,N_b)\)</span>. Para todo <span class="math inline">\(n\ge N\)</span>, la triangular y la reagrupación de términos dan <span class="math inline">\(|(a_n+b_n)-(a+b)|\le|a_n-a|+|b_n-b|&lt;\varepsilon\)</span>. El máximo asegura que ambos controles estén activos para el mismo término; elegir sólo <span class="math inline">\(N_a\)</span> podría dejar el segundo error sin control. La construcción satisface el orden de cuantificadores: primero tolerancia, luego índice, después todos los índices mayores.</p>
+</section>
+<section id="ejercicio-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9">Ejercicio 9</h3>
+<p>Mostrar que toda sucesión convergente en un espacio normado es de Cauchy. Señalar qué parte no demuestra que toda sucesión de Cauchy converja.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(x_n\to x\)</span>, para cada <span class="math inline">\(\varepsilon&gt;0\)</span> elegimos <span class="math inline">\(N\)</span> con <span class="math inline">\(\|x_n-x\|&lt;\varepsilon/2\)</span> para todo <span class="math inline">\(n\ge N\)</span>. Si <span class="math inline">\(m,n\ge N\)</span>, <span class="math inline">\(\|x_n-x_m\|\le\|x_n-x\|+\|x-x_m\|&lt;\varepsilon\)</span>, usando simetría de la norma. Así cumple la definición de Cauchy. La prueba empezó con un límite <span class="math inline">\(x\)</span> ya existente; no construye uno a partir de la condición de Cauchy. La recíproca exige completitud del espacio y queda fuera de lo demostrado aquí.</p>
+</section>
+<section id="ejercicio-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10">Ejercicio 10</h3>
+<p>Probar que <span class="math inline">\(\|(x,y)\|_1=|x|+|y|\)</span> es norma; hallar dos vectores no paralelos que tengan igualdad triangular en ella. Mostrar que <span class="math inline">\(h(x,y)=|x|\)</span> no es norma en <span class="math inline">\(\mathbb R^2\)</span>.</p>
+<p><strong>Solución razonada.</strong> La suma es no negativa y sólo se anula si ambas coordenadas se anulan, porque sus sumandos son no negativos. La identidad del producto de valores absolutos da <span class="math inline">\(\|\lambda(x,y)\|_1=|\lambda|(|x|+|y|)\)</span>. Para dos vectores, la triangular escalar aplicada a cada coordenada y sumada demuestra la tercera cláusula. Con <span class="math inline">\(u=(1,0),v=(0,1)\)</span>, sus normas son uno y la de la suma es dos; no son paralelos. La función <span class="math inline">\(h\)</span> cumple no negatividad, homogeneidad absoluta y triangular, pero <span class="math inline">\(h(0,1)=0\)</span> para un vector no nulo, por lo que falla definitud. La caracterización de la igualdad geométrica del ejercicio 6 depende de que la norma sea euclídea.</p>
+</section>
+<section id="ejercicio-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11">Ejercicio 11</h3>
+<p>Para la función <span class="math inline">\(p\)</span> del contraejemplo sin triangular, comprobar todas las propiedades que conserva y demostrar que la suma de <span class="math inline">\(u_n=(1/n,0)\)</span> y <span class="math inline">\(v_n=(0,1/n^2)\)</span> no converge para la relación <span class="math inline">\(\to_p\)</span> a ningún punto.</p>
+<p><strong>Solución razonada.</strong> La rama con <span class="math inline">\(xy\ne0\)</span> tiene denominador <span class="math inline">\(|y|&gt;0\)</span>; en los ejes la rama sin cociente evita el cero. La cota <span class="math inline">\(p(x,y)\ge|x|+|y|\)</span> da no negatividad y definitud. Si <span class="math inline">\(\lambda\ne0\)</span>, preserva la pertenencia a los ejes y el cociente escala por <span class="math inline">\(\lambda^2/|\lambda|=|\lambda|\)</span>, de modo que <span class="math inline">\(p(\lambda v)=|\lambda|p(v)\)</span> en ambas ramas; si <span class="math inline">\(\lambda=0\)</span>, se verifica directamente. La triangular falla porque <span class="math inline">\(p(1,1)=3\)</span> y la suma de valores en los vectores coordenados es dos. Para las sucesiones, <span class="math inline">\(p(u_n)=1/n\)</span> y <span class="math inline">\(p(v_n)=1/n^2\)</span> tienden a cero, por la propiedad arquimediana. Pero <span class="math inline">\(p(u_n+v_n)=1+1/n+1/n^2&gt;1\)</span>, por lo que no convergen a cero. Si convergieran a <span class="math inline">\((\alpha,\beta)\)</span> para <span class="math inline">\(p\)</span>, su cota inferior obligaría a <span class="math inline">\(1/n\to\alpha\)</span> y <span class="math inline">\(1/n^2\to\beta\)</span>. La unicidad de límites escalares, probada con la triangular escalar, obliga a <span class="math inline">\(\alpha=\beta=0\)</span>, contradicción. No se usa una triangular para <span class="math inline">\(p\)</span> ni se llama métrica a <span class="math inline">\(p(x-y)\)</span>.</p>
+</section>
+<section id="ejercicio-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12">Ejercicio 12</h3>
+<p>Para <span class="math inline">\(q(x,y)=(\sqrt{|x|}+\sqrt{|y|})^2\)</span>, verificar que no es norma y que, aun así, la suma de dos sucesiones convergentes para <span class="math inline">\(q\)</span> converge a la suma de sus límites.</p>
+<p><strong>Solución razonada.</strong> Las raíces no negativas existen para todos los reales no negativos por el teorema demostrado mediante la propiedad del supremo. La función es positiva fuera del origen. La unicidad de raíz muestra <span class="math inline">\(\sqrt{|\lambda||x|}=\sqrt{|\lambda|}\sqrt{|x|}\)</span>, por lo que al cuadrar la suma <span class="math inline">\(q(\lambda v)=|\lambda|q(v)\)</span>. Sin embargo, <span class="math inline">\(q(1,1)=4&gt;2=q(1,0)+q(0,1)\)</span>, y falla la triangular. Poniendo <span class="math inline">\(A=\sqrt{|x|},B=\sqrt{|y|}\)</span>, de <span class="math inline">\((A-B)^2\ge0\)</span> resulta <span class="math inline">\(2AB\le A^2+B^2\)</span>, y obtenemos <span class="math inline">\(\|v\|_1\le q(v)\le2\|v\|_1\)</span>. La primera cota convierte convergencia para <span class="math inline">\(q\)</span> en convergencia para <span class="math inline">\(\ell^1\)</span>; la segunda convierte convergencia para <span class="math inline">\(\ell^1\)</span> en convergencia para <span class="math inline">\(q\)</span>, usando tolerancia <span class="math inline">\(\varepsilon/2\)</span>. Si <span class="math inline">\(u_n\to_q u\)</span> y <span class="math inline">\(v_n\to_q v\)</span>, ambas convergen en <span class="math inline">\(\ell^1\)</span>, su suma converge allí por la estabilidad de los límites bajo suma en espacios normados, y entonces converge para <span class="math inline">\(q\)</span>. El ejemplo precedente muestra que la estabilidad puede fallar; éste demuestra que tal fallo no es inevitable para toda función sin desigualdad triangular.</p>
+</section>
+<section id="ejercicio-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13">Ejercicio 13</h3>
+<p>En un cuerpo ordenado arbitrario <span class="math inline">\(F\)</span>, demuestra <span class="math inline">\(|a+b|\le |a|+|b|\)</span> exclusivamente mediante cotas superiores e inferiores, sin elevar al cuadrado. Precisa dónde se usa la hipótesis de cuerpo ordenado y qué papel desempeña la completitud.</p>
+<p><strong>Solución razonada.</strong> Por definición de valor absoluto, <span class="math inline">\(-|a|\le a\le |a|\)</span> y <span class="math inline">\(-|b|\le b\le |b|\)</span>. La invariancia del orden por traslaciones autoriza sumar las desigualdades correspondientes: <span class="math inline">\(-(|a|+|b|)\le a+b\le |a|+|b|\)</span>. El extremo <span class="math inline">\(|a|+|b|\)</span> es no negativo, por lo que la equivalencia entre valor absoluto y cotas dobles da <span class="math inline">\(|a+b|\le |a|+|b|\)</span>. Solo se utilizaron reglas de orden y adición de <span class="math inline">\(F\)</span>; no existe ninguna aplicación del axioma del supremo. Esta prueba por cotas ofrece un segundo camino, independiente del argumento por cuadrados.</p>
+</section>
+<section id="ejercicio-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14">Ejercicio 14</h3>
+<p>En los reales ya construidos, para <span class="math inline">\(a,b\ge0\)</span> demuestra <span class="math inline">\(|\sqrt a-\sqrt b|\le\sqrt{|a-b|}\)</span>. Justifica la existencia de las raíces y todos los pasos de orden.</p>
+<p><strong>Solución razonada.</strong> El teorema de existencia de raíces cuadradas no negativas, obtenido mediante la propiedad del supremo, garantiza las raíces de <span class="math inline">\(a,b,|a-b|\)</span>. Por simetría basta suponer <span class="math inline">\(a\ge b\)</span>, de modo que <span class="math inline">\(x=\sqrt a\ge y=\sqrt b\ge0\)</span> por monotonía de la raíz. La identidad de diferencia de cuadrados da <span class="math inline">\(a-b=(x-y)(x+y)\)</span>. Puesto que <span class="math inline">\(x+y\ge x-y\ge0\)</span>, multiplicar por <span class="math inline">\(x-y\)</span> conserva el orden y produce <span class="math inline">\(a-b\ge(x-y)^2\)</span>. Ambos lados son no negativos. La comparación de raíces del orden de los cuadrados concluye <span class="math inline">\(\sqrt{a-b}\ge x-y=|\sqrt a-\sqrt b|\)</span>. Para <span class="math inline">\(b\ge a\)</span> se intercambian las letras. Este argumento no necesita continuidad previamente demostrada de la raíz: da una cota explícita que después permite demostrarla.</p>
+</section>
+<section id="ejercicio-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15">Ejercicio 15</h3>
+<p>Utilizando únicamente reglas de cuerpo ordenado, desigualdad triangular y definición de límite, demuestra que si <span class="math inline">\(a_n\to a\)</span> y <span class="math inline">\(b_n\to b\)</span> entonces <span class="math inline">\(a_nb_n\to ab\)</span>. No presupongas continuidad del producto.</p>
+<p><strong>Solución razonada.</strong> Sea <span class="math inline">\(\varepsilon&gt;0\)</span> y definamos <span class="math inline">\(\delta=\min\{1/2,\varepsilon/[2(|a|+|b|+2)]\}&gt;0\)</span>. Elegimos índices <span class="math inline">\(N_a,N_b\)</span> para que, si <span class="math inline">\(n\ge N=\max\{N_a,N_b\}\)</span>, se tenga <span class="math inline">\(|a_n-a|&lt;\delta\)</span> y <span class="math inline">\(|b_n-b|&lt;\delta\)</span>. La triangular da <span class="math inline">\(|a_n|\le |a|+|a_n-a|&lt;|a|+1\)</span>. La identidad algebraica <span class="math inline">\(a_nb_n-ab=a_n(b_n-b)+b(a_n-a)\)</span> y <span class="math inline">\(|xy|=|x||y|\)</span> implican</p>
+<p><span class="math display">\[|a_nb_n-ab|\le |a_n||b_n-b|+|b||a_n-a|&lt;(|a|+1+|b|)\delta&lt;\varepsilon.\]</span></p>
+<p>La última desigualdad se deduce de la elección de <span class="math inline">\(\delta\)</span>. Todas las multiplicaciones de cotas emplean cantidades no negativas; el índice <span class="math inline">\(N\)</span> sirve simultáneamente para las dos convergencias.</p>
+</section>
+<section id="ejercicio-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16">Ejercicio 16</h3>
+<p>En <span class="math inline">\(\mathbb R^2\)</span> prueba <span class="math inline">\(\|v\|_2\le\|v\|_1\le\sqrt2\|v\|_2\)</span> y concluye que ambas normas definen las mismas sucesiones convergentes.</p>
+<p><strong>Solución razonada.</strong> Para <span class="math inline">\(v=(x,y)\)</span>, ambas normas son no negativas. Como <span class="math inline">\(2|x||y|\ge0\)</span>,</p>
+<p><span class="math display">\[x^2+y^2\le (|x|+|y|)^2.\]</span></p>
+<p>Además <span class="math inline">\((|x|-|y|)^2\ge0\)</span> implica <span class="math inline">\(2|x||y|\le x^2+y^2\)</span>, y por tanto</p>
+<p><span class="math display">\[(|x|+|y|)^2\le2(x^2+y^2).\]</span></p>
+<p>La existencia de raíces cuadradas no negativas, demostrada mediante supremos, y la monotonía de dichas raíces permiten pasar de las desigualdades entre cuadrados a las cotas propuestas. Si <span class="math inline">\(\|v_n-v\|_1\to0\)</span>, la primera cota da <span class="math inline">\(\|v_n-v\|_2\to0\)</span>. Recíprocamente, para una tolerancia <span class="math inline">\(\varepsilon\)</span> de la norma uno, basta pedir que el error euclídeo sea menor que <span class="math inline">\(\varepsilon/\sqrt2\)</span>, pues <span class="math inline">\(\sqrt2&gt;0\)</span>. La equivalencia de convergencia se ha demostrado mediante constantes, sin identificación de las normas como funciones iguales.</p>
+</section>
+<section id="ejercicio-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17">Ejercicio 17</h3>
+<p>Considera el espacio <span class="math inline">\(c_{00}(\mathbb N)\)</span> de sucesiones reales de soporte finito con <span class="math inline">\(\|x\|_1=\sum_n|x(n)|\)</span>, definido en los ejemplos de normas. Prueba que <span class="math inline">\(x^{(N)}=\sum_{k=1}^N2^{-k}e_k\)</span> es de Cauchy, pero no converge en ese espacio.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(M&gt;N\)</span>, la diferencia tiene norma <span class="math inline">\(\sum_{k=N+1}^M2^{-k}&lt;2^{-N}\)</span>: se obtiene multiplicando la suma geométrica finita por dos y restando, o usando <span class="math inline">\(\sum_{k=N+1}^M2^{-k}=2^{-N}-2^{-M}\)</span>. Por inducción <span class="math inline">\(2^N\ge N+1\)</span>, y la arquimedianidad de <span class="math inline">\(\mathbb R\)</span> permite hacer <span class="math inline">\(2^{-N}\)</span> menor que cualquier tolerancia. Por tanto las diferencias de términos con índices suficientemente grandes son pequeñas y la sucesión es de Cauchy.</p>
+<p>Supongamos que converge en <span class="math inline">\(c_{00}\)</span> a un <span class="math inline">\(f\)</span> de soporte finito. Elijamos <span class="math inline">\(k\)</span> fuera de su soporte. Para todo <span class="math inline">\(N\ge k\)</span>, la coordenada <span class="math inline">\(k\)</span> de <span class="math inline">\(x^{(N)}-f\)</span> es <span class="math inline">\(2^{-k}\)</span>; por la cota <span class="math inline">\(\|z\|_1\ge|z(k)|\)</span>, tenemos <span class="math inline">\(\|x^{(N)}-f\|_1\ge2^{-k}&gt;0\)</span>. Esto contradice la convergencia a <span class="math inline">\(f\)</span>. La completitud de los escalares reales no implica automáticamente la completitud de cualquier espacio normado de funciones.</p>
+</section>
+<section id="ejercicio-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18">Ejercicio 18</h3>
+<p>Sea <span class="math inline">\(p\)</span> la función del contraejemplo sin triangular y <span class="math inline">\(\|\cdot\|_1\)</span> la norma usual. Demuestra que no existe una constante <span class="math inline">\(C&gt;0\)</span> tal que <span class="math inline">\(p(v)\le C\|v\|_1\)</span> para todos los vectores <span class="math inline">\(v\)</span>. Compara con la función <span class="math inline">\(q\)</span> del ejemplo homogéneo comparable a una norma.</p>
+<p><strong>Solución razonada.</strong> Tomemos <span class="math inline">\(v_t=(t,t^2)\)</span> con <span class="math inline">\(t&gt;0\)</span>. Ninguna coordenada es cero y</p>
+<p><span class="math display">\[p(v_t)=t+t^2+\frac{t^2}{t^2}=t+t^2+1,\qquad\|v_t\|_1=t+t^2.\]</span></p>
+<p>Cuando <span class="math inline">\(t\to0^+\)</span>, la norma usual tiende a cero, pero <span class="math inline">\(p(v_t)\ge1\)</span>. Si existiera tal <span class="math inline">\(C\)</span>, escoger <span class="math inline">\(0&lt;t&lt;\min(1,1/(4C))\)</span> daría <span class="math inline">\(C(t+t^2)&lt;2Ct&lt;1/2&lt; p(v_t)\)</span>, contradicción. La función homogénea <span class="math inline">\(q\)</span>, comparable con una norma, satisface en cambio <span class="math inline">\(\|v\|_1\le q(v)\le2\|v\|_1\)</span> para todo <span class="math inline">\(v\)</span>. Por eso la convergencia inducida por <span class="math inline">\(q\)</span> coincide con la usual, mientras el fallo de estabilidad de <span class="math inline">\(p\)</span> puede explicarse por su falta de control uniforme en términos de una norma.</p>
+</section>
+</section>
+<section id="problemas-de-síntesis" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-de-síntesis">Problemas de síntesis</h2>
+<section id="problema-de-síntesis-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-síntesis-1">Problema de síntesis 1</h3>
+<p>Sea <span class="math inline">\(D\)</span> el conjunto de cortaduras racionales y <span class="math inline">\(C_r=\{q\in\mathbb Q:q&lt;r\}\)</span>. Prueba que, para toda <span class="math inline">\(A\in D\)</span> y todo <span class="math inline">\(r\in\mathbb Q\)</span>,</p>
+<p><span class="math display">\[r\in A\iff C_r\subsetneq A.\]</span></p>
+<p>Determina si la demostración de esta equivalencia <strong>necesita</strong> que <span class="math inline">\(A\)</span> no tenga máximo, o si vale para cualquier subconjunto de <span class="math inline">\(\mathbb Q\)</span> cerrado hacia abajo (interpretando <span class="math inline">\(\subsetneq\)</span> como inclusión de conjuntos, sin exigir <span class="math inline">\(A\in D\)</span>).</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(r\in A\)</span>, todo <span class="math inline">\(q&lt;r\)</span> pertenece a <span class="math inline">\(A\)</span> por descenso, de modo que <span class="math inline">\(C_r\subseteq A\)</span>. La inclusión es estricta porque el <strong>propio <span class="math inline">\(r\)</span></strong> pertenece a <span class="math inline">\(A\)</span> y no pertenece a <span class="math inline">\(C_r\)</span>. Si <span class="math inline">\(C_r\subsetneq A\)</span>, existe <span class="math inline">\(s\in A\setminus C_r\)</span>, es decir, <span class="math inline">\(s\ge r\)</span>. Si <span class="math inline">\(s=r\)</span>, se tiene <span class="math inline">\(r\in A\)</span>; si <span class="math inline">\(s&gt;r\)</span>, el descenso también da <span class="math inline">\(r\in A\)</span>. No se utilizó la ausencia de máximo, la condición de conjunto propio, no vacuidad ni completitud. Para comprobarlo en un conjunto descendente con máximo, sea <span class="math inline">\(A=\{q\in\mathbb Q:q\le0\}\)</span>. Tiene máximo <span class="math inline">\(0\)</span>, y aun así la equivalencia vale para <strong>cada</strong> racional <span class="math inline">\(r\)</span>. La ausencia de máximo es una condición necesaria para pertenecer a <span class="math inline">\(D\)</span>, pero <strong>no es hipótesis mínima de este lema</strong>. La equivalencia se utilizará para demostrar la unicidad de la identificación entre un cuerpo completo y sus cortaduras.</p>
+</section>
+<section id="problema-de-síntesis-2" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-síntesis-2">Problema de síntesis 2</h3>
+<p>Para <span class="math inline">\(A=C_0\)</span> examina el par <span class="math inline">\([0,1]\)</span> como recinto y como intervalo admisible. Construye un intervalo admisible mediante ensanchamiento y prueba que su anchura se incrementa en <span class="math inline">\(2\eta\)</span> respecto del original.</p>
+<p><strong>Solución razonada.</strong> El par <span class="math inline">\([0,1]\)</span> es un recinto porque <span class="math inline">\(C_0\subseteq A=C_0\subseteq C_1\)</span>. No es admisible: el extremo inferior <span class="math inline">\(0\notin A\)</span>. Para cualquier racional <span class="math inline">\(\eta&gt;0\)</span>, el intervalo <span class="math inline">\([-\eta,1+\eta]\)</span> sí es admisible: <span class="math inline">\(-\eta&lt;0\)</span>, de modo que <span class="math inline">\(-\eta\in C_0\)</span>, y <span class="math inline">\(1+\eta\ge0\)</span>, por lo que <span class="math inline">\(1+\eta\notin C_0\)</span>. La anchura inicial era <span class="math inline">\(1\)</span>; la nueva es <span class="math inline">\((1+\eta)-(-\eta)=1+2\eta\)</span>. Si se necesita una anchura final menor que un objetivo <span class="math inline">\(\rho\)</span> y se escoge <span class="math inline">\(2\eta&lt;\rho\)</span>, debe elegirse el recinto inicial con anchura menor que <span class="math inline">\(\rho-2\eta\)</span>; no basta con que el recinto inicial mida menos que <span class="math inline">\(\rho\)</span>. Esta precaución es indispensable para transferir identidades por recintos sin perder el control de la anchura.</p>
+</section>
+<section id="problema-de-síntesis-3" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-síntesis-3">Problema de síntesis 3</h3>
+<p>Demuestra directamente, sin utilizar el teorema de unicidad de los cuerpos ordenados completos, que la suma por recintos admisibles de la construcción por recintos coincide con la suma por testigos de la construcción por testigos. Explica por qué esta demostración no prueba automáticamente la coincidencia de productos.</p>
+<p><strong>Solución razonada.</strong> La suma por recintos se define como la unión de <span class="math inline">\(C_{a+b}\)</span> cuando <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(b\in B\)</span> son extremos inferiores de intervalos admisibles. Cualquier <span class="math inline">\(a\in A\)</span> puede completarse con un <span class="math inline">\(u\notin A\)</span>, y cualquier <span class="math inline">\(b\in B\)</span> con un <span class="math inline">\(v\notin B\)</span>; las cuatro condiciones de cortadura garantizan <span class="math inline">\(a&lt;u\)</span>, <span class="math inline">\(b&lt;v\)</span>. Así <strong>todos</strong> los pares <span class="math inline">\((a,b)\in A\times B\)</span> aparecen como extremos inferiores de alguna elección admisible. Recíprocamente, todo extremo inferior admisible pertenece al corte correspondiente. Por tanto la unión es exactamente</p>
+<p><span class="math display">\[\bigcup_{a\in A,\ b\in B} C_{a+b}=\{q\in\mathbb Q:\exists a\in A,b\in B,\ q&lt;a+b\},\]</span></p>
+<p>la suma por testigos. El producto por recintos toma el <strong>mínimo de cuatro productos de extremos</strong>, mientras que el producto positivo por testigos controla signos y exige <span class="math inline">\(a,b&gt;0\)</span>; la identificación de estas fórmulas necesita pruebas adicionales. Una comparación global de ambas multiplicaciones se realiza <em>después</em> de terminar ambos cuerpos y disponer del isomorfismo del teorema de unicidad, como demuestra el teorema comparativo del tercer apéndice.</p>
+</section>
+<section id="problema-de-síntesis-4" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-síntesis-4">Problema de síntesis 4</h3>
+<p>Sean <span class="math inline">\(F,G\)</span> cuerpos ordenados completos y <span class="math inline">\(x,y&gt;0_F\)</span>. Define <span class="math inline">\(A_x^+\)</span>, <span class="math inline">\(A_y^+\)</span> como en el teorema de unicidad y</p>
+<p><span class="math display">\[U=\{q\in\mathbb Q:\exists a\in A_x^+,b\in A_y^+,\ q&lt;ab\},\qquad P=U\cap\mathbb Q_{&gt;0}.\]</span></p>
+<p>Prueba <span class="math inline">\(U=A_{xy}\)</span>, <span class="math inline">\(P=A_{xy}^+\)</span> y que <span class="math inline">\(P\)</span> no es una cortadura de Dedekind en todo <span class="math inline">\(\mathbb Q\)</span>.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(q&lt;ab\)</span> con <span class="math inline">\(a,b&gt;0\)</span> situados bajo <span class="math inline">\(x,y\)</span>, multiplicar desigualdades por positivos da <span class="math inline">\(q_F&lt;(ab)_F&lt;xy\)</span>, luego <span class="math inline">\(U\subseteq A_{xy}\)</span>. Para la otra inclusión, como <span class="math inline">\(xy&gt;0\)</span>, todo racional no positivo <span class="math inline">\(q\)</span> es menor que el producto de <strong>cualquier</strong> par de testigos positivos, que existen por densidad racional. Si <span class="math inline">\(q&gt;0\)</span> y <span class="math inline">\(q_F&lt;xy\)</span>, elegimos primero <span class="math inline">\(b_F\)</span> racional transportado con <span class="math inline">\(q_F/x&lt;b_F&lt;y\)</span>, que es posible por densidad, y después <span class="math inline">\(a_F\)</span> racional transportado con <span class="math inline">\(q_F/b_F&lt;a_F&lt;x\)</span>. Ambos denominadores <span class="math inline">\(x\)</span> y <span class="math inline">\(b_F\)</span> son positivos. Se sigue <span class="math inline">\(q_F&lt;a_Fb_F\)</span> y, por reflexión del orden racional, <span class="math inline">\(q&lt;ab\)</span>: así <span class="math inline">\(A_{xy}\subseteq U\)</span>. La igualdad de las partes positivas es ahora una intersección con <span class="math inline">\(\mathbb Q_{&gt;0}\)</span>. En cuanto <span class="math inline">\(q&gt;0\)</span> pertenece a <span class="math inline">\(P\)</span>, el racional <span class="math inline">\(-1\)</span> es menor que <span class="math inline">\(q\)</span> pero no pertenece a <span class="math inline">\(P\)</span>. Falla descenso en <span class="math inline">\(\mathbb Q\)</span>, por lo que <span class="math inline">\(P\)</span> no es una cortadura completa aunque su imagen tenga supremo en <span class="math inline">\(G\)</span>.</p>
+</section>
+<section id="problema-de-síntesis-5" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-síntesis-5">Problema de síntesis 5</h3>
+<p>Sea <span class="math inline">\(F\)</span> un cuerpo ordenado, quizá no completo. Demuestra <span class="math inline">\(|a+b|\le|a|+|b|\)</span> conservando la prueba por cuadrados; explica por qué es lícito escribir <span class="math inline">\(\sqrt{(a+b)^2}\)</span> sin asumir que toda cantidad positiva de <span class="math inline">\(F\)</span> tenga raíz.</p>
+<p><strong>Solución razonada.</strong> Por el análisis de signos, <span class="math inline">\(|ab|=|a||b|\)</span>; también <span class="math inline">\(ab\le|ab|\)</span>. Como <span class="math inline">\(2&gt;0\)</span>,</p>
+<p><span class="math display">\[(a+b)^2=a^2+2ab+b^2\le |a|^2+2|a||b|+|b|^2=(|a|+|b|)^2.\]</span></p>
+<p>Ambos números <span class="math inline">\(u=|a+b|\)</span> y <span class="math inline">\(v=|a|+|b|\)</span> son no negativos. Si <span class="math inline">\(u&gt;v\)</span>, entonces <span class="math inline">\(u^2-v^2=(u-v)(u+v)&gt;0\)</span>, contradiciendo la desigualdad cuadrática. Luego <span class="math inline">\(u\le v\)</span>. La expresión <span class="math inline">\(\sqrt{(a+b)^2}\)</span> designa aquí <strong>el elemento conocido</strong> <span class="math inline">\(|a+b|\)</span>, que ya pertenece a <span class="math inline">\(F\)</span>, satisface el cuadrado indicado y es no negativo; su unicidad se sigue de la estricta monotonía de cuadrados no negativos. No se construyó <span class="math inline">\(\sqrt c\)</span> para un positivo arbitrario <span class="math inline">\(c\)</span>. Por eso no se necesita completitud de <span class="math inline">\(F\)</span>.</p>
+</section>
+<section id="problema-de-síntesis-6" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-síntesis-6">Problema de síntesis 6</h3>
+<p>En <span class="math inline">\(c_{00}(\mathbb N)\)</span> con <span class="math inline">\(\|x\|_1=\sum_k|x(k)|\)</span>, toma <span class="math inline">\(x^{(N)}=\sum_{k=1}^N2^{-k}e_k\)</span>. Prueba que <span class="math inline">\((x^{(N)})_N\)</span> es de Cauchy, que no converge dentro de <span class="math inline">\(c_{00}\)</span> y por qué no contradice la completitud de <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>Solución razonada.</strong> Si <span class="math inline">\(M&gt;N\)</span>, la diferencia tiene norma <span class="math inline">\(\sum_{k=N+1}^M2^{-k}=2^{-N}-2^{-M}&lt;2^{-N}\)</span>. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, la propiedad arquimediana asegura algún <span class="math inline">\(N_0\)</span> con <span class="math inline">\(2^{-N_0}&lt;\varepsilon\)</span>, pues <span class="math inline">\(2^N\ge N+1\)</span>. Para <span class="math inline">\(M,N\ge N_0\)</span>, reordenamos los índices y aplicamos la cota desde el menor de ellos: la distancia es menor que <span class="math inline">\(\varepsilon\)</span>. Se cumple Cauchy. Si existiera límite <span class="math inline">\(f\in c_{00}\)</span>, su soporte sería finito; elegimos <span class="math inline">\(k\)</span> fuera de él. Para todo <span class="math inline">\(N\ge k\)</span> la diferencia coordenada <span class="math inline">\(k\)</span> vale <span class="math inline">\(2^{-k}\)</span> y <span class="math inline">\(\|x^{(N)}-f\|_1\ge2^{-k}&gt;0\)</span>, contradiciendo convergencia a <span class="math inline">\(f\)</span>. Los escalares individuales pertenecen a un cuerpo completo, pero el supuesto límite natural tiene infinitas coordenadas no nulas y <strong>no pertenece al espacio de soporte finito</strong>. La propiedad de que toda sucesión de Cauchy converge se refiere al espacio normado completo, no solamente a su cuerpo base.</p>
+<p>Los problemas de síntesis vuelven sobre una lección fundamental: los axiomas que hacen de un conjunto una cortadura no son siempre las hipótesis mínimas de cada propiedad que demostramos acerca de él. Distinguir ambas cuestiones permite construir pruebas más precisas y evita incorporar premisas que no se utilizan.</p>
+<hr>
+<p><a href="../../../libros/otros/cdr/capitulo-3.html">← ¿Qué significa que los reales sean únicos?</a> · <a href="../../../libros/otros/la-construccion-de-los-reales.html">Índice del libro</a> · <a href="../../../libros/otros/cdr/apendice-a.html">Siguiente →</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
