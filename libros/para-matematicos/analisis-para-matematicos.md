@@ -69,8 +69,10 @@ Esta edición reúne el libro completo: **32 capítulos (0–31)**, prefacio y e
 
 La edición del 16 de octubre de 2026 incorpora la revisión completa de los capítulos 0–31. Ambos PDFs conservan los **1.290 ejercicios con sus soluciones**, en composición AMS Book. La versión v05 reduce las figuras y las integra junto al texto: 838 páginas en A4 y 886 en carta.
 
-- [PDF A4 para lectura digital](../../assets/books/anm/downloads/ANM_A4_Digital_Con_Soluciones_v05.pdf)
-- [PDF carta para impresión](../../assets/books/anm/downloads/ANM_Carta_Impresion_Con_Soluciones_v05.pdf)
+**Cubiertas oficiales de la colección · 22 de octubre de 2026.**
+
+- [PDF A4 para lectura digital](../../assets/books/para-matematicos/downloads/cubiertas-v01/ANM_A4_Cubierta_Oficial_v01.pdf){download="ANM_A4_Cubierta_Oficial_v01.pdf"} — 838 páginas.
+- [PDF Carta para impresión](../../assets/books/para-matematicos/downloads/cubiertas-v01/ANM_Carta_Cubierta_Oficial_v01.pdf){download="ANM_Carta_Cubierta_Oficial_v01.pdf"} — 886 páginas.
 - [Proyecto Overleaf completo](../../assets/books/anm/downloads/ANM_Overleaf_MA_PDF_v05.zip)
 
 El proyecto Overleaf incluye las fuentes LaTeX y las figuras necesarias para compilar con XeLaTeX. `main.tex` corresponde a A4 y `main-carta.tex` a carta.

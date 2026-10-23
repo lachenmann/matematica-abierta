@@ -14,6 +14,14 @@ El segundo tomo estudia sistemas lineales, espacios vectoriales y transformacion
 
 [Convenciones de lectura](/libros/capitulos/algebra-para-matematicos-tomo-ii-convenciones.md) · [Bibliografía del tomo](/libros/capitulos/algebra-para-matematicos-tomo-ii-bibliografia.md)
 
+## Descargas en PDF
+
+Tomo II completo: veinte capítulos, 808 ejercicios con sus soluciones y 78 figuras. Cubiertas oficiales de la colección incorporadas el 22 de octubre de 2026.
+
+- [PDF A4 para lectura digital](../../assets/books/para-matematicos/downloads/cubiertas-v01/APM_II_A4_Cubierta_Oficial_v01.pdf){download="APM_II_A4_Cubierta_Oficial_v01.pdf"} — 296 páginas.
+- [PDF Carta para impresión](../../assets/books/para-matematicos/downloads/cubiertas-v01/APM_II_Carta_Cubierta_Oficial_v01.pdf){download="APM_II_Carta_Cubierta_Oficial_v01.pdf"} — 308 páginas.
+- [PDF A5 para impresión](../../assets/books/para-matematicos/downloads/cubiertas-v01/APM_II_A5_Cubierta_Oficial_v01.pdf){download="APM_II_A5_Cubierta_Oficial_v01.pdf"} — 448 páginas.
+
 ## Capítulos
 
 1. [**Sistemas lineales y eliminación**](/libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-01-sistemas-lineales-y-eliminacion.md) — 34 ejercicios con soluciones.

@@ -181,6 +181,13 @@ Sus 26 capítulos recorren pensamiento algebraico, expresiones y leyes de las op
 
     92 ejercicios y soluciones.
 
+## Descargas en PDF
+
+Tomo I completo: veintiséis capítulos y 2.352 ejercicios con sus soluciones desarrolladas. Cubiertas oficiales de la colección incorporadas el 22 de octubre de 2026.
+
+- [PDF A4 para lectura digital](../../assets/books/para-matematicos/downloads/cubiertas-v01/APM_I_A4_Cubierta_Oficial_v01.pdf){download="APM_I_A4_Cubierta_Oficial_v01.pdf"} — 1.370 páginas.
+- [PDF Carta para impresión](../../assets/books/para-matematicos/downloads/cubiertas-v01/APM_I_Carta_Cubierta_Oficial_v01.pdf){download="APM_I_Carta_Cubierta_Oficial_v01.pdf"} — 1.463 páginas.
+
 ## Tomo II — Álgebra lineal y transformaciones
 
 El segundo tomo está publicado completo: **20 capítulos, 808 ejercicios con sus soluciones y 78 figuras**.
