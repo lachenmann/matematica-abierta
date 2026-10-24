@@ -2,6 +2,12 @@
 
 Este directorio contiene la capa audiovisual canónica de Matemática Abierta.
 
+La narración predeterminada de los nuevos videos automatizados utiliza
+[MA-VOICE v1.0](voz/README.md): identidad sintética aprobada, Qwen3-TTS 1.7B Base
+con referencia protegida. La entrada es `manim/narrar.ps1`; Kokoro se conserva
+para pruebas y previsualizaciones. Los proyectos existentes mantienen sus audios
+y marcadores. La aprobación de voz no reemplaza la auditoría editorial de cada video.
+
 ## Tres niveles
 
 - **MA-VIZ**: visualización breve de una relación matemática concreta.
