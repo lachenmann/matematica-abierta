@@ -3,9 +3,12 @@ name: IC2021 — Quarto book QA
 on:
   pull_request:
     paths:
-      - "libros/otros/introduccion-al-calculo-san-martin/**"
+      - "libros/otros/introduccion-al-calculo/**"
       - "assets/books/san-martin/**"
-      - "tools/generate_sanmartin_web.py"
+      - "tools/*sanmartin*.py"
+      - "tests/sanmartin_web_browser.py"
+      - "data/ma-fig-manifests/ic2021-*.json"
+      - ".github/workflows/sanmartin-quarto-qa.yml"
       - "tools/sanmartin_archive.py"
       - "tools/materialize_sanmartin_figures.py"
       - "_quarto.yml"
@@ -28,21 +31,26 @@ jobs:
         run: python3 tools/generate_sanmartin_web.py --check
       - name: Materialize 175 original figures and verify checksums
         run: python3 tools/materialize_sanmartin_figures.py
-      - name: Render table of contents and selected mathematical chapters
+      - name: Render the complete book
+        run: quarto render libros/otros/introduccion-al-calculo
+      - name: Audit source conservation and rendered internal links
+        run: python3 tools/check_sanmartin_web.py --site-dir _site --report .ma-build/ic2021-inventory.json
+      - name: Check book style inheritance
+        run: python3 tools/check_book_layout.py --site-dir _site
+      - name: Install browser QA
         run: |
-          quarto render libros/otros/introduccion-al-calculo-san-martin/index.qmd
-          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-01.qmd
-          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-06.qmd
-          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-15.qmd
-          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-18.qmd
-      - name: Verify expected HTML and embedded source paths
-        run: |
-          python3 - <<'PYQA'
-          from pathlib import Path
-          root = Path('_site/libros/otros/introduccion-al-calculo-san-martin')
-          for name in ['index','capitulo-01','capitulo-06','capitulo-15','capitulo-18']:
-              page = root / f'{name}.html'
-              assert page.is_file() and page.stat().st_size > 1000, page
-          assert any((root/'figuras').rglob('*.png'))
-          print('IC2021 Quarto smoke render: PASS')
-          PYQA
+          python3 -m pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Check all 20 pages on phone, tablet and desktop
+        run: python3 tests/sanmartin_web_browser.py
+      - name: Preserve complete preview and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ic2021-complete-preview-and-qa
+          path: |
+            _site/
+            .ma-build/ic2021-visual/
+            .ma-build/ic2021-inventory.json
+          include-hidden-files: true
+          retention-days: 14

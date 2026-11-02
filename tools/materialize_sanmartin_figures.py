@@ -14,7 +14,7 @@ from sanmartin_archive import ensure_archive
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / 'assets/books/san-martin/IC2021_master_y_figuras.zip'
-TARGET = ROOT / 'libros/otros/introduccion-al-calculo-san-martin'
+TARGET = ROOT / 'libros/otros/introduccion-al-calculo'
 
 
 def check_member(name: str):
@@ -41,6 +41,23 @@ def run():
             to.parent.mkdir(parents=True,exist_ok=True)
             to.write_bytes(payload)
             done+=1
+    recovered = ROOT / 'assets/books/san-martin/recovered'
+    for name, detail in json.loads((recovered/'provenance.json').read_text()).items():
+        payload = (recovered/name).read_bytes()
+        if hashlib.sha256(payload).hexdigest() != detail['sha256']:
+            raise ValueError('Falla de integridad de figura recuperada '+name)
+        target = TARGET/detail['original_member']
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes(payload)
+        done += 1
+    # Deterministic complete download; the original 175-image archive is untouched.
+    complete = ARCHIVE.with_name('IC2021_fuentes_web_completas.zip')
+    with zipfile.ZipFile(ARCHIVE) as original, zipfile.ZipFile(complete,'w',compression=zipfile.ZIP_DEFLATED) as output:
+        for name in sorted(original.namelist()):
+            if name != 'MANIFEST.json':
+                output.writestr(zipfile.ZipInfo(name, (2026,11,1,0,0,0)), original.read(name))
+        for name, detail in json.loads((recovered/'provenance.json').read_text()).items():
+            output.writestr(zipfile.ZipInfo(detail['original_member'], (2026,11,1,0,0,0)), (recovered/name).read_bytes())
     print(f'IC2021 figuras: PASS — {done} PNG disponibles para Quarto')
 
 
