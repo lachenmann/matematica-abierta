@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-CL" xml:lang="es-CL"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 11 de Introducción al cálculo: Comparaciones, velocidad y monotonía de sucesiones. Edición temática del curso IC2021.">
+
+<title>Comparaciones, velocidad y monotonía de sucesiones – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" rel="next">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-10.html" rel="prev">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c5103b7da534e48a10b0d82cfa6d6f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b842675181cc30c051e0a8f6ab07c4ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-09.html">Parte III. La completitud de los reales y las sucesiones</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-11.html">11. Comparaciones, velocidad y monotonía de sucesiones</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/brand/ma-logo-light.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../assets/brand/ma-logo-dark.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Portada del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte I. Fundamentos: de los reales a la geometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. La estructura algebraica de los números reales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Orden, desigualdades e inecuaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Coordenadas, distancias y rectas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Cónicas y curvas cuadráticas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte II. Funciones y trigonometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. El lenguaje de las funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. El círculo trigonométrico y sus identidades</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Identidades trigonométricas y resolución de triángulos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Funciones trigonométricas inversas y ecuaciones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte III. La completitud de los reales y las sucesiones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Supremos, naturales y propiedad arquimediana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Sucesiones y convergencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-11.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">11. Comparaciones, velocidad y monotonía de sucesiones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte IV. Exponenciales y logaritmos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. La función exponencial y su inversa logarítmica</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte V. Límites de funciones y cálculo diferencial</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Puntos de acumulación y límite de una función</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Álgebra, comparación y límites fundamentales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15. Límites de composiciones y caracterización épsilon-delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Límites laterales, infinito y asíntotas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">17. La derivada como límite de pendientes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">18. Reglas y técnicas de derivación</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/apendices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apéndices y fuentes</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#de-la-aproximación-al-orden" id="toc-de-la-aproximación-al-orden" class="nav-link active" data-scroll-target="#de-la-aproximación-al-orden">De la aproximación al orden</a></li>
+  <li><a href="#el-límite-respeta-las-desigualdades" id="toc-el-límite-respeta-las-desigualdades" class="nav-link" data-scroll-target="#el-límite-respeta-las-desigualdades">El límite respeta las desigualdades</a></li>
+  <li><a href="#teorema-del-sándwich" id="toc-teorema-del-sándwich" class="nav-link" data-scroll-target="#teorema-del-sándwich">Teorema del sándwich</a></li>
+  <li><a href="#una-desigualdad-que-transforma-potencias-en-cotas" id="toc-una-desigualdad-que-transforma-potencias-en-cotas" class="nav-link" data-scroll-target="#una-desigualdad-que-transforma-potencias-en-cotas">Una desigualdad que transforma potencias en cotas</a></li>
+  <li><a href="#la-sucesión-geométrica-qn" id="toc-la-sucesión-geométrica-qn" class="nav-link" data-scroll-target="#la-sucesión-geométrica-qn">La sucesión geométrica <span class="math inline">\(q^n\)</span></a></li>
+  <li><a href="#raíces-de-índice-creciente" id="toc-raíces-de-índice-creciente" class="nav-link" data-scroll-target="#raíces-de-índice-creciente">Raíces de índice creciente</a></li>
+  <li><a href="#ampliación-editorial-bernoulli-de-segundo-orden" id="toc-ampliación-editorial-bernoulli-de-segundo-orden" class="nav-link" data-scroll-target="#ampliación-editorial-bernoulli-de-segundo-orden">Ampliación editorial: Bernoulli de segundo orden</a></li>
+  <li><a href="#ejemplos-resueltos-para-consolidar-el-método" id="toc-ejemplos-resueltos-para-consolidar-el-método" class="nav-link" data-scroll-target="#ejemplos-resueltos-para-consolidar-el-método">Ejemplos resueltos para consolidar el método</a></li>
+  <li><a href="#el-problema-que-organiza-el-cierre-de-la-unidad" id="toc-el-problema-que-organiza-el-cierre-de-la-unidad" class="nav-link" data-scroll-target="#el-problema-que-organiza-el-cierre-de-la-unidad">El problema que organiza el cierre de la unidad</a></li>
+  <li><a href="#el-mapa-completo-de-las-potencias-geométricas" id="toc-el-mapa-completo-de-las-potencias-geométricas" class="nav-link" data-scroll-target="#el-mapa-completo-de-las-potencias-geométricas">El mapa completo de las potencias geométricas</a></li>
+  <li><a href="#la-transformación-decisiva-del-número-q1-a-una-potencia-de-bernoulli" id="toc-la-transformación-decisiva-del-número-q1-a-una-potencia-de-bernoulli" class="nav-link" data-scroll-target="#la-transformación-decisiva-del-número-q1-a-una-potencia-de-bernoulli">La transformación decisiva: del número <span class="math inline">\(q&lt;1\)</span> a una potencia de Bernoulli</a></li>
+  <li><a href="#la-velocidad-de-convergencia-cocientes-de-dos-sucesiones-nulas" id="toc-la-velocidad-de-convergencia-cocientes-de-dos-sucesiones-nulas" class="nav-link" data-scroll-target="#la-velocidad-de-convergencia-cocientes-de-dos-sucesiones-nulas">La velocidad de convergencia: cocientes de dos sucesiones nulas</a></li>
+  <li><a href="#bases-negativas-y-bases-de-módulo-grande" id="toc-bases-negativas-y-bases-de-módulo-grande" class="nav-link" data-scroll-target="#bases-negativas-y-bases-de-módulo-grande">Bases negativas y bases de módulo grande</a></li>
+  <li><a href="#una-dificultad-previa-a-las-raíces-demostrar-su-existencia" id="toc-una-dificultad-previa-a-las-raíces-demostrar-su-existencia" class="nav-link" data-scroll-target="#una-dificultad-previa-a-las-raíces-demostrar-su-existencia">Una dificultad previa a las raíces: demostrar su existencia</a></li>
+  <li><a href="#el-límite-de-sqrtnq-con-base-fija" id="toc-el-límite-de-sqrtnq-con-base-fija" class="nav-link" data-scroll-target="#el-límite-de-sqrtnq-con-base-fija">El límite de <span class="math inline">\(\sqrt[n]{q}\)</span> con base fija</a></li>
+  <li><a href="#el-límite-de-sqrtnn-bernoulli-de-segundo-orden" id="toc-el-límite-de-sqrtnn-bernoulli-de-segundo-orden" class="nav-link" data-scroll-target="#el-límite-de-sqrtnn-bernoulli-de-segundo-orden">El límite de <span class="math inline">\(\sqrt[n]{n}\)</span>: Bernoulli de segundo orden</a></li>
+  <li><a href="#el-teorema-de-las-sucesiones-monótonas-acotadas" id="toc-el-teorema-de-las-sucesiones-monótonas-acotadas" class="nav-link" data-scroll-target="#el-teorema-de-las-sucesiones-monótonas-acotadas">El teorema de las sucesiones monótonas acotadas</a></li>
+  <li><a href="#revisión-de-estrategias-y-dificultades-habituales" id="toc-revisión-de-estrategias-y-dificultades-habituales" class="nav-link" data-scroll-target="#revisión-de-estrategias-y-dificultades-habituales">Revisión de estrategias y dificultades habituales</a></li>
+  <li><a href="#taller-de-problemas-y-soluciones" id="toc-taller-de-problemas-y-soluciones" class="nav-link" data-scroll-target="#taller-de-problemas-y-soluciones">Taller de problemas y soluciones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-09.html">Parte III. La completitud de los reales y las sucesiones</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-11.html">11. Comparaciones, velocidad y monotonía de sucesiones</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Comparaciones, velocidad y monotonía de sucesiones</h1>
+<p class="subtitle lead">Capítulo 11 · Parte III. La completitud de los reales y las sucesiones</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 11 de Introducción al cálculo: Comparaciones, velocidad y monotonía de sucesiones. Edición temática del curso IC2021.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>La comparación de sucesiones conduce al teorema del sándwich, a la desigualdad de Bernoulli y a los límites de potencias y raíces. La monotonía y el supremo completan el panorama de convergencia.</p>
+<p><strong>Grabaciones de referencia:</strong> <a href="https://www.youtube.com/watch?v=uWNFjH-GDEA">grabación de la cátedra 10.1</a>, <a href="https://www.youtube.com/watch?v=CQgnnA48rEA">grabación de la cátedra 10.2</a>.</p>
+<p><em>Procedencia de este tramo: cátedra 10.1.</em></p>
+<section id="de-la-aproximación-al-orden" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-aproximación-al-orden">De la aproximación al orden</h2>
+<p>En la cátedra anterior se estableció que una sucesión real <span class="math inline">\((s_n)\)</span> converge a un número <span class="math inline">\(L\in\mathbb R\)</span> cuando se satisface la condición</p>
+<p><span class="math display">\[
+\boxed{
+(\forall\varepsilon&gt;0)(\exists N\in\mathbb N)
+(\forall n\ge N)\quad |s_n-L|\le\varepsilon.
+}
+\]</span></p>
+<p>El índice <span class="math inline">\(N\)</span> depende del margen <span class="math inline">\(\varepsilon\)</span> y de la sucesión. Cada cota para el error <span class="math inline">\(|s_n-L|\)</span> expresa que, a partir de ese índice, todos los términos permanecen dentro del intervalo <span class="math inline">\([L-\varepsilon,L+\varepsilon]\)</span>. La propiedad arquimediana permite construir índices para errores tan pequeños como se quiera.</p>
+<p>La propiedad de convergencia es especialmente útil al combinar valores aproximados con desigualdades. El <strong>orden</strong> de los reales proporciona información que se conserva al pasar al límite. El paso requiere una precisión: una desigualdad estricta entre términos puede convertirse en igualdad entre límites. La razón es geométrica: dos sucesiones pueden permanecer una a cada lado y acercarse al mismo número.</p>
+<p><strong>Ejemplo editorial.</strong> Para <span class="math inline">\(n\ge1\)</span> tomemos <span class="math inline">\(u_n=0\)</span> y <span class="math inline">\(v_n=1/n\)</span>. Entonces <span class="math inline">\(u_n&lt;v_n\)</span> para cada <span class="math inline">\(n\)</span>, mientras que</p>
+<p><span class="math display">\[
+\lim_{n\to\infty}u_n=\lim_{n\to\infty}v_n=0.
+\]</span></p>
+<p>El orden llega al límite bajo la forma de una desigualdad amplia.</p>
+<section id="un-lema-sobre-la-positividad-eventual" class="level3">
+<h3 class="anchored" data-anchor-id="un-lema-sobre-la-positividad-eventual">Un lema sobre la positividad eventual</h3>
+<p><strong>Demostración editorial.</strong> Si <span class="math inline">\(x_n\to a\)</span> y <span class="math inline">\(a&gt;0\)</span>, los términos de <span class="math inline">\((x_n)\)</span> son estrictamente positivos desde algún índice. En efecto, sea <span class="math inline">\(\varepsilon=a/2&gt;0\)</span>. Existe <span class="math inline">\(N\)</span> tal que, para <span class="math inline">\(n\ge N\)</span>,</p>
+<p><span class="math display">\[
+|x_n-a|\le\frac a2,
+\qquad\text{de donde}\qquad
+x_n\ge a-\frac a2=\frac a2&gt;0.
+\]</span></p>
+<p>De igual manera, si <span class="math inline">\(a&lt;0\)</span>, entonces <span class="math inline">\(x_n&lt;0\)</span> desde algún índice, pues basta imponer <span class="math inline">\(|x_n-a|\le(-a)/2\)</span>. Este lema ofrece la base de una prueba por contradicción del orden de los límites.</p>
+</section>
+</section>
+<section id="el-límite-respeta-las-desigualdades" class="level2">
+<h2 class="anchored" data-anchor-id="el-límite-respeta-las-desigualdades">El límite respeta las desigualdades</h2>
+<p><strong>Teorema (límites y orden; resumen MA1001, §10.1).</strong> Sean <span class="math inline">\((u_n)\)</span> y <span class="math inline">\((w_n)\)</span> dos sucesiones reales, con</p>
+<p><span class="math display">\[
+u_n\longrightarrow u,
+\qquad
+w_n\longrightarrow w.
+\]</span></p>
+<p>Si existe <span class="math inline">\(N_0\in\mathbb N\)</span> tal que <span class="math inline">\(u_n\le w_n\)</span> para cada <span class="math inline">\(n\ge N_0\)</span>, entonces</p>
+<p><span class="math display">\[\boxed{u\le w.}\]</span></p>
+<p><strong>Demostración desarrollada editorialmente.</strong> Consideremos la sucesión de diferencias</p>
+<p><span class="math display">\[d_n=w_n-u_n.\]</span></p>
+<p>Por el álgebra de límites, <span class="math inline">\(d_n\to w-u\)</span>. A partir de <span class="math inline">\(N_0\)</span> se cumple <span class="math inline">\(d_n\ge0\)</span>. Supongamos que <span class="math inline">\(w-u&lt;0\)</span>. El lema anterior asegura entonces la existencia de un índice <span class="math inline">\(N_1\)</span> a partir del cual <span class="math inline">\(d_n&lt;0\)</span>. Para <span class="math inline">\(n\ge\max\{N_0,N_1\}\)</span> se obtendrían simultáneamente <span class="math inline">\(d_n\ge0\)</span> y <span class="math inline">\(d_n&lt;0\)</span>, situación incompatible con el orden real. Por consiguiente <span class="math inline">\(w-u\ge0\)</span>, es decir, <span class="math inline">\(u\le w\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La palabra <strong>eventualmente</strong> abrevia una condición exacta: existe un índice natural <span class="math inline">\(N_0\)</span> desde el cual la desigualdad vale para todos los términos. La convergencia depende de las colas de las sucesiones; alterar una cantidad finita de términos iniciales conserva el mismo límite.</p>
+<p><strong>Corolario editorial (intervalo de límites).</strong> Si <span class="math inline">\(a\le u_n\le b\)</span> eventualmente y <span class="math inline">\(u_n\to L\)</span>, entonces <span class="math inline">\(a\le L\le b\)</span>. Se aplica el teorema a las dos sucesiones constantes <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>.</p>
+<p><strong>Contraejemplo editorial para precisar el enunciado.</strong> La conclusión estricta <span class="math inline">\(u&lt;w\)</span> exige hipótesis adicionales. Las sucesiones <span class="math inline">\(u_n=-1/n\)</span> y <span class="math inline">\(w_n=1/n\)</span> satisfacen <span class="math inline">\(u_n&lt;w_n\)</span>, pero ambas convergen a <span class="math inline">\(0\)</span>.</p>
+</section>
+<section id="teorema-del-sándwich" class="level2">
+<h2 class="anchored" data-anchor-id="teorema-del-sándwich">Teorema del sándwich</h2>
+<p>Hay ocasiones en que se conoce una sucesión <span class="math inline">\(v_n\)</span> mediante dos desigualdades y se desea calcular su límite. El teorema del sándwich convierte esas dos cotas en un resultado de convergencia cuando los extremos se aproximan al mismo real.</p>
+<p><strong>Teorema (sándwich; resumen MA1001, §10.1).</strong> Sean <span class="math inline">\((u_n)\)</span>, <span class="math inline">\((v_n)\)</span> y <span class="math inline">\((w_n)\)</span> sucesiones reales. Supongamos que</p>
+<p><span class="math display">\[
+\lim_{n\to\infty}u_n
+=
+\lim_{n\to\infty}w_n=L
+\]</span></p>
+<p>y que existe <span class="math inline">\(N_\ast\)</span> tal que</p>
+<p><span class="math display">\[
+(\forall n\ge N_\ast)\qquad
+u_n\le v_n\le w_n.
+\]</span></p>
+<p>Entonces <span class="math inline">\((v_n)\)</span> converge y</p>
+<p><span class="math display">\[\boxed{\lim_{n\to\infty}v_n=L.}\]</span></p>
+<p><strong>Demostración desarrollada editorialmente.</strong> Fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. De <span class="math inline">\(u_n\to L\)</span> obtenemos un índice <span class="math inline">\(N_1\)</span> con</p>
+<p><span class="math display">\[L-\varepsilon\le u_n\le L+\varepsilon
+\qquad(n\ge N_1).\]</span></p>
+<p>De <span class="math inline">\(w_n\to L\)</span> obtenemos un índice <span class="math inline">\(N_2\)</span> con</p>
+<p><span class="math display">\[L-\varepsilon\le w_n\le L+\varepsilon
+\qquad(n\ge N_2).\]</span></p>
+<p>Tomamos un índice común</p>
+<p><span class="math display">\[
+\boxed{N=\max\{N_\ast,N_1,N_2\}.}
+\]</span></p>
+<p>Para todo <span class="math inline">\(n\ge N\)</span> se cumplen las tres condiciones de manera simultánea. Encadenando sus partes útiles resulta</p>
+<p><span class="math display">\[
+L-\varepsilon\le u_n\le v_n\le w_n\le L+\varepsilon.
+\]</span></p>
+<p>De ello se sigue <span class="math inline">\(|v_n-L|\le\varepsilon\)</span>. Como <span class="math inline">\(\varepsilon&gt;0\)</span> fue arbitrario, la definición de convergencia demuestra <span class="math inline">\(v_n\to L\)</span>. <span class="math inline">\(\square\)</span></p>
+<div id="fig-ic2021-c11-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: dos cotas convergentes y la sucesión intermedia.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_1/01_sandwich.png" class="img-fluid figure-img" style="width:85.0%" alt="Esquema editorial: dos cotas convergentes y la sucesión intermedia.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Esquema editorial: dos cotas convergentes y la sucesión intermedia.
+</figcaption>
+</figure>
+</div>
+<p>En la demostración, el uso de <span class="math inline">\(\max\{N_\ast,N_1,N_2\}\)</span> es la operación decisiva. Cada condición empieza a valer desde un índice posiblemente distinto; escoger el mayor permite utilizarlas todas a la vez.</p>
+<section id="una-forma-habitual-valor-absoluto-acotado" class="level3">
+<h3 class="anchored" data-anchor-id="una-forma-habitual-valor-absoluto-acotado">Una forma habitual: valor absoluto acotado</h3>
+<p><strong>Corolario editorial.</strong> Si <span class="math inline">\(a_n\ge0\)</span>, <span class="math inline">\(a_n\to0\)</span> y</p>
+<p><span class="math display">\[|v_n|\le a_n\qquad\text{eventualmente},\]</span></p>
+<p>entonces <span class="math inline">\(v_n\to0\)</span>, pues <span class="math inline">\(-a_n\le v_n\le a_n\)</span> y los extremos convergen a cero.</p>
+<p>Por ejemplo, si <span class="math inline">\(|v_n|\le C/n\)</span> desde algún índice, con <span class="math inline">\(C&gt;0\)</span> fijo, entonces <span class="math inline">\(v_n\to0\)</span>. Esta forma reduce el problema a encontrar una cota sencilla que tienda a cero.</p>
+</section>
+<section id="un-ejemplo-oscilante" class="level3">
+<h3 class="anchored" data-anchor-id="un-ejemplo-oscilante">Un ejemplo oscilante</h3>
+<p><strong>Ejemplo editorial.</strong> Consideremos</p>
+<p><span class="math display">\[v_n=\frac{\sin(n!)}{n},\qquad n\ge1.\]</span></p>
+<p>El argumento <span class="math inline">\(n!\)</span> puede generar un comportamiento oscilante, pero la desigualdad elemental <span class="math inline">\(-1\le\sin x\le1\)</span> proporciona inmediatamente</p>
+<p><span class="math display">\[
+-\frac1n\le\frac{\sin(n!)}n\le\frac1n.
+\]</span></p>
+<p>Los extremos convergen a cero y, por tanto,</p>
+<p><span class="math display">\[\boxed{\lim_{n\to\infty}\frac{\sin(n!)}n=0.}\]</span></p>
+<p>El teorema identifica el límite a partir de las cotas, sin exigir el cálculo del comportamiento de la parte oscilante.</p>
+</section>
+</section>
+<section id="una-desigualdad-que-transforma-potencias-en-cotas" class="level2">
+<h2 class="anchored" data-anchor-id="una-desigualdad-que-transforma-potencias-en-cotas">Una desigualdad que transforma potencias en cotas</h2>
+<p>El capítulo complementario de MA1001 estudia la <strong>desigualdad de Bernoulli</strong> como instrumento para el teorema del sándwich. Su función es permitir estimaciones de potencias usando expresiones polinomiales sencillas.</p>
+<p><strong>Proposición (Bernoulli; resumen MA1001, §10.2).</strong> Para todo natural <span class="math inline">\(n\ge0\)</span> y todo real <span class="math inline">\(h&gt;-1\)</span>,</p>
+<p><span class="math display">\[\boxed{(1+h)^n\ge1+nh.}\]</span></p>
+<p><strong>Demostración editorial por inducción.</strong> Para <span class="math inline">\(n=0\)</span> ambos miembros son <span class="math inline">\(1\)</span>. Supongamos que la desigualdad vale para cierto natural <span class="math inline">\(n\)</span>. Como <span class="math inline">\(1+h&gt;0\)</span>, podemos multiplicar ambos miembros por <span class="math inline">\(1+h\)</span> y conservar el sentido de la desigualdad:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(1+h)^{n+1}
+&amp;\ge(1+nh)(1+h)\\
+&amp;=1+(n+1)h+nh^2\\
+&amp;\ge1+(n+1)h.
+\end{aligned}
+\]</span></p>
+<p>El último paso utiliza <span class="math inline">\(n\ge0\)</span> y <span class="math inline">\(h^2\ge0\)</span>. La inducción completa la demostración. <span class="math inline">\(\square\)</span></p>
+<div id="fig-ic2021-c11-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: comparación entre (1+h)^n y 1+nh para un h fijo positivo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_1/02_bernoulli.png" class="img-fluid figure-img" style="width:82.0%" alt="Esquema editorial: comparación entre (1+h)^n y 1+nh para un h fijo positivo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Esquema editorial: comparación entre <span class="math inline">\((1+h)^n\)</span> y <span class="math inline">\(1+nh\)</span> para un <span class="math inline">\(h\)</span> fijo positivo.
+</figcaption>
+</figure>
+</div>
+<p><strong>Observación editorial.</strong> La hipótesis <span class="math inline">\(h&gt;-1\)</span> hace positivo el factor <span class="math inline">\(1+h\)</span> y legitima la multiplicación durante el paso inductivo. Para <span class="math inline">\(h&gt;0\)</span>, el crecimiento de <span class="math inline">\(1+nh\)</span> expresa inmediatamente que <span class="math inline">\((1+h)^n\)</span> supera cualquier cota real al crecer <span class="math inline">\(n\)</span>.</p>
+</section>
+<section id="la-sucesión-geométrica-qn" class="level2">
+<h2 class="anchored" data-anchor-id="la-sucesión-geométrica-qn">La sucesión geométrica <span class="math inline">\(q^n\)</span></h2>
+<p><strong>Resultado del resumen MA1001, §10.2.</strong> Dado <span class="math inline">\(q\in\mathbb R\)</span>, el comportamiento de la sucesión <span class="math inline">\((q^n)\)</span> se organiza mediante el valor absoluto de la base.</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{ll}
+q=1 &amp;\Longrightarrow\quad q^n\to1,\\[2pt]
+|q|&lt;1 &amp;\Longrightarrow\quad q^n\to0,\\[2pt]
+q\in(-\infty,-1]\cup(1,\infty)
+&amp;\Longrightarrow\quad (q^n)\ \text{diverge en }\mathbb R.
+\end{array}}
+\]</span></p>
+<p>El caso <span class="math inline">\(q=0\)</span> se entiende con la sucesión de valores <span class="math inline">\(0\)</span> desde <span class="math inline">\(n\ge1\)</span>; el término <span class="math inline">\(0^0\)</span> se omite o se conviene por separado. El caso <span class="math inline">\(q=-1\)</span> genera la alternancia <span class="math inline">\(1,-1,1,-1,\ldots\)</span>.</p>
+<section id="demostración-cuando-0q1" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-cuando-0q1">Demostración cuando <span class="math inline">\(0&lt;q&lt;1\)</span></h3>
+<p>Escribimos <span class="math inline">\(q=1/(1+h)\)</span> con <span class="math inline">\(h=q^{-1}-1&gt;0\)</span>. Aplicando Bernoulli,</p>
+<p><span class="math display">\[
+0&lt;q^n=\frac{1}{(1+h)^n}
+\le\frac{1}{1+nh}.
+\]</span></p>
+<p>Por la propiedad arquimediana, <span class="math inline">\(1/(1+nh)\to0\)</span>. El teorema del sándwich concluye que <span class="math inline">\(q^n\to0\)</span>.</p>
+<p>Cuando <span class="math inline">\(-1&lt;q&lt;0\)</span>, la sucesión <span class="math inline">\(|q|^n\)</span> converge a cero y <span class="math inline">\(|q^n|=|q|^n\)</span>; la misma conclusión se obtiene por el criterio de valor absoluto.</p>
+</section>
+<section id="demostración-cuando-q1" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-cuando-q1">Demostración cuando <span class="math inline">\(|q|&gt;1\)</span></h3>
+<p>Para <span class="math inline">\(q&gt;1\)</span> escribimos <span class="math inline">\(q=1+h\)</span>, con <span class="math inline">\(h&gt;0\)</span>. Bernoulli proporciona <span class="math inline">\(q^n\ge1+nh\)</span>, de manera que <span class="math inline">\((q^n)\)</span> crece sin cota superior y, en particular, carece de límite real.</p>
+<p>Para <span class="math inline">\(q&lt;-1\)</span>, sus valores absolutos satisfacen <span class="math inline">\(|q^n|=|q|^n\ge1+nh\)</span> con <span class="math inline">\(h=|q|-1&gt;0\)</span>. Una sucesión real convergente es acotada, de modo que <span class="math inline">\((q^n)\)</span> tampoco converge.</p>
+<p><strong>Caso de alternancia.</strong> Para <span class="math inline">\(q=-1\)</span> las subsucesiones de índices pares e impares tienen valores constantes <span class="math inline">\(1\)</span> y <span class="math inline">\(-1\)</span>, respectivamente. Si la sucesión entera convergiera, ambas subsucesiones tendrían el mismo límite, lo que contradice <span class="math inline">\(1\ne-1\)</span>.</p>
+<div id="fig-ic2021-c11-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: sucesiones geométricas con bases positivas y negativas dentro del intervalo de módulo menor que uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_1/03_geometricas.png" class="img-fluid figure-img" style="width:85.0%" alt="Esquema editorial: sucesiones geométricas con bases positivas y negativas dentro del intervalo de módulo menor que uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Esquema editorial: sucesiones geométricas con bases positivas y negativas dentro del intervalo de módulo menor que uno.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="bases-variables" class="level3">
+<h3 class="anchored" data-anchor-id="bases-variables">Bases variables</h3>
+<p><strong>Proposición complementaria (resumen MA1001, §10.2).</strong> Si <span class="math inline">\(q_n\to q\)</span> y <span class="math inline">\(|q|&lt;1\)</span>, entonces</p>
+<p><span class="math display">\[\boxed{(q_n)^n\longrightarrow0.}\]</span></p>
+<p><strong>Demostración editorial.</strong> Escogemos <span class="math inline">\(r\)</span> tal que <span class="math inline">\(|q|&lt;r&lt;1\)</span>. Por convergencia, <span class="math inline">\(|q_n|&lt;r\)</span> para todos los índices suficientemente grandes. Elevando a la potencia natural <span class="math inline">\(n\)</span> obtenemos</p>
+<p><span class="math display">\[0\le|q_n|^n\le r^n,\]</span></p>
+<p>y el miembro derecho tiende a cero. El sándwich concluye la prueba.</p>
+<p>Si <span class="math inline">\(|q|&gt;1\)</span>, se puede elegir <span class="math inline">\(r\)</span> con <span class="math inline">\(1&lt;r&lt;|q|\)</span>. Desde cierto índice, <span class="math inline">\(|q_n|\ge r\)</span> y, por tanto, <span class="math inline">\(|(q_n)^n|\ge r^n\)</span>. La sucesión <span class="math inline">\((q_n)^n\)</span> es no acotada y carece de límite real.</p>
+<p>Los casos de frontera <span class="math inline">\(|q|=1\)</span> requieren inspección adicional: la información <span class="math inline">\(q_n\to1\)</span> por sí sola es compatible con límites distintos de <span class="math inline">\((q_n)^n\)</span>. Por ejemplo, <span class="math inline">\((1+1/n)^n\)</span> y <span class="math inline">\((1+1/n^2)^n\)</span> siguen comportamientos diferentes. La primera sucesión se vincula con la construcción del número <span class="math inline">\(e\)</span> y la segunda converge a <span class="math inline">\(1\)</span>.</p>
+</section>
+</section>
+<section id="raíces-de-índice-creciente" class="level2">
+<h2 class="anchored" data-anchor-id="raíces-de-índice-creciente">Raíces de índice creciente</h2>
+<p>La operación de extraer raíces convierte una potencia de exponente <span class="math inline">\(n\)</span> en una expresión cuyo límite se puede estimar mediante Bernoulli.</p>
+<p><strong>Proposición complementaria (resumen MA1001, §10.2).</strong> Para todo <span class="math inline">\(a&gt;0\)</span>,</p>
+<p><span class="math display">\[\boxed{\lim_{n\to\infty}\sqrt[n]{a}=1.}\]</span></p>
+<p><strong>Demostración editorial.</strong> Si <span class="math inline">\(a=1\)</span>, cada término vale <span class="math inline">\(1\)</span>. Supongamos <span class="math inline">\(a&gt;1\)</span> y definamos <span class="math inline">\(h_n=\sqrt[n]{a}-1&gt;0\)</span>. Entonces <span class="math inline">\(a=(1+h_n)^n\)</span>. Por Bernoulli,</p>
+<p><span class="math display">\[a\ge1+nh_n,\]</span></p>
+<p>de donde</p>
+<p><span class="math display">\[0\le h_n\le\frac{a-1}{n}\longrightarrow0.\]</span></p>
+<p>Así <span class="math inline">\(\sqrt[n]{a}=1+h_n\to1\)</span>. Si <span class="math inline">\(0&lt;a&lt;1\)</span>, tomamos <span class="math inline">\(b=1/a&gt;1\)</span>. Ya sabemos que <span class="math inline">\(\sqrt[n]{b}\to1\)</span> y, por el álgebra de límites aplicada al recíproco,</p>
+<p><span class="math display">\[\sqrt[n]{a}=\frac1{\sqrt[n]{b}}\longrightarrow1.\]</span></p>
+<p>Esta demostración describe cómo una desigualdad elemental de potencias produce una aproximación arbitrariamente precisa a la unidad.</p>
+<section id="raíces-de-términos-que-también-varían" class="level3">
+<h3 class="anchored" data-anchor-id="raíces-de-términos-que-también-varían">Raíces de términos que también varían</h3>
+<p><strong>Proposición complementaria (resumen MA1001, §10.2).</strong> Si <span class="math inline">\(a_n\to a&gt;0\)</span> y <span class="math inline">\(a_n&gt;0\)</span> desde algún índice, entonces</p>
+<p><span class="math display">\[\boxed{\sqrt[n]{a_n}\longrightarrow1.}\]</span></p>
+<p><strong>Demostración editorial.</strong> Existe <span class="math inline">\(N\)</span> tal que, para <span class="math inline">\(n\ge N\)</span>,</p>
+<p><span class="math display">\[\frac a2\le a_n\le\frac{3a}{2}.\]</span></p>
+<p>La función raíz <span class="math inline">\(n\)</span>-ésima es creciente en <span class="math inline">\((0,\infty)\)</span>; por ello</p>
+<p><span class="math display">\[\sqrt[n]{a/2}\le\sqrt[n]{a_n}\le\sqrt[n]{3a/2}.\]</span></p>
+<p>Las dos sucesiones extremas convergen a <span class="math inline">\(1\)</span> por el resultado precedente. El teorema del sándwich demuestra el límite buscado.</p>
+<div id="fig-ic2021-c11-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: raíces n-ésimas de dos números positivos que se aproximan a 1.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_1/04_raices.png" class="img-fluid figure-img" style="width:84.0%" alt="Esquema editorial: raíces n-ésimas de dos números positivos que se aproximan a 1.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Esquema editorial: raíces <span class="math inline">\(n\)</span>-ésimas de dos números positivos que se aproximan a <span class="math inline">\(1\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ampliación-editorial-bernoulli-de-segundo-orden" class="level2">
+<h2 class="anchored" data-anchor-id="ampliación-editorial-bernoulli-de-segundo-orden">Ampliación editorial: Bernoulli de segundo orden</h2>
+<p>El apartado 10.3 del resumen MA1001 desarrolla una forma más precisa de la desigualdad de Bernoulli. Se incluye aquí como <strong>ampliación editorial</strong>, pues su pertenencia a la grabación del 7 de junio está pendiente de confirmación.</p>
+<p>Para <span class="math inline">\(h\ge0\)</span> y <span class="math inline">\(n\ge2\)</span> vale</p>
+<p><span class="math display">\[
+\boxed{(1+h)^n\ge1+nh+\frac{n(n-1)}2h^2.}
+\]</span></p>
+<p>La desigualdad se obtiene del desarrollo binomial: todos los coeficientes y potencias restantes son no negativos. También puede establecerse por inducción. Su utilidad aparece en el límite</p>
+<p><span class="math display">\[\boxed{\sqrt[n]{n}\longrightarrow1.}\]</span></p>
+<p><strong>Demostración editorial.</strong> Para <span class="math inline">\(n\ge2\)</span> escribimos <span class="math inline">\(x_n=\sqrt[n]{n}-1\ge0\)</span>. Entonces <span class="math inline">\(n=(1+x_n)^n\)</span> y la desigualdad anterior asegura</p>
+<p><span class="math display">\[
+n\ge1+nx_n+\frac{n(n-1)}2x_n^2
+\ge1+\frac{n(n-1)}2x_n^2.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+0\le x_n^2\le\frac{2(n-1)}{n(n-1)}=\frac2n,
+\qquad
+0\le x_n\le\sqrt{\frac2n}\longrightarrow0.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(\sqrt[n]{n}=1+x_n\to1\)</span>. El exponente variable se controla a través de una estimación cuadrática explícita.</p>
+<section id="una-comparación-de-velocidades" class="level3">
+<h3 class="anchored" data-anchor-id="una-comparación-de-velocidades">Una comparación de velocidades</h3>
+<p><strong>Ampliación editorial.</strong> Para cada <span class="math inline">\(k\in\mathbb N\)</span> y cada <span class="math inline">\(q\in\mathbb R\)</span> con <span class="math inline">\(|q|&lt;1\)</span>,</p>
+<p><span class="math display">\[\boxed{n^kq^n\longrightarrow0.}\]</span></p>
+<p>En efecto, basta estudiar <span class="math inline">\(0&lt;r=|q|&lt;1\)</span>, y escribir <span class="math inline">\(r=(1+h)^{-1}\)</span> con <span class="math inline">\(h&gt;0\)</span>. Para <span class="math inline">\(n\ge2(k+1)\)</span>, el binomio de Newton proporciona</p>
+<p><span class="math display">\[
+(1+h)^n\ge \binom n{k+1}h^{k+1}
+\ge\frac{(n/2)^{k+1}}{(k+1)!}\,h^{k+1}.
+\]</span></p>
+<p>Por ello,</p>
+<p><span class="math display">\[
+0\le n^kr^n
+\le\frac{2^{k+1}(k+1)!}{h^{k+1}}\frac1n
+\longrightarrow0.
+\]</span></p>
+<p>El resultado explica cómo un decaimiento geométrico domina, a largo plazo, cualquier potencia natural fija.</p>
+</section>
+</section>
+<section id="ejemplos-resueltos-para-consolidar-el-método" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-resueltos-para-consolidar-el-método">Ejemplos resueltos para consolidar el método</h2>
+<section id="ejemplo-1.-una-oscilación-que-se-extingue" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-1.-una-oscilación-que-se-extingue">Ejemplo 1. Una oscilación que se extingue</h3>
+<p>Sea <span class="math inline">\(s_n=(-1)^n/n\)</span> para <span class="math inline">\(n\ge1\)</span>. Como <span class="math inline">\(|s_n|=1/n\to0\)</span>, el criterio de valor absoluto demuestra <span class="math inline">\(s_n\to0\)</span>. La alternancia de signo convive con una amplitud que se hace arbitrariamente pequeña.</p>
+</section>
+<section id="ejemplo-2.-un-cociente-de-polinomios" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-2.-un-cociente-de-polinomios">Ejemplo 2. Un cociente de polinomios</h3>
+<p>Para <span class="math inline">\(n\ge1\)</span>,</p>
+<p><span class="math display">\[
+\frac{2n+1}{3n-4}
+=\frac{2+1/n}{3-4/n}.
+\]</span></p>
+<p>El denominador converge a <span class="math inline">\(3\)</span>; por tanto, es distinto de cero desde algún índice y el álgebra de límites da</p>
+<p><span class="math display">\[\lim_{n\to\infty}\frac{2n+1}{3n-4}=\frac23.\]</span></p>
+<p>La expresión original puede no estar definida en uno o varios índices iniciales; el límite estudia la cola donde se encuentra definida.</p>
+</section>
+<section id="ejemplo-3.-una-potencia-geométrica-con-factor-polinomial" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-3.-una-potencia-geométrica-con-factor-polinomial">Ejemplo 3. Una potencia geométrica con factor polinomial</h3>
+<p>Como <span class="math inline">\(|2/3|&lt;1\)</span>, la ampliación de la sección 7.1 permite concluir</p>
+<p><span class="math display">\[\lim_{n\to\infty}n^3\left(-\frac23\right)^n=0.\]</span></p>
+<p>La oscilación del signo y el crecimiento del factor <span class="math inline">\(n^3\)</span> quedan dominados por el decaimiento geométrico.</p>
+</section>
+<section id="ejemplo-4.-una-raíz-dependiente-del-índice" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-4.-una-raíz-dependiente-del-índice">Ejemplo 4. Una raíz dependiente del índice</h3>
+<p>Sea <span class="math inline">\(a_n=2+1/n&gt;0\)</span>. Como <span class="math inline">\(a_n\to2\)</span>, el resultado de la sección 6.1 implica</p>
+<p><span class="math display">\[\lim_{n\to\infty}\sqrt[n]{2+1/n}=1.\]</span></p>
+<p>La conclusión se justifica por acotamiento entre raíces de constantes positivas, sin expandir la raíz.</p>
+<p><em>Procedencia de este tramo: cátedra 10.2.</em></p>
+</section>
+</section>
+<section id="el-problema-que-organiza-el-cierre-de-la-unidad" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-que-organiza-el-cierre-de-la-unidad">El problema que organiza el cierre de la unidad</h2>
+<p><strong>En la cátedra (13:09–14:11).</strong> El profesor distingue el propósito de las dos semanas terminadas y el de la semana siguiente. Durante las cuatro cátedras se han <strong>aprendido</strong> las sucesiones: qué significa converger, cómo operar con límites y cómo demostrar estimaciones. En la semana 11 se comenzarán a <strong>utilizar</strong> como herramientas para construir y estudiar nuevos objetos matemáticos. La última sesión reúne dos familias que permiten experimentar con esas herramientas: potencias de una base fija y raíces cuyo índice crece.</p>
+<p>La pregunta inicial tiene la forma siguiente. Dado un real fijo <span class="math inline">\(q\)</span>, ¿qué ocurre con <span class="math inline">\(q^n\)</span> cuando el natural <span class="math inline">\(n\)</span> crece? Una respuesta completa depende del tamaño y del signo de <span class="math inline">\(q\)</span>. Después aparece una cuestión complementaria: dado <span class="math inline">\(q&gt;0\)</span>, ¿qué ocurre con la raíz <span class="math inline">\(n\)</span>-ésima <span class="math inline">\(\sqrt[n]{q}\)</span>? La segunda pregunta exige primero justificar que esas raíces existen en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Las herramientas recuperadas de las clases anteriores son la convergencia <span class="math inline">\(\varepsilon\)</span>–<span class="math inline">\(N\)</span>, el teorema del sándwich, el álgebra de límites, el axioma del supremo y la familia de desigualdades de Bernoulli. Para una sucesión <span class="math inline">\((a_n)\)</span> y un real <span class="math inline">\(L\)</span> conservamos la convención de la cátedra:</p>
+<p><span class="math display">\[
+\boxed{a_n\longrightarrow L\iff
+(\forall\varepsilon&gt;0)(\exists N\in\mathbb N)(\forall n\ge N)\quad
+|a_n-L|\le\varepsilon.}
+\]</span></p>
+<p>El valor de <span class="math inline">\(N\)</span> puede depender de <span class="math inline">\(\varepsilon\)</span>. En una demostración por sándwich, cada cota de la sucesión intermedia debe estar definida en una cola de índices y las dos sucesiones extremas deben converger al mismo número.</p>
+</section>
+<section id="el-mapa-completo-de-las-potencias-geométricas" class="level2">
+<h2 class="anchored" data-anchor-id="el-mapa-completo-de-las-potencias-geométricas">El mapa completo de las potencias geométricas</h2>
+<p><strong>En la cátedra (14:11–16:19; 45:37–54:58).</strong> Fijado <span class="math inline">\(q\in\mathbb R\)</span>, consideremos la sucesión <span class="math inline">\(a_n=q^n\)</span>. Su comportamiento se clasifica mediante el módulo de la base y los valores de frontera:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c|c}
+\text{Base fija }q&amp;\text{Comportamiento de }(q^n)\\ \hline
+q=0 &amp; q^n=0\ (n\ge1),\quad \lim q^n=0\\
+q=1 &amp; q^n=1,\quad \lim q^n=1\\
+|q|&lt;1 &amp; \lim q^n=0\\
+q=-1 &amp; (-1)^n\text{ alterna entre }1\text{ y }-1\\
+|q|&gt;1 &amp; |q^n|\text{ crece sin cota superior}
+\end{array}}
+\]</span></p>
+<p>Para <span class="math inline">\(q=0\)</span> se trabaja con <span class="math inline">\(n\ge1\)</span>, según la convención de omitir el término inicial <span class="math inline">\(0^0\)</span>. Para <span class="math inline">\(q=-1\)</span>, la sucesión está acotada por <span class="math inline">\(1\)</span> en módulo y conserva una oscilación de amplitud fija. Una sucesión convergente es acotada, pero el ejemplo <span class="math inline">\((-1)^n\)</span> exhibe por qué la acotación, por sí sola, permite distintos comportamientos.</p>
+<div id="fig-ic2021-c11-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: comportamiento de potencias con base positiva menor que uno, negativa de módulo menor que uno y positiva mayor que uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_2/01_clasificacion_geom.png" class="img-fluid figure-img" style="width:92.0%" alt="Esquema editorial: comportamiento de potencias con base positiva menor que uno, negativa de módulo menor que uno y positiva mayor que uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Esquema editorial: comportamiento de potencias con base positiva menor que uno, negativa de módulo menor que uno y positiva mayor que uno.
+</figcaption>
+</figure>
+</div>
+<p>El profesor centra inicialmente el análisis en <span class="math inline">\(0&lt;q&lt;1\)</span>, porque de ese caso se derivarán después las bases negativas de módulo pequeño. El caso <span class="math inline">\(|q|&gt;1\)</span> quedará resuelto mediante recíprocos.</p>
+</section>
+<section id="la-transformación-decisiva-del-número-q1-a-una-potencia-de-bernoulli" class="level2">
+<h2 class="anchored" data-anchor-id="la-transformación-decisiva-del-número-q1-a-una-potencia-de-bernoulli">La transformación decisiva: del número <span class="math inline">\(q&lt;1\)</span> a una potencia de Bernoulli</h2>
+<p><strong>En la cátedra (16:19–20:00).</strong> Supongamos <span class="math inline">\(0&lt;q&lt;1\)</span>. Su recíproco satisface <span class="math inline">\(1/q&gt;1\)</span>. En consecuencia existe <span class="math inline">\(h&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+\frac1q=1+h,\qquad h=\frac1q-1&gt;0,
+\qquad
+q^n=\frac1{(1+h)^n}.
+\]</span></p>
+<p>Esta sustitución expresa el denominador mediante una potencia cuya base tiene la forma que requiere la desigualdad de Bernoulli. La elección del recíproco es la estrategia que pone en funcionamiento la prueba. El exponente <span class="math inline">\(n\)</span> permite obtener cotas cada vez mayores para el denominador; al invertirlas, aparecen cotas superiores cada vez menores para <span class="math inline">\(q^n\)</span>.</p>
+<p>La forma elemental de Bernoulli para <span class="math inline">\(h&gt;0\)</span> y <span class="math inline">\(n\in\mathbb N\)</span> afirma</p>
+<p><span class="math display">\[
+(1+h)^n\ge 1+nh.
+\]</span></p>
+<p>Como ambos miembros son positivos, la relación entre sus recíprocos es</p>
+<p><span class="math display">\[
+0&lt;q^n=\frac1{(1+h)^n}\le\frac1{1+nh}.
+\]</span></p>
+<p>El miembro derecho converge a cero. Puede verificarse escribiendo</p>
+<p><span class="math display">\[
+\frac1{1+nh}=\frac{1/n}{1/n+h}
+\ \longrightarrow\ \frac0h=0,
+\]</span></p>
+<p>con <span class="math inline">\(h&gt;0\)</span> fijo. La sucesión constante cero converge también a cero. Por el sándwich,</p>
+<p><span class="math display">\[\boxed{0&lt;q&lt;1\quad\Longrightarrow\quad q^n\longrightarrow0.}\]</span></p>
+<p><strong>Demostración desarrollada.</strong> El profesor hace explícito el sentido de las desigualdades: cuando se reemplaza un denominador positivo por uno más pequeño, la nueva fracción es una <strong>cota superior</strong> de la original. También señala que la condición <span class="math inline">\(q&lt;1\)</span> es estricta en el extremo derecho. Para <span class="math inline">\(q=1\)</span>, todos los términos valen <span class="math inline">\(1\)</span> y el límite es <span class="math inline">\(1\)</span>.</p>
+<p><strong>Ampliación editorial: umbral <span class="math inline">\(\varepsilon\)</span>.</strong> Si se desea exhibir un índice a partir del cual <span class="math inline">\(q^n\le\varepsilon\)</span>, basta elegir <span class="math inline">\(N\)</span> de manera que <span class="math inline">\(1+Nh\ge1/\varepsilon\)</span>. La propiedad arquimediana garantiza esa elección. Esta construcción traduce el sándwich a la definición cuantificada de convergencia.</p>
+<p>La cátedra menciona bases como <span class="math inline">\(0{,}999\)</span> y otros decimales próximos a <span class="math inline">\(1\)</span>: cada base fija estrictamente menor que <span class="math inline">\(1\)</span> produce una sucesión convergente a cero. La proximidad de la base a <span class="math inline">\(1\)</span> influye en el número de índices necesarios para alcanzar una tolerancia determinada. En contraste, la base exactamente igual a <span class="math inline">\(1\)</span> produce la sucesión constante uno.</p>
+</section>
+<section id="la-velocidad-de-convergencia-cocientes-de-dos-sucesiones-nulas" class="level2">
+<h2 class="anchored" data-anchor-id="la-velocidad-de-convergencia-cocientes-de-dos-sucesiones-nulas">La velocidad de convergencia: cocientes de dos sucesiones nulas</h2>
+<p><strong>En la cátedra (26:53–35:20).</strong> Hasta aquí se ha determinado que <span class="math inline">\(q^n\to0\)</span>. El profesor propone una segunda pregunta: <strong>¿con qué rapidez se acerca al cero, comparada con otras sucesiones conocidas?</strong> Dos ejemplos familiares son <span class="math inline">\(1/n\)</span> y <span class="math inline">\(1/n^2\)</span>. Ambas son nulas, y la segunda es más rápida en el sentido de que</p>
+<p><span class="math display">\[
+\frac{1/n^2}{1/n}=\frac1n\longrightarrow0.
+\]</span></p>
+<p>Esta forma de comparación se extiende: cuando <span class="math inline">\(a_n\)</span> y <span class="math inline">\(b_n\)</span> son sucesiones nulas, con <span class="math inline">\(b_n\ne0\)</span> eventualmente, y <span class="math inline">\(a_n/b_n\to0\)</span>, se dice que <span class="math inline">\(a_n\)</span> es de orden menor que <span class="math inline">\(b_n\)</span> o que <strong>se anula más rápidamente</strong> que <span class="math inline">\(b_n\)</span>. La escritura <span class="math inline">\(a_n=o(b_n)\)</span> es una <strong>ampliación editorial de notación</strong>; el profesor trabaja principalmente con el cociente.</p>
+<p>Para comparar <span class="math inline">\(q^n\)</span> con <span class="math inline">\(1/n\)</span> hay que examinar</p>
+<p><span class="math display">\[
+\frac{q^n}{1/n}=nq^n.
+\]</span></p>
+<p>Si en la estimación de la sección anterior multiplicamos por <span class="math inline">\(n\)</span>, obtenemos</p>
+<p><span class="math display">\[
+0\le nq^n\le\frac{n}{1+nh}.
+\]</span></p>
+<p>Pero el límite de la cota superior es <span class="math inline">\(1/h&gt;0\)</span>, de modo que estas dos cotas <strong>todavía no determinan</strong> el límite de <span class="math inline">\(nq^n\)</span>. Es una limitación de la estimación utilizada, que abre el paso a una desigualdad más fuerte.</p>
+<section id="bernoulli-de-segundo-orden" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-de-segundo-orden">Bernoulli de segundo orden</h3>
+<p><strong>En la cátedra (35:20–38:31).</strong> Para <span class="math inline">\(h&gt;0\)</span> y <span class="math inline">\(n\ge2\)</span>, la fórmula binomial asegura</p>
+<p><span class="math display">\[
+(1+h)^n
+=1+nh+\binom n2h^2+\cdots+h^n
+\ge\binom n2h^2
+=\frac{n(n-1)}2h^2.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+0\le nq^n
+=\frac{n}{(1+h)^n}
+\le\frac{2n}{n(n-1)h^2}
+=\frac{2}{(n-1)h^2}
+\longrightarrow0.
+\]</span></p>
+<p>El teorema del sándwich concluye</p>
+<p><span class="math display">\[\boxed{nq^n\longrightarrow0\qquad(0&lt;q&lt;1).}\]</span></p>
+<p>El resultado muestra que la potencia geométrica converge a cero más rápidamente que <span class="math inline">\(1/n\)</span>: una vez dividida por <span class="math inline">\(1/n\)</span>, todavía converge a cero. El papel de Bernoulli de segundo orden consiste en hacer aparecer en el denominador un polinomio de grado dos que domina al factor <span class="math inline">\(n\)</span> del numerador.</p>
+</section>
+<section id="bernoulli-de-tercer-orden" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-de-tercer-orden">Bernoulli de tercer orden</h3>
+<p><strong>En la cátedra (39:48–42:12).</strong> Cuando la comparación es ahora con <span class="math inline">\(1/n^2\)</span>, el cociente a estudiar es <span class="math inline">\(n^2q^n\)</span>. Aplicando el término cúbico de la expansión binomial, para <span class="math inline">\(n\ge3\)</span> se obtiene</p>
+<p><span class="math display">\[
+(1+h)^n\ge \binom n3h^3
+=\frac{n(n-1)(n-2)}6h^3.
+\]</span></p>
+<p>En consecuencia,</p>
+<p><span class="math display">\[
+0\le n^2q^n
+\le \frac{6n}{(n-1)(n-2)h^3}
+\longrightarrow0.
+\]</span></p>
+<p>La expresión derecha es un cociente racional cuyo denominador posee mayor grado que el numerador. Así, <span class="math inline">\(q^n\)</span> se anula también más rápido que <span class="math inline">\(1/n^2\)</span>. El docente propone continuar: si se multiplica por <span class="math inline">\(n^3\)</span>, se emplea una cota binomial de grado cuatro, y así sucesivamente.</p>
+<div id="fig-ic2021-c11-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: para h>0, cada grado adicional de la cota binomial controla una potencia mayor de n.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_2/02_bernoulli_grados.png" class="img-fluid figure-img" style="width:88.0%" alt="Esquema editorial: para h>0, cada grado adicional de la cota binomial controla una potencia mayor de n.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Esquema editorial: para <span class="math inline">\(h&gt;0\)</span>, cada grado adicional de la cota binomial controla una potencia mayor de <span class="math inline">\(n\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="el-resultado-general-y-su-demostración" class="level3">
+<h3 class="anchored" data-anchor-id="el-resultado-general-y-su-demostración">El resultado general y su demostración</h3>
+<p><strong>En la cátedra (42:55–45:37).</strong> Para todo entero fijo <span class="math inline">\(p\ge0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{0&lt;q&lt;1\quad\Longrightarrow\quad
+\lim_{n\to\infty}n^p q^n=0.}
+\]</span></p>
+<p>El profesor explica la estrategia: ante un numerador de grado <span class="math inline">\(p\)</span>, se elige en la expansión binomial un término de grado <span class="math inline">\(p+1\)</span>. Esta diferencia de grados fuerza el límite a cero.</p>
+<p><strong>Ampliación editorial: prueba completa con índices.</strong> Sea <span class="math inline">\(m=p+1\)</span> y <span class="math inline">\(n\ge m\)</span>. Como <span class="math inline">\(h&gt;0\)</span>,</p>
+<p><span class="math display">\[
+(1+h)^n\ge\binom nm h^m,
+\qquad
+0\le n^p q^n\le \frac{n^p}{\binom n{p+1}h^{p+1}}.
+\]</span></p>
+<p>La última fracción puede reescribirse como</p>
+<p><span class="math display">\[
+\frac{n^p}{\binom n{p+1}h^{p+1}}
+=
+\frac{(p+1)!}{n\,h^{p+1}}
+\prod_{j=1}^{p}\frac{n}{n-j}.
+\]</span></p>
+<p>Para <span class="math inline">\(n\ge2p\)</span> (y <span class="math inline">\(n\ge p+1\)</span>), cada factor <span class="math inline">\(n/(n-j)\)</span> es a lo sumo <span class="math inline">\(2\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+0\le n^p q^n\le
+\frac{2^p(p+1)!}{n\,h^{p+1}}
+\longrightarrow0.
+\]</span></p>
+<p>El sándwich termina la prueba. Para <span class="math inline">\(p=0\)</span> la misma estimación se entiende con producto vacío, cuyo valor es <span class="math inline">\(1\)</span>.</p>
+<p><strong>Corolario editorial.</strong> Si <span class="math inline">\(P\)</span> es cualquier polinomio real y <span class="math inline">\(0&lt;|q|&lt;1\)</span>, entonces <span class="math inline">\(P(n)q^n\to0\)</span>: por linealidad, cada monomio <span class="math inline">\(n^kq^n\)</span> converge a cero, y la posible alternancia de signos se controla mediante el valor absoluto. En particular, para todo polinomio <span class="math inline">\(P\)</span> que sea positivo y crezca sin cota, <span class="math inline">\(q^n\)</span> se anula más rápidamente que <span class="math inline">\(1/P(n)\)</span>.</p>
+<div id="fig-ic2021-c11-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: la comparación de q^n con 1/n y 1/n^2 en escala vertical logarítmica.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_2/03_velocidad.png" class="img-fluid figure-img" style="width:88.0%" alt="Esquema editorial: la comparación de q^n con 1/n y 1/n^2 en escala vertical logarítmica.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Esquema editorial: la comparación de <span class="math inline">\(q^n\)</span> con <span class="math inline">\(1/n\)</span> y <span class="math inline">\(1/n^2\)</span> en escala vertical logarítmica.
+</figcaption>
+</figure>
+</div>
+<p>El gráfico es una representación a escala finita de un comportamiento <strong>asintótico</strong>: para decidir la rapidez mediante cocientes importa el límite cuando <span class="math inline">\(n\to\infty\)</span>, y una comparación entre unos cuantos términos iniciales solo ofrece intuición.</p>
+</section>
+</section>
+<section id="bases-negativas-y-bases-de-módulo-grande" class="level2">
+<h2 class="anchored" data-anchor-id="bases-negativas-y-bases-de-módulo-grande">Bases negativas y bases de módulo grande</h2>
+<p><strong>En la cátedra (45:37–54:58).</strong> La clasificación se completa mediante dos reducciones a casos ya conocidos.</p>
+<section id="bases--1q0" class="level3">
+<h3 class="anchored" data-anchor-id="bases--1q0">Bases <span class="math inline">\(-1&lt;q&lt;0\)</span></h3>
+<p>Para estas bases puede escribirse <span class="math inline">\(q=-|q|\)</span> y, por tanto,</p>
+<p><span class="math display">\[q^n=(-1)^n|q|^n.\]</span></p>
+<p>La sucesión <span class="math inline">\(((-1)^n)\)</span> está acotada, pues <span class="math inline">\(|(-1)^n|=1\)</span>. Como <span class="math inline">\(0&lt;|q|&lt;1\)</span>, la sucesión <span class="math inline">\((|q|^n)\)</span> es nula. El teorema previamente estudiado afirma que el producto de una sucesión acotada por otra nula es nulo. Por tanto,</p>
+<p><span class="math display">\[\boxed{-1&lt;q&lt;0\quad\Longrightarrow\quad q^n\longrightarrow0.}\]</span></p>
+<p>La alternancia del signo produce valores a ambos lados del origen; la amplitud <span class="math inline">\(|q|^n\)</span> de esa alternancia se reduce hacia cero. Las cotas <span class="math inline">\(-|q|^n\le q^n\le |q|^n\)</span> suministran también una prueba directa por sándwich.</p>
+</section>
+<section id="bases-q1" class="level3">
+<h3 class="anchored" data-anchor-id="bases-q1">Bases <span class="math inline">\(|q|&gt;1\)</span></h3>
+<p>Si <span class="math inline">\(|q|&gt;1\)</span>, el recíproco satisface <span class="math inline">\(0&lt;|1/q|&lt;1\)</span>. Así,</p>
+<p><span class="math display">\[
+\left(\frac1q\right)^n\longrightarrow0,
+\qquad q^n=\frac1{(1/q)^n}.
+\]</span></p>
+<p>La sucesión del denominador tiene términos distintos de cero, y su valor absoluto converge a cero. Esto implica que los módulos de sus recíprocos crecen sin cota superior. En efecto, dado <span class="math inline">\(M&gt;0\)</span>, existe un índice a partir del cual</p>
+<p><span class="math display">\[0&lt;\left|\frac1q\right|^n&lt;\frac1M;
+\qquad\text{luego}\qquad |q^n|&gt;M.\]</span></p>
+<p>Por tanto, <span class="math inline">\(q^n\)</span> es una sucesión real <strong>no acotada</strong> y, en virtud del teorema «convergente implica acotada», carece de límite real finito.</p>
+<p><strong>Ampliación editorial.</strong> Si <span class="math inline">\(q&gt;1\)</span>, los términos son positivos y crecen sin cota: se suele escribir <span class="math inline">\(q^n\to+\infty\)</span> como descripción de divergencia infinita. Si <span class="math inline">\(q&lt;-1\)</span>, los módulos crecen sin cota mientras los signos alternan. Esta diferencia queda registrada por separado; en ambos casos la sucesión carece de límite en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>Mapa conclusivo de la primera mitad.</strong> Las bases de módulo estrictamente menor que uno dan límites cero, con convergencia geométrica; la base <span class="math inline">\(1\)</span> produce límite uno; la base <span class="math inline">\(-1\)</span> conserva la alternancia; las bases de módulo mayor que uno generan módulos no acotados.</p>
+</section>
+</section>
+<section id="una-dificultad-previa-a-las-raíces-demostrar-su-existencia" class="level2">
+<h2 class="anchored" data-anchor-id="una-dificultad-previa-a-las-raíces-demostrar-su-existencia">Una dificultad previa a las raíces: demostrar su existencia</h2>
+<p><strong>En la cátedra (55:03–1:00:18).</strong> La segunda familia es</p>
+<p><span class="math display">\[\bigl(\sqrt[n]{q}\bigr)_{n\ge1},\qquad q&gt;0\text{ fijo}.\]</span></p>
+<p>Para hablar de sus términos es preciso justificar que para cualquier entero positivo <span class="math inline">\(n\)</span> existe la raíz <span class="math inline">\(n\)</span>-ésima positiva de <span class="math inline">\(q\)</span>. El profesor recupera el axioma del supremo y subraya la utilidad de las sucesiones: las pruebas de existencia, que antes exigían manipular expresiones algebraicas con un pequeño <span class="math inline">\(\varepsilon\)</span>, pueden ahora hacerse comparando dos sucesiones explícitas y pasando al límite.</p>
+<section id="el-conjunto-generador" class="level3">
+<h3 class="anchored" data-anchor-id="el-conjunto-generador">El conjunto generador</h3>
+<p>Fijemos un natural <span class="math inline">\(p\ge2\)</span> y un real <span class="math inline">\(q&gt;0\)</span>. Queremos hallar un real <span class="math inline">\(s&gt;0\)</span> tal que</p>
+<p><span class="math display">\[s^p=q.\]</span></p>
+<p><strong>En la cátedra (1:00:18–1:10:22).</strong> Consideremos</p>
+<p><span class="math display">\[
+\boxed{A=\{x\in\mathbb R:x&gt;0\ \text{y}\ x^p&lt;q\}.}
+\]</span></p>
+<p>Este conjunto tiene elementos positivos y una cota superior. El profesor organiza la verificación por casos. Si <span class="math inline">\(0&lt;q&lt;1\)</span>, el propio <span class="math inline">\(q\)</span> pertenece a <span class="math inline">\(A\)</span>, porque <span class="math inline">\(q^p&lt;q\)</span>; el número <span class="math inline">\(1\)</span> es una cota superior, pues <span class="math inline">\(x^p&lt;q&lt;1\)</span> implica <span class="math inline">\(x&lt;1\)</span>. Si <span class="math inline">\(q&gt;1\)</span>, el número <span class="math inline">\(1\)</span> pertenece a <span class="math inline">\(A\)</span> y <span class="math inline">\(q\)</span> es una cota superior: de <span class="math inline">\(x^p&lt;q&lt;q^p\)</span> se sigue <span class="math inline">\(x&lt;q\)</span>. El caso <span class="math inline">\(q=1\)</span> tiene raíz evidente <span class="math inline">\(s=1\)</span>.</p>
+<p>La implicación utilizada aquí se apoya en que la función potencia <span class="math inline">\(x\mapsto x^p\)</span> es <strong>estrictamente creciente</strong> sobre los reales positivos. Una justificación algebraica es que, si <span class="math inline">\(0&lt;a&lt;b\)</span>,</p>
+<p><span class="math display">\[
+b^p-a^p=(b-a)(b^{p-1}+b^{p-2}a+\cdots+a^{p-1})&gt;0.
+\]</span></p>
+<p>Así, <span class="math inline">\(A\)</span> es no vacío y está acotado superiormente. Por el axioma del supremo existe</p>
+<p><span class="math display">\[s=\sup A&gt;0.\]</span></p>
+<p>El paso restante es demostrar que <span class="math inline">\(s^p=q\)</span>. La positividad de <span class="math inline">\(s\)</span> se deduce de que <span class="math inline">\(A\)</span> contiene un número estrictamente positivo y <span class="math inline">\(s\)</span> es cota superior del conjunto.</p>
+</section>
+<section id="acercarse-al-supremo-desde-ambos-lados" class="level3">
+<h3 class="anchored" data-anchor-id="acercarse-al-supremo-desde-ambos-lados">Acercarse al supremo desde ambos lados</h3>
+<p><strong>Demostración desarrollada (1:10:22–1:19:17).</strong> Para cada <span class="math inline">\(n\ge1\)</span> se tiene <span class="math inline">\(s+1/n&gt;s\)</span>. Este número queda fuera de <span class="math inline">\(A\)</span>, pues <span class="math inline">\(s\)</span> es cota superior; de la definición de <span class="math inline">\(A\)</span> se obtiene</p>
+<p><span class="math display">\[
+\boxed{q\le\left(s+\frac1n\right)^p.}
+\]</span></p>
+<p>Por otro lado, como <span class="math inline">\(s&gt;0\)</span> y <span class="math inline">\(1/n\to0\)</span>, existe <span class="math inline">\(N\)</span> tal que <span class="math inline">\(s-1/n&gt;0\)</span> cuando <span class="math inline">\(n\ge N\)</span>. Para esos índices el número <span class="math inline">\(s-1/n\)</span> es inferior al supremo. La propiedad característica del supremo asegura que ese número <strong>es inferior a algún elemento de <span class="math inline">\(A\)</span></strong> y, por la monotonía de la potencia, se cumple</p>
+<p><span class="math display">\[
+\boxed{\left(s-\frac1n\right)^p\le q\qquad(n\ge N).}
+\]</span></p>
+<p>Una forma equivalente de justificar la última relación, presentada como argumento por contradicción en clase, es observar que si <span class="math inline">\((s-1/n)^p&gt;q\)</span>, entonces todos los elementos <span class="math inline">\(x\in A\)</span> satisfarían <span class="math inline">\(x&lt;s-1/n\)</span>. Esto convertiría a <span class="math inline">\(s-1/n\)</span> en una cota superior estrictamente menor que <span class="math inline">\(s\)</span>, contradiciendo que <span class="math inline">\(s\)</span> es la menor cota superior.</p>
+<p>Para <span class="math inline">\(n\)</span> suficientemente grande, por tanto,</p>
+<p><span class="math display">\[
+\boxed{\left(s-\frac1n\right)^p\le q\le
+\left(s+\frac1n\right)^p.}
+\]</span></p>
+<p>Las dos sucesiones de extremos convergen a <span class="math inline">\(s^p\)</span>, porque <span class="math inline">\(s\pm1/n\to s\)</span> y la potencia <span class="math inline">\(p\)</span> es un producto finito, al que se aplica el álgebra de límites. Al pasar al límite en las desigualdades resulta</p>
+<p><span class="math display">\[s^p\le q\le s^p,\]</span></p>
+<p>y así <span class="math inline">\(\boxed{s^p=q}\)</span>. La raíz <span class="math inline">\(p\)</span>-ésima positiva existe y es <span class="math inline">\(s=\sup A\)</span>.</p>
+<div id="fig-ic2021-c11-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: un conjunto acotado y las perturbaciones s\pm1/N que permiten probar la igualdad para la potencia del supremo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_2/04_supremo_perturbaciones.png" class="img-fluid figure-img" style="width:86.0%" alt="Esquema editorial: un conjunto acotado y las perturbaciones s\pm1/N que permiten probar la igualdad para la potencia del supremo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Esquema editorial: un conjunto acotado y las perturbaciones <span class="math inline">\(s\pm1/N\)</span> que permiten probar la igualdad para la potencia del supremo.
+</figcaption>
+</figure>
+</div>
+<p><strong>Ampliación editorial: unicidad.</strong> Si <span class="math inline">\(x,y&gt;0\)</span> y <span class="math inline">\(x^p=y^p=q\)</span>, entonces</p>
+<p><span class="math display">\[
+0=x^p-y^p=(x-y)\sum_{k=0}^{p-1}x^{p-1-k}y^k.
+\]</span></p>
+<p>La suma es estrictamente positiva, de modo que <span class="math inline">\(x-y=0\)</span> y <span class="math inline">\(x=y\)</span>. Con ello queda justificada también la escritura unívoca <span class="math inline">\(\sqrt[p]{q}\)</span>.</p>
+</section>
+<section id="la-pregunta-sobre-spm1n" class="level3">
+<h3 class="anchored" data-anchor-id="la-pregunta-sobre-spm1n">La pregunta sobre <span class="math inline">\(s\pm1/n\)</span></h3>
+<p><strong>En la discusión final (1:43:42–1:51:50).</strong> Un estudiante pregunta por qué se han utilizado precisamente <span class="math inline">\(s+1/n\)</span> y <span class="math inline">\(s-1/n\)</span>. El profesor destaca que ambos son reales disponibles para cualquier <span class="math inline">\(n\)</span> positivo; sus posiciones respecto de <span class="math inline">\(s\)</span> son conocidas, y su diferencia con <span class="math inline">\(s\)</span> tiende a cero. La elección hace posible pasar al límite sin expandir una potencia de grado arbitrario.</p>
+<p><strong>Ampliación editorial.</strong> El mismo argumento funciona con cualquier sucesión <span class="math inline">\((\delta_n)\)</span> que satisfaga <span class="math inline">\(\delta_n&gt;0\)</span> para todo <span class="math inline">\(n\)</span> y <span class="math inline">\(\delta_n\to0\)</span>, siempre que se tome <span class="math inline">\(n\)</span> suficientemente grande para tener <span class="math inline">\(s-\delta_n&gt;0\)</span>. En lugar de <span class="math inline">\(s\pm1/n\)</span> pueden emplearse <span class="math inline">\(s\pm(1/2)^n\)</span>, por ejemplo. La sucesión <span class="math inline">\(1/n\)</span> es especialmente cómoda porque sus propiedades se han demostrado en las primeras cátedras y encadena la completitud con el álgebra de límites.</p>
+</section>
+</section>
+<section id="el-límite-de-sqrtnq-con-base-fija" class="level2">
+<h2 class="anchored" data-anchor-id="el-límite-de-sqrtnq-con-base-fija">El límite de <span class="math inline">\(\sqrt[n]{q}\)</span> con base fija</h2>
+<p><strong>En la cátedra (1:21:05–1:31:29).</strong> Una vez establecida la existencia de las raíces positivas, se considera la sucesión</p>
+<p><span class="math display">\[r_n=\sqrt[n]{q},\qquad q&gt;0.\]</span></p>
+<p>Para <span class="math inline">\(q=1\)</span>, todos los términos valen <span class="math inline">\(1\)</span>. Si <span class="math inline">\(q&gt;1\)</span>, la potencia positiva conserva el orden y cada <span class="math inline">\(r_n\)</span> satisface <span class="math inline">\(r_n&gt;1\)</span>. Se define entonces una sucesión <span class="math inline">\(h_n&gt;0\)</span> mediante</p>
+<p><span class="math display">\[r_n=1+h_n,
+\qquad q=(1+h_n)^n.\]</span></p>
+<p>La desigualdad de Bernoulli de primer orden, válida para cada índice y para su correspondiente <span class="math inline">\(h_n&gt;0\)</span>, permite escribir</p>
+<p><span class="math display">\[
+q=(1+h_n)^n\ge1+nh_n.
+\]</span></p>
+<p>Despejando,</p>
+<p><span class="math display">\[
+\boxed{0&lt;h_n\le\frac{q-1}{n}.}
+\]</span></p>
+<p>La cota superior tiende a cero, por lo que <span class="math inline">\(h_n\to0\)</span>. Por el álgebra de límites,</p>
+<p><span class="math display">\[r_n=1+h_n\longrightarrow1.\]</span></p>
+<p><strong>Caso <span class="math inline">\(0&lt;q&lt;1\)</span>.</strong> El profesor lo propone como ejercicio breve a partir del recíproco. Como <span class="math inline">\(1/q&gt;1\)</span>, ya se conoce que <span class="math inline">\((1/q)^{1/n}\to1\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\sqrt[n]{q}=\frac1{\sqrt[n]{1/q}}\longrightarrow\frac11=1.
+\]</span></p>
+<p>En conjunto,</p>
+<p><span class="math display">\[\boxed{\forall q&gt;0,\qquad \lim_{n\to\infty}\sqrt[n]{q}=1.}\]</span></p>
+<p>Un ejemplo tratado oralmente es <span class="math inline">\(q=10\,000\)</span>: la extracción de raíces de índice cada vez mayor conduce hacia <span class="math inline">\(1\)</span> desde valores superiores. La demostración explica este fenómeno para cualquier real positivo fijo.</p>
+</section>
+<section id="el-límite-de-sqrtnn-bernoulli-de-segundo-orden" class="level2">
+<h2 class="anchored" data-anchor-id="el-límite-de-sqrtnn-bernoulli-de-segundo-orden">El límite de <span class="math inline">\(\sqrt[n]{n}\)</span>: Bernoulli de segundo orden</h2>
+<p><strong>En la cátedra (1:31:29–1:36:34).</strong> El siguiente problema tiene una diferencia decisiva: el radicando también depende del índice. El profesor compara la raíz <span class="math inline">\(n\)</span>-ésima de una constante <span class="math inline">\(q\)</span> con</p>
+<p><span class="math display">\[r_n=\sqrt[n]{n}\qquad(n\ge1).\]</span></p>
+<p>El número <span class="math inline">\(r_n\)</span> es al menos <span class="math inline">\(1\)</span>, de modo que puede escribirse <span class="math inline">\(r_n=1+h_n\)</span> con <span class="math inline">\(h_n\ge0\)</span>. Elevando a la potencia <span class="math inline">\(n\)</span>,</p>
+<p><span class="math display">\[
+n=(1+h_n)^n.
+\]</span></p>
+<p>Bernoulli de primer orden aporta <span class="math inline">\(n\ge1+nh_n\)</span> y, por tanto, <span class="math inline">\(h_n\le(n-1)/n\)</span>. Esa cota superior converge a <span class="math inline">\(1\)</span> y no alcanza para determinar que <span class="math inline">\(h_n\to0\)</span>. Es el mismo fenómeno observado antes al estudiar <span class="math inline">\(nq^n\)</span>: necesitamos aprovechar un grado más de la desigualdad.</p>
+<p><strong>Demostración desarrollada (1:34:18–1:36:14).</strong> Para <span class="math inline">\(n\ge2\)</span>, Bernoulli de segundo orden proporciona</p>
+<p><span class="math display">\[
+(1+h_n)^n\ge
+1+nh_n+\binom n2h_n^2
+\ge1+\frac{n(n-1)}2h_n^2.
+\]</span></p>
+<p>Como el miembro izquierdo es <span class="math inline">\(n\)</span>, se obtiene</p>
+<p><span class="math display">\[
+\frac{n(n-1)}2h_n^2\le n-1,
+\qquad
+0\le h_n\le\sqrt{\frac2n}.
+\]</span></p>
+<p>La cota de la derecha converge a cero. Por el sándwich, <span class="math inline">\(h_n\to0\)</span> y finalmente</p>
+<p><span class="math display">\[\boxed{\lim_{n\to\infty}\sqrt[n]{n}=1.}\]</span></p>
+<div id="fig-ic2021-c11-f09" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: raíces enésimas de una constante, de n y de n^2, todas convergentes a 1.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_2/05_raices_enesimas.png" class="img-fluid figure-img" style="width:88.0%" alt="Esquema editorial: raíces enésimas de una constante, de n y de n^2, todas convergentes a 1.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Esquema editorial: raíces enésimas de una constante, de <span class="math inline">\(n\)</span> y de <span class="math inline">\(n^2\)</span>, todas convergentes a <span class="math inline">\(1\)</span>.
+</figcaption>
+</figure>
+</div>
+<section id="ejercicio-propuesto-en-la-clase-sqrtnn2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-propuesto-en-la-clase-sqrtnn2">Ejercicio propuesto en la clase: <span class="math inline">\(\sqrt[n]{n^2}\)</span></h3>
+<p><strong>En la cátedra (1:36:34–1:37:47).</strong> El docente ofrece dos caminos: emplear una desigualdad de Bernoulli de grado mayor, o utilizar un argumento algebraico ya disponible. El segundo es inmediato:</p>
+<p><span class="math display">\[
+\sqrt[n]{n^2}=(\sqrt[n]{n})^2\longrightarrow1^2=1.
+\]</span></p>
+<p><strong>Ampliación editorial.</strong> Para todo entero fijo <span class="math inline">\(p\ge0\)</span>,</p>
+<p><span class="math display">\[\boxed{\lim_{n\to\infty}\sqrt[n]{n^p}=1,}\]</span></p>
+<p>porque <span class="math inline">\(\sqrt[n]{n^p}=(\sqrt[n]{n})^p\)</span> y el producto de un número fijo de sucesiones convergentes converge al producto de sus límites. El orden de las cuantificaciones importa: <span class="math inline">\(p\)</span> queda fijado mientras <span class="math inline">\(n\)</span> crece.</p>
+</section>
+</section>
+<section id="el-teorema-de-las-sucesiones-monótonas-acotadas" class="level2">
+<h2 class="anchored" data-anchor-id="el-teorema-de-las-sucesiones-monótonas-acotadas">El teorema de las sucesiones monótonas acotadas</h2>
+<p><strong>En la cátedra (1:38:38–1:43:01).</strong> Como conclusión, el profesor anuncia el <strong>teorema de las sucesiones monótonas acotadas</strong>, que será indispensable para la semana 11. Advierte mediante el ejemplo <span class="math inline">\((-1)^n\)</span> que una sucesión acotada puede oscilar. El dato adicional que permite asegurar convergencia es la <strong>monotonía</strong>.</p>
+<p>Una sucesión real <span class="math inline">\((a_n)\)</span> es <em>creciente</em> (en sentido amplio) cuando <span class="math inline">\(a_n\le a_{n+1}\)</span> para todo índice de su dominio, y <em>decreciente</em> (en sentido amplio) cuando <span class="math inline">\(a_{n+1}\le a_n\)</span> para todo índice. Se denomina <em>monótona</em> cuando satisface alguna de esas relaciones. En el uso matemático, ambas pueden incluir igualdades sucesivas; la estricta monotonía se indica separadamente.</p>
+<p>El teorema tiene dos enunciados equivalentes en alcance:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(a_n)\text{ creciente y acotada superiormente}
+&amp;\Longrightarrow a_n\longrightarrow\sup\{a_n:n\in\mathbb N\},\\
+(a_n)\text{ decreciente y acotada inferiormente}
+&amp;\Longrightarrow a_n\longrightarrow\inf\{a_n:n\in\mathbb N\}.
+\end{aligned}
+\]</span></p>
+<p><strong>Estatuto en la fuente:</strong> el profesor <strong>enuncia y explica el sentido del teorema</strong>; recomienda revisarlo en el apunte. Su demostración completa <strong>queda fuera del desarrollo de esta grabación</strong>. La siguiente prueba se incorpora por motivos de estudio.</p>
+<section id="ampliación-editorial-demostración-con-el-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="ampliación-editorial-demostración-con-el-supremo">Ampliación editorial: demostración con el supremo</h3>
+<p>Supongamos <span class="math inline">\((a_n)\)</span> creciente y acotada superiormente y sea</p>
+<p><span class="math display">\[L=\sup\{a_n:n\in\mathbb N\}.\]</span></p>
+<p>Por la propiedad característica del supremo, dado <span class="math inline">\(\varepsilon&gt;0\)</span> existe algún término <span class="math inline">\(a_N\)</span> con</p>
+<p><span class="math display">\[L-\varepsilon&lt;a_N\le L.\]</span></p>
+<p>Como la sucesión es creciente, para todo <span class="math inline">\(n\ge N\)</span> se tiene <span class="math inline">\(a_N\le a_n\le L\)</span>. Por tanto,</p>
+<p><span class="math display">\[L-\varepsilon&lt;a_n\le L,
+\qquad |a_n-L|&lt;\varepsilon.
+\]</span></p>
+<p>Con ello <span class="math inline">\(a_n\to L\)</span>. Para una sucesión decreciente acotada inferiormente, la misma idea se desarrolla con el ínfimo de sus términos y desigualdades invertidas.</p>
+<div id="fig-ic2021-c11-f10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial: una sucesión creciente que converge a su supremo y una sucesión acotada oscilante.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c11-f10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_10_2/06_monotonas.png" class="img-fluid figure-img" style="width:87.0%" alt="Esquema editorial: una sucesión creciente que converge a su supremo y una sucesión acotada oscilante.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c11-f10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Esquema editorial: una sucesión creciente que converge a su supremo y una sucesión acotada oscilante.
+</figcaption>
+</figure>
+</div>
+<p>La relevancia conceptual del teorema es que <strong>permite demostrar la existencia del límite sin disponer previamente de una fórmula para calcularlo</strong>. Este es precisamente el puente que destaca San Martín hacia los temas de la semana 11.</p>
+</section>
+</section>
+<section id="revisión-de-estrategias-y-dificultades-habituales" class="level2">
+<h2 class="anchored" data-anchor-id="revisión-de-estrategias-y-dificultades-habituales">Revisión de estrategias y dificultades habituales</h2>
+<p>La secuencia de las cuatro cátedras deja una técnica recurrente. Frente a una expresión que debe tender a cero, se buscan cotas útiles en lugar de intentar calcular directamente sus términos. Si la cota disponible conserva un límite positivo y, por tanto, deja el problema abierto, se fortalece la desigualdad hasta que aparezca un denominador de mayor grado. Bernoulli de grado <span class="math inline">\(p+1\)</span> sirve para neutralizar un numerador de grado <span class="math inline">\(p\)</span>.</p>
+<p>La construcción de raíces muestra una estrategia diferente. El conjunto <span class="math inline">\(A=\{x&gt;0:x^p&lt;q\}\)</span> determina un candidato <span class="math inline">\(s=\sup A\)</span>. Una pareja de perturbaciones <span class="math inline">\(s\pm1/n\)</span> proporciona desigualdades que, mediante el álgebra de límites, pasan a la igualdad <span class="math inline">\(s^p=q\)</span>. Esta prueba relaciona tres elementos vistos en semanas distintas: <strong>completitud de los reales, convergencia de sucesiones y continuidad de las operaciones algebraicas finitas</strong>.</p>
+<p>En el cierre, el teorema de monotonía y acotación agrega una vía para demostrar convergencia cuando el límite aún se desconoce. Estas herramientas tienen funciones precisas y complementarias: el sándwich identifica el límite de una sucesión intermedia; Bernoulli produce cotas manejables; el supremo construye números; la monotonía acotada garantiza la convergencia de una sucesión organizada por el orden.</p>
+<p><strong>Precauciones de lectura.</strong> La potencia <span class="math inline">\(q^n\)</span> mantiene fija su base; las raíces <span class="math inline">\(\sqrt[n]{n}\)</span> cambian simultáneamente índice y radicando. En una comparación de rapidez, se fija el orden del cociente para interpretar qué sucesión es más pequeña. En las demostraciones de existencia, las potencias <span class="math inline">\(p\)</span> permanecen fijas mientras el índice auxiliar <span class="math inline">\(n\)</span> recorre los naturales. Al aplicar un límite de cocientes se verifica que el límite del denominador sea distinto de cero. Finalmente, distinguir los resultados <strong>demostrados en la cátedra</strong> de los <strong>enunciados para estudio</strong> preserva el alcance original de la clase.</p>
+</section>
+<section id="taller-de-problemas-y-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="taller-de-problemas-y-soluciones">Taller de problemas y soluciones</h2>
+<p>Los ejercicios se presentan a continuación según la fuente de origen; las ampliaciones editoriales de cada apuntes permanecen expresamente identificadas.</p>
+<section id="ejercicios-editoriales-de-comprobación-cátedra-10.1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-editoriales-de-comprobación-cátedra-10.1">Ejercicios editoriales de comprobación — cátedra 10.1</h3>
+<p>Los siguientes problemas son <strong>elaboración editorial original</strong>. Permiten practicar la identificación de hipótesis y la construcción de desigualdades.</p>
+<p><strong>Ejercicio 1.</strong> Sean <span class="math inline">\(u_n,v_n\to L\)</span> y <span class="math inline">\(u_n\le w_n\le v_n\)</span> para todo <span class="math inline">\(n\ge17\)</span>. Demuestre <span class="math inline">\(w_n\to L\)</span> y explique el papel del número <span class="math inline">\(17\)</span>.</p>
+<p><strong>Ejercicio 2.</strong> Justifique que <span class="math inline">\(\lim_{n\to\infty}|\sin(n^2)|/\sqrt n=0\)</span>.</p>
+<p><strong>Ejercicio 3.</strong> Sea <span class="math inline">\(q=-3/4\)</span>. Determine el límite de <span class="math inline">\(q^n\)</span> y encuentre un índice <span class="math inline">\(N\)</span> suficiente para que <span class="math inline">\(|q^n|\le10^{-3}\)</span> cuando <span class="math inline">\(n\ge N\)</span>.</p>
+<p><strong>Ejercicio 4.</strong> Demuestre por la definición de convergencia que <span class="math inline">\(s_n=(n-1)/(n+1)\to1\)</span>. Describa desde qué lado se aproxima a <span class="math inline">\(1\)</span>.</p>
+<p><strong>Ejercicio 5.</strong> Calcule <span class="math inline">\(\lim_{n\to\infty}\sqrt[n]{7}\)</span> y <span class="math inline">\(\lim_{n\to\infty}\sqrt[n]{7+(-1)^n/n}\)</span>.</p>
+<p><strong>Ejercicio 6.</strong> Verifique que las sucesiones <span class="math inline">\(u_n=0\)</span> y <span class="math inline">\(v_n=1/n\)</span> satisfacen <span class="math inline">\(u_n&lt;v_n\)</span>, y explique el alcance preciso del teorema de orden al tomar límites.</p>
+<p><strong>Ejercicio 7.</strong> Construya dos sucesiones <span class="math inline">\((a_n)\)</span> y <span class="math inline">\((b_n)\)</span> con <span class="math inline">\(a_n\le b_n\)</span> para todo <span class="math inline">\(n\)</span> que tengan límites diferentes. ¿Qué desigualdad deben satisfacer esos límites?</p>
+<p><strong>Ejercicio 8.</strong> Determine si converge <span class="math inline">\((-1)^n\)</span>, y redacte una demostración usando la definición de convergencia o sus subsucesiones.</p>
+</section>
+<section id="orientaciones-y-soluciones-breves" class="level3">
+<h3 class="anchored" data-anchor-id="orientaciones-y-soluciones-breves">Orientaciones y soluciones breves</h3>
+<ol type="1">
+<li>Para <span class="math inline">\(\varepsilon&gt;0\)</span> se toman índices <span class="math inline">\(N_1,N_2\)</span> asociados con <span class="math inline">\(u_n\)</span> y <span class="math inline">\(v_n\)</span> y se usa <span class="math inline">\(N=\max\{17,N_1,N_2\}\)</span>. El índice <span class="math inline">\(17\)</span> asegura la desigualdad requerida en la cola.</li>
+<li>La desigualdad <span class="math inline">\(0\le|\sin(n^2)|/\sqrt n\le1/\sqrt n\)</span> y el sándwich dan el resultado.</li>
+<li>El límite es cero. Cualquier <span class="math inline">\(N\)</span> natural que cumpla <span class="math inline">\((3/4)^N\le10^{-3}\)</span> sirve; por ejemplo <span class="math inline">\(N=25\)</span>, pues <span class="math inline">\((3/4)^{25}&lt;10^{-3}\)</span>.</li>
+<li>Se tiene <span class="math inline">\(|s_n-1|=2/(n+1)\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span> basta escoger <span class="math inline">\(N\)</span> con <span class="math inline">\(N+1\ge2/\varepsilon\)</span>. Como <span class="math inline">\(s_n=1-2/(n+1)\)</span>, todos sus términos quedan por debajo de <span class="math inline">\(1\)</span>.</li>
+<li>Ambos límites valen <span class="math inline">\(1\)</span>. En el segundo caso el término dentro de la raíz tiende a <span class="math inline">\(7&gt;0\)</span>.</li>
+<li>Ambos límites son cero. La conclusión general conserva <span class="math inline">\(\le\)</span> y permite igualdad.</li>
+<li>Por ejemplo, <span class="math inline">\(a_n=0\)</span> y <span class="math inline">\(b_n=2\)</span>; sus límites satisfacen <span class="math inline">\(0\le2\)</span>. En general, por el teorema de orden, <span class="math inline">\(\lim a_n\le\lim b_n\)</span>.</li>
+<li>Diverge, porque las subsucesiones de índices pares e impares son constantes de valores <span class="math inline">\(1\)</span> y <span class="math inline">\(-1\)</span>, respectivamente, y una sucesión convergente transmite su límite a cada subsucesión.</li>
+</ol>
+</section>
+<section id="ejercicios-para-reconstruir-las-ideas-cátedra-10.2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-para-reconstruir-las-ideas-cátedra-10.2">Ejercicios para reconstruir las ideas — cátedra 10.2</h3>
+<p>Los ejercicios 1 y 2 desarrollan tareas propuestas en la grabación. Los demás son <strong>ejercicios editoriales originales</strong> para comprobar la transferencia de las técnicas.</p>
+<p><strong>Ejercicio 1 — propuesto en clase.</strong> Demuestre que <span class="math inline">\(\sqrt[n]{1/7}\to1\)</span> mediante el recíproco y el caso <span class="math inline">\(q&gt;1\)</span>.</p>
+<p><strong>Ejercicio 2 — propuesto en clase.</strong> Justifique <span class="math inline">\(\sqrt[n]{n^2}\to1\)</span> por dos métodos: a partir de <span class="math inline">\(\sqrt[n]{n}\to1\)</span> y mediante una cota binomial de orden tres.</p>
+<p><strong>Ejercicio 3 — editorial.</strong> Para <span class="math inline">\(q=4/5\)</span>, construya <span class="math inline">\(h=1/q-1\)</span> y una cota explícita que demuestre <span class="math inline">\(q^n\to0\)</span>.</p>
+<p><strong>Ejercicio 4 — editorial.</strong> Demuestre con Bernoulli de segundo orden que <span class="math inline">\(n(3/4)^n\to0\)</span>; determine qué grado necesitaría para estudiar <span class="math inline">\(n^5(3/4)^n\)</span>.</p>
+<p><strong>Ejercicio 5 — editorial.</strong> Analice el comportamiento de <span class="math inline">\((-2/3)^n\)</span>, <span class="math inline">\((-1)^n\)</span> y <span class="math inline">\((-3/2)^n\)</span>. Precise cuáles son acotadas y cuáles convergen.</p>
+<p><strong>Ejercicio 6 — editorial.</strong> Dado un polinomio <span class="math inline">\(P(n)\)</span> y un número <span class="math inline">\(q\)</span> con <span class="math inline">\(|q|&lt;1\)</span>, justifique <span class="math inline">\(P(n)q^n\to0\)</span>.</p>
+<p><strong>Ejercicio 7 — editorial.</strong> Defina <span class="math inline">\(A=\{x&gt;0:x^3&lt;7\}\)</span>. Identifique un elemento de <span class="math inline">\(A\)</span>, una cota superior y explique por qué <span class="math inline">\((\sup A)^3=7\)</span>.</p>
+<p><strong>Ejercicio 8 — editorial.</strong> Para <span class="math inline">\(a_n=2-1/(n+1)\)</span>, pruebe que <span class="math inline">\((a_n)\)</span> es creciente y acotada superiormente. Aplique el teorema final para obtener su límite.</p>
+<p><strong>Ejercicio 9 — editorial.</strong> Encuentre una sucesión real acotada que tenga términos en dos valores distintos infinitas veces. Justifique mediante la definición de convergencia que carece de límite real.</p>
+<p><strong>Ejercicio 10 — editorial.</strong> Sea <span class="math inline">\((\delta_n)\)</span> una sucesión estrictamente positiva con <span class="math inline">\(\delta_n\to0\)</span>. Sustituya <span class="math inline">\(1/n\)</span> por <span class="math inline">\(\delta_n\)</span> en la demostración de la existencia de <span class="math inline">\(\sqrt[p]{q}\)</span> y establezca qué índice mínimo debe escogerse para utilizar <span class="math inline">\(s-\delta_n&gt;0\)</span>.</p>
+</section>
+<section id="indicaciones-y-soluciones-breves" class="level3">
+<h3 class="anchored" data-anchor-id="indicaciones-y-soluciones-breves">Indicaciones y soluciones breves</h3>
+<ol type="1">
+<li>Como <span class="math inline">\(7^{1/n}\to1\)</span>, el álgebra de límites aplicada a <span class="math inline">\(1/7^{1/n}\)</span> da <span class="math inline">\(1\)</span>.</li>
+<li>Primer método: <span class="math inline">\((n^{1/n})^2\to1\)</span>. Segundo: ponga <span class="math inline">\(n^2=(1+h_n)^n\ge\binom n3h_n^3\)</span>; así <span class="math inline">\(0\le h_n\le[6n/((n-1)(n-2))]^{1/3}\to0\)</span>.</li>
+<li><span class="math inline">\(h=1/4\)</span>; por Bernoulli, <span class="math inline">\(0&lt;(4/5)^n\le1/(1+n/4)\to0\)</span>.</li>
+<li>Con <span class="math inline">\(h=1/3\)</span>, <span class="math inline">\(0\le n(3/4)^n\le 2/((n-1)h^2)\to0\)</span>. Para <span class="math inline">\(n^5q^n\)</span> se emplea Bernoulli de grado seis.</li>
+<li><span class="math inline">\((-2/3)^n\to0\)</span>; <span class="math inline">\((-1)^n\)</span> es acotada y oscila; <span class="math inline">\(|(-3/2)^n|\to+\infty\)</span>, por lo que la última carece de límite real.</li>
+<li>Escriba <span class="math inline">\(P(n)=\sum_{k=0}^d c_kn^k\)</span> y use el límite de cada <span class="math inline">\(n^k|q|^n\)</span>. Para <span class="math inline">\(q=0\)</span> los términos desde <span class="math inline">\(n\ge1\)</span> valen cero.</li>
+<li><span class="math inline">\(1\in A\)</span> y <span class="math inline">\(7\)</span> es cota superior; con <span class="math inline">\(s=\sup A\)</span> se comprueba <span class="math inline">\((s-1/n)^3\le7\le(s+1/n)^3\)</span> para índices grandes, y el paso al límite da <span class="math inline">\(s^3=7\)</span>.</li>
+<li><span class="math inline">\(a_{n+1}-a_n=1/((n+1)(n+2))&gt;0\)</span>; además <span class="math inline">\(a_n&lt;2\)</span>. Por el teorema, converge a su supremo, que vale <span class="math inline">\(2\)</span>.</li>
+<li><span class="math inline">\(a_n=(-1)^n\)</span> sirve: si convergiera a <span class="math inline">\(L\)</span>, las colas de índices pares e impares exigirían simultáneamente <span class="math inline">\(L=1\)</span> y <span class="math inline">\(L=-1\)</span>.</li>
+<li>Dado que <span class="math inline">\(s&gt;0\)</span> y <span class="math inline">\(\delta_n\to0\)</span>, elija <span class="math inline">\(N\)</span> tal que <span class="math inline">\(\delta_n&lt;s\)</span> para <span class="math inline">\(n\ge N\)</span>. Desde ese índice se repite la prueba de las dos desigualdades.</li>
+</ol>
+<hr>
+<hr>
+<p><em>Este capítulo pertenece a la edición temática no oficial del curso IC2021. <a href="../../../libros/otros/introduccion-al-calculo/index.html">Índice del libro</a> · <a href="../../../libros/otros/introduccion-al-calculo/apendices.html">Fuentes y concordancia</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-10.html" class="pagination-link" aria-label="10. Sucesiones y convergencia">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">10. Sucesiones y convergencia</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" class="pagination-link" aria-label="12. La función exponencial y su inversa logarítmica">
+        <span class="nav-page-text">12. La función exponencial y su inversa logarítmica</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-CL" xml:lang="es-CL"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 15 de Introducción al cálculo: Límites de composiciones y caracterización épsilon-delta. Edición temática del curso IC2021.">
+
+<title>Límites de composiciones y caracterización épsilon-delta – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-16.html" rel="next">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" rel="prev">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c5103b7da534e48a10b0d82cfa6d6f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b842675181cc30c051e0a8f6ab07c4ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html">Parte V. Límites de funciones y cálculo diferencial</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-15.html">15. Límites de composiciones y caracterización épsilon-delta</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/brand/ma-logo-light.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../assets/brand/ma-logo-dark.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Portada del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte I. Fundamentos: de los reales a la geometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. La estructura algebraica de los números reales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Orden, desigualdades e inecuaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Coordenadas, distancias y rectas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Cónicas y curvas cuadráticas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte II. Funciones y trigonometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. El lenguaje de las funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. El círculo trigonométrico y sus identidades</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Identidades trigonométricas y resolución de triángulos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Funciones trigonométricas inversas y ecuaciones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte III. La completitud de los reales y las sucesiones</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Supremos, naturales y propiedad arquimediana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Sucesiones y convergencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Comparaciones, velocidad y monotonía de sucesiones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte IV. Exponenciales y logaritmos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. La función exponencial y su inversa logarítmica</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte V. Límites de funciones y cálculo diferencial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Puntos de acumulación y límite de una función</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Álgebra, comparación y límites fundamentales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-15.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">15. Límites de composiciones y caracterización épsilon-delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Límites laterales, infinito y asíntotas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">17. La derivada como límite de pendientes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">18. Reglas y técnicas de derivación</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/apendices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apéndices y fuentes</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#el-límite-de-una-composición-qué-es-necesario-comprobar" id="toc-el-límite-de-una-composición-qué-es-necesario-comprobar" class="nav-link active" data-scroll-target="#el-límite-de-una-composición-qué-es-necesario-comprobar">El límite de una composición: qué es necesario comprobar</a></li>
+  <li><a href="#la-exponencial-en-un-punto-real-arbitrario" id="toc-la-exponencial-en-un-punto-real-arbitrario" class="nav-link" data-scroll-target="#la-exponencial-en-un-punto-real-arbitrario">La exponencial en un punto real arbitrario</a></li>
+  <li><a href="#la-función-seno-y-su-cociente-incremental" id="toc-la-función-seno-y-su-cociente-incremental" class="nav-link" data-scroll-target="#la-función-seno-y-su-cociente-incremental">La función seno y su cociente incremental</a></li>
+  <li><a href="#escalamiento-y-combinación-de-límites-fundamentales" id="toc-escalamiento-y-combinación-de-límites-fundamentales" class="nav-link" data-scroll-target="#escalamiento-y-combinación-de-límites-fundamentales">Escalamiento y combinación de límites fundamentales</a></li>
+  <li><a href="#la-caracterización-épsilon-delta-del-límite" id="toc-la-caracterización-épsilon-delta-del-límite" class="nav-link" data-scroll-target="#la-caracterización-épsilon-delta-del-límite">La caracterización épsilon-delta del límite</a></li>
+  <li><a href="#puntos-de-acumulación-existencia-del-límite-y-cuantificadores" id="toc-puntos-de-acumulación-existencia-del-límite-y-cuantificadores" class="nav-link" data-scroll-target="#puntos-de-acumulación-existencia-del-límite-y-cuantificadores">Puntos de acumulación, existencia del límite y cuantificadores</a></li>
+  <li><a href="#taller-de-problemas-y-soluciones" id="toc-taller-de-problemas-y-soluciones" class="nav-link" data-scroll-target="#taller-de-problemas-y-soluciones">Taller de problemas y soluciones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html">Parte V. Límites de funciones y cálculo diferencial</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-15.html">15. Límites de composiciones y caracterización épsilon-delta</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Límites de composiciones y caracterización épsilon-delta</h1>
+<p class="subtitle lead">Capítulo 15 · Parte V. Límites de funciones y cálculo diferencial</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 15 de Introducción al cálculo: Límites de composiciones y caracterización épsilon-delta. Edición temática del curso IC2021.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>La composición permite trasladar problemas a límites ya conocidos, siempre que se verifiquen sus hipótesis. La formulación épsilon-delta aporta una segunda caracterización rigurosa de la misma noción.</p>
+<p><strong>Grabaciones de referencia:</strong> <a href="https://www.youtube.com/watch?v=R2rghIx2vRc">grabación de la cátedra 13.1</a>.</p>
+<p><em>Procedencia de este tramo: cátedra 13.1.</em></p>
+<section id="el-límite-de-una-composición-qué-es-necesario-comprobar" class="level2">
+<h2 class="anchored" data-anchor-id="el-límite-de-una-composición-qué-es-necesario-comprobar">El límite de una composición: qué es necesario comprobar</h2>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=783s">13:03</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=850s">14:10</a>).</strong> La operación de composición organiza el cálculo en dos etapas: la función interior <span class="math inline">\(g\)</span> transforma la variable <span class="math inline">\(x\)</span>; la función exterior <span class="math inline">\(f\)</span> actúa sobre <span class="math inline">\(g(x)\)</span>. Si <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span> y <span class="math inline">\(g(x)\)</span> se aproxima a <span class="math inline">\(b\)</span>, parece natural estudiar el comportamiento de <span class="math inline">\(f(u)\)</span> cuando <span class="math inline">\(u\)</span> se aproxima a <span class="math inline">\(b\)</span>.</p>
+<p>Para formular el teorema con precisión, consideramos dos funciones reales <span class="math inline">\(g:D_g\to\mathbb R\)</span> y <span class="math inline">\(f:D_f\to\mathbb R\)</span>. Su <strong>dominio de composición</strong> es el conjunto</p>
+<p><span class="math display">\[
+D(f\circ g)=\{x\in D_g:g(x)\in D_f\}.
+\]</span></p>
+<p>Definimos <span class="math inline">\(h=f\circ g\)</span> por <span class="math inline">\(h(x)=f(g(x))\)</span> en ese conjunto. El teorema estudia el límite de <span class="math inline">\(h\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a un punto de acumulación <span class="math inline">\(a\)</span> de <span class="math inline">\(D(h)\)</span>.</p>
+<p><strong>Teorema de composición (versión usada en la clase).</strong> Supongamos que <span class="math inline">\(a\)</span> es punto de acumulación de <span class="math inline">\(D(f\circ g)\)</span>, que <span class="math inline">\(b\)</span> es punto de acumulación de <span class="math inline">\(D_f\)</span>, y que:</p>
+<ol type="1">
+<li><span class="math inline">\(\displaystyle\lim_{x\to a}g(x)=b\)</span> en el dominio pertinente;</li>
+<li><span class="math inline">\(\displaystyle\lim_{u\to b}f(u)=L\)</span>;</li>
+<li>existe <span class="math inline">\(\delta_0&gt;0\)</span> tal que para todo <span class="math inline">\(x\in D(f\circ g)\)</span> con <span class="math inline">\(0&lt;|x-a|&lt;\delta_0\)</span> se cumple <span class="math inline">\(g(x)\ne b\)</span>.</li>
+</ol>
+<p>Entonces</p>
+<p><span class="math display">\[
+\boxed{\displaystyle \lim_{x\to a}f(g(x))=L.}
+\]</span></p>
+<p>El tercer requisito puede leerse como una condición de <strong>aproximación perforada de la imagen de <span class="math inline">\(g\)</span></strong>: cerca de <span class="math inline">\(a\)</span>, los valores de <span class="math inline">\(g\)</span> que intervienen en la composición pertenecen al dominio de <span class="math inline">\(f\)</span> y se aproximan a <span class="math inline">\(b\)</span> a través de puntos distintos de <span class="math inline">\(b\)</span>. Esta hipótesis cumple un papel lógico, pues la definición de límite exterior utiliza precisamente valores <span class="math inline">\(u\ne b\)</span>.</p>
+<div id="fig-ic2021-c15-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original: composición, dominios y convergencia.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/01_composicion_y_dominios.png" class="img-fluid figure-img" alt="Esquema editorial original: composición, dominios y convergencia.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Esquema editorial original: composición, dominios y convergencia.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 1. Esquema editorial. El argumento secuencial obliga a conservar tanto la pertenencia a los dominios como la condición <span class="math inline">\(g(x_n)\ne b\)</span>.</em></p>
+<section id="demostración-desarrollada" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-desarrollada">Demostración desarrollada</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=851s">14:11</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=1304s">21:44</a>).</strong> Sea <span class="math inline">\((x_n)\)</span> una sucesión <strong>arbitraria</strong> que satisface</p>
+<p><span class="math display">\[
+x_n\in D(f\circ g),\qquad x_n\ne a,\qquad x_n\longrightarrow a.
+\]</span></p>
+<p>La condición de dominio significa simultáneamente <span class="math inline">\(x_n\in D_g\)</span> y <span class="math inline">\(g(x_n)\in D_f\)</span>. Como <span class="math inline">\(g(x)\to b\)</span> cuando <span class="math inline">\(x\to a\)</span>, el criterio secuencial aplicado a <span class="math inline">\(g\)</span> establece</p>
+<p><span class="math display">\[
+g(x_n)\longrightarrow b.
+\]</span></p>
+<p>La hipótesis 3 añade que, para <span class="math inline">\(n\)</span> suficientemente grande, <span class="math inline">\(g(x_n)\ne b\)</span>. Por tanto la sucesión de imágenes <span class="math inline">\((g(x_n))\)</span> cumple las tres condiciones necesarias para aplicar a <span class="math inline">\(f\)</span> su límite en <span class="math inline">\(b\)</span>: pertenece a <span class="math inline">\(D_f\)</span>, converge a <span class="math inline">\(b\)</span> y se mantiene distinta de <span class="math inline">\(b\)</span> desde algún índice. De la segunda hipótesis se obtiene entonces</p>
+<p><span class="math display">\[
+f(g(x_n))\longrightarrow L.
+\]</span></p>
+<p>Como <span class="math inline">\((x_n)\)</span> era arbitraria, este es el criterio secuencial del límite de <span class="math inline">\(f\circ g\)</span> en <span class="math inline">\(a\)</span>. La afirmación queda demostrada. Los primeros términos, en caso de que no satisfagan la condición de cercanía, carecen de influencia sobre la convergencia de la sucesión.</p>
+</section>
+<section id="por-qué-la-tercera-hipótesis-importa" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-la-tercera-hipótesis-importa">Por qué la tercera hipótesis importa</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=1170s">19:30</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=1495s">24:55</a>).</strong> San Martín insiste en verificar <span class="math inline">\(g(x)\ne b\)</span> antes de sustituir una variable por otra. Una función interior puede tender a <span class="math inline">\(b\)</span> tomando exactamente ese valor para todos los <span class="math inline">\(x\)</span> cercanos a <span class="math inline">\(a\)</span>; entonces el comportamiento de <span class="math inline">\(f\)</span> en el punto <span class="math inline">\(b\)</span> podría diferir de su límite alrededor de <span class="math inline">\(b\)</span>.</p>
+<p><strong>Ampliación editorial — contraejemplo comprobable.</strong> Consideremos</p>
+<p><span class="math display">\[
+f(u)=\begin{cases}1,&amp;u=0,\\0,&amp;u\ne0,\end{cases}
+\qquad g(x)=0\quad(x\in\mathbb R).
+\]</span></p>
+<p>Se cumplen <span class="math inline">\(\lim_{x\to0}g(x)=0\)</span> y <span class="math inline">\(\lim_{u\to0}f(u)=0\)</span>. Sin embargo, la composición vale <span class="math inline">\(f(g(x))=1\)</span> en todos los puntos, por lo que <span class="math inline">\(\lim_{x\to0}f(g(x))=1\)</span>. La condición 3 falla precisamente porque <span class="math inline">\(g(x)=b=0\)</span> para todo <span class="math inline">\(x\)</span>.</p>
+<div id="fig-ic2021-c15-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original de una composición que revela el papel de la tercera hipótesis.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/02_hipotesis_tercera.png" class="img-fluid figure-img" alt="Esquema editorial original de una composición que revela el papel de la tercera hipótesis.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Esquema editorial original de una composición que revela el papel de la tercera hipótesis.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 2. Esquema editorial. El valor puntual de la función exterior aparece de forma persistente si la función interior toma exactamente el valor límite.</em></p>
+<p><strong>Ampliación editorial — otra versión útil.</strong> Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(b\)</span> (es decir, <span class="math inline">\(f(b)\)</span> existe y <span class="math inline">\(\lim_{u\to b}f(u)=f(b)\)</span>), entonces se puede admitir que <span class="math inline">\(g(x)\)</span> tome el valor <span class="math inline">\(b\)</span>: en ese caso toda sucesión <span class="math inline">\(g(x_n)\to b\)</span> satisface <span class="math inline">\(f(g(x_n))\to f(b)\)</span>. Esta variante requiere que la continuidad de <span class="math inline">\(f\)</span> haya sido previamente demostrada. En la clase se trabaja con la versión perforada y se deja el estudio sistemático de la continuidad para una unidad posterior.</p>
+</section>
+<section id="método-de-trabajo-para-un-ejercicio" class="level3">
+<h3 class="anchored" data-anchor-id="método-de-trabajo-para-un-ejercicio">Método de trabajo para un ejercicio</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=1328s">22:08</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=1589s">26:29</a>).</strong> San Martín recomienda reconocer primero la función interior, calcular a qué número tiende, comprobar explícitamente la condición adicional y, por último, calcular el límite de la función exterior en ese número. Conservar escrita la hipótesis 3 constituye una disciplina esencial de demostración.</p>
+</section>
+</section>
+<section id="la-exponencial-en-un-punto-real-arbitrario" class="level2">
+<h2 class="anchored" data-anchor-id="la-exponencial-en-un-punto-real-arbitrario">La exponencial en un punto real arbitrario</h2>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=1615s">26:55</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=2039s">33:59</a>).</strong> De la cátedra anterior se sabe que</p>
+<p><span class="math display">\[
+\lim_{u\to0}e^u=1,
+\qquad \lim_{u\to0}\frac{e^u-1}{u}=1.
+\]</span></p>
+<p>Para estudiar <span class="math inline">\(e^x\)</span> cuando <span class="math inline">\(x\to a\)</span>, introducimos la variable interior <span class="math inline">\(u=x-a\)</span>. Así <span class="math inline">\(u\to0\)</span> y, además, <span class="math inline">\(x\ne a\)</span> implica <span class="math inline">\(u\ne0\)</span>. La función exponencial satisface</p>
+<p><span class="math display">\[
+e^x=e^{u+a}=e^u e^a.
+\]</span></p>
+<p>Por el límite conocido y el álgebra de límites,</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to a}e^x=e^a.}
+\]</span></p>
+<p>Este cálculo demuestra una propiedad que más adelante recibirá el nombre de <em>continuidad de la exponencial</em>: su valor en el punto coincide con el límite de sus valores próximos.</p>
+<section id="el-primer-cociente-incremental" class="level3">
+<h3 class="anchored" data-anchor-id="el-primer-cociente-incremental">El primer cociente incremental</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=2081s">34:41</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=2450s">40:50</a>).</strong> Al restar <span class="math inline">\(e^a\)</span> del numerador y dividir por la diferencia de argumentos, aparece el límite</p>
+<p><span class="math display">\[
+\lim_{x\to a}\frac{e^x-e^a}{x-a}.
+\]</span></p>
+<p>El cambio <span class="math inline">\(u=x-a\)</span> produce, para <span class="math inline">\(x\ne a\)</span>,</p>
+<p><span class="math display">\[
+\frac{e^x-e^a}{x-a}
+=\frac{e^{a+u}-e^a}{u}
+=e^a\frac{e^u-1}{u}.
+\]</span></p>
+<p>El último cociente tiende a <span class="math inline">\(1\)</span>. Por consiguiente,</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to a}\frac{e^x-e^a}{x-a}=e^a.}
+\]</span></p>
+<p>El cociente mide la pendiente de la recta secante entre <span class="math inline">\((a,e^a)\)</span> y <span class="math inline">\((x,e^x)\)</span>. Cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span>, esas pendientes se aproximan a <span class="math inline">\(e^a\)</span>; esta construcción será la definición formal de derivada en la siguiente unidad.</p>
+<div id="fig-ic2021-c15-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original de secantes de una exponencial y su pendiente límite.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/03_cociente_incremental_exponencial.png" class="img-fluid figure-img" alt="Esquema editorial original de secantes de una exponencial y su pendiente límite.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Esquema editorial original de secantes de una exponencial y su pendiente límite.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 3. Esquema editorial. Las secantes convergen hacia la recta de pendiente <span class="math inline">\(e^a\)</span> en el punto señalado.</em></p>
+</section>
+</section>
+<section id="la-función-seno-y-su-cociente-incremental" class="level2">
+<h2 class="anchored" data-anchor-id="la-función-seno-y-su-cociente-incremental">La función seno y su cociente incremental</h2>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=2460s">41:00</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=2692s">44:52</a>).</strong> El límite fundamental <span class="math inline">\(\lim_{u\to0}\sin u=0\)</span>, junto con <span class="math inline">\(\lim_{u\to0}\cos u=1\)</span>, fue establecido en la cátedra 12.2. Tomamos de nuevo <span class="math inline">\(u=x-a\)</span> y usamos la fórmula de adición:</p>
+<p><span class="math display">\[
+\sin x=\sin(u+a)=\sin u\cos a+\cos u\sin a.
+\]</span></p>
+<p>Por el álgebra de límites,</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to a}\sin x=\sin a.}
+\]</span></p>
+<p>La misma estrategia permite obtener <span class="math inline">\(\lim_{x\to a}\cos x=\cos a\)</span> a partir de la fórmula del coseno de una suma. Estas igualdades preparan el cálculo de cocientes incrementales.</p>
+<p><strong>Demostración desarrollada (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=2694s">44:54</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=3359s">55:59</a>).</strong> Consideremos</p>
+<p><span class="math display">\[
+\frac{\sin x-\sin a}{x-a}.
+\]</span></p>
+<p>Con <span class="math inline">\(u=x-a\)</span> y la fórmula de adición,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\sin(a+u)-\sin a}{u}
+&amp;=\frac{\sin u\cos a+(\cos u-1)\sin a}{u}\\
+&amp;=\frac{\sin u}{u}\cos a+\frac{\cos u-1}{u}\sin a.
+\end{aligned}
+\]</span></p>
+<p>El primer factor tiende a <span class="math inline">\(\cos a\)</span> porque <span class="math inline">\(\sin u/u\to1\)</span>. El segundo cociente tiende a cero. En efecto,</p>
+<p><span class="math display">\[
+\frac{\cos u-1}{u}
+=-u\,\frac{1-\cos u}{u^2}
+\longrightarrow0\cdot\frac12=0.
+\]</span></p>
+<p>Aquí se emplean, en el orden apropiado, los dos límites fundamentales ya demostrados. Por ello,</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to a}\frac{\sin x-\sin a}{x-a}=\cos a.}
+\]</span></p>
+<div id="fig-ic2021-c15-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original del cociente incremental de la función seno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/04_cociente_incremental_seno.png" class="img-fluid figure-img" alt="Esquema editorial original del cociente incremental de la función seno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Esquema editorial original del cociente incremental de la función seno.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 4. Esquema editorial. El cociente incremental tiende a la pendiente <span class="math inline">\(\cos a\)</span>.</em></p>
+<section id="el-coseno-y-la-tangente" class="level3">
+<h3 class="anchored" data-anchor-id="el-coseno-y-la-tangente">El coseno y la tangente</h3>
+<p><strong>Ejercicios propuestos en la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=3360s">56:00</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=3537s">58:57</a>).</strong> El profesor pide calcular los cocientes correspondientes al coseno y a la tangente. Indica sus resultados: <span class="math inline">\(-\sin a\)</span> y <span class="math inline">\(\sec^2 a\)</span>, respectivamente.</p>
+<p><strong>Ampliación editorial — solución del coseno.</strong> Para <span class="math inline">\(u=x-a\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\cos(a+u)-\cos a}{u}
+&amp;=\cos a\,\frac{\cos u-1}{u}-\sin a\,\frac{\sin u}{u}\\
+&amp;\longrightarrow0-\sin a.
+\end{aligned}
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to a}\frac{\cos x-\cos a}{x-a}=-\sin a.}
+\]</span></p>
+<p><strong>Ampliación editorial — solución de la tangente.</strong> Para <span class="math inline">\(\cos a\ne0\)</span>, la tangente se define en un entorno de <span class="math inline">\(a\)</span>. Su identidad de diferencia da</p>
+<p><span class="math display">\[
+\tan x-\tan a=\frac{\sin(x-a)}{\cos x\cos a}.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\frac{\tan x-\tan a}{x-a}
+=\frac{\sin(x-a)}{x-a}\cdot\frac1{\cos x\cos a}
+\longrightarrow\frac1{\cos^2a}=\sec^2a.
+\]</span></p>
+<p>El requisito <span class="math inline">\(\cos a\ne0\)</span> es necesario para que <span class="math inline">\(\tan a\)</span> sea un número real y para asegurar que la función esté definida cerca del punto.</p>
+</section>
+<section id="la-función-cuadrática" class="level3">
+<h3 class="anchored" data-anchor-id="la-función-cuadrática">La función cuadrática</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=3559s">59:19</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=3659s">1:00:59</a>).</strong> San Martín recuerda el cálculo elemental</p>
+<p><span class="math display">\[
+\frac{x^2-a^2}{x-a}=x+a\quad(x\ne a),
+\]</span></p>
+<p>cuya convergencia cuando <span class="math inline">\(x\to a\)</span> es <span class="math inline">\(2a\)</span>. Es la misma arquitectura de cociente incremental, resuelta aquí mediante factorización algebraica. La clase señala que la teoría sistemática de estas pendientes corresponderá a la unidad de derivadas.</p>
+</section>
+</section>
+<section id="escalamiento-y-combinación-de-límites-fundamentales" class="level2">
+<h2 class="anchored" data-anchor-id="escalamiento-y-combinación-de-límites-fundamentales">Escalamiento y combinación de límites fundamentales</h2>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4027s">1:07:07</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4381s">1:13:01</a>).</strong> Para un parámetro real fijo <span class="math inline">\(a\)</span>, se estudia</p>
+<p><span class="math display">\[
+\lim_{x\to0}\frac{\sin(ax)}{x}.
+\]</span></p>
+<p>Si <span class="math inline">\(a\ne0\)</span>, hacemos <span class="math inline">\(u=ax\)</span>. Entonces <span class="math inline">\(u\to0\)</span> cuando <span class="math inline">\(x\to0\)</span> y <span class="math inline">\(x\ne0\)</span> garantiza <span class="math inline">\(u\ne0\)</span>, condición adicional que el profesor exige verificar. Por consiguiente,</p>
+<p><span class="math display">\[
+\frac{\sin(ax)}{x}=a\frac{\sin u}{u}\longrightarrow a.
+\]</span></p>
+<p>Si <span class="math inline">\(a=0\)</span>, el numerador es <span class="math inline">\(\sin0=0\)</span> para todo <span class="math inline">\(x\)</span>, por lo que el cociente es la función constante <span class="math inline">\(0\)</span> en el entorno perforado y su límite vale <span class="math inline">\(0=a\)</span>. Se obtiene, para <strong>todo</strong> <span class="math inline">\(a\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to0}\frac{\sin(ax)}x=a.}
+\]</span></p>
+<p>Esta separación de casos es parte sustantiva de la clase: el resultado es uniforme en el parámetro, mientras que la demostración por sustitución requiere <span class="math inline">\(a\ne0\)</span>.</p>
+<div id="fig-ic2021-c15-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original de varios cocientes sin(ax)/x.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/05_limite_seno_ax_sobre_x.png" class="img-fluid figure-img" alt="Esquema editorial original de varios cocientes sin(ax)/x.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Esquema editorial original de varios cocientes sin(ax)/x.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 5. Esquema editorial. Para cada valor fijo de <span class="math inline">\(a\)</span>, el cociente <span class="math inline">\(\sin(ax)/x\)</span> se aproxima a <span class="math inline">\(a\)</span>.</em></p>
+<section id="dos-parámetros-en-un-cociente-de-senos" class="level3">
+<h3 class="anchored" data-anchor-id="dos-parámetros-en-un-cociente-de-senos">Dos parámetros en un cociente de senos</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4384s">1:13:04</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4500s">1:15:00</a>).</strong> Se considera <span class="math inline">\(\sin(ax)/\sin(bx)\)</span> cuando <span class="math inline">\(x\to0\)</span>. Para <span class="math inline">\(b\ne0\)</span>, la función del denominador está definida y es distinta de cero en un entorno perforado suficientemente pequeño. Multiplicamos numerador y denominador por <span class="math inline">\(1/x\)</span>:</p>
+<p><span class="math display">\[
+\frac{\sin(ax)}{\sin(bx)}
+=\frac{\sin(ax)/x}{\sin(bx)/x}.
+\]</span></p>
+<p>El numerador tiende a <span class="math inline">\(a\)</span> y el denominador tiende a <span class="math inline">\(b\ne0\)</span>; el teorema del cociente proporciona</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to0}\frac{\sin(ax)}{\sin(bx)}=\frac ab\qquad(b\ne0).}
+\]</span></p>
+</section>
+<section id="un-ejercicio-compuesto-y-la-lectura-de-la-pizarra" class="level3">
+<h3 class="anchored" data-anchor-id="un-ejercicio-compuesto-y-la-lectura-de-la-pizarra">Un ejercicio compuesto y la lectura de la pizarra</h3>
+<p><strong>Lectura incierta (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4503s">1:15:03</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4679s">1:17:59</a>).</strong> El profesor presenta un cociente formado por un seno elevado al cubo, un factor <span class="math inline">\(1-\cos(bx)\)</span> y un factor <span class="math inline">\(e^{cx}-1\)</span>. La transcripción automática permite recuperar <strong>la técnica de distribución de potencias de <span class="math inline">\(x\)</span></strong>: normalizar el seno con <span class="math inline">\(x\)</span>, el término cosenoidal con <span class="math inline">\(x^2\)</span> y la exponencial con <span class="math inline">\(x\)</span>, pero la escritura exacta del cociente compuesto y algunos símbolos no quedan acreditados por el subtitulado. La igualdad concreta siguiente es, por tanto, una <strong>ampliación editorial ejemplificadora</strong>, y no una transcripción de la expresión que aparecía en la pizarra.</p>
+<p><strong>Ampliación editorial — modelo de la técnica.</strong> Si <span class="math inline">\(b,c\ne0\)</span>, estudiemos</p>
+<p><span class="math display">\[
+R(x)=\frac{\sin^3(ax)}{(1-\cos(bx))(e^{cx}-1)}.
+\]</span></p>
+<p>Para <span class="math inline">\(x\)</span> cercano a cero y distinto de cero, sus factores permiten escribir</p>
+<p><span class="math display">\[
+R(x)=\frac{(\sin(ax)/x)^3}
+{\bigl((1-\cos(bx))/x^2\bigr)\bigl((e^{cx}-1)/x\bigr)}.
+\]</span></p>
+<p>Usando los tres límites fundamentales normalizados,</p>
+<p><span class="math display">\[
+\lim_{x\to0}R(x)=\frac{a^3}{(b^2/2)c}=\boxed{\frac{2a^3}{b^2c}}.
+\]</span></p>
+<p>La hipótesis <span class="math inline">\(b,c\ne0\)</span> asegura que el denominador de este ejemplo tiene el comportamiento indicado y admite el cálculo del cociente. Si <span class="math inline">\(a=0\)</span>, el numerador es cero y el resultado sigue siendo cero. El valor exacto de la expresión <strong>original de clase</strong> queda pendiente de cotejo visual de la pizarra.</p>
+<div id="fig-ic2021-c15-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original de tres cocientes normalizados.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/06_tres_limites_fundamentales.png" class="img-fluid figure-img" alt="Esquema editorial original de tres cocientes normalizados.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Esquema editorial original de tres cocientes normalizados.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 6. Esquema editorial. Los cocientes <span class="math inline">\(\sin x/x\)</span>, <span class="math inline">\(2(1-\cos x)/x^2\)</span> y <span class="math inline">\((e^x-1)/x\)</span> convergen a <span class="math inline">\(1\)</span> y pueden combinarse algebraicamente.</em></p>
+</section>
+<section id="el-cociente-fundamental-del-logaritmo" class="level3">
+<h3 class="anchored" data-anchor-id="el-cociente-fundamental-del-logaritmo">El cociente fundamental del logaritmo</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4682s">1:18:02</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4890s">1:21:30</a>).</strong> Ahora se solicita el límite</p>
+<p><span class="math display">\[
+\lim_{x\to1}\frac{\ln x}{x-1}.
+\]</span></p>
+<p>El numerador y el denominador tienden a cero, y su cociente requiere una nueva transformación. Elegimos <span class="math inline">\(u=\ln x\)</span>. Dado que <span class="math inline">\(x\to1\)</span> por valores positivos, se tiene <span class="math inline">\(u\to0\)</span>; como <span class="math inline">\(\ln\)</span> es inyectiva, <span class="math inline">\(x\ne1\)</span> implica <span class="math inline">\(u\ne0\)</span>. La igualdad <span class="math inline">\(x=e^u\)</span> permite escribir</p>
+<p><span class="math display">\[
+\frac{\ln x}{x-1}=\frac{u}{e^u-1}
+=\frac1{(e^u-1)/u}.
+\]</span></p>
+<p>El denominador converge a <span class="math inline">\(1\)</span>, de donde</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to1}\frac{\ln x}{x-1}=1.}
+\]</span></p>
+<p><strong>Ampliación editorial.</strong> Para <span class="math inline">\(a&gt;0\)</span>, un nuevo cambio <span class="math inline">\(x=a+u\)</span> unido a la identidad <span class="math inline">\(\ln x-\ln a=\ln(x/a)\)</span> da</p>
+<p><span class="math display">\[
+\boxed{\displaystyle\lim_{x\to a}\frac{\ln x-\ln a}{x-a}=\frac1a.}
+\]</span></p>
+<p>Es una primera anticipación de la pendiente de <span class="math inline">\(\ln x\)</span> en un punto general. Se incluye para completar el itinerario algebraico; la grabación desarrolla explícitamente el caso <span class="math inline">\(a=1\)</span>.</p>
+</section>
+</section>
+<section id="la-caracterización-épsilon-delta-del-límite" class="level2">
+<h2 class="anchored" data-anchor-id="la-caracterización-épsilon-delta-del-límite">La caracterización épsilon-delta del límite</h2>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=4921s">1:22:01</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=5431s">1:30:31</a>).</strong> San Martín explica que el límite puede formularse mediante desigualdades de distancias. El teorema reúne la cercanía horizontal de los argumentos y la cercanía vertical de las imágenes. En la exposición se dibujan franjas de altura <span class="math inline">\(2\varepsilon\)</span> y entornos de radio <span class="math inline">\(\delta\)</span>; la demostración formal de la equivalencia con sucesiones queda anunciada como un resultado que puede desarrollarse aparte.</p>
+<p><strong>Caracterización épsilon-delta.</strong> Sean <span class="math inline">\(f:A\to\mathbb R\)</span>, un punto de acumulación <span class="math inline">\(a\)</span> de <span class="math inline">\(A\)</span> y <span class="math inline">\(L\in\mathbb R\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{\lim_{x\to a}f(x)=L\quad\Longleftrightarrow\quad
+\forall\varepsilon&gt;0\ \exists\delta&gt;0\ \forall x\in A:
+\bigl(0&lt;|x-a|&lt;\delta\bigr)\Rightarrow |f(x)-L|&lt;\varepsilon.}
+\]</span></p>
+<p>El cuantificador <span class="math inline">\(\forall\varepsilon&gt;0\)</span> expresa que la cercanía vertical solicitada puede ser tan exigente como se desee. El número <span class="math inline">\(\delta&gt;0\)</span> se elige en función de esa exigencia: en la parte del dominio que cumple <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>, las imágenes cumplen <span class="math inline">\(L-\varepsilon&lt;f(x)&lt;L+\varepsilon\)</span>. El entorno es <strong>perforado</strong>, pues la aproximación utiliza puntos distintos de <span class="math inline">\(a\)</span>.</p>
+<div id="fig-ic2021-c15-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original de la caracterización épsilon-delta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/07_caracterizacion_epsilon_delta.png" class="img-fluid figure-img" alt="Esquema editorial original de la caracterización épsilon-delta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Esquema editorial original de la caracterización épsilon-delta.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 7. Esquema editorial. Para una exigencia vertical <span class="math inline">\(\varepsilon\)</span>, se encuentra un radio horizontal <span class="math inline">\(\delta\)</span> que conserva la imagen dentro de la banda; el valor puntual de <span class="math inline">\(f(a)\)</span> puede ocupar otra altura.</em></p>
+<section id="por-qué-ambas-definiciones-coinciden" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-ambas-definiciones-coinciden">Por qué ambas definiciones coinciden</h3>
+<p><strong>Ampliación editorial — demostración completa.</strong> Supongamos primero que se cumple la caracterización épsilon-delta. Sea <span class="math inline">\(x_n\in A\)</span>, con <span class="math inline">\(x_n\ne a\)</span> y <span class="math inline">\(x_n\to a\)</span>. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos el <span class="math inline">\(\delta\)</span> de la caracterización. Como <span class="math inline">\(x_n\to a\)</span>, existe <span class="math inline">\(N\)</span> tal que <span class="math inline">\(n\ge N\)</span> implica <span class="math inline">\(|x_n-a|&lt;\delta\)</span>. Entonces <span class="math inline">\(|f(x_n)-L|&lt;\varepsilon\)</span> para <span class="math inline">\(n\ge N\)</span>, por lo cual <span class="math inline">\(f(x_n)\to L\)</span>.</p>
+<p>Para la implicación inversa, supongamos que toda sucesión admisible satisface <span class="math inline">\(f(x_n)\to L\)</span>. Si la condición épsilon-delta fallara, existiría un <span class="math inline">\(\varepsilon_0&gt;0\)</span> tal que para <strong>cada</strong> <span class="math inline">\(\delta&gt;0\)</span> habría un punto <span class="math inline">\(x\in A\)</span> con</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta,
+\qquad |f(x)-L|\ge\varepsilon_0.
+\]</span></p>
+<p>Eligiendo <span class="math inline">\(\delta=1/n\)</span>, obtenemos una sucesión <span class="math inline">\(x_n\in A\)</span> con <span class="math inline">\(0&lt;|x_n-a|&lt;1/n\)</span> y <span class="math inline">\(|f(x_n)-L|\ge\varepsilon_0\)</span> para todos los índices. Por el sándwich, <span class="math inline">\(x_n\to a\)</span>, mientras que la distancia de <span class="math inline">\(f(x_n)\)</span> a <span class="math inline">\(L\)</span> conserva una cota inferior positiva. Eso contradice el criterio secuencial. Así se demuestra la equivalencia.</p>
+<p><strong>Observación.</strong> La exigencia de que <span class="math inline">\(a\)</span> sea punto de acumulación tiene aquí una importancia lógica: garantiza que existen puntos del dominio arbitrariamente próximos a <span class="math inline">\(a\)</span> y distintos de él. La clase vuelve sobre este punto mediante un ejemplo de cuantificadores sobre el conjunto vacío.</p>
+</section>
+</section>
+<section id="puntos-de-acumulación-existencia-del-límite-y-cuantificadores" class="level2">
+<h2 class="anchored" data-anchor-id="puntos-de-acumulación-existencia-del-límite-y-cuantificadores">Puntos de acumulación, existencia del límite y cuantificadores</h2>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=5432s">1:30:32</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=5806s">1:36:46</a>).</strong> Un <strong>punto de acumulación</strong> de <span class="math inline">\(A\subseteq\mathbb R\)</span> es un real <span class="math inline">\(a\)</span> para el que existe una sucesión <span class="math inline">\((x_n)\)</span> de puntos de <span class="math inline">\(A\)</span> que converge a <span class="math inline">\(a\)</span> y cuyos términos son todos distintos de <span class="math inline">\(a\)</span>. Esta propiedad también puede formularse así:</p>
+<p><span class="math display">\[
+\forall\delta&gt;0\quad
+(A\setminus\{a\})\cap(a-\delta,a+\delta)\ne\varnothing.
+\]</span></p>
+<p>La caracterización permite distinguir dos problemas matemáticos: primero, si los puntos del dominio permiten aproximarse a <span class="math inline">\(a\)</span>; segundo, si las imágenes de esos puntos convergen a un único valor. Ambos pasos son esenciales.</p>
+<p><strong>Ejemplo de la clase.</strong> La función <span class="math inline">\(x\mapsto\sqrt{x}\)</span> tiene por dominio <span class="math inline">\([0,\infty)\)</span>. El punto <span class="math inline">\(-8\)</span> se encuentra fuera del conjunto de puntos de acumulación de ese dominio: ninguna sucesión de términos no negativos puede converger a <span class="math inline">\(-8\)</span>. Por tanto, dentro de la definición adoptada en el curso, el símbolo <span class="math inline">\(\lim_{x\to-8}\sqrt{x}\)</span> queda <strong>fuera del ámbito en que se define el límite</strong>.</p>
+<p><strong>Ejemplo de la clase.</strong> La parte entera <span class="math inline">\(x\mapsto\lfloor x\rfloor\)</span> tiene dominio <span class="math inline">\(\mathbb R\)</span>, por lo que <span class="math inline">\(1\)</span> es un punto de acumulación. Sin embargo, las sucesiones <span class="math inline">\(x_n=1-1/n\)</span> y <span class="math inline">\(y_n=1+1/n\)</span>, tomando <span class="math inline">\(n\ge2\)</span>, producen imágenes que convergen a <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, respectivamente. Por unicidad, el límite bilateral en <span class="math inline">\(1\)</span> no existe. En este caso el dominio admite la aproximación, pero las imágenes ofrecen dos comportamientos incompatibles con un mismo límite.</p>
+<div id="fig-ic2021-c15-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial original: punto fuera de acumulación y salto en un punto de acumulación.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c15-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_13_1/08_acumulacion_y_salto.png" class="img-fluid figure-img" alt="Esquema editorial original: punto fuera de acumulación y salto en un punto de acumulación.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c15-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Esquema editorial original: punto fuera de acumulación y salto en un punto de acumulación.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 8. Esquema editorial. Son dos diagnósticos distintos: el dominio de <span class="math inline">\(\sqrt{x}\)</span> impide aproximarse a un real negativo; el de <span class="math inline">\(\lfloor x\rfloor\)</span> admite aproximarse a <span class="math inline">\(1\)</span>, donde sus ramas laterales tienen límites diferentes.</em></p>
+<section id="la-sutileza-del-conjunto-vacío" class="level3">
+<h3 class="anchored" data-anchor-id="la-sutileza-del-conjunto-vacío">La sutileza del conjunto vacío</h3>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=5820s">1:37:00</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=6151s">1:42:31</a>).</strong> Se estudian las dos proposiciones</p>
+<p><span class="math display">\[
+\forall x\in A\ P(x),
+\qquad \exists x\in A\ P(x).
+\]</span></p>
+<p>Cuando <span class="math inline">\(A\)</span> tiene algún elemento, la primera proposición implica la segunda. Para <span class="math inline">\(A=\varnothing\)</span>, la primera es verdadera por vacuidad y la segunda es falsa. La lección lógica es que el cuantificador universal describe un comportamiento de <strong>todos los elementos disponibles</strong>, mientras que el existencial acredita la presencia de al menos un elemento. Una implicación desde lo universal hacia lo existencial requiere que el conjunto sea habitado.</p>
+<p>En el contexto del límite, exigir <span class="math inline">\(a\in A'\)</span> (el conjunto de puntos de acumulación) asegura la existencia de puntos de <span class="math inline">\(A\)</span> en <strong>cada</strong> entorno perforado de <span class="math inline">\(a\)</span>. Esto evita que la condición <span class="math inline">\(\forall x\in A\)</span> se satisfaga vacíamente en una vecindad carente de puntos relevantes. De lo contrario, cualquier valor <span class="math inline">\(L\)</span> podría satisfacer la condición épsilon-delta sin que existan datos de la función cerca del punto, lo que destruiría la unicidad del supuesto límite. Por ello la hipótesis de acumulación forma parte constitutiva del marco conceptual del curso.</p>
+<p><strong>En la clase (<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=6152s">1:42:32</a>–<a href="https://www.youtube.com/watch?v=R2rghIx2vRc&amp;t=6308s">1:45:08</a>).</strong> El docente anticipa que en la cátedra 13.2 se estudiarán los <strong>límites laterales</strong>. Para un punto en el extremo del dominio, como <span class="math inline">\(a=0\)</span> para <span class="math inline">\(\sqrt{x}\)</span>, se estudia la aproximación desde los puntos que pertenecen al dominio. La existencia de aproximaciones por la derecha y por la izquierda se tratará separadamente cuando corresponda. La pregunta final de la clase subraya que cada lado debe contener puntos relevantes antes de formular un límite lateral.</p>
+</section>
+</section>
+<section id="taller-de-problemas-y-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="taller-de-problemas-y-soluciones">Taller de problemas y soluciones</h2>
+<p>Los ejercicios se presentan a continuación según la fuente de origen; las ampliaciones editoriales de cada apuntes permanecen expresamente identificadas.</p>
+<section id="problemas-de-práctica-y-soluciones-cátedra-13.1" class="level3">
+<h3 class="anchored" data-anchor-id="problemas-de-práctica-y-soluciones-cátedra-13.1">Problemas de práctica y soluciones — cátedra 13.1</h3>
+<p>Los siguientes ejercicios son <strong>ampliaciones editoriales</strong>, salvo donde se indica expresamente que San Martín propuso un cálculo durante la clase. Se distinguen aplicaciones directas, pruebas del teorema y problemas de transferencia. En cada caso deben verificarse el dominio y las hipótesis de la composición cuando se utilice.</p>
+<p><strong>E1.</strong> Calcular <span class="math inline">\(\lim_{x\to2}e^{3x-1}\)</span> mediante composición.</p>
+<p><strong>E2.</strong> Calcular <span class="math inline">\(\lim_{x\to a}(e^{2x}-e^{2a})/(x-a)\)</span> para <span class="math inline">\(a\in\mathbb R\)</span>.</p>
+<p><strong>E3.</strong> Calcular <span class="math inline">\(\lim_{x\to a}(\sin(3x)-\sin(3a))/(x-a)\)</span>.</p>
+<p><strong>E4. Ejercicio propuesto en la clase (56:00).</strong> Calcular <span class="math inline">\(\lim_{x\to a}(\cos x-\cos a)/(x-a)\)</span> y explicar el signo.</p>
+<p><strong>E5. Ejercicio propuesto en la clase (57:37).</strong> Calcular <span class="math inline">\(\lim_{x\to a}(\tan x-\tan a)/(x-a)\)</span> para <span class="math inline">\(\cos a\ne0\)</span>.</p>
+<p><strong>E6.</strong> Calcular <span class="math inline">\(\lim_{x\to0}\sin(5x)/x\)</span> y <span class="math inline">\(\lim_{x\to0}\sin(0x)/x\)</span> identificando cuándo se utiliza la hipótesis adicional.</p>
+<p><strong>E7.</strong> Calcular <span class="math inline">\(\lim_{x\to0}\sin(2x)/\sin(7x)\)</span>.</p>
+<p><strong>E8.</strong> Calcular <span class="math inline">\(\lim_{x\to0}\bigl[\sin^3(2x)/((1-\cos3x)(e^{4x}-1))\bigr]\)</span>.</p>
+<p><strong>E9.</strong> Calcular <span class="math inline">\(\lim_{x\to1}\ln x/(x-1)\)</span> y <span class="math inline">\(\lim_{x\to2}(\ln x-\ln2)/(x-2)\)</span>.</p>
+<p><strong>E10.</strong> Demostrar con épsilon-delta que <span class="math inline">\(\lim_{x\to3}(2x-1)=5\)</span>.</p>
+<p><strong>E11.</strong> Construir dos sucesiones del dominio de <span class="math inline">\(\lfloor x\rfloor\)</span> que converjan a <span class="math inline">\(1\)</span> y produzcan límites de imágenes diferentes.</p>
+<p><strong>E12.</strong> Dados <span class="math inline">\(f(u)=1\)</span> si <span class="math inline">\(u=0\)</span> y <span class="math inline">\(f(u)=0\)</span> si <span class="math inline">\(u\ne0\)</span>, y <span class="math inline">\(g(x)=0\)</span>, determinar <span class="math inline">\(\lim_{u\to0}f(u)\)</span>, <span class="math inline">\(\lim_{x\to0}g(x)\)</span> y <span class="math inline">\(\lim_{x\to0}f(g(x))\)</span>; precisar la hipótesis incumplida.</p>
+<p><strong>E13.</strong> Para <span class="math inline">\(f(x)=\sqrt{x}\)</span> y su dominio natural, decidir si <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> y <span class="math inline">\(4\)</span> son puntos de acumulación, y calcular <span class="math inline">\(\lim_{x\to0}\sqrt{x}\)</span>.</p>
+</section>
+<section id="soluciones-comprobadas" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-comprobadas">Soluciones comprobadas</h3>
+<p><strong>E1.</strong> Para <span class="math inline">\(g(x)=3x-1\)</span>, <span class="math inline">\(g(x)\to5\)</span> cuando <span class="math inline">\(x\to2\)</span>, y si <span class="math inline">\(x\ne2\)</span> entonces <span class="math inline">\(g(x)\ne5\)</span>. La exponencial tiene límite <span class="math inline">\(e^5\)</span> en <span class="math inline">\(5\)</span>. Resultado: <span class="math inline">\(\boxed{e^5}\)</span>.</p>
+<p><strong>E2.</strong> Usamos <span class="math inline">\(u=2(x-a)\)</span> y factorizamos <span class="math inline">\(e^{2a}\)</span>:</p>
+<p><span class="math display">\[
+\frac{e^{2x}-e^{2a}}{x-a}
+=2e^{2a}\frac{e^{u}-1}{u}\longrightarrow\boxed{2e^{2a}}.
+\]</span></p>
+<p><strong>E3.</strong> Con <span class="math inline">\(u=3(x-a)\)</span>,</p>
+<p><span class="math display">\[
+\frac{\sin(3x)-\sin(3a)}{x-a}
+=3\frac{\sin(3a+u)-\sin(3a)}u\longrightarrow\boxed{3\cos(3a)}.
+\]</span></p>
+<p><strong>E4.</strong> Por la fórmula de adición,</p>
+<p><span class="math display">\[
+\frac{\cos(a+u)-\cos a}{u}
+=\cos a\frac{\cos u-1}{u}-\sin a\frac{\sin u}{u}
+\longrightarrow\boxed{-\sin a}.
+\]</span></p>
+<p>El signo procede de la fórmula <span class="math inline">\(\cos(a+u)=\cos a\cos u-\sin a\sin u\)</span>.</p>
+<p><strong>E5.</strong> La diferencia de tangentes produce</p>
+<p><span class="math display">\[
+\frac{\tan x-\tan a}{x-a}
+=\frac{\sin(x-a)}{x-a}\cdot\frac1{\cos x\cos a}
+\longrightarrow\boxed{\sec^2 a},\quad\cos a\ne0.
+\]</span></p>
+<p><strong>E6.</strong> El primer límite vale <span class="math inline">\(5\)</span> al escribir <span class="math inline">\(u=5x\)</span>. El segundo cociente es idénticamente cero para <span class="math inline">\(x\ne0\)</span>, y su límite vale <span class="math inline">\(0\)</span>. En el segundo caso, la sustitución <span class="math inline">\(u=0x\)</span> incumple <span class="math inline">\(u\ne0\)</span>; la evaluación directa del cociente resuelve el ejercicio.</p>
+<p><strong>E7.</strong> Los dos cocientes normalizados por <span class="math inline">\(x\)</span> tienden a <span class="math inline">\(2\)</span> y <span class="math inline">\(7\)</span>, respectivamente. Como el segundo límite es distinto de cero, el resultado es <span class="math inline">\(\boxed{2/7}\)</span>.</p>
+<p><strong>E8.</strong> Se usan el cubo del seno normalizado, el coseno normalizado por <span class="math inline">\(x^2\)</span> y la exponencial normalizada por <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[
+\lim=\frac{2^3}{(3^2/2)\cdot4}=\boxed{\frac49}.
+\]</span></p>
+<p><strong>E9.</strong> El primer resultado es <span class="math inline">\(\boxed{1}\)</span>, por <span class="math inline">\(u=\ln x\)</span>. El segundo se reduce a <span class="math inline">\(\ln(x/2)=\ln(1+(x-2)/2)\)</span> y al cociente fundamental, por lo que el resultado es <span class="math inline">\(\boxed{1/2}\)</span>.</p>
+<p><strong>E10.</strong> Sea <span class="math inline">\(\varepsilon&gt;0\)</span> y elijamos <span class="math inline">\(\delta=\varepsilon/2\)</span>. Para todo <span class="math inline">\(x\in\mathbb R\)</span> con <span class="math inline">\(0&lt;|x-3|&lt;\delta\)</span>,</p>
+<p><span class="math display">\[
+|(2x-1)-5|=2|x-3|&lt;2\delta=\varepsilon.
+\]</span></p>
+<p>Por la definición, <span class="math inline">\(\boxed{\lim_{x\to3}(2x-1)=5}\)</span>.</p>
+<p><strong>E11.</strong> Tomamos <span class="math inline">\(x_n=1-1/(n+1)\)</span> y <span class="math inline">\(y_n=1+1/(n+1)\)</span>, ambos distintos de <span class="math inline">\(1\)</span> y convergentes a <span class="math inline">\(1\)</span>. Se cumple <span class="math inline">\(\lfloor x_n\rfloor=0\)</span> y <span class="math inline">\(\lfloor y_n\rfloor=1\)</span>. Así, el límite bilateral en <span class="math inline">\(1\)</span> no existe.</p>
+<p><strong>E12.</strong> Se obtiene <span class="math inline">\(\lim_{u\to0}f(u)=0\)</span>, <span class="math inline">\(\lim_{x\to0}g(x)=0\)</span> y <span class="math inline">\(\lim_{x\to0}f(g(x))=1\)</span>. La función interior toma exactamente su valor límite en todos los puntos; por ello falla la condición adicional <span class="math inline">\(g(x)\ne b\)</span> del teorema de composición.</p>
+<p><strong>E13.</strong> El conjunto de puntos de acumulación de <span class="math inline">\([0,\infty)\)</span> es <span class="math inline">\([0,\infty)\)</span>: <span class="math inline">\(0\)</span> y <span class="math inline">\(4\)</span> son puntos de acumulación y <span class="math inline">\(-1\)</span> queda fuera. Para <span class="math inline">\(x_n\ge0\)</span> con <span class="math inline">\(x_n\to0\)</span>, se tiene <span class="math inline">\(\sqrt{x_n}\to0\)</span> porque <span class="math inline">\(\sqrt{x_n}\ge0\)</span> y, para <span class="math inline">\(\varepsilon&gt;0\)</span>, eventualmente <span class="math inline">\(x_n&lt;\varepsilon^2\)</span> implica <span class="math inline">\(\sqrt{x_n}&lt;\varepsilon\)</span>. Por ello <span class="math inline">\(\boxed{\lim_{x\to0}\sqrt{x}=0}\)</span>, con aproximaciones restringidas al dominio.</p>
+<hr>
+<hr>
+<p><em>Este capítulo pertenece a la edición temática no oficial del curso IC2021. <a href="../../../libros/otros/introduccion-al-calculo/index.html">Índice del libro</a> · <a href="../../../libros/otros/introduccion-al-calculo/apendices.html">Fuentes y concordancia</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" class="pagination-link" aria-label="14. Álgebra, comparación y límites fundamentales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">14. Álgebra, comparación y límites fundamentales</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-16.html" class="pagination-link" aria-label="16. Límites laterales, infinito y asíntotas">
+        <span class="nav-page-text">16. Límites laterales, infinito y asíntotas</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

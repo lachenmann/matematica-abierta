@@ -1,0 +1,2548 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-CL" xml:lang="es-CL"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 5 de Introducción al cálculo: El lenguaje de las funciones. Edición temática del curso IC2021.">
+
+<title>El lenguaje de las funciones – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-06.html" rel="next">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-04.html" rel="prev">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c5103b7da534e48a10b0d82cfa6d6f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b842675181cc30c051e0a8f6ab07c4ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html">Parte II. Funciones y trigonometría</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html">5. El lenguaje de las funciones</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/brand/ma-logo-light.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../assets/brand/ma-logo-dark.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Portada del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte I. Fundamentos: de los reales a la geometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. La estructura algebraica de los números reales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Orden, desigualdades e inecuaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Coordenadas, distancias y rectas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Cónicas y curvas cuadráticas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte II. Funciones y trigonometría</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">5. El lenguaje de las funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. El círculo trigonométrico y sus identidades</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Identidades trigonométricas y resolución de triángulos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Funciones trigonométricas inversas y ecuaciones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte III. La completitud de los reales y las sucesiones</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Supremos, naturales y propiedad arquimediana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Sucesiones y convergencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Comparaciones, velocidad y monotonía de sucesiones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte IV. Exponenciales y logaritmos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. La función exponencial y su inversa logarítmica</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte V. Límites de funciones y cálculo diferencial</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Puntos de acumulación y límite de una función</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Álgebra, comparación y límites fundamentales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15. Límites de composiciones y caracterización épsilon-delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Límites laterales, infinito y asíntotas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">17. La derivada como límite de pendientes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">18. Reglas y técnicas de derivación</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/apendices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apéndices y fuentes</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#de-las-funciones-generales-a-las-funciones-reales-de-variable-real" id="toc-de-las-funciones-generales-a-las-funciones-reales-de-variable-real" class="nav-link active" data-scroll-target="#de-las-funciones-generales-a-las-funciones-reales-de-variable-real">De las funciones generales a las funciones reales de variable real</a></li>
+  <li><a href="#grafo-ceros-y-signo-de-una-función" id="toc-grafo-ceros-y-signo-de-una-función" class="nav-link" data-scroll-target="#grafo-ceros-y-signo-de-una-función">Grafo, ceros y signo de una función</a></li>
+  <li><a href="#paridad-e-imparidad" id="toc-paridad-e-imparidad" class="nav-link" data-scroll-target="#paridad-e-imparidad">Paridad e imparidad</a></li>
+  <li><a href="#periodicidad" id="toc-periodicidad" class="nav-link" data-scroll-target="#periodicidad">Periodicidad</a></li>
+  <li><a href="#crecimiento-y-decrecimiento" id="toc-crecimiento-y-decrecimiento" class="nav-link" data-scroll-target="#crecimiento-y-decrecimiento">Crecimiento y decrecimiento</a></li>
+  <li><a href="#solucionario-completo" id="toc-solucionario-completo" class="nav-link" data-scroll-target="#solucionario-completo">Solucionario completo</a></li>
+  <li><a href="#una-pregunta-que-continúa-la-clase-anterior" id="toc-una-pregunta-que-continúa-la-clase-anterior" class="nav-link" data-scroll-target="#una-pregunta-que-continúa-la-clase-anterior">Una pregunta que continúa la clase anterior</a></li>
+  <li><a href="#la-ubicación-exacta-de-los-intervalos-de-crecimiento" id="toc-la-ubicación-exacta-de-los-intervalos-de-crecimiento" class="nav-link" data-scroll-target="#la-ubicación-exacta-de-los-intervalos-de-crecimiento">La ubicación exacta de los intervalos de crecimiento</a></li>
+  <li><a href="#primeras-familias-de-funciones-conocidas" id="toc-primeras-familias-de-funciones-conocidas" class="nav-link" data-scroll-target="#primeras-familias-de-funciones-conocidas">Primeras familias de funciones conocidas</a></li>
+  <li><a href="#álgebra-de-funciones-y-dominios" id="toc-álgebra-de-funciones-y-dominios" class="nav-link" data-scroll-target="#álgebra-de-funciones-y-dominios">Álgebra de funciones y dominios</a></li>
+  <li><a href="#polinomios-y-funciones-racionales" id="toc-polinomios-y-funciones-racionales" class="nav-link" data-scroll-target="#polinomios-y-funciones-racionales">Polinomios y funciones racionales</a></li>
+  <li><a href="#estudio-completo-de-la-función-boldsymbol2xx1" id="toc-estudio-completo-de-la-función-boldsymbol2xx1" class="nav-link" data-scroll-target="#estudio-completo-de-la-función-boldsymbol2xx1">Estudio completo de la función <span class="math inline">\(\boldsymbol{2x/(x+1)}\)</span></a></li>
+  <li><a href="#síntesis-dificultades-técnicas-y-continuidad" id="toc-síntesis-dificultades-técnicas-y-continuidad" class="nav-link" data-scroll-target="#síntesis-dificultades-técnicas-y-continuidad">Síntesis, dificultades técnicas y continuidad</a></li>
+  <li><a href="#taller-de-problemas-y-soluciones" id="toc-taller-de-problemas-y-soluciones" class="nav-link" data-scroll-target="#taller-de-problemas-y-soluciones">Taller de problemas y soluciones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html">Parte II. Funciones y trigonometría</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html">5. El lenguaje de las funciones</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">El lenguaje de las funciones</h1>
+<p class="subtitle lead">Capítulo 5 · Parte II. Funciones y trigonometría</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 5 de Introducción al cálculo: El lenguaje de las funciones. Edición temática del curso IC2021.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>El dominio, la imagen y el gráfico determinan el objeto de estudio del cálculo. Las simetrías, la periodicidad, la monotonía y las operaciones con funciones preparan el análisis de su variación.</p>
+<p><strong>Grabaciones de referencia:</strong> <a href="https://www.youtube.com/watch?v=qbH2dSX-oYk">grabación de la cátedra 5.1</a>, <a href="https://www.youtube.com/watch?v=NEYH4Qw4QK4">grabación de la cátedra 5.2</a>.</p>
+<p><em>Procedencia de este tramo: cátedra 5.1.</em></p>
+<section id="de-las-funciones-generales-a-las-funciones-reales-de-variable-real" class="level2">
+<h2 class="anchored" data-anchor-id="de-las-funciones-generales-a-las-funciones-reales-de-variable-real">De las funciones generales a las funciones reales de variable real</h2>
+<section id="correspondencia-e-imagen-única" class="level3">
+<h3 class="anchored" data-anchor-id="correspondencia-e-imagen-única">Correspondencia e imagen única</h3>
+<p><strong>En la cátedra (03:33–06:51).</strong> Dados dos conjuntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, una <strong>función</strong> <span class="math inline">\(f:A\to B\)</span> es una asignación que, a cada <span class="math inline">\(x\in A\)</span>, hace corresponder exactamente un elemento <span class="math inline">\(f(x)\in B\)</span>. La condición puede expresarse mediante</p>
+<p><span class="math display">\[
+\boxed{\forall x\in A\ \exists!y\in B\quad y=f(x).}
+\]</span></p>
+<p>El conjunto <span class="math inline">\(A\)</span> es el <strong>dominio</strong> y <span class="math inline">\(B\)</span> el <strong>codominio</strong>. La imagen de un elemento <span class="math inline">\(x\)</span> es el valor único <span class="math inline">\(f(x)\)</span> que le corresponde. La notación <span class="math inline">\(f:A\to B\)</span> expresa la elección de estos conjuntos junto con la ley de asignación. El conjunto de valores realmente obtenidos es la <strong>imagen</strong> o recorrido: <span class="math inline">\(f(A)=\{f(x):x\in A\}\)</span>.</p>
+<p>La especificidad del cálculo de este curso es trabajar con <span class="math inline">\(A\subseteq\mathbb R\)</span> y habitualmente <span class="math inline">\(B=\mathbb R\)</span>. Escribiremos</p>
+<p><span class="math display">\[
+\boxed{f:A\subseteq\mathbb R\longrightarrow\mathbb R,\qquad x\longmapsto f(x).}
+\]</span></p>
+<p>El profesor vincula la <em>unicidad</em> con la posibilidad de dar nombre a los valores asignados y recuerda que, en álgebra, el dominio y el codominio pueden ser conjuntos de naturaleza arbitraria.</p>
+<div id="fig-ic2021-c05-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La función asocia una imagen a cada entrada del dominio.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/01_correspondencia.png" class="img-fluid figure-img" alt="La función asocia una imagen a cada entrada del dominio.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: La función asocia una imagen a cada entrada del dominio.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 1. Una asignación funcional da una imagen a cada entrada; la segunda correspondencia ilustra cómo pueden intervenir varias imágenes de una misma entrada en una relación general.</em></p>
+</section>
+<section id="el-dominio-natural-de-una-fórmula" class="level3">
+<h3 class="anchored" data-anchor-id="el-dominio-natural-de-una-fórmula">El dominio natural de una fórmula</h3>
+<p><strong>En la cátedra (06:51–10:32).</strong> En numerosos ejercicios se proporciona solamente una ley <span class="math inline">\(f(x)\)</span> y se pide determinar <strong>todos los números reales en los que la expresión produce un valor real definido</strong>. Este conjunto es el dominio natural de la fórmula, teniendo en cuenta las operaciones utilizadas.</p>
+<p>Las condiciones aparecen simultáneamente y se resuelven como un sistema lógico: los radicandos de raíces cuadradas deben ser mayores o iguales que cero; los denominadores deben tener inverso multiplicativo, es decir, ser distintos de cero. Cuando coinciden radicales y cocientes, se imponen ambas condiciones.</p>
+<p><strong>Primer ejemplo: raíz cuadrada.</strong> Para <span class="math inline">\(f(x)=\sqrt{x}\)</span>, el radicando es real no negativo exactamente en el intervalo</p>
+<p><span class="math display">\[\boxed{\operatorname{Dom}(f)=[0,\infty).}\]</span></p>
+<p><strong>Segundo ejemplo: raíz de una cuadrática.</strong> Sea <span class="math inline">\(g(x)=\sqrt{1-x^2}\)</span>. Su dominio se obtiene resolviendo una inecuación estudiada durante la segunda semana:</p>
+<p><span class="math display">\[
+1-x^2\geq0\ \Longleftrightarrow\ x^2\leq1
+\ \Longleftrightarrow\ -1\leq x\leq1.
+\]</span></p>
+<p>Por consiguiente,</p>
+<p><span class="math display">\[\boxed{\operatorname{Dom}(g)=[-1,1].}\]</span></p>
+<p>El número <span class="math inline">\(0\)</span> pertenece a ese dominio y <span class="math inline">\(g(0)=1\)</span>, como aclara el profesor a raíz de una pregunta. Los extremos pertenecen también porque la raíz cuadrada de cero está definida.</p>
+<div id="fig-ic2021-c05-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfico de la raíz de uno menos x al cuadrado con dominio cerrado.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/02_dominios.png" class="img-fluid figure-img" alt="Gráfico de la raíz de uno menos x al cuadrado con dominio cerrado.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Gráfico de la raíz de uno menos x al cuadrado con dominio cerrado.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 2. El dominio de <span class="math inline">\(g(x)=\sqrt{1-x^2}\)</span> es <span class="math inline">\([-1,1]\)</span>; su grafo describe la semicircunferencia superior de radio uno.</em></p>
+<p><strong>Tercer ejemplo: denominadores.</strong> La clase examina una expresión cuyo denominador se anula en <span class="math inline">\(x=1\)</span>. En cualquier función racional de la forma <span class="math inline">\(h(x)=u(x)/(x-1)\)</span>, la condición de definición incluye <span class="math inline">\(x\ne1\)</span>; si <span class="math inline">\(u\)</span> está definida en todo <span class="math inline">\(\mathbb R\)</span>, el dominio será <span class="math inline">\(\mathbb R\setminus\{1\}\)</span>. El numerador exacto de ese ejemplo no queda suficientemente establecido por el reconocimiento oral; esta escritura es una formulación editorial del criterio explicado.</p>
+</section>
+<section id="simplificar-una-fórmula-y-conservar-su-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="simplificar-una-fórmula-y-conservar-su-dominio">Simplificar una fórmula y conservar su dominio</h3>
+<p><strong>En la cátedra (10:38–14:23).</strong> Compare las asignaciones naturales</p>
+<p><span class="math display">\[
+f(x)=\frac{x+1}{x+1},\qquad g(x)=1.
+\]</span></p>
+<p>Sus dominios son respectivamente</p>
+<p><span class="math display">\[
+\operatorname{Dom}(f)=\mathbb R\setminus\{-1\},\qquad
+\operatorname{Dom}(g)=\mathbb R.
+\]</span></p>
+<p>En cada <span class="math inline">\(x\in\operatorname{Dom}(f)\)</span> se tiene <span class="math inline">\(f(x)=g(x)=1\)</span>. La distinción esencial reside en el dominio: ambas fórmulas definen <strong>funciones diferentes</strong> cuando se les asignan sus dominios naturales. La simplificación cancela un factor que tiene inverso para <span class="math inline">\(x\ne-1\)</span> y conserva el valor en esos puntos.</p>
+<p>Formalmente, si <span class="math inline">\(g|_{\operatorname{Dom}(f)}\)</span> denota la restricción de <span class="math inline">\(g\)</span> al dominio de <span class="math inline">\(f\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{f=g|_{\mathbb R\setminus\{-1\}}.}
+\]</span></p>
+<p>Esta igualdad expresa exactamente en qué sentido puede utilizarse la fórmula simplificada dentro de una ecuación o inecuación sin alterar la condición original.</p>
+<div id="fig-ic2021-c05-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dos gráficas con la misma altura y dominios diferentes.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/03_agujero.png" class="img-fluid figure-img" alt="Dos gráficas con la misma altura y dominios diferentes.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Dos gráficas con la misma altura y dominios diferentes.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 3. La expresión <span class="math inline">\((x+1)/(x+1)\)</span> presenta un punto excluido sobre la recta <span class="math inline">\(y=1\)</span>. La función constante <span class="math inline">\(g(x)=1\)</span> contiene ese punto.</em></p>
+</section>
+<section id="una-raíz-con-valor-absoluto-en-el-denominador" class="level3">
+<h3 class="anchored" data-anchor-id="una-raíz-con-valor-absoluto-en-el-denominador">Una raíz con valor absoluto en el denominador</h3>
+<p><strong>En la cátedra (14:23–16:19).</strong> El profesor presenta un cuarto problema de dominio cuyo radicando se describe oralmente como <span class="math inline">\((x+1)/|x-2|-2\)</span>. Lo deja a los estudiantes como aplicación de inecuaciones con módulo. Bajo esa lectura del enunciado,</p>
+<p><span class="math display">\[
+F(x)=\sqrt{\frac{x+1}{|x-2|}-2}
+\]</span></p>
+<p>requiere, simultáneamente, <span class="math inline">\(x\ne2\)</span> y <span class="math inline">\((x+1)/|x-2|\geq2\)</span>. El docente <strong>plantea</strong> esta inecuación durante la sesión; el cálculo siguiente es una <strong>demostración editorial</strong> de la tarea.</p>
+<p>Como <span class="math inline">\(|x-2|&gt;0\)</span> para <span class="math inline">\(x\ne2\)</span>, la desigualdad equivale a <span class="math inline">\(x+1\geq2|x-2|\)</span>. Dividimos por el punto de cambio de signo de <span class="math inline">\(x-2\)</span>:</p>
+<ul>
+<li>Para <span class="math inline">\(x&lt;2\)</span>, tenemos <span class="math inline">\(|x-2|=2-x\)</span> y <span class="math inline">\(x+1\geq4-2x\)</span>, que equivale a <span class="math inline">\(x\geq1\)</span>. La solución de este caso es <span class="math inline">\([1,2)\)</span>.</li>
+<li>Para <span class="math inline">\(x&gt;2\)</span>, <span class="math inline">\(|x-2|=x-2\)</span> y <span class="math inline">\(x+1\geq2x-4\)</span>, equivalente a <span class="math inline">\(x\leq5\)</span>. La solución de este caso es <span class="math inline">\((2,5]\)</span>.</li>
+</ul>
+<p>De ahí se obtiene</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Dom}(F)=[1,2)\cup(2,5].}
+\]</span></p>
+<p>Este ejemplo hace visible la naturaleza <strong>acumulativa</strong> del cálculo: estudiar una función puede exigir volver a resolver una inecuación de semanas anteriores.</p>
+</section>
+</section>
+<section id="grafo-ceros-y-signo-de-una-función" class="level2">
+<h2 class="anchored" data-anchor-id="grafo-ceros-y-signo-de-una-función">Grafo, ceros y signo de una función</h2>
+<section id="del-dominio-al-plano" class="level3">
+<h3 class="anchored" data-anchor-id="del-dominio-al-plano">Del dominio al plano</h3>
+<p><strong>En la cátedra (16:20–21:15).</strong> El <strong>grafo</strong> de una función real <span class="math inline">\(f:A\to\mathbb R\)</span> es el conjunto de pares ordenados</p>
+<p><span class="math display">\[
+\boxed{G_f=\{(x,f(x)):x\in A\}\subseteq\mathbb R^2.}
+\]</span></p>
+<p>Este conjunto traduce la ley de la función a la geometría analítica: cada abscisa <span class="math inline">\(x\in A\)</span> señala una altura <span class="math inline">\(y=f(x)\)</span>. Por ejemplo, <span class="math inline">\(f(x)=x^2\)</span> tiene dominio <span class="math inline">\(\mathbb R\)</span> y grafo parabólico.</p>
+<p>La ecuación <span class="math inline">\(y^2=x\)</span> representa una parábola horizontal. Para <span class="math inline">\(x=4\)</span> admite las ordenadas <span class="math inline">\(y=2\)</span> y <span class="math inline">\(y=-2\)</span>; por ello, la curva completa corresponde a un <strong>lugar geométrico con dos puntos de igual abscisa</strong>. Las ramas <span class="math inline">\(y=\sqrt x\)</span> e <span class="math inline">\(y=-\sqrt x\)</span> son, cada una por separado, grafos de funciones definidas en <span class="math inline">\([0,\infty)\)</span>.</p>
+<p>Una recta vertical <span class="math inline">\(x=c\)</span> corta al grafo de una función exactamente en un punto cuando <span class="math inline">\(c\in A\)</span>. Es la <strong>prueba de la recta vertical</strong>, deducida directamente de la unicidad de la imagen.</p>
+<div id="fig-ic2021-c05-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Una parábola vertical es grafo de función y una horizontal requiere separar ramas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/04_prueba_vertical.png" class="img-fluid figure-img" alt="Una parábola vertical es grafo de función y una horizontal requiere separar ramas.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Una parábola vertical es grafo de función y una horizontal requiere separar ramas.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 4. La recta vertical auxiliar cruza una vez el grafo de <span class="math inline">\(y=x^2\)</span> y dos veces el lugar <span class="math inline">\(y^2=1.5x\)</span> para determinadas abscisas.</em></p>
+</section>
+<section id="ceros-y-regiones-de-signo" class="level3">
+<h3 class="anchored" data-anchor-id="ceros-y-regiones-de-signo">Ceros y regiones de signo</h3>
+<p><strong>En la cátedra (21:16–29:47).</strong> Los <strong>ceros</strong> de <span class="math inline">\(f\)</span> son los elementos del dominio con imagen igual a cero:</p>
+<p><span class="math display">\[
+\boxed{Z(f)=\{x\in A:f(x)=0\}.}
+\]</span></p>
+<p>Geométricamente son las abscisas de las intersecciones entre <span class="math inline">\(G_f\)</span> y el eje horizontal. Los conjuntos de positividad y negatividad son, respectivamente,</p>
+<p><span class="math display">\[
+\boxed{P(f)=\{x\in A:f(x)&gt;0\},\quad N(f)=\{x\in A:f(x)&lt;0\}.}
+\]</span></p>
+<p>Los tres conjuntos <span class="math inline">\(P(f)\)</span>, <span class="math inline">\(Z(f)\)</span> y <span class="math inline">\(N(f)\)</span> dividen el dominio según la tricotomía del valor real <span class="math inline">\(f(x)\)</span>. También se pueden estudiar <span class="math inline">\(f(x)\geq0\)</span> y <span class="math inline">\(f(x)\leq0\)</span>, incorporando los ceros a las regiones respectivas.</p>
+<p>Para la función cuadrática <span class="math inline">\(q(x)=ax^2+bx+c\)</span>, determinar los ceros equivale a resolver la <strong>ecuación cuadrática</strong> <span class="math inline">\(ax^2+bx+c=0\)</span>. Determinar dónde es positiva o negativa lleva a las <strong>inecuaciones cuadráticas</strong>. La clase recuerda que el discriminante <span class="math inline">\(\Delta=b^2-4ac\)</span> permite clasificar las raíces cuando <span class="math inline">\(a\ne0\)</span>.</p>
+<p><strong>Ejemplo de consolidación.</strong> Para <span class="math inline">\(q(x)=x^2-1\)</span>,</p>
+<p><span class="math display">\[
+q(x)=(x-1)(x+1),\qquad Z(q)=\{-1,1\}.
+\]</span></p>
+<p>La regla de los signos proporciona</p>
+<p><span class="math display">\[
+P(q)=(-\infty,-1)\cup(1,\infty),\qquad
+N(q)=(-1,1).
+\]</span></p>
+<div id="fig-ic2021-c05-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ceros y regiones de signo de la cuadrática x al cuadrado menos uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/05_ceros_signos.png" class="img-fluid figure-img" alt="Ceros y regiones de signo de la cuadrática x al cuadrado menos uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Ceros y regiones de signo de la cuadrática x al cuadrado menos uno.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 5. La parábola corta el eje horizontal en <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>. Su signo es positivo en las dos zonas exteriores y negativo en el intervalo central.</em></p>
+<p>El profesor insiste en que las herramientas algebraicas permiten determinar ceros que pueden resultar poco visibles en un gráfico digital. El grafo constituye el resultado del análisis, y la fórmula es el medio para justificarlo.</p>
+</section>
+</section>
+<section id="paridad-e-imparidad" class="level2">
+<h2 class="anchored" data-anchor-id="paridad-e-imparidad">Paridad e imparidad</h2>
+<section id="funciones-pares" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-pares">Funciones pares</h3>
+<p><strong>En la cátedra (29:47–34:21).</strong> La paridad combina una simetría del dominio con una igualdad entre imágenes. Una función <span class="math inline">\(f:A\to\mathbb R\)</span> es <strong>par</strong> cuando se cumplen</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+&amp;x\in A\ \Longrightarrow\ -x\in A,\\
+&amp;f(-x)=f(x)\quad\text{para todo }x\in A.
+\end{aligned}}
+\]</span></p>
+<p>La primera propiedad establece que el dominio es simétrico respecto de cero. La segunda refleja cada punto <span class="math inline">\((x,f(x))\)</span> del grafo en el punto <span class="math inline">\((-x,f(x))\)</span>. <strong>El grafo de una función par es simétrico respecto del eje vertical</strong>.</p>
+</section>
+<section id="funciones-impares" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-impares">Funciones impares</h3>
+<p><strong>En la cátedra (34:21–36:40).</strong> Una función <span class="math inline">\(f:A\to\mathbb R\)</span> es <strong>impar</strong> cuando su dominio es simétrico y</p>
+<p><span class="math display">\[
+\boxed{f(-x)=-f(x)\quad\text{para cada }x\in A.}
+\]</span></p>
+<p>Por tanto, junto al punto <span class="math inline">\((x,f(x))\)</span> aparece <span class="math inline">\((-x,-f(x))\)</span>. La simetría se realiza respecto del <strong>origen</strong>, mediante un giro de <span class="math inline">\(180^\circ\)</span> en el plano. Si <span class="math inline">\(0\in A\)</span>, la igualdad <span class="math inline">\(f(0)=-f(0)\)</span> implica necesariamente <span class="math inline">\(f(0)=0\)</span>.</p>
+<div id="fig-ic2021-c05-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Simetría de una función par respecto del eje y y de una impar respecto del origen.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/06_paridad.png" class="img-fluid figure-img" alt="Simetría de una función par respecto del eje y y de una impar respecto del origen.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Simetría de una función par respecto del eje y y de una impar respecto del origen.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 6. A la izquierda, la simetría axial de <span class="math inline">\(x^2\)</span>; a la derecha, la simetría central de <span class="math inline">\(x^3\)</span>.</em></p>
+</section>
+<section id="ejemplos-con-potencias-y-módulo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplos-con-potencias-y-módulo">Ejemplos con potencias y módulo</h3>
+<p><strong>En la cátedra (36:41–43:13).</strong> La primera función considerada es</p>
+<p><span class="math display">\[
+f(x)=x^8+x^2+|x|+1,\qquad\operatorname{Dom}(f)=\mathbb R.
+\]</span></p>
+<p>Sustituyendo <span class="math inline">\(-x\)</span> por <span class="math inline">\(x\)</span> en la ley y usando las propiedades de las potencias y el valor absoluto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(-x)&amp;=(-x)^8+(-x)^2+|-x|+1\\
+&amp;=x^8+x^2+|x|+1=f(x).
+\end{aligned}
+\]</span></p>
+<p>Así, <span class="math inline">\(f\)</span> es par. El profesor relaciona la denominación con el comportamiento de las potencias de exponente par y recuerda que <span class="math inline">\(|x|\)</span> también satisface esa simetría.</p>
+<p>El segundo ejemplo es</p>
+<p><span class="math display">\[
+g(x)=x^9+x^3+x,\qquad\operatorname{Dom}(g)=\mathbb R.
+\]</span></p>
+<p>En este caso,</p>
+<p><span class="math display">\[
+\begin{aligned}
+g(-x)&amp;=(-x)^9+(-x)^3+(-x)\\
+&amp;=-x^9-x^3-x=-g(x).
+\end{aligned}
+\]</span></p>
+<p>Por ello <span class="math inline">\(g\)</span> es impar. <strong>El tercer ejemplo, un cociente de expresiones impares, se deja en la clase como ejercicio</strong>: los signos que aparecen al sustituir <span class="math inline">\(-x\)</span> se cancelan en el cociente, siempre sobre un dominio simétrico que permita dividir.</p>
+<p><strong>Demostración desarrollada.</strong> Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son impares en un dominio común simétrico <span class="math inline">\(A\)</span> y <span class="math inline">\(g(x)\ne0\)</span> en un subconjunto simétrico <span class="math inline">\(D\subseteq A\)</span>, entonces</p>
+<p><span class="math display">\[
+\frac{f(-x)}{g(-x)}=\frac{-f(x)}{-g(x)}=\frac{f(x)}{g(x)}\quad(x\in D).
+\]</span></p>
+<p>El cociente es par. Análogamente, la suma de funciones pares es par, la de impares es impar, y el producto de dos funciones impares es par. La simetría del dominio común debe comprobarse en cada caso.</p>
+</section>
+<section id="un-teorema-anunciado-descomposición-parimpar" class="level3">
+<h3 class="anchored" data-anchor-id="un-teorema-anunciado-descomposición-parimpar">Un teorema anunciado: descomposición par–impar</h3>
+<p><strong>En la cátedra (43:13–43:35).</strong> San Martín propone estudiar el hecho de que una función con dominio <span class="math inline">\(\mathbb R\)</span> admite una descomposición única en la suma de una función par y otra impar. La demostración siguiente es <strong>ampliación editorial</strong>.</p>
+<p>Sea <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span> y definamos</p>
+<p><span class="math display">\[
+\boxed{f_{\mathrm{par}}(x)=\frac{f(x)+f(-x)}2,\qquad
+f_{\mathrm{impar}}(x)=\frac{f(x)-f(-x)}2.}
+\]</span></p>
+<p>Sustituir <span class="math inline">\(-x\)</span> en las fórmulas prueba que la primera es par y la segunda impar. Sumando,</p>
+<p><span class="math display">\[f_{\mathrm{par}}(x)+f_{\mathrm{impar}}(x)=f(x).\]</span></p>
+<p>Para verificar la unicidad, suponga <span class="math inline">\(f=u+v\)</span> con <span class="math inline">\(u\)</span> par y <span class="math inline">\(v\)</span> impar. Entonces <span class="math inline">\(f(-x)=u(x)-v(x)\)</span>. Al sumar o restar estas igualdades se determina forzosamente <span class="math inline">\(u=f_{\mathrm{par}}\)</span> y <span class="math inline">\(v=f_{\mathrm{impar}}\)</span>.</p>
+</section>
+</section>
+<section id="periodicidad" class="level2">
+<h2 class="anchored" data-anchor-id="periodicidad">Periodicidad</h2>
+<section id="repetición-de-los-valores-de-la-función" class="level3">
+<h3 class="anchored" data-anchor-id="repetición-de-los-valores-de-la-función">Repetición de los valores de la función</h3>
+<p><strong>En la cátedra (43:43–51:28).</strong> El profesor define la periodicidad hacia adelante: una función <span class="math inline">\(f:A\to\mathbb R\)</span> tiene <strong>periodo positivo</strong> <span class="math inline">\(p&gt;0\)</span> cuando</p>
+<p><span class="math display">\[
+\boxed{\forall x\in A:\quad x+p\in A\quad\text{y}\quad f(x+p)=f(x).}
+\]</span></p>
+<p>La condición del dominio permite reiterar la igualdad. Si <span class="math inline">\(x\in A\)</span>, entonces <span class="math inline">\(x+p\)</span>, <span class="math inline">\(x+2p\)</span>, <span class="math inline">\(x+3p\)</span>, etc., pertenecen también a <span class="math inline">\(A\)</span>, y</p>
+<p><span class="math display">\[
+\boxed{f(x+np)=f(x)\qquad(n\in\mathbb N_0).}
+\]</span></p>
+<p>El gráfico repite horizontalmente el mismo tramo cada <span class="math inline">\(p\)</span> unidades. San Martín compara este fenómeno con los diarios que vuelven a aparecer después de un intervalo fijo, aunque señala que la repetición matemática exige <strong>igualdad exacta de los valores</strong>.</p>
+<div id="fig-ic2021-c05-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Función periódica por repetición de un mismo tramo cada dos unidades.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/07_periodicidad.png" class="img-fluid figure-img" alt="Función periódica por repetición de un mismo tramo cada dos unidades.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Función periódica por repetición de un mismo tramo cada dos unidades.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 7. Una función periódica de periodo <span class="math inline">\(2\)</span> definida desde <span class="math inline">\(x=0\)</span>; se repite la figura triangular hacia los valores crecientes de <span class="math inline">\(x\)</span>.</em></p>
+<p><strong>Precisión editorial sobre convenciones.</strong> Esta formulación de la clase es deliberadamente <strong>unilateral</strong>: asegura la repetición para <span class="math inline">\(x+np\)</span> con <span class="math inline">\(n\geq0\)</span>. Es habitual en otros textos exigir que el dominio sea invariante bajo traslaciones en ambos sentidos, <span class="math inline">\(x\in A\iff x+p\in A\)</span>, y que la igualdad de imágenes valga en todo <span class="math inline">\(A\)</span>. Esta segunda convención se usa, por ejemplo, para funciones definidas en <span class="math inline">\(\mathbb R\)</span>. En estas notas se conserva la definición dada en la grabación y se indica cuándo se emplea otra.</p>
+<p><strong>Ejemplo editorial.</strong> Una función triangular de periodo <span class="math inline">\(2\)</span>, definida en <span class="math inline">\([0,\infty)\)</span>, se puede expresar para cada entero <span class="math inline">\(k\geq0\)</span> mediante</p>
+<p><span class="math display">\[
+f(x)=\begin{cases}
+x-2k,&amp;2k\leq x\leq2k+1,\\
+2k+2-x,&amp;2k+1\leq x\leq2k+2.
+\end{cases}
+\]</span></p>
+<p>La fórmula reproduce exactamente los mismos valores cuando la variable aumenta dos unidades.</p>
+</section>
+</section>
+<section id="crecimiento-y-decrecimiento" class="level2">
+<h2 class="anchored" data-anchor-id="crecimiento-y-decrecimiento">Crecimiento y decrecimiento</h2>
+<section id="comparación-de-imágenes-en-un-subconjunto" class="level3">
+<h3 class="anchored" data-anchor-id="comparación-de-imágenes-en-un-subconjunto">Comparación de imágenes en un subconjunto</h3>
+<p><strong>En la cátedra (56:36–1:08:40).</strong> Sea <span class="math inline">\(f:A\to\mathbb R\)</span> y <span class="math inline">\(I\subseteq A\)</span>, usualmente un intervalo. La función es <strong>creciente en <span class="math inline">\(I\)</span></strong> si</p>
+<p><span class="math display">\[
+\boxed{\forall x_1,x_2\in I:\quad x_1&lt;x_2\ \Longrightarrow\ f(x_1)\leq f(x_2).}
+\]</span></p>
+<p>Es <strong>decreciente en <span class="math inline">\(I\)</span></strong> si</p>
+<p><span class="math display">\[
+\boxed{\forall x_1,x_2\in I:\quad x_1&lt;x_2\ \Longrightarrow\ f(x_1)\geq f(x_2).}
+\]</span></p>
+<p>Las dos comparaciones parten de <strong>la misma hipótesis <span class="math inline">\(x_1&lt;x_2\)</span></strong>. Al avanzar en la variable hacia valores mayores, la imagen de una función creciente conserva o aumenta su valor; la de una decreciente conserva o disminuye su valor. Si las desigualdades entre las imágenes son estrictas para <span class="math inline">\(x_1&lt;x_2\)</span>, hablamos de <em>creciente estricta</em> y <em>decreciente estricta</em>, respectivamente.</p>
+<p>Una función constante en <span class="math inline">\(I\)</span> satisface simultáneamente las dos definiciones porque <span class="math inline">\(f(x_1)=f(x_2)\)</span> para todos los pares. Por ejemplo, una recta <span class="math inline">\(f(x)=mx+n\)</span> es creciente cuando <span class="math inline">\(m\geq0\)</span> y decreciente cuando <span class="math inline">\(m\leq0\)</span>. Las funciones de pendiente cero realizan ambas propiedades.</p>
+<div id="fig-ic2021-c05-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Comparación de imágenes en funciones crecientes y decrecientes.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/08_crecimiento.png" class="img-fluid figure-img" alt="Comparación de imágenes en funciones crecientes y decrecientes.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Comparación de imágenes en funciones crecientes y decrecientes.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 8. Para <span class="math inline">\(x_1&lt;x_2\)</span>, la comparación de las dos ordenadas determina el sentido de la monotonía.</em></p>
+<p>San Martín enfatiza que muchas funciones son crecientes <strong>en ciertos intervalos</strong> y decrecientes <strong>en otros</strong>. Una descomposición del dominio en intervalos adecuados permite estudiar estas propiedades localmente.</p>
+</section>
+<section id="ejemplo-fácil-fxx3x" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-fácil-fxx3x">Ejemplo fácil: <span class="math inline">\(f(x)=x^3+x\)</span></h3>
+<p><strong>En la cátedra (1:09:21–1:17:52).</strong> La función</p>
+<p><span class="math display">\[f(x)=x^3+x\]</span></p>
+<p>está definida en <span class="math inline">\(\mathbb R\)</span>, tiene un único cero en <span class="math inline">\(x=0\)</span>, pues <span class="math inline">\(x^3+x=x(x^2+1)\)</span> y <span class="math inline">\(x^2+1&gt;0\)</span>, y es impar: <span class="math inline">\(f(-x)=-f(x)\)</span>. El profesor demuestra su crecimiento en <span class="math inline">\([0,\infty)\)</span> mediante reglas elementales de las desigualdades.</p>
+<p>Para <span class="math inline">\(0\leq x_1&lt;x_2\)</span>, las propiedades del orden aseguran</p>
+<p><span class="math display">\[
+x_1^3&lt;x_2^3\qquad\text{y}\qquad x_1&lt;x_2.
+\]</span></p>
+<p>Sumando ambas desigualdades miembro a miembro,</p>
+<p><span class="math display">\[
+x_1^3+x_1&lt;x_2^3+x_2,
+\]</span></p>
+<p>es decir,</p>
+<p><span class="math display">\[\boxed{f(x_1)&lt;f(x_2).}\]</span></p>
+<p>La clase utiliza después la simetría impar para trazar el resto del grafo. <strong>Demostración desarrollada para todo <span class="math inline">\(\mathbb R\)</span>:</strong> dados cualesquiera <span class="math inline">\(x_1&lt;x_2\)</span>, factorizar la diferencia ofrece una prueba global directa:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(x_2)-f(x_1)
+&amp;=(x_2-x_1)\bigl(x_2^2+x_1x_2+x_1^2+1\bigr),\\
+x_2^2+x_1x_2+x_1^2
+&amp;=\tfrac12\bigl((x_1+x_2)^2+x_1^2+x_2^2\bigr)\geq0.
+\end{aligned}
+\]</span></p>
+<p>Ambos factores de la primera línea son positivos, por lo que <span class="math inline">\(f\)</span> es <strong>estrictamente creciente en <span class="math inline">\(\mathbb R\)</span></strong>.</p>
+</section>
+<section id="ejemplo-difícil-gxx3-x" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-difícil-gxx3-x">Ejemplo difícil: <span class="math inline">\(g(x)=x^3-x\)</span></h3>
+<p><strong>En la cátedra (1:18:04–1:23:40).</strong> Ahora la función</p>
+<p><span class="math display">\[g(x)=x^3-x=x(x-1)(x+1)\]</span></p>
+<p>es también impar y tiene dominio <span class="math inline">\(\mathbb R\)</span>, pero sus ceros son <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. El intento de probar crecimiento a partir de las dos desigualdades <span class="math inline">\(x_1^3&lt;x_2^3\)</span> y <span class="math inline">\(x_1&lt;x_2\)</span> tropieza con la necesidad de <strong>restarlas</strong>: la resta de desigualdades con el mismo sentido produce comparaciones cruzadas y no determina directamente el signo de <span class="math inline">\(g(x_2)-g(x_1)\)</span>.</p>
+<p>El profesor analiza explícitamente esa dificultad y presenta una técnica general que permite estudiar su signo.</p>
+</section>
+<section id="la-técnica-especial-diferencia-de-imágenes-y-pendiente-secante" class="level3">
+<h3 class="anchored" data-anchor-id="la-técnica-especial-diferencia-de-imágenes-y-pendiente-secante">La técnica especial: diferencia de imágenes y pendiente secante</h3>
+<p><strong>En la cátedra (1:23:43–1:31:20).</strong> Para <span class="math inline">\(x_1&lt;x_2\)</span> en un intervalo de estudio, el denominador <span class="math inline">\(x_2-x_1\)</span> es positivo. Por eso la diferencia <span class="math inline">\(f(x_2)-f(x_1)\)</span> y el cociente</p>
+<p><span class="math display">\[
+\boxed{Q_f(x_1,x_2)=\frac{f(x_2)-f(x_1)}{x_2-x_1}}
+\]</span></p>
+<p>poseen el mismo signo. El profesor lo reconoce como la <strong>pendiente de la recta secante</strong> al grafo de la función por los puntos <span class="math inline">\((x_1,f(x_1))\)</span> y <span class="math inline">\((x_2,f(x_2))\)</span>. Así se vincula la teoría de las funciones con la geometría analítica de la Cátedra 3.2.</p>
+<div id="fig-ic2021-c05-f09" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Recta secante al grafo de una función y cociente incremental.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/09_secante.png" class="img-fluid figure-img" alt="Recta secante al grafo de una función y cociente incremental.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Recta secante al grafo de una función y cociente incremental.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 9. El cociente de diferencias es la pendiente de la secante. Su signo permite determinar el orden entre las imágenes.</em></p>
+<p>Aplicando la técnica a <span class="math inline">\(g(x)=x^3-x\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q_g(x_1,x_2)
+&amp;=\frac{(x_2^3-x_2)-(x_1^3-x_1)}{x_2-x_1}\\
+&amp;=\frac{(x_2^3-x_1^3)-(x_2-x_1)}{x_2-x_1}\\
+&amp;=\frac{(x_2-x_1)(x_2^2+x_1x_2+x_1^2-1)}{x_2-x_1}\\
+&amp;=\boxed{x_1^2+x_1x_2+x_2^2-1.}
+\end{aligned}
+\]</span></p>
+<p><strong>Este es el resultado al que llega la demostración oral.</strong> El signo de <span class="math inline">\(Q_g\)</span> depende de las dos abscisas, y el profesor deja como <strong>tarea explícita</strong> demostrar que <span class="math inline">\(g\)</span> es creciente en <span class="math inline">\([1,\infty)\)</span>, anunciando que la clase siguiente determinará con mayor precisión dónde cambia el crecimiento.</p>
+<div id="fig-ic2021-c05-f10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Comparación de los grafos de x al cubo más x y x al cubo menos x.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_1/10_cubicas.png" class="img-fluid figure-img" alt="Comparación de los grafos de x al cubo más x y x al cubo menos x.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Comparación de los grafos de x al cubo más x y x al cubo menos x.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 10. <span class="math inline">\(x^3+x\)</span> asciende en toda la recta; <span class="math inline">\(x^3-x\)</span> presenta tres ceros y diferentes tramos de monotonía.</em></p>
+</section>
+<section id="la-tarea-del-profesor-y-su-solución" class="level3">
+<h3 class="anchored" data-anchor-id="la-tarea-del-profesor-y-su-solución">La tarea del profesor y su solución</h3>
+<p><strong>Tarea de la clase (1:31:20).</strong> Probar que <span class="math inline">\(g(x)=x^3-x\)</span> es creciente en <span class="math inline">\([1,\infty)\)</span>.</p>
+<p><strong>Solución editorial.</strong> Si <span class="math inline">\(1\leq x_1&lt;x_2\)</span>, entonces <span class="math inline">\(x_1^2\geq1\)</span>, <span class="math inline">\(x_1x_2&gt;1\)</span> y <span class="math inline">\(x_2^2&gt;1\)</span>. En consecuencia,</p>
+<p><span class="math display">\[
+Q_g(x_1,x_2)=x_1^2+x_1x_2+x_2^2-1&gt;0.
+\]</span></p>
+<p>Como <span class="math inline">\(x_2-x_1&gt;0\)</span>, obtenemos <span class="math inline">\(g(x_2)&gt;g(x_1)\)</span>. Por lo tanto, <span class="math inline">\(g\)</span> es <strong>estrictamente creciente</strong> en todo <span class="math inline">\([1,\infty)\)</span>, tal como se solicitaba.</p>
+</section>
+<section id="los-intervalos-exactos-ampliación-editorial" class="level3">
+<h3 class="anchored" data-anchor-id="los-intervalos-exactos-ampliación-editorial">Los intervalos exactos — ampliación editorial</h3>
+<p>La pregunta que el docente reserva para la siguiente clase se puede resolver también con las herramientas algebraicas ya disponibles, sin recurrir a derivadas. Sea</p>
+<p><span class="math display">\[c=\frac1{\sqrt3}&gt;0.\]</span></p>
+<p>Para <span class="math inline">\(c\leq x_1&lt;x_2\)</span>, cada uno de los productos <span class="math inline">\(x_1^2\)</span>, <span class="math inline">\(x_1x_2\)</span> y <span class="math inline">\(x_2^2\)</span> es al menos <span class="math inline">\(c^2=1/3\)</span>, y alguno lo supera. Por tanto, <span class="math inline">\(Q_g(x_1,x_2)&gt;0\)</span>. El mismo argumento se aplica a <span class="math inline">\(x_1&lt;x_2\leq-c\)</span>, porque las dos abscisas son negativas y sus cuadrados y producto son positivos.</p>
+<p>En el intervalo central <span class="math inline">\([-c,c]\)</span> se cumple</p>
+<p><span class="math display">\[
+x_1^2+x_1x_2+x_2^2\leq 3c^2=1,
+\]</span></p>
+<p>con igualdad únicamente cuando ambos números coinciden en uno de los extremos con el mismo signo. Como el estudio exige <span class="math inline">\(x_1&lt;x_2\)</span>, la desigualdad es estricta: <span class="math inline">\(Q_g(x_1,x_2)&lt;0\)</span>. En consecuencia,</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+&amp;g\text{ es estrictamente creciente en }(-\infty,-c]\text{ y }[c,\infty),\\
+&amp;g\text{ es estrictamente decreciente en }[-c,c],\quad c=1/\sqrt3.
+\end{aligned}}
+\]</span></p>
+<p>En los puntos de transición, <span class="math inline">\(g(-c)=2/(3\sqrt3)\)</span> y <span class="math inline">\(g(c)=-2/(3\sqrt3)\)</span>. Esta solución exacta es una <strong>anticipación editorial</strong>: se incluye para completar el método, aunque la sesión termina antes de desarrollarla.</p>
+</section>
+</section>
+<section id="solucionario-completo" class="level2">
+<h2 class="anchored" data-anchor-id="solucionario-completo">Solucionario completo</h2>
+<section id="e1.-radicando-lineal" class="level3">
+<h3 class="anchored" data-anchor-id="e1.-radicando-lineal">E1. Radicando lineal</h3>
+<p>La raíz cuadrada está definida cuando <span class="math inline">\(x+3\geq0\)</span>, condición equivalente a <span class="math inline">\(x\geq-3\)</span>. Por tanto, <span class="math inline">\(\boxed{\operatorname{Dom}(f)=[-3,\infty)}\)</span>. El extremo pertenece al dominio y <span class="math inline">\(f(-3)=0\)</span>.</p>
+</section>
+<section id="e2.-radicando-cuadrático" class="level3">
+<h3 class="anchored" data-anchor-id="e2.-radicando-cuadrático">E2. Radicando cuadrático</h3>
+<p>Se impone <span class="math inline">\(9-x^2\geq0\)</span>, es decir, <span class="math inline">\(x^2\leq9\)</span>. Por la factorización <span class="math inline">\(9-x^2=(3-x)(3+x)\)</span>, la solución es <span class="math inline">\(-3\leq x\leq3\)</span>. Así <span class="math inline">\(\boxed{\operatorname{Dom}(g)=[-3,3]}\)</span>. Además, si <span class="math inline">\(y=g(x)\)</span>, entonces <span class="math inline">\(y\geq0\)</span> y <span class="math inline">\(x^2+y^2=9\)</span>, de donde el grafo es la semicircunferencia superior de radio <span class="math inline">\(3\)</span>.</p>
+</section>
+<section id="e3.-denominador-de-segundo-grado" class="level3">
+<h3 class="anchored" data-anchor-id="e3.-denominador-de-segundo-grado">E3. Denominador de segundo grado</h3>
+<p>La factorización <span class="math inline">\(x^2-4=(x-2)(x+2)\)</span> localiza los ceros del denominador en <span class="math inline">\(2\)</span> y <span class="math inline">\(-2\)</span>. Los demás valores del denominador tienen inverso. Por tanto,</p>
+<p><span class="math display">\[\boxed{\operatorname{Dom}(h)=(-\infty,-2)\cup(-2,2)\cup(2,\infty).}\]</span></p>
+</section>
+<section id="e4.-simplificación-y-restricción" class="level3">
+<h3 class="anchored" data-anchor-id="e4.-simplificación-y-restricción">E4. Simplificación y restricción</h3>
+<p>Factorizamos <span class="math inline">\(x^2-1=(x-1)(x+1)\)</span>. Para <span class="math inline">\(x\ne1\)</span>,</p>
+<p><span class="math display">\[f(x)=\frac{(x-1)(x+1)}{x-1}=x+1=g(x).\]</span></p>
+<p>Sin embargo, <span class="math inline">\(\operatorname{Dom}(f)=\mathbb R\setminus\{1\}\)</span> y <span class="math inline">\(\operatorname{Dom}(g)=\mathbb R\)</span>. Las funciones coinciden en el dominio de <span class="math inline">\(f\)</span>, y su relación precisa es <span class="math inline">\(f=g|_{\mathbb R\setminus\{1\}}\)</span>. En el grafo de <span class="math inline">\(f\)</span> el punto <span class="math inline">\((1,2)\)</span> está excluido.</p>
+</section>
+<section id="e5.-radicando-con-módulo" class="level3">
+<h3 class="anchored" data-anchor-id="e5.-radicando-con-módulo">E5. Radicando con módulo</h3>
+<p>Se exige <span class="math inline">\(|x-2|&gt;0\)</span> y <span class="math inline">\((x+1)/|x-2|-2\geq0\)</span>. Al multiplicar por el denominador positivo se llega a <span class="math inline">\(x+1\geq2|x-2|\)</span>. En <span class="math inline">\(x&lt;2\)</span> resulta <span class="math inline">\(3x\geq3\)</span>, es decir <span class="math inline">\(x\in[1,2)\)</span>; en <span class="math inline">\(x&gt;2\)</span> resulta <span class="math inline">\(x\leq5\)</span>, de donde <span class="math inline">\(x\in(2,5]\)</span>. La unión proporciona <span class="math inline">\(\boxed{[1,2)\cup(2,5]}\)</span>.</p>
+</section>
+<section id="e6.-dos-ramas-de-una-parábola" class="level3">
+<h3 class="anchored" data-anchor-id="e6.-dos-ramas-de-una-parábola">E6. Dos ramas de una parábola</h3>
+<p>Para <span class="math inline">\(x=4\)</span>, la condición <span class="math inline">\(x=y^2\)</span> da <span class="math inline">\(y^2=4\)</span>, con <span class="math inline">\(y=2\)</span> y <span class="math inline">\(y=-2\)</span>. Por tanto, el lugar contiene los dos puntos <span class="math inline">\((4,2)\)</span> y <span class="math inline">\((4,-2)\)</span>. Las dos funciones <span class="math inline">\(f_+(x)=\sqrt x\)</span> y <span class="math inline">\(f_-(x)=-\sqrt x\)</span>, ambas de dominio <span class="math inline">\([0,\infty)\)</span>, generan dos grafos cuya unión es exactamente el lugar geométrico original.</p>
+</section>
+<section id="e7.-ceros-y-signo" class="level3">
+<h3 class="anchored" data-anchor-id="e7.-ceros-y-signo">E7. Ceros y signo</h3>
+<p><span class="math inline">\(\,q(x)=x^2-4=(x-2)(x+2)\)</span>, luego los ceros son <span class="math inline">\(-2\)</span> y <span class="math inline">\(2\)</span>. El producto es positivo cuando <span class="math inline">\(x&lt;-2\)</span> o <span class="math inline">\(x&gt;2\)</span> y negativo cuando <span class="math inline">\(-2&lt;x&lt;2\)</span>. Así,</p>
+<p><span class="math display">\[\boxed{Z(q)=\{-2,2\},\quad P(q)=(-\infty,-2)\cup(2,\infty),\quad N(q)=(-2,2).}\]</span></p>
+</section>
+<section id="e8.-dos-paridades" class="level3">
+<h3 class="anchored" data-anchor-id="e8.-dos-paridades">E8. Dos paridades</h3>
+<p>Los dominios son <span class="math inline">\(\mathbb R\)</span>. La sustitución <span class="math inline">\(-x\)</span> da <span class="math inline">\((-x)^6+|-x|+3=x^6+|x|+3\)</span>, de modo que <span class="math inline">\(f\)</span> es par. Para <span class="math inline">\(g\)</span>, <span class="math inline">\((-x)^5+(-x)=-(x^5+x)\)</span>, luego <span class="math inline">\(g\)</span> es impar. En cada prueba se comprueba tanto la simetría del dominio como la igualdad requerida.</p>
+</section>
+<section id="e9.-cero-de-una-función-impar" class="level3">
+<h3 class="anchored" data-anchor-id="e9.-cero-de-una-función-impar">E9. Cero de una función impar</h3>
+<p>Puesto que <span class="math inline">\(0\in\mathbb R\)</span> y la función es impar, <span class="math inline">\(f(0)=-f(0)\)</span>. Sumando <span class="math inline">\(f(0)\)</span> a ambos miembros obtenemos <span class="math inline">\(2f(0)=0\)</span> y, al dividir por <span class="math inline">\(2\ne0\)</span>, concluimos <span class="math inline">\(\boxed{f(0)=0}\)</span>.</p>
+</section>
+<section id="e10.-cociente-de-impares" class="level3">
+<h3 class="anchored" data-anchor-id="e10.-cociente-de-impares">E10. Cociente de impares</h3>
+<p>Si <span class="math inline">\(f(-x)=-f(x)\)</span> y <span class="math inline">\(g(-x)=-g(x)\)</span>, para todo <span class="math inline">\(x\)</span> con <span class="math inline">\(g(x)\ne0\)</span> tenemos <span class="math inline">\(f(-x)/g(-x)=f(x)/g(x)\)</span>; además, <span class="math inline">\(g(-x)\ne0\)</span> simultáneamente. La razón es par. En el ejemplo <span class="math inline">\(h(x)=x^3/(x|x|)\)</span>, se requiere <span class="math inline">\(x\ne0\)</span> y se simplifica a <span class="math inline">\(x^2/|x|=|x|\)</span> sobre ese dominio. Por tanto, <span class="math inline">\(h\)</span> es par en <span class="math inline">\(\mathbb R\setminus\{0\}\)</span> y su grafo tiene el origen excluido.</p>
+</section>
+<section id="e11.-descomposición-par-e-impar" class="level3">
+<h3 class="anchored" data-anchor-id="e11.-descomposición-par-e-impar">E11. Descomposición par e impar</h3>
+<p><span class="math inline">\(\,f(-x)=x^2-3x+2\)</span>. Así,</p>
+<p><span class="math display">\[f_{\mathrm{par}}(x)=\frac{f(x)+f(-x)}2=x^2+2,\qquad f_{\mathrm{impar}}(x)=\frac{f(x)-f(-x)}2=3x.\]</span></p>
+<p>La suma recupera <span class="math inline">\(x^2+3x+2\)</span>; el primer término es par y el segundo impar. La fórmula prueba su unicidad.</p>
+</section>
+<section id="e12.-repetición-de-un-tramo" class="level3">
+<h3 class="anchored" data-anchor-id="e12.-repetición-de-un-tramo">E12. Repetición de un tramo</h3>
+<p>Si <span class="math inline">\(x\in[2k,2k+1]\)</span>, entonces <span class="math inline">\(x+2\in[2(k+1),2(k+1)+1]\)</span> y ambas fórmulas dan <span class="math inline">\(f(x+2)=(x+2)-2(k+1)=x-2k=f(x)\)</span>. Si <span class="math inline">\(x\in[2k+1,2k+2]\)</span>, <span class="math inline">\(f(x+2)=2(k+1)+2-(x+2)=2k+2-x=f(x)\)</span>. En ambos casos <span class="math inline">\(x+2\in[0,\infty)\)</span>, de manera que <span class="math inline">\(2\)</span> es un periodo en el sentido de la clase.</p>
+</section>
+<section id="e13.-rectas-y-monotonía" class="level3">
+<h3 class="anchored" data-anchor-id="e13.-rectas-y-monotonía">E13. Rectas y monotonía</h3>
+<p>Para <span class="math inline">\(x_1&lt;x_2\)</span> se tiene <span class="math inline">\(f(x_2)-f(x_1)=m(x_2-x_1)\)</span>. Como <span class="math inline">\(x_2-x_1&gt;0\)</span>, la diferencia comparte el signo de <span class="math inline">\(m\)</span>. Si <span class="math inline">\(m&gt;0\)</span>, la función es estrictamente creciente; si <span class="math inline">\(m&lt;0\)</span>, estrictamente decreciente. Cuando <span class="math inline">\(m=0\)</span>, la función es constante y satisface ambas definiciones no estrictas. Por consiguiente, es creciente para <span class="math inline">\(m\geq0\)</span> y decreciente para <span class="math inline">\(m\leq0\)</span>.</p>
+</section>
+<section id="e14.-crecimiento-global-de-x3x" class="level3">
+<h3 class="anchored" data-anchor-id="e14.-crecimiento-global-de-x3x">E14. Crecimiento global de <span class="math inline">\(x^3+x\)</span></h3>
+<p>Si <span class="math inline">\(x_1&lt;x_2\)</span>, entonces</p>
+<p><span class="math display">\[f(x_2)-f(x_1)=(x_2-x_1)(x_2^2+x_1x_2+x_1^2+1).\]</span></p>
+<p>El primer factor es positivo. Para el segundo, <span class="math inline">\(x_1^2+x_1x_2+x_2^2=\tfrac12((x_1+x_2)^2+x_1^2+x_2^2)\geq0\)</span>, así que el segundo factor es al menos <span class="math inline">\(1\)</span>. El producto es estrictamente positivo. Esta prueba algebraica vale en todo <span class="math inline">\(\mathbb R\)</span>.</p>
+</section>
+<section id="e15.-la-tarea-de-la-clase" class="level3">
+<h3 class="anchored" data-anchor-id="e15.-la-tarea-de-la-clase">E15. La tarea de la clase</h3>
+<p>La factorización de diferencias de cubos lleva a</p>
+<p><span class="math display">\[Q_g(x_1,x_2)=x_1^2+x_1x_2+x_2^2-1.\]</span></p>
+<p>Para <span class="math inline">\(1\leq x_1&lt;x_2\)</span>, tenemos <span class="math inline">\(x_1^2\geq1\)</span>, <span class="math inline">\(x_1x_2&gt;1\)</span> y <span class="math inline">\(x_2^2&gt;1\)</span>, por lo que <span class="math inline">\(Q_g&gt;0\)</span>. El denominador original <span class="math inline">\(x_2-x_1\)</span> es positivo y por tanto <span class="math inline">\(g(x_2)-g(x_1)&gt;0\)</span>. La función es estrictamente creciente en <span class="math inline">\([1,\infty)\)</span>.</p>
+</section>
+<section id="e16.-monotonía-exacta-sin-derivadas" class="level3">
+<h3 class="anchored" data-anchor-id="e16.-monotonía-exacta-sin-derivadas">E16. Monotonía exacta sin derivadas</h3>
+<p>Sea <span class="math inline">\(c=1/\sqrt3\)</span>. De la fórmula anterior, para <span class="math inline">\(c\leq x_1&lt;x_2\)</span> cada término cuadrático o producto es al menos <span class="math inline">\(c^2\)</span>, con alguno estrictamente mayor, por lo que <span class="math inline">\(Q_g&gt;0\)</span>. El mismo razonamiento vale para <span class="math inline">\(x_1&lt;x_2\leq-c\)</span>: los cuadrados y el producto de negativos son positivos, con magnitud al menos <span class="math inline">\(c^2\)</span>. En <span class="math inline">\([-c,c]\)</span>, cada cuadrado es a lo más <span class="math inline">\(c^2\)</span> y el producto es a lo más <span class="math inline">\(c^2\)</span>, de modo que <span class="math inline">\(Q_g\leq0\)</span>; la igualdad exigiría <span class="math inline">\(x_1=x_2=c\)</span> o <span class="math inline">\(x_1=x_2=-c\)</span>, excluidos por <span class="math inline">\(x_1&lt;x_2\)</span>. Se concluye</p>
+<p><span class="math display">\[\boxed{\begin{gathered}
+\text{Crecimiento estricto: }(-\infty,-1/\sqrt3],\ [1/\sqrt3,\infty),\\
+\text{Decrecimiento estricto: }[-1/\sqrt3,1/\sqrt3].
+\end{gathered}}\]</span></p>
+<p><em>Procedencia de este tramo: cátedra 5.2.</em></p>
+</section>
+</section>
+<section id="una-pregunta-que-continúa-la-clase-anterior" class="level2">
+<h2 class="anchored" data-anchor-id="una-pregunta-que-continúa-la-clase-anterior">Una pregunta que continúa la clase anterior</h2>
+<p><strong>En la cátedra (09:12–11:29).</strong> La clase anterior terminó con la función</p>
+<p><span class="math display">\[\boxed{f(x)=x^3-x,\qquad\operatorname{Dom}(f)=\mathbb R.}\]</span></p>
+<p>Se identificaron sus ceros <span class="math inline">\(-1,0,1\)</span>, su carácter impar y una estrategia para estudiar el crecimiento a partir de dos puntos del dominio <span class="math inline">\(x_1&lt;x_2\)</span>. La pendiente de la recta secante que une <span class="math inline">\((x_1,f(x_1))\)</span> con <span class="math inline">\((x_2,f(x_2))\)</span> es</p>
+<p><span class="math display">\[S_f(x_1,x_2)=\frac{f(x_2)-f(x_1)}{x_2-x_1}.\]</span></p>
+<p>El denominador es <strong>estrictamente positivo</strong>, de modo que <span class="math inline">\(S_f\)</span> tiene el mismo signo que <span class="math inline">\(f(x_2)-f(x_1)\)</span>. La factorización de la diferencia de cubos conduce a</p>
+<p><span class="math display">\[
+\begin{aligned}
+S_f(x_1,x_2)
+&amp;=\frac{x_2^3-x_1^3-(x_2-x_1)}{x_2-x_1}\\
+&amp;=\frac{(x_2-x_1)(x_2^2+x_1x_2+x_1^2-1)}{x_2-x_1}\\
+&amp;=\boxed{x_1^2+x_1x_2+x_2^2-1}.
+\end{aligned}
+\]</span></p>
+<p>Para demostrar que <span class="math inline">\(f\)</span> es estrictamente creciente en un intervalo <span class="math inline">\(I\)</span>, basta establecer <span class="math inline">\(S_f(x_1,x_2)&gt;0\)</span> para <strong>cada par</strong> <span class="math inline">\(x_1,x_2\in I\)</span> con <span class="math inline">\(x_1&lt;x_2\)</span>; para el decrecimiento estricto, se busca <span class="math inline">\(S_f(x_1,x_2)&lt;0\)</span>. Esta es la «técnica especial» de San Martín: una comparación de imágenes transformada en un problema de signos mediante factorización.</p>
+</section>
+<section id="la-ubicación-exacta-de-los-intervalos-de-crecimiento" class="level2">
+<h2 class="anchored" data-anchor-id="la-ubicación-exacta-de-los-intervalos-de-crecimiento">La ubicación exacta de los intervalos de crecimiento</h2>
+<section id="un-intervalo-inicial-1infty" class="level3">
+<h3 class="anchored" data-anchor-id="un-intervalo-inicial-1infty">Un intervalo inicial: <span class="math inline">\([1,\infty)\)</span></h3>
+<p><strong>En la cátedra (11:29–17:01).</strong> Sean <span class="math inline">\(1\le x_1&lt;x_2\)</span>. Por las reglas del orden,</p>
+<p><span class="math display">\[x_1^2\ge1,\qquad x_2^2&gt;1,\qquad x_1x_2&gt;1.\]</span></p>
+<p>Al sumar, <span class="math inline">\(x_1^2+x_1x_2+x_2^2-1&gt;2&gt;0\)</span>. Por tanto, <span class="math inline">\(f\)</span> es <strong>estrictamente creciente en <span class="math inline">\([1,\infty)\)</span></strong>. La prueba retoma la tarea formulada al final de la Cátedra 5.1 y enseña a conservar la desigualdad estricta durante productos y sumas.</p>
+</section>
+<section id="afinar-el-umbral" class="level3">
+<h3 class="anchored" data-anchor-id="afinar-el-umbral">Afinar el umbral</h3>
+<p><strong>En la cátedra (17:03–23:02).</strong> La elección <span class="math inline">\(1\)</span> funciona, pero podemos estudiar intervalos que comiencen antes. Sea <span class="math inline">\(a&gt;0\)</span> y consideremos <span class="math inline">\(a\le x_1&lt;x_2\)</span>. Entonces</p>
+<p><span class="math display">\[x_1^2\ge a^2,\qquad x_2^2&gt;a^2,\qquad x_1x_2&gt;a^2,\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[S_f(x_1,x_2)&gt;3a^2-1.\]</span></p>
+<p>Para que esta última cota asegure positividad, el profesor busca el valor límite que satisface <span class="math inline">\(3a^2-1=0\)</span>. Se obtiene</p>
+<p><span class="math display">\[\boxed{a=\frac1{\sqrt3}=\frac{\sqrt3}{3}.}\]</span></p>
+<p>Si <span class="math inline">\(x_1&lt;x_2\)</span> pertenecen a <span class="math inline">\([a,\infty)\)</span>, la desigualdad precedente es estricta aun si <span class="math inline">\(x_1=a\)</span>; así, <span class="math inline">\(S_f&gt;0\)</span>. Concluimos que <span class="math inline">\(f\)</span> es <strong>estrictamente creciente en <span class="math inline">\([1/\sqrt3,\infty)\)</span></strong>. Se ha ampliado el intervalo inicial.</p>
+</section>
+<section id="el-intervalo-de-decrecimiento" class="level3">
+<h3 class="anchored" data-anchor-id="el-intervalo-de-decrecimiento">El intervalo de decrecimiento</h3>
+<p><strong>En la cátedra (23:04–29:51).</strong> Ahora sean <span class="math inline">\(0\le x_1&lt;x_2\le a\)</span>. Se verifican las cotas</p>
+<p><span class="math display">\[x_1^2&lt;a^2,\qquad x_2^2\le a^2,\qquad x_1x_2&lt;a^2.\]</span></p>
+<p>Se sigue que</p>
+<p><span class="math display">\[S_f(x_1,x_2)&lt;3a^2-1=0.\]</span></p>
+<p>Por consiguiente, <span class="math inline">\(f\)</span> es <strong>estrictamente decreciente en <span class="math inline">\([0,1/\sqrt3]\)</span></strong>. El valor <span class="math inline">\(a\)</span> es un extremo incluido en dos intervalos diferentes; cada afirmación de monotonía compara <em>pares de puntos</em> del intervalo correspondiente.</p>
+</section>
+<section id="simetría-y-panorama-global" class="level3">
+<h3 class="anchored" data-anchor-id="simetría-y-panorama-global">Simetría y panorama global</h3>
+<p><strong>Demostración desarrollada y ampliación editorial.</strong> Como <span class="math inline">\(f(-x)=-f(x)\)</span>, su gráfica es simétrica respecto del origen. Esta simetría transporta el decrecimiento de <span class="math inline">\([0,a]\)</span> a <span class="math inline">\([-a,0]\)</span> y el crecimiento de <span class="math inline">\([a,\infty)\)</span> a <span class="math inline">\((-\infty,-a]\)</span>. Juntando los tramos contiguos,</p>
+<p><span class="math display">\[
+\boxed{\begin{array}{ll}
+\text{estrictamente creciente}&amp;\text{en }(-\infty,-a]\text{ y }[a,\infty),\\
+\text{estrictamente decreciente}&amp;\text{en }[-a,a].
+\end{array}}
+\]</span></p>
+<p>Los valores extremos se calculan directamente, <strong>sin derivadas</strong>:</p>
+<p><span class="math display">\[f(a)=a\left(\frac13-1\right)=-\frac{2}{3\sqrt3},\qquad
+f(-a)=\frac{2}{3\sqrt3}.\]</span></p>
+<p>En consecuencia, la gráfica tiene un <strong>máximo local</strong> en <span class="math inline">\((-a,2/(3\sqrt3))\)</span> y un <strong>mínimo local</strong> en <span class="math inline">\((a,-2/(3\sqrt3))\)</span>. El profesor describe su gráfico y anticipa el nexo con la derivada; la terminología y verificación algebraica explícita de los extremos se incluyen aquí como ampliación editorial.</p>
+<div id="fig-ic2021-c05-f11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfica de la cúbica x al cubo menos x, con ceros y cambios de monotonía.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/01_cubica_monotonia.png" class="img-fluid figure-img" alt="Gráfica de la cúbica x al cubo menos x, con ceros y cambios de monotonía.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Gráfica de la cúbica x al cubo menos x, con ceros y cambios de monotonía.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 1. Tres ceros y los dos umbrales <span class="math inline">\(\pm1/\sqrt3\)</span> que delimitan tramos de crecimiento y decrecimiento.</em></p>
+</section>
+<section id="una-fórmula-que-anticipa-la-derivada" class="level3">
+<h3 class="anchored" data-anchor-id="una-fórmula-que-anticipa-la-derivada">Una fórmula que anticipa la derivada</h3>
+<p><strong>En la cátedra (35:56–40:02).</strong> El profesor observa que la ecuación <span class="math inline">\(3x^2-1=0\)</span> determina precisamente las abscisas de cambio de crecimiento. Compara esta expresión con el polinomio original <span class="math inline">\(x^3-x\)</span> y con el ejemplo <span class="math inline">\(x^2-x\)</span>, cuyo vértice tiene abscisa <span class="math inline">\(1/2\)</span> y cuya ecuación asociada es <span class="math inline">\(2x-1=0\)</span>. La clase <strong>anuncia</strong> que la teoría de derivadas permitirá estudiar sistemáticamente esta relación; todavía no define ni utiliza la derivada.</p>
+<p><strong>Ampliación editorial.</strong> Al aproximar algebraicamente el cociente secante <span class="math inline">\(S_f(x,x+h)\)</span>, con <span class="math inline">\(h\ne0\)</span>, se obtiene</p>
+<p><span class="math display">\[S_f(x,x+h)=3x^2+3xh+h^2-1.\]</span></p>
+<p>Su parte que persiste cuando <span class="math inline">\(h\)</span> se hace arbitrariamente pequeño es <span class="math inline">\(3x^2-1\)</span>. Esta comprobación motiva la expresión anunciada y preserva el orden del curso: la definición formal de derivada se estudiará más adelante.</p>
+<div id="fig-ic2021-c05-f12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dos secantes de una función con pendientes de signos diferentes.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/02_secantes.png" class="img-fluid figure-img" alt="Dos secantes de una función con pendientes de signos diferentes.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Dos secantes de una función con pendientes de signos diferentes.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 2. El signo de la pendiente secante detecta el crecimiento en el intervalo correspondiente.</em></p>
+</section>
+</section>
+<section id="primeras-familias-de-funciones-conocidas" class="level2">
+<h2 class="anchored" data-anchor-id="primeras-familias-de-funciones-conocidas">Primeras familias de funciones conocidas</h2>
+<section id="funciones-constantes" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-constantes">Funciones constantes</h3>
+<p><strong>En la cátedra (40:10–42:12).</strong> Dado <span class="math inline">\(c\in\mathbb R\)</span>, la función constante <span class="math inline">\(f(x)=c\)</span> tiene dominio <span class="math inline">\(\mathbb R\)</span>, imagen <span class="math inline">\(\{c\}\)</span> y grafo la recta horizontal <span class="math inline">\(y=c\)</span>. Es <strong>par</strong> porque <span class="math inline">\(f(-x)=f(x)\)</span>; para <span class="math inline">\(c=0\)</span> es también <strong>impar</strong>, dado que <span class="math inline">\(f(-x)=-f(x)=0\)</span>. Como toda pareja de imágenes coincide, es creciente y decreciente en sentido débil, y satisface ambas desigualdades por igualdad.</p>
+</section>
+<section id="potencias-de-exponente-natural-positivo" class="level3">
+<h3 class="anchored" data-anchor-id="potencias-de-exponente-natural-positivo">Potencias de exponente natural positivo</h3>
+<p><strong>En la cátedra (42:12–48:55).</strong> Para <span class="math inline">\(n\in\{1,2,3,\ldots\}\)</span> consideramos</p>
+<p><span class="math display">\[\boxed{p_n(x)=x^n,\qquad\operatorname{Dom}(p_n)=\mathbb R.}\]</span></p>
+<p>Si <span class="math inline">\(n\)</span> es par, <span class="math inline">\(p_n(-x)=p_n(x)\)</span>, y su imagen es <span class="math inline">\([0,\infty)\)</span>. Si <span class="math inline">\(n\)</span> es impar, <span class="math inline">\(p_n(-x)=-p_n(x)\)</span>, y su imagen es <span class="math inline">\(\mathbb R\)</span>. Todas las potencias son estrictamente crecientes en <span class="math inline">\([0,\infty)\)</span>. Para los exponentes impares el crecimiento se prolonga a toda la recta real; para los pares, la función es estrictamente decreciente en <span class="math inline">\((-\infty,0]\)</span>.</p>
+<p><strong>Demostración desarrollada.</strong> Si <span class="math inline">\(0\le x_1&lt;x_2\)</span>, y <span class="math inline">\(n\)</span> es natural positivo, entonces <span class="math inline">\(x_1^n&lt;x_2^n\)</span>: se puede usar la factorización</p>
+<p><span class="math display">\[x_2^n-x_1^n=(x_2-x_1)\sum_{j=0}^{n-1}x_2^{n-1-j}x_1^j&gt;0,\]</span></p>
+<p>pues el primer factor es positivo y la suma contiene el término <span class="math inline">\(x_2^{n-1}&gt;0\)</span> (para <span class="math inline">\(n=1\)</span>, la suma es <span class="math inline">\(1\)</span>). El profesor obtiene esa misma comparación por multiplicaciones sucesivas de desigualdades positivas.</p>
+<div id="fig-ic2021-c05-f13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Funciones x, x al cuadrado, x al cubo y x a la cuarta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/03_potencias.png" class="img-fluid figure-img" alt="Funciones x, x al cuadrado, x al cubo y x a la cuarta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Funciones x, x al cuadrado, x al cubo y x a la cuarta.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 3. Potencias pares e impares: distinta simetría respecto del eje vertical y del origen.</em></p>
+</section>
+<section id="raíces-de-índice-par-e-impar" class="level3">
+<h3 class="anchored" data-anchor-id="raíces-de-índice-par-e-impar">Raíces de índice par e impar</h3>
+<p><strong>En la cátedra (48:55–56:42).</strong> El problema <span class="math inline">\(x^n=y\)</span> se aborda según la paridad de <span class="math inline">\(n\)</span>. Para <span class="math inline">\(n\)</span> par y <span class="math inline">\(y&gt;0\)</span>, aparecen dos soluciones reales opuestas; para <span class="math inline">\(y=0\)</span>, la solución es <span class="math inline">\(x=0\)</span>. La <strong>raíz enésima principal</strong> <span class="math inline">\(\sqrt[n]{y}\)</span> designa la solución <strong>no negativa</strong>. Para <span class="math inline">\(n\)</span> impar, la función potencia es biyectiva de <span class="math inline">\(\mathbb R\)</span> en <span class="math inline">\(\mathbb R\)</span> y cada <span class="math inline">\(y\)</span> tiene una única raíz real.</p>
+<p>Por tanto, para <span class="math inline">\(n\ge2\)</span>,</p>
+<p><span class="math display">\[\operatorname{Dom}(\sqrt[n]{\cdot})=
+\begin{cases}
+[0,\infty),&amp;n\text{ par},\\
+\mathbb R,&amp;n\text{ impar}.
+\end{cases}\]</span></p>
+<p>La ecuación <span class="math inline">\(y=\sqrt[n]{x}\)</span> equivale a <span class="math inline">\(x=y^n\)</span> junto con la condición <span class="math inline">\(y\ge0\)</span> cuando <span class="math inline">\(n\)</span> es par. La representación gráfica se obtiene intercambiando las coordenadas: la función inversa refleja el grafo respecto de <span class="math inline">\(y=x\)</span>, con la restricción correspondiente para las potencias pares.</p>
+<div id="fig-ic2021-c05-f14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Gráficos de raíz cuadrada y raíz cúbica y su relación con la diagonal y igual x.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/04_raices.png" class="img-fluid figure-img" alt="Gráficos de raíz cuadrada y raíz cúbica y su relación con la diagonal y igual x.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Gráficos de raíz cuadrada y raíz cúbica y su relación con la diagonal y igual x.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 4. La reflexión respecto de <span class="math inline">\(y=x\)</span> relaciona la potencia y la raíz correspondiente.</em></p>
+</section>
+</section>
+<section id="álgebra-de-funciones-y-dominios" class="level2">
+<h2 class="anchored" data-anchor-id="álgebra-de-funciones-y-dominios">Álgebra de funciones y dominios</h2>
+<section id="suma-resta-y-producto" class="level3">
+<h3 class="anchored" data-anchor-id="suma-resta-y-producto">Suma, resta y producto</h3>
+<p><strong>En la cátedra (56:56–1:02:06).</strong> Sean <span class="math inline">\(f:A\to\mathbb R\)</span> y <span class="math inline">\(g:B\to\mathbb R\)</span>, con <span class="math inline">\(A,B\subseteq\mathbb R\)</span>. La suma se define mediante</p>
+<p><span class="math display">\[(f+g)(x)=f(x)+g(x).\]</span></p>
+<p>Para evaluar esta expresión es necesario disponer simultáneamente de <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(g(x)\)</span>; ello ocurre exactamente cuando <span class="math inline">\(x\in A\cap B\)</span>. Se obtiene</p>
+<p><span class="math display">\[\boxed{\operatorname{Dom}(f+g)=A\cap B.}\]</span></p>
+<p>Con el mismo criterio se define la resta <span class="math inline">\(f-g\)</span> y el producto <span class="math inline">\(fg\)</span>, ambos sobre <span class="math inline">\(A\cap B\)</span>. El profesor destaca el valor lógico de la conjunción «<span class="math inline">\(x\in A\)</span> <strong>y</strong> <span class="math inline">\(x\in B\)</span>» frente a una unión de dominios.</p>
+<p><strong>Ejemplo de la cátedra.</strong> Si <span class="math inline">\(f(x)=\sqrt{x}\)</span> y <span class="math inline">\(g(x)=\sqrt{-x}\)</span>, entonces</p>
+<p><span class="math display">\[A=[0,\infty),\qquad B=(-\infty,0],\qquad A\cap B=\{0\}.\]</span></p>
+<p>Así, <span class="math inline">\(f+g\)</span> está definida únicamente en <span class="math inline">\(\{0\}\)</span> y <span class="math inline">\((f+g)(0)=0\)</span>.</p>
+<div id="fig-ic2021-c05-f15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Intersección de dominios de raíz de x y raíz de menos x.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/05_interseccion_dominios.png" class="img-fluid figure-img" alt="Intersección de dominios de raíz de x y raíz de menos x.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Intersección de dominios de raíz de x y raíz de menos x.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 5. La intersección de los semiejes de definición es el origen.</em></p>
+</section>
+<section id="cociente-y-ceros-del-denominador" class="level3">
+<h3 class="anchored" data-anchor-id="cociente-y-ceros-del-denominador">Cociente y ceros del denominador</h3>
+<p><strong>En la cátedra (1:02:14–1:06:46).</strong> El cociente de dos funciones se define sobre los puntos de <span class="math inline">\(A\cap B\)</span> donde <span class="math inline">\(g(x)\)</span> es un real distinto de cero:</p>
+<p><span class="math display">\[\left(\frac fg\right)(x)=\frac{f(x)}{g(x)},\qquad
+\boxed{\operatorname{Dom}(f/g)=(A\cap B)\setminus Z_g},\]</span></p>
+<p>siendo <span class="math inline">\(Z_g=\{x\in B:g(x)=0\}\)</span> el <strong>conjunto de ceros de <span class="math inline">\(g\)</span></strong>. Esta expresión diferencia dos operaciones: comprobar que el denominador tiene una imagen y comprobar que dicha imagen admite inverso multiplicativo.</p>
+<p><strong>Ejemplo de la cátedra.</strong> Para <span class="math inline">\(h(x)=\sqrt{x}/(x-1)\)</span>, el dominio del numerador es <span class="math inline">\([0,\infty)\)</span>, el del denominador considerado como función <span class="math inline">\(x\mapsto x-1\)</span> es <span class="math inline">\(\mathbb R\)</span>, y su conjunto de ceros es <span class="math inline">\(\{1\}\)</span>. En consecuencia,</p>
+<p><span class="math display">\[\boxed{\operatorname{Dom}(h)=[0,1)\cup(1,\infty).}\]</span></p>
+<p><strong>Ampliación editorial.</strong> La ley obtenida tras una simplificación algebraica se interpreta sobre el dominio original de la función. Por ejemplo, <span class="math inline">\(r(x)=(x^2-1)/(x-1)\)</span> tiene dominio <span class="math inline">\(\mathbb R\setminus\{1\}\)</span> y coincide con <span class="math inline">\(x+1\)</span> para <span class="math inline">\(x\ne1\)</span>; la función lineal <span class="math inline">\(x+1\)</span> tiene dominio <span class="math inline">\(\mathbb R\)</span>. Sus grafos difieren en el punto <span class="math inline">\((1,2)\)</span>.</p>
+<div id="fig-ic2021-c05-f16" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Función racional simplificable y punto excluido.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/06_punto_excluido.png" class="img-fluid figure-img" alt="Función racional simplificable y punto excluido.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Función racional simplificable y punto excluido.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 6. Un factor algebraico común puede simplificarse manteniendo la exclusión del punto del dominio original.</em></p>
+</section>
+<section id="la-composición-como-continuidad-temática" class="level3">
+<h3 class="anchored" data-anchor-id="la-composición-como-continuidad-temática">La composición como continuidad temática</h3>
+<p>La clase anuncia que las funciones pueden combinarse mediante sumas, restas, productos, cocientes y <strong>composición</strong>. El desarrollo sistemático de esta última operación <strong>no se realiza en el fragmento estudiado</strong>; por fidelidad a la fuente, queda señalado como contenido posterior, sin atribuirle una demostración al profesor.</p>
+</section>
+</section>
+<section id="polinomios-y-funciones-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="polinomios-y-funciones-racionales">Polinomios y funciones racionales</h2>
+<p><strong>En la cátedra (1:12:24–1:18:19).</strong> Una <strong>función polinómica</strong> posee ley</p>
+<p><span class="math display">\[P(x)=a_0+a_1x+\cdots+a_nx^n,\qquad a_j\in\mathbb R,\]</span></p>
+<p>con dominio <span class="math inline">\(\mathbb R\)</span>. La función de grado uno proporciona una recta; la de grado dos, una parábola; y la de grado tres puede presentar tramos de crecimiento distintos, como el ejemplo <span class="math inline">\(x^3-x\)</span>.</p>
+<p>Una <strong>función racional</strong> se obtiene como cociente de dos polinomios:</p>
+<p><span class="math display">\[R(x)=\frac{P(x)}{Q(x)},\qquad Q\not\equiv0,
+\qquad\boxed{\operatorname{Dom}(R)=\mathbb R\setminus\{x:Q(x)=0\}.}\]</span></p>
+<p>El denominador puede ser un polinomio de grado diferente del numerador. Un estudio gráfico riguroso empieza por dominio y ceros, continúa con signos y crecimiento y examina el comportamiento cerca de los puntos excluidos y para abscisas muy grandes.</p>
+</section>
+<section id="estudio-completo-de-la-función-boldsymbol2xx1" class="level2">
+<h2 class="anchored" data-anchor-id="estudio-completo-de-la-función-boldsymbol2xx1">Estudio completo de la función <span class="math inline">\(\boldsymbol{2x/(x+1)}\)</span></h2>
+<p><strong>En la cátedra (1:18:19–1:43:18).</strong> El ejemplo final retoma simultáneamente las herramientas adquiridas:</p>
+<p><span class="math display">\[\boxed{F(x)=\frac{2x}{x+1}.}\]</span></p>
+<section id="dominio-cero-paridad-y-signo" class="level3">
+<h3 class="anchored" data-anchor-id="dominio-cero-paridad-y-signo">Dominio, cero, paridad y signo</h3>
+<p>El denominador se anula en <span class="math inline">\(x=-1\)</span>, de modo que</p>
+<p><span class="math display">\[\boxed{\operatorname{Dom}(F)=(-\infty,-1)\cup(-1,\infty).}\]</span></p>
+<p>El numerador se anula en <span class="math inline">\(x=0\)</span>, que pertenece al dominio. Así, el único cero es <span class="math inline">\(0\)</span>. La función es positiva cuando numerador y denominador tienen el mismo signo, y negativa cuando sus signos son diferentes:</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+F(x)&gt;0&amp;\iff x\in(-\infty,-1)\cup(0,\infty),\\
+F(x)&lt;0&amp;\iff x\in(-1,0),\\
+F(x)=0&amp;\iff x=0.
+\end{aligned}}
+\]</span></p>
+<p>La función es <strong>ni par ni impar</strong>: el dominio contiene <span class="math inline">\(1\)</span> y excluye <span class="math inline">\(-1\)</span>, por lo cual carece de la simetría necesaria para cualquiera de las dos paridades. El profesor propone verificar esa condición antes de invertir tiempo en la sustitución algebraica <span class="math inline">\(x\mapsto-x\)</span>.</p>
+<div id="fig-ic2021-c05-f17" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tabla de signos de dos x sobre x más uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/07_signos_racional.png" class="img-fluid figure-img" alt="Tabla de signos de dos x sobre x más uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Tabla de signos de dos x sobre x más uno.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 7. Puntos relevantes <span class="math inline">\(-1\)</span> (excluido) y <span class="math inline">\(0\)</span> (cero); signos positivos y negativos en los intervalos correspondientes.</em></p>
+</section>
+<section id="crecimiento-en-cada-componente-del-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="crecimiento-en-cada-componente-del-dominio">Crecimiento en cada componente del dominio</h3>
+<p><strong>En la cátedra (1:24:45–1:32:41).</strong> Sean <span class="math inline">\(x_1&lt;x_2\)</span> pertenecientes al dominio. La diferencia de imágenes tiene cociente</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{F(x_2)-F(x_1)}{x_2-x_1}
+&amp;=\frac{\frac{2x_2}{x_2+1}-\frac{2x_1}{x_1+1}}{x_2-x_1}\\
+&amp;=\frac{2x_2(x_1+1)-2x_1(x_2+1)}{(x_2-x_1)(x_2+1)(x_1+1)}\\
+&amp;=\boxed{\frac{2}{(x_1+1)(x_2+1)}}.
+\end{aligned}
+\]</span></p>
+<p>Si ambos puntos pertenecen a <span class="math inline">\((-1,\infty)\)</span>, los dos factores del denominador son positivos y el cociente es positivo. Si ambos pertenecen a <span class="math inline">\((-\infty,-1)\)</span>, los dos factores son negativos y su producto vuelve a ser positivo. Por tanto,</p>
+<p><span class="math display">\[\boxed{F\text{ es estrictamente creciente en cada intervalo }(-\infty,-1)\text{ y }(-1,\infty).}\]</span></p>
+<p><strong>Precisión editorial.</strong> La propiedad es una afirmación sobre <strong>cada componente</strong>, y no sobre la totalidad de <span class="math inline">\(\mathbb R\setminus\{-1\}\)</span>. Por ejemplo, <span class="math inline">\(-2&lt;0\)</span>, pero <span class="math inline">\(F(-2)=4&gt;0=F(0)\)</span>. Es decir, <span class="math inline">\(F\)</span> no es creciente sobre su dominio completo según la definición con comparación de todos los pares.</p>
+</section>
+<section id="forma-equivalente-y-asíntota-horizontal" class="level3">
+<h3 class="anchored" data-anchor-id="forma-equivalente-y-asíntota-horizontal">Forma equivalente y asíntota horizontal</h3>
+<p><strong>En la cátedra (1:33:24–1:37:23).</strong> La identidad</p>
+<p><span class="math display">\[\boxed{F(x)=\frac{2(x+1)-2}{x+1}=2-\frac{2}{x+1}}\]</span></p>
+<p>hace visible la proximidad de la función a la altura <span class="math inline">\(2\)</span> para abscisas de gran valor absoluto. Si <span class="math inline">\(x&gt;-1\)</span>, la cantidad <span class="math inline">\(2/(x+1)\)</span> es positiva y <span class="math inline">\(F(x)&lt;2\)</span>. Si <span class="math inline">\(x&lt;-1\)</span>, es negativa y <span class="math inline">\(F(x)&gt;2\)</span>. En ambos extremos del eje horizontal, la diferencia <span class="math inline">\(|F(x)-2|=2/|x+1|\)</span> puede hacerse tan pequeña como se desee eligiendo <span class="math inline">\(|x+1|\)</span> suficientemente grande.</p>
+<p>Se dice que</p>
+<p><span class="math display">\[\boxed{y=2\quad\text{es una asíntota horizontal de }F.}\]</span></p>
+<p>En esta sesión el profesor explica el comportamiento por números grandes; la teoría general de <strong>límites</strong> queda para más adelante. La igualdad <span class="math inline">\(F(x)=2\)</span> implicaría <span class="math inline">\(-2/(x+1)=0\)</span>, imposible para todo <span class="math inline">\(x\)</span> del dominio; la altura <span class="math inline">\(2\)</span> es también el único valor real excluido de la imagen de <span class="math inline">\(F\)</span>.</p>
+</section>
+<section id="aproximación-a-x-1-y-asíntota-vertical" class="level3">
+<h3 class="anchored" data-anchor-id="aproximación-a-x-1-y-asíntota-vertical">Aproximación a <span class="math inline">\(x=-1\)</span> y asíntota vertical</h3>
+<p><strong>En la cátedra (1:38:21–1:41:08).</strong> Escribimos <span class="math inline">\(x=-1+\delta\)</span>, donde <span class="math inline">\(\delta\ne0\)</span>. Entonces</p>
+<p><span class="math display">\[\boxed{F(-1+\delta)=2-\frac2\delta.}\]</span></p>
+<p>Cuando <span class="math inline">\(\delta\)</span> es positivo y muy pequeño, <span class="math inline">\(-2/\delta\)</span> es negativo de magnitud muy grande; cuando <span class="math inline">\(\delta\)</span> es negativo y de pequeña magnitud, el cociente <span class="math inline">\(-2/\delta\)</span> es positivo y de magnitud muy grande. Por ello la rama derecha desciende indefinidamente y la rama izquierda asciende indefinidamente al aproximarse a <span class="math inline">\(-1\)</span>:</p>
+<p><span class="math display">\[\boxed{x=-1\quad\text{es una asíntota vertical de }F.}\]</span></p>
+<p><strong>Ampliación editorial.</strong> Las afirmaciones se podrán formalizar mediante los límites laterales</p>
+<p><span class="math display">\[\lim_{x\to-1^-}F(x)=+\infty,\qquad
+\lim_{x\to-1^+}F(x)=-\infty,\qquad
+\lim_{x\to\pm\infty}F(x)=2.\]</span></p>
+<p>Se incluyen como notación anticipatoria: los límites no son todavía parte de la teoría desarrollada en la clase.</p>
+<div id="fig-ic2021-c05-f18" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Gráfico completo de la racional con sus dos asíntotas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c05-f18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_5_2/08_asintotas.png" class="img-fluid figure-img" alt="Gráfico completo de la racional con sus dos asíntotas.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c05-f18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Gráfico completo de la racional con sus dos asíntotas.
+</figcaption>
+</figure>
+</div>
+<p><em>Figura 8. La función atraviesa el origen, tiene asíntotas <span class="math inline">\(x=-1\)</span> e <span class="math inline">\(y=2\)</span> y crece estrictamente a ambos lados del punto excluido.</em></p>
+</section>
+<section id="advertencia-sobre-los-ceros-del-denominador" class="level3">
+<h3 class="anchored" data-anchor-id="advertencia-sobre-los-ceros-del-denominador">Advertencia sobre los ceros del denominador</h3>
+<p><strong>En la cátedra (1:41:08–1:43:18).</strong> El profesor anuncia criterios para estudiar funciones racionales más generales y observa que una raíz del denominador conduce al comportamiento típico de una asíntota vertical cuando el numerador conserva allí un valor distinto de cero. Un factor común puede modificar ese diagnóstico.</p>
+<p><strong>Ampliación editorial.</strong> Si <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> tienen un factor común <span class="math inline">\((x-a)\)</span>, el cociente puede tener en <span class="math inline">\(a\)</span> una <strong>discontinuidad removible</strong>, como en <span class="math inline">\((x^2-1)/(x-1)\)</span>. Si, después de simplificar factores comunes, el denominador conserva <span class="math inline">\((x-a)\)</span> y el numerador vale un número distinto de cero en <span class="math inline">\(a\)</span>, entonces existe una asíntota vertical en <span class="math inline">\(x=a\)</span>. La distinción previene la generalización indebida de que todo cero del denominador causa necesariamente una asíntota vertical.</p>
+</section>
+</section>
+<section id="síntesis-dificultades-técnicas-y-continuidad" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis-dificultades-técnicas-y-continuidad">Síntesis, dificultades técnicas y continuidad</h2>
+<p>En esta clase confluyen el lenguaje de las funciones, la lógica de los dominios y la geometría analítica. Para el crecimiento, comparar <span class="math inline">\(f(x_1)\)</span> con <span class="math inline">\(f(x_2)\)</span> equivale a estudiar una pendiente secante. Para construir funciones nuevas mediante operaciones, la intersección de dominios es la condición constitutiva del cálculo simultáneo; el cociente añade la exigencia de un denominador con inverso. Para las funciones racionales, el estudio de signos, del crecimiento y de las asíntotas se apoya en una reescritura algebraica apropiada.</p>
+<p>El profesor anuncia dos desarrollos posteriores: <strong>derivadas</strong>, que formalizarán el comportamiento de las pendientes cuando los puntos se acercan, y <strong>límites</strong>, que permitirán dar una definición precisa a la proximidad a las asíntotas. La siguiente semana del curso se dedica a <strong>trigonometría</strong>. Esos anticipos se conservan como tales, manteniendo la distinción entre conocimiento previo, resultados efectivamente desarrollados y herramientas por estudiar.</p>
+<p><strong>Referencia:</strong> Jorge San Martín, «IC2021: Cátedra 5.2. Viernes 12:00», grabación <a href="https://www.youtube.com/watch?v=NEYH4Qw4QK4">NEYH4Qw4QK4</a>. Edición monocromática IC2021, A4, 11 puntos, Latin Modern, márgenes 2,35 cm. Las ilustraciones se preparan en TikZ vectorial y sus equivalentes PNG se integran en la bóveda mediante enlaces relativos <code>figuras/IC2021_Catedra_5_2/</code>.</p>
+</section>
+<section id="taller-de-problemas-y-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="taller-de-problemas-y-soluciones">Taller de problemas y soluciones</h2>
+<p>Los ejercicios se presentan a continuación según la fuente de origen; las ampliaciones editoriales de cada apuntes permanecen expresamente identificadas.</p>
+<section id="ejercicios-de-consolidación-cátedra-5.1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-de-consolidación-cátedra-5.1">Ejercicios de consolidación — cátedra 5.1</h3>
+<p>Los dieciséis enunciados siguientes son <strong>ejercicios editoriales</strong>, seleccionados para practicar los conceptos de la sesión y sus relaciones. Incluyen soluciones completas. Los ejemplos de la grabación que se reutilizan se indican en la solución, distinguiendo el razonamiento original de los pasos añadidos.</p>
+<p><strong>E1.</strong> Hallar el dominio de <span class="math inline">\(f(x)=\sqrt{x+3}\)</span> y expresar el resultado como intervalo.</p>
+<p><strong>E2.</strong> Determinar el dominio de <span class="math inline">\(g(x)=\sqrt{9-x^2}\)</span> y describir su grafo.</p>
+<p><strong>E3.</strong> Resolver el dominio de <span class="math inline">\(h(x)=1/(x^2-4)\)</span>.</p>
+<p><strong>E4.</strong> Establecer los dominios naturales de <span class="math inline">\(f(x)=(x^2-1)/(x-1)\)</span> y <span class="math inline">\(g(x)=x+1\)</span>; explicar su relación.</p>
+<p><strong>E5.</strong> Determinar el dominio de <span class="math inline">\(r(x)=\sqrt{(x+1)/|x-2|-2}\)</span>.</p>
+<p><strong>E6.</strong> Demostrar por qué el conjunto <span class="math inline">\(\{(x,y):x=y^2\}\)</span> contiene dos puntos con abscisa <span class="math inline">\(4\)</span> y construir dos funciones cuyas gráficas cubran el lugar.</p>
+<p><strong>E7.</strong> Hallar ceros, conjunto de positividad y conjunto de negatividad de <span class="math inline">\(q(x)=x^2-4\)</span>.</p>
+<p><strong>E8.</strong> Clasificar la paridad de <span class="math inline">\(f(x)=x^6+|x|+3\)</span> y de <span class="math inline">\(g(x)=x^5+x\)</span>.</p>
+<p><strong>E9.</strong> Justificar que una función impar definida en <span class="math inline">\(\mathbb R\)</span> tiene al cero como uno de sus ceros.</p>
+<p><strong>E10.</strong> Demostrar que el cociente de dos funciones impares es par sobre su dominio común de definición, y encontrar el dominio de <span class="math inline">\(h(x)=x^3/(x|x|)\)</span>.</p>
+<p><strong>E11.</strong> Construir la descomposición par e impar de <span class="math inline">\(f(x)=x^2+3x+2\)</span>.</p>
+<p><strong>E12.</strong> Comprobar que la función triangular descrita en la sección 4 tiene periodo <span class="math inline">\(2\)</span> en <span class="math inline">\([0,\infty)\)</span>.</p>
+<p><strong>E13.</strong> Decidir cuándo la función lineal <span class="math inline">\(f(x)=mx+n\)</span> es creciente, decreciente o ambas en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>E14.</strong> Demostrar que <span class="math inline">\(f(x)=x^3+x\)</span> es estrictamente creciente en <span class="math inline">\(\mathbb R\)</span> sin utilizar derivadas.</p>
+<p><strong>E15.</strong> Para <span class="math inline">\(g(x)=x^3-x\)</span>, factorizar <span class="math inline">\(Q_g(x_1,x_2)\)</span> y demostrar estrictamente el crecimiento en <span class="math inline">\([1,\infty)\)</span>.</p>
+<p><strong>E16.</strong> Determinar, sin derivadas, los intervalos exactos de crecimiento y decrecimiento de <span class="math inline">\(g(x)=x^3-x\)</span>.</p>
+</section>
+<section id="ejercicios-complementarios-con-soluciones-cátedra-5.2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-complementarios-con-soluciones-cátedra-5.2">Ejercicios complementarios con soluciones — cátedra 5.2</h3>
+<p>Los dieciocho ejercicios siguientes son <strong>material editorial de estudio</strong>, preparado a partir de los conceptos de la sesión. Sus enunciados y resoluciones se diferencian de las preguntas de la pizarra de San Martín.</p>
+</section>
+<section id="e1.-calcular-tres-pendientes-secantes-de-x3-x" class="level3">
+<h3 class="anchored" data-anchor-id="e1.-calcular-tres-pendientes-secantes-de-x3-x">E1. Calcular tres pendientes secantes de <span class="math inline">\(x^3-x\)</span></h3>
+<p>Para <span class="math inline">\(f(x)=x^3-x\)</span>, calcular <span class="math inline">\(S_f(0,1)\)</span>, <span class="math inline">\(S_f(0,1/2)\)</span> y <span class="math inline">\(S_f(1,2)\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(f(0)=0\)</span>, <span class="math inline">\(f(1)=0\)</span>, <span class="math inline">\(f(1/2)=1/8-1/2=-3/8\)</span>, <span class="math inline">\(f(2)=6\)</span>. Así</p>
+<p><span class="math display">\[S_f(0,1)=0,\qquad S_f(0,1/2)=-\frac34,\qquad S_f(1,2)=6.\]</span></p>
+<p>La existencia de secantes con pendientes distintas confirma la necesidad de estudiar la monotonía por intervalos.</p>
+</section>
+<section id="e2.-determinar-el-umbral-positivo-de-x3-x" class="level3">
+<h3 class="anchored" data-anchor-id="e2.-determinar-el-umbral-positivo-de-x3-x">E2. Determinar el umbral positivo de <span class="math inline">\(x^3-x\)</span></h3>
+<p>Resolver <span class="math inline">\(3a^2-1=0\)</span> para <span class="math inline">\(a&gt;0\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(a^2=1/3\)</span>, de donde <span class="math inline">\(a=1/\sqrt3\)</span>. El signo de <span class="math inline">\(a\)</span> selecciona la solución positiva y proporciona el extremo de los intervalos de crecimiento analizados en la clase.</p>
+</section>
+<section id="e3.-verificar-los-valores-extremos-de-la-cúbica" class="level3">
+<h3 class="anchored" data-anchor-id="e3.-verificar-los-valores-extremos-de-la-cúbica">E3. Verificar los valores extremos de la cúbica</h3>
+<p>Calcular <span class="math inline">\(f(\pm1/\sqrt3)\)</span> para <span class="math inline">\(f(x)=x^3-x\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(f(a)=a(a^2-1)=-2a/3=-2/(3\sqrt3)\)</span>. Por imparidad, <span class="math inline">\(f(-a)=2/(3\sqrt3)\)</span>.</p>
+</section>
+<section id="e4.-demostrar-crecimiento-de-una-potencia-impar" class="level3">
+<h3 class="anchored" data-anchor-id="e4.-demostrar-crecimiento-de-una-potencia-impar">E4. Demostrar crecimiento de una potencia impar</h3>
+<p>Probar sin derivadas que <span class="math inline">\(x\mapsto x^3\)</span> es estrictamente creciente en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(u&lt;v\)</span>,</p>
+<p><span class="math display">\[v^3-u^3=(v-u)(u^2+uv+v^2).\]</span></p>
+<p>El primer factor es positivo. El segundo se puede escribir como <span class="math inline">\((u+v/2)^2+3v^2/4\ge0\)</span> y solo vale cero cuando <span class="math inline">\(u=v=0\)</span>, incompatible con <span class="math inline">\(u&lt;v\)</span>. Luego <span class="math inline">\(v^3-u^3&gt;0\)</span>.</p>
+</section>
+<section id="e5.-paridad-de-potencias" class="level3">
+<h3 class="anchored" data-anchor-id="e5.-paridad-de-potencias">E5. Paridad de potencias</h3>
+<p>Clasificar <span class="math inline">\(p_4(x)=x^4\)</span> y <span class="math inline">\(p_5(x)=x^5\)</span>.</p>
+<p><strong>Solución.</strong> Los dominios son <span class="math inline">\(\mathbb R\)</span>. <span class="math inline">\(p_4(-x)=p_4(x)\)</span>, luego <span class="math inline">\(p_4\)</span> es par. <span class="math inline">\(p_5(-x)=-p_5(x)\)</span>, luego <span class="math inline">\(p_5\)</span> es impar.</p>
+</section>
+<section id="e6.-raíz-cuarta-de-un-número-positivo" class="level3">
+<h3 class="anchored" data-anchor-id="e6.-raíz-cuarta-de-un-número-positivo">E6. Raíz cuarta de un número positivo</h3>
+<p>Resolver <span class="math inline">\(x^4=16\)</span> en <span class="math inline">\(\mathbb R\)</span> e indicar la raíz cuarta principal.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(x^4=16\)</span> equivale a <span class="math inline">\(|x|=2\)</span>, de modo que el conjunto solución es <span class="math inline">\(\{-2,2\}\)</span>. La raíz cuarta principal <span class="math inline">\(\sqrt[4]{16}=2\)</span>.</p>
+</section>
+<section id="e7.-raíz-cúbica-de-un-real-negativo" class="level3">
+<h3 class="anchored" data-anchor-id="e7.-raíz-cúbica-de-un-real-negativo">E7. Raíz cúbica de un real negativo</h3>
+<p>Resolver <span class="math inline">\(x^3=-27\)</span> e identificar el dominio de <span class="math inline">\(x\mapsto\sqrt[3]{x}\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(x=-3\)</span> es la única solución real por el crecimiento estricto de la función cúbica. El dominio de la raíz cúbica es <span class="math inline">\(\mathbb R\)</span>.</p>
+</section>
+<section id="e8.-dominio-de-la-suma-de-dos-radicales" class="level3">
+<h3 class="anchored" data-anchor-id="e8.-dominio-de-la-suma-de-dos-radicales">E8. Dominio de la suma de dos radicales</h3>
+<p>Determinar el dominio natural de <span class="math inline">\(h(x)=\sqrt{x-1}+\sqrt{5-x}\)</span>.</p>
+<p><strong>Solución.</strong> Ambas expresiones están definidas simultáneamente cuando <span class="math inline">\(x\ge1\)</span> y <span class="math inline">\(x\le5\)</span>, por lo cual <span class="math inline">\(\operatorname{Dom}(h)=[1,5]\)</span>.</p>
+</section>
+<section id="e9.-intersección-de-dominios-en-un-solo-punto" class="level3">
+<h3 class="anchored" data-anchor-id="e9.-intersección-de-dominios-en-un-solo-punto">E9. Intersección de dominios en un solo punto</h3>
+<p>Determinar <span class="math inline">\(\operatorname{Dom}(\sqrt{x}+\sqrt{-x})\)</span>.</p>
+<p><strong>Solución.</strong> El primer radicando exige <span class="math inline">\(x\ge0\)</span> y el segundo <span class="math inline">\(x\le0\)</span>. La intersección contiene exactamente <span class="math inline">\(x=0\)</span>, así que <span class="math inline">\(\operatorname{Dom}=\{0\}\)</span>.</p>
+</section>
+<section id="e10.-dominio-de-un-cociente-con-raíz" class="level3">
+<h3 class="anchored" data-anchor-id="e10.-dominio-de-un-cociente-con-raíz">E10. Dominio de un cociente con raíz</h3>
+<p>Determinar el dominio de <span class="math inline">\(h(x)=\sqrt{x}/(x-1)\)</span>.</p>
+<p><strong>Solución.</strong> Se requiere <span class="math inline">\(x\ge0\)</span> y <span class="math inline">\(x-1\ne0\)</span>. Por tanto, <span class="math inline">\(\operatorname{Dom}(h)=[0,1)\cup(1,\infty)\)</span>.</p>
+</section>
+<section id="e11.-simplificación-y-dominio-original" class="level3">
+<h3 class="anchored" data-anchor-id="e11.-simplificación-y-dominio-original">E11. Simplificación y dominio original</h3>
+<p>Estudiar <span class="math inline">\(r(x)=(x^2-9)/(x-3)\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\operatorname{Dom}(r)=\mathbb R\setminus\{3\}\)</span>, y para esos valores <span class="math inline">\(r(x)=x+3\)</span>. En <span class="math inline">\((3,6)\)</span> el grafo de la recta resultante presenta un punto excluido; la función <span class="math inline">\(x\mapsto x+3\)</span> con dominio <span class="math inline">\(\mathbb R\)</span> es una extensión de <span class="math inline">\(r\)</span>.</p>
+</section>
+<section id="e12.-signos-de-la-función-racional-de-clase" class="level3">
+<h3 class="anchored" data-anchor-id="e12.-signos-de-la-función-racional-de-clase">E12. Signos de la función racional de clase</h3>
+<p>Resolver <span class="math inline">\(2x/(x+1)\ge0\)</span>.</p>
+<p><strong>Solución.</strong> El cociente es positivo en <span class="math inline">\((-\infty,-1)\cup(0,\infty)\)</span> y vale cero en <span class="math inline">\(x=0\)</span>. El punto <span class="math inline">\(-1\)</span> está excluido. Luego</p>
+<p><span class="math display">\[\boxed{S=(-\infty,-1)\cup[0,\infty).}\]</span></p>
+</section>
+<section id="e13.-una-desigualdad-racional-estricta" class="level3">
+<h3 class="anchored" data-anchor-id="e13.-una-desigualdad-racional-estricta">E13. Una desigualdad racional estricta</h3>
+<p>Resolver <span class="math inline">\(2x/(x+1)&lt;0\)</span>.</p>
+<p><strong>Solución.</strong> Los signos de numerador y denominador difieren únicamente para <span class="math inline">\(-1&lt;x&lt;0\)</span>. El conjunto solución es <span class="math inline">\((-1,0)\)</span>.</p>
+</section>
+<section id="e14.-cociente-de-diferencias-de-la-racional" class="level3">
+<h3 class="anchored" data-anchor-id="e14.-cociente-de-diferencias-de-la-racional">E14. Cociente de diferencias de la racional</h3>
+<p>Calcular <span class="math inline">\([F(v)-F(u)]/(v-u)\)</span> para <span class="math inline">\(F(x)=2x/(x+1)\)</span> y <span class="math inline">\(u&lt;v\)</span> dentro de su dominio.</p>
+<p><strong>Solución.</strong> Unificando denominadores,</p>
+<p><span class="math display">\[\frac{F(v)-F(u)}{v-u}=\frac{2v(u+1)-2u(v+1)}{(v-u)(v+1)(u+1)}=\frac{2}{(u+1)(v+1)}.\]</span></p>
+<p>El signo depende de los lados de <span class="math inline">\(-1\)</span> en que se sitúen <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span>.</p>
+</section>
+<section id="e15.-monotonía-local-versus-comparación-global" class="level3">
+<h3 class="anchored" data-anchor-id="e15.-monotonía-local-versus-comparación-global">E15. Monotonía local versus comparación global</h3>
+<p>Comprobar que <span class="math inline">\(F\)</span> es creciente en cada componente de su dominio y dar un par que descarte crecimiento global.</p>
+<p><strong>Solución.</strong> Para puntos de una misma componente, <span class="math inline">\((u+1)(v+1)&gt;0\)</span>; así <span class="math inline">\(F(v)&gt;F(u)\)</span>. Sin embargo, <span class="math inline">\(-2&lt;0\)</span> y <span class="math inline">\(F(-2)=4&gt;F(0)=0\)</span>. Por tanto, la propiedad no se extiende a toda la unión del dominio.</p>
+</section>
+<section id="e16.-dos-asíntotas-a-partir-de-una-identidad-exacta" class="level3">
+<h3 class="anchored" data-anchor-id="e16.-dos-asíntotas-a-partir-de-una-identidad-exacta">E16. Dos asíntotas a partir de una identidad exacta</h3>
+<p>Para <span class="math inline">\(F(x)=2-2/(x+1)\)</span>, determinar las rectas a las que se aproxima la gráfica cuando <span class="math inline">\(|x|\)</span> aumenta y cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(-1\)</span>.</p>
+<p><strong>Solución.</strong> La distancia vertical a <span class="math inline">\(y=2\)</span> vale <span class="math inline">\(2/|x+1|\)</span> y se hace pequeña si <span class="math inline">\(|x+1|\)</span> aumenta; la asíntota horizontal es <span class="math inline">\(y=2\)</span>. Cuando <span class="math inline">\(x=-1+\delta\)</span>, la expresión <span class="math inline">\(2-2/\delta\)</span> crece ilimitadamente en magnitud al reducir <span class="math inline">\(|\delta|\)</span>; la asíntota vertical es <span class="math inline">\(x=-1\)</span>.</p>
+</section>
+<section id="e17.-calcular-la-imagen-de-la-racional" class="level3">
+<h3 class="anchored" data-anchor-id="e17.-calcular-la-imagen-de-la-racional">E17. Calcular la imagen de la racional</h3>
+<p>Hallar el conjunto imagen de <span class="math inline">\(F(x)=2x/(x+1)\)</span>.</p>
+<p><strong>Solución.</strong> La igualdad <span class="math inline">\(y=2x/(x+1)\)</span> equivale a <span class="math inline">\((y-2)x=-y\)</span>. Para <span class="math inline">\(y\ne2\)</span>, existe una única solución <span class="math inline">\(x=-y/(y-2)\)</span>, que nunca vale <span class="math inline">\(-1\)</span> (esa igualdad forzaría <span class="math inline">\(0=2\)</span>). Para <span class="math inline">\(y=2\)</span>, la ecuación resulta imposible. En consecuencia, <span class="math inline">\(\operatorname{Im}(F)=\mathbb R\setminus\{2\}\)</span>.</p>
+</section>
+<section id="e18.-distinguir-un-punto-excluido-y-una-asíntota" class="level3">
+<h3 class="anchored" data-anchor-id="e18.-distinguir-un-punto-excluido-y-una-asíntota">E18. Distinguir un punto excluido y una asíntota</h3>
+<p>Comparar <span class="math inline">\(r(x)=(x^2-1)/(x-1)\)</span> y <span class="math inline">\(s(x)=1/(x-1)\)</span> cerca de <span class="math inline">\(x=1\)</span>.</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(x\ne1\)</span>, <span class="math inline">\(r(x)=x+1\)</span> y se aproxima al valor finito <span class="math inline">\(2\)</span>, conservando el punto <span class="math inline">\((1,2)\)</span> excluido; su grafo tiene un <strong>agujero</strong>. La función <span class="math inline">\(s\)</span> posee un numerador constante distinto de cero, y su valor absoluto <span class="math inline">\(1/|x-1|\)</span> puede crecer cuanto se quiera al acercarse a <span class="math inline">\(1\)</span>; <span class="math inline">\(x=1\)</span> es una <strong>asíntota vertical</strong> de <span class="math inline">\(s\)</span>.</p>
+<hr>
+<hr>
+<p><em>Este capítulo pertenece a la edición temática no oficial del curso IC2021. <a href="../../../libros/otros/introduccion-al-calculo/index.html">Índice del libro</a> · <a href="../../../libros/otros/introduccion-al-calculo/apendices.html">Fuentes y concordancia</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-04.html" class="pagination-link" aria-label="4. Cónicas y curvas cuadráticas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4. Cónicas y curvas cuadráticas</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-06.html" class="pagination-link" aria-label="6. El círculo trigonométrico y sus identidades">
+        <span class="nav-page-text">6. El círculo trigonométrico y sus identidades</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

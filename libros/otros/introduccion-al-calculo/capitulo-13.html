@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-CL" xml:lang="es-CL"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 13 de Introducción al cálculo: Puntos de acumulación y límite de una función. Edición temática del curso IC2021.">
+
+<title>Puntos de acumulación y límite de una función – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" rel="next">
+<link href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" rel="prev">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c5103b7da534e48a10b0d82cfa6d6f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-b842675181cc30c051e0a8f6ab07c4ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html">Parte V. Límites de funciones y cálculo diferencial</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html">13. Puntos de acumulación y límite de una función</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/brand/ma-logo-light.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../assets/brand/ma-logo-dark.svg" alt="Matemática Abierta — Conocimiento para todos" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Portada del libro</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte I. Fundamentos: de los reales a la geometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. La estructura algebraica de los números reales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Orden, desigualdades e inecuaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Coordenadas, distancias y rectas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Cónicas y curvas cuadráticas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte II. Funciones y trigonometría</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. El lenguaje de las funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. El círculo trigonométrico y sus identidades</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Identidades trigonométricas y resolución de triángulos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Funciones trigonométricas inversas y ecuaciones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte III. La completitud de los reales y las sucesiones</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Supremos, naturales y propiedad arquimediana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Sucesiones y convergencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Comparaciones, velocidad y monotonía de sucesiones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Parte IV. Exponenciales y logaritmos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. La función exponencial y su inversa logarítmica</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte V. Límites de funciones y cálculo diferencial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">13. Puntos de acumulación y límite de una función</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Álgebra, comparación y límites fundamentales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15. Límites de composiciones y caracterización épsilon-delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Límites laterales, infinito y asíntotas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">17. La derivada como límite de pendientes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/capitulo-18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">18. Reglas y técnicas de derivación</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../libros/otros/introduccion-al-calculo/apendices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apéndices y fuentes</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#el-problema-que-inaugura-el-cálculo-de-funciones" id="toc-el-problema-que-inaugura-el-cálculo-de-funciones" class="nav-link active" data-scroll-target="#el-problema-que-inaugura-el-cálculo-de-funciones">El problema que inaugura el cálculo de funciones</a></li>
+  <li><a href="#dos-primeros-ejemplos-el-valor-puntual-y-el-límite" id="toc-dos-primeros-ejemplos-el-valor-puntual-y-el-límite" class="nav-link" data-scroll-target="#dos-primeros-ejemplos-el-valor-puntual-y-el-límite">Dos primeros ejemplos: el valor puntual y el límite</a></li>
+  <li><a href="#cómo-formalizar-la-aproximación-sucesiones-admisibles" id="toc-cómo-formalizar-la-aproximación-sucesiones-admisibles" class="nav-link" data-scroll-target="#cómo-formalizar-la-aproximación-sucesiones-admisibles">Cómo formalizar la aproximación: sucesiones admisibles</a></li>
+  <li><a href="#puntos-de-acumulación-el-dominio-fija-las-aproximaciones-posibles" id="toc-puntos-de-acumulación-el-dominio-fija-las-aproximaciones-posibles" class="nav-link" data-scroll-target="#puntos-de-acumulación-el-dominio-fija-las-aproximaciones-posibles">Puntos de acumulación: el dominio fija las aproximaciones posibles</a></li>
+  <li><a href="#definición-rigurosa-del-límite-de-una-función" id="toc-definición-rigurosa-del-límite-de-una-función" class="nav-link" data-scroll-target="#definición-rigurosa-del-límite-de-una-función">Definición rigurosa del límite de una función</a></li>
+  <li><a href="#ejemplos-formales-con-sucesiones" id="toc-ejemplos-formales-con-sucesiones" class="nav-link" data-scroll-target="#ejemplos-formales-con-sucesiones">Ejemplos formales con sucesiones</a></li>
+  <li><a href="#una-función-definida-según-racionalidad-prueba-y-contraejemplo" id="toc-una-función-definida-según-racionalidad-prueba-y-contraejemplo" class="nav-link" data-scroll-target="#una-función-definida-según-racionalidad-prueba-y-contraejemplo">Una función definida según racionalidad: prueba y contraejemplo</a></li>
+  <li><a href="#herramientas-que-quedan-anunciadas" id="toc-herramientas-que-quedan-anunciadas" class="nav-link" data-scroll-target="#herramientas-que-quedan-anunciadas">Herramientas que quedan anunciadas</a></li>
+  <li><a href="#taller-de-problemas-y-soluciones" id="toc-taller-de-problemas-y-soluciones" class="nav-link" data-scroll-target="#taller-de-problemas-y-soluciones">Taller de problemas y soluciones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html">Parte V. Límites de funciones y cálculo diferencial</a></li><li class="breadcrumb-item"><a href="../../../libros/otros/introduccion-al-calculo/capitulo-13.html">13. Puntos de acumulación y límite de una función</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Puntos de acumulación y límite de una función</h1>
+<p class="subtitle lead">Capítulo 13 · Parte V. Límites de funciones y cálculo diferencial</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 13 de Introducción al cálculo: Puntos de acumulación y límite de una función. Edición temática del curso IC2021.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>El límite describe el comportamiento de una función cerca de un punto de acumulación de su dominio. Las sucesiones admisibles ofrecen una caracterización que distingue este comportamiento del valor puntual de la función.</p>
+<p><strong>Grabaciones de referencia:</strong> <a href="https://www.youtube.com/watch?v=iQD_ImPaRWo">grabación de la cátedra 12.1</a>.</p>
+<p><em>Procedencia de este tramo: cátedra 12.1.</em></p>
+<section id="el-problema-que-inaugura-el-cálculo-de-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-que-inaugura-el-cálculo-de-funciones">El problema que inaugura el cálculo de funciones</h2>
+<p><strong>En la clase (11:31–14:08).</strong> Después de estudiar el axioma del supremo, las sucesiones y la función exponencial con su inversa, San Martín presenta las herramientas que permitirán investigar sistemáticamente las funciones reales de variable real. Las semanas 12 y 13 estarán dedicadas a los límites de funciones; el tema de las derivadas aparecerá en la semana 14. La presente sesión se concentra en un primer desafío: expresar con precisión qué significa aproximarse a un punto del dominio o a su frontera y observar las imágenes que produce una función.</p>
+<p>Una función real de variable real tendrá la forma</p>
+<p><span class="math display">\[
+f:A\longrightarrow\mathbb R,\qquad A\subseteq\mathbb R.
+\]</span></p>
+<p>Nos interesa un punto real <span class="math inline">\(a\)</span> —el profesor escribe habitualmente <span class="math inline">\(\bar x\)</span>— y la expresión</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x).
+\]</span></p>
+<p>La pregunta que orienta esta notación es la siguiente: <strong>cuando los argumentos de <span class="math inline">\(f\)</span> se aproximan a <span class="math inline">\(a\)</span> a través de los puntos de <span class="math inline">\(A\)</span>, ¿hacia qué valor se aproximan sus imágenes?</strong> Esta investigación aprovecha la relación entre valores de una función y valores de una sucesión.</p>
+<p><strong>En la clase (14:52–22:35).</strong> El profesor distingue dos operaciones. La evaluación puntual <span class="math inline">\(f(a)\)</span> describe el valor asignado al argumento <span class="math inline">\(a\)</span>, siempre que <span class="math inline">\(a\in A\)</span>. El límite describe el comportamiento de las imágenes para argumentos del dominio próximos a <span class="math inline">\(a\)</span> y distintos de él. Una función puede tener en <span class="math inline">\(a\)</span> un valor especialmente elegido, puede presentar allí un hueco, o puede coincidir en ese punto con la tendencia de las imágenes cercanas. La existencia y el valor de un límite se investigan observando las imágenes de esos argumentos próximos.</p>
+<p>La observación da también el sentido matemático de la idea histórica de aproximarse «justo antes». En el orden de los reales, entre dos números distintos existen otros números; por ejemplo, si <span class="math inline">\(u&lt;v\)</span>, su media <span class="math inline">\((u+v)/2\)</span> satisface <span class="math inline">\(u&lt;(u+v)/2&lt;v\)</span>. De este modo, la aproximación puede continuar con distancias arbitrariamente pequeñas. San Martín menciona aquí la igualdad <span class="math inline">\(0{,}\overline9=1\)</span> para ilustrar que una aproximación carece de un último término inmediatamente anterior a <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="dos-primeros-ejemplos-el-valor-puntual-y-el-límite" class="level2">
+<h2 class="anchored" data-anchor-id="dos-primeros-ejemplos-el-valor-puntual-y-el-límite">Dos primeros ejemplos: el valor puntual y el límite</h2>
+<section id="la-parte-entera-restringida-a-un-intervalo" class="level3">
+<h3 class="anchored" data-anchor-id="la-parte-entera-restringida-a-un-intervalo">La parte entera restringida a un intervalo</h3>
+<p><strong>En la clase (22:45–26:38).</strong> Consideremos</p>
+<p><span class="math display">\[
+f:[0,1]\longrightarrow\mathbb R,\qquad f(x)=\lfloor x\rfloor.
+\]</span></p>
+<p>Para <span class="math inline">\(0\le x&lt;1\)</span> se tiene <span class="math inline">\(f(x)=0\)</span>, mientras que <span class="math inline">\(f(1)=1\)</span>. Los argumentos del dominio que se aproximan a <span class="math inline">\(1\)</span> y son distintos de <span class="math inline">\(1\)</span> pertenecen al intervalo <span class="math inline">\([0,1)\)</span> y tienen siempre imagen <span class="math inline">\(0\)</span>. Por consiguiente,</p>
+<p><span class="math display">\[
+\boxed{\lim_{\substack{x\to1\\x\in[0,1]}}\lfloor x\rfloor=0,\qquad f(1)=1.}
+\]</span></p>
+<p>Aquí la aproximación sucede por puntos del dominio <span class="math inline">\([0,1]\)</span>; cerca de <span class="math inline">\(1\)</span> estos puntos se encuentran a su izquierda. Esta precisión será decisiva cuando estudiemos qué puntos están disponibles para construir un límite.</p>
+<div id="fig-ic2021-c13-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial. Parte entera en el dominio [0,1]: el punto cerrado en (1,1) representa f(1); el círculo abierto en (1,0) indica la aproximación de las imágenes cercanas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c13-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_12_1/01_valor_y_limite.png" class="img-fluid figure-img" alt="Esquema editorial. Parte entera en el dominio [0,1]: el punto cerrado en (1,1) representa f(1); el círculo abierto en (1,0) indica la aproximación de las imágenes cercanas.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c13-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Esquema editorial. Parte entera en el dominio [0,1]: el punto cerrado en (1,1) representa f(1); el círculo abierto en (1,0) indica la aproximación de las imágenes cercanas.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="un-punto-excluido-y-dos-cocientes-algebraicos" class="level3">
+<h3 class="anchored" data-anchor-id="un-punto-excluido-y-dos-cocientes-algebraicos">Un punto excluido y dos cocientes algebraicos</h3>
+<p><strong>En la clase (26:38–31:38).</strong> Sea, primero,</p>
+<p><span class="math display">\[
+g(x)=\frac{x-1}{x-1},\qquad A=\mathbb R\setminus\{1\}.
+\]</span></p>
+<p>Para <span class="math inline">\(x\in A\)</span>, el cociente vale <span class="math inline">\(1\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\lim_{x\to1}g(x)=1.
+\]</span></p>
+<p>El mismo procedimiento se aplica a</p>
+<p><span class="math display">\[
+h(x)=\frac{x^2-1}{x-1},\qquad x\in\mathbb R\setminus\{1\}.
+\]</span></p>
+<p>La factorización <span class="math inline">\(x^2-1=(x-1)(x+1)\)</span> permite escribir <span class="math inline">\(h(x)=x+1\)</span> en su dominio. Si <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(1\)</span> desde ese dominio, <span class="math inline">\(x+1\)</span> se aproxima a <span class="math inline">\(2\)</span>; así,</p>
+<p><span class="math display">\[
+\boxed{\lim_{x\to1}\frac{x^2-1}{x-1}=2.}
+\]</span></p>
+<p>Las dos funciones proporcionan ejemplos de <strong>discontinuidad removible</strong> en el lenguaje que se desarrollará más adelante: la regla algebraica queda definida en un dominio perforado y las imágenes circundantes determinan un único valor de aproximación.</p>
+<div id="fig-ic2021-c13-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial. A la izquierda, la función constante de valor 1 con un punto excluido. A la derecha, la recta x+1 con un punto excluido en (1,2).">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c13-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_12_1/02_agujeros_y_limites.png" class="img-fluid figure-img" alt="Esquema editorial. A la izquierda, la función constante de valor 1 con un punto excluido. A la derecha, la recta x+1 con un punto excluido en (1,2).">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c13-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Esquema editorial. A la izquierda, la función constante de valor 1 con un punto excluido. A la derecha, la recta x+1 con un punto excluido en (1,2).
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="cómo-formalizar-la-aproximación-sucesiones-admisibles" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-formalizar-la-aproximación-sucesiones-admisibles">Cómo formalizar la aproximación: sucesiones admisibles</h2>
+<p><strong>En la clase (31:45–39:19).</strong> La aproximación de los argumentos puede realizarse con una sucesión <span class="math inline">\((x_n)\)</span> que se acerque cada vez más a <span class="math inline">\(a\)</span>. Como estamos estudiando la función <span class="math inline">\(f:A\to\mathbb R\)</span>, cada <span class="math inline">\(x_n\)</span> debe pertenecer al dominio. Además, el comportamiento de aproximación se examina mediante términos distintos del propio punto <span class="math inline">\(a\)</span>.</p>
+<p>El profesor organiza el procedimiento en <strong>tres condiciones</strong>:</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+&amp;x_n\longrightarrow a,\\
+&amp;x_n\in A\quad\text{para todo }n,\\
+&amp;x_n\ne a\quad\text{para todo }n.
+\end{aligned}}
+\]</span></p>
+<p>Llamaremos <em>sucesión admisible para la aproximación a <span class="math inline">\(a\)</span></em> a una sucesión con esas propiedades. Esta denominación es editorial; corresponde a las tres condiciones de la pizarra. Por ejemplo, <span class="math inline">\(x_n=a+1/n\)</span> converge a <span class="math inline">\(a\)</span> y presenta términos distintos de <span class="math inline">\(a\)</span>. Resultará admisible cuando todos sus términos pertenezcan a <span class="math inline">\(A\)</span>. En un dominio <span class="math inline">\(A=(0,1)\)</span>, la sucesión <span class="math inline">\(x_n=1-1/(n+1)\)</span> es admisible para aproximarse a <span class="math inline">\(1\)</span>.</p>
+<div id="fig-ic2021-c13-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial. Términos de la sucesión 1-1/(n+1), contenidos en (0,1), acercándose a 1.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c13-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_12_1/04_sucesion_en_dominio.png" class="img-fluid figure-img" alt="Esquema editorial. Términos de la sucesión 1-1/(n+1), contenidos en (0,1), acercándose a 1.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c13-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Esquema editorial. Términos de la sucesión 1-1/(n+1), contenidos en (0,1), acercándose a 1.
+</figcaption>
+</figure>
+</div>
+<p>Si <span class="math inline">\((x_n)\)</span> cumple las tres condiciones, podemos evaluar la función término a término y obtener una nueva sucesión:</p>
+<p><span class="math display">\[
+\bigl(f(x_n)\bigr)_{n\ge1}.
+\]</span></p>
+<p>La definición del límite exigirá que esta sucesión de imágenes tenga una aproximación común para <strong>cada elección</strong> de sucesión admisible. Esta universalidad enlaza las sucesiones con el comportamiento integral de una función alrededor de un punto.</p>
+</section>
+<section id="puntos-de-acumulación-el-dominio-fija-las-aproximaciones-posibles" class="level2">
+<h2 class="anchored" data-anchor-id="puntos-de-acumulación-el-dominio-fija-las-aproximaciones-posibles">Puntos de acumulación: el dominio fija las aproximaciones posibles</h2>
+<section id="definición-secuencial" class="level3">
+<h3 class="anchored" data-anchor-id="definición-secuencial">Definición secuencial</h3>
+<p><strong>En la clase (39:19–58:36).</strong> Antes de formular el límite, el profesor introduce el concepto de <em>punto de acumulación</em>. El concepto caracteriza los puntos reales a los cuales puede aproximarse una sucesión de elementos de un conjunto permaneciendo en ese conjunto.</p>
+<p><strong>Definición — Punto de acumulación (en la clase, 51:57–57:00).</strong> Sea <span class="math inline">\(A\subseteq\mathbb R\)</span>. Un número <span class="math inline">\(a\in\mathbb R\)</span> es un <strong>punto de acumulación de <span class="math inline">\(A\)</span></strong> si existe una sucesión <span class="math inline">\((x_n)\)</span> tal que</p>
+<p><span class="math display">\[
+\boxed{\forall n\ge1:\ x_n\in A,\quad x_n\ne a,
+\qquad \lim_{n\to\infty}x_n=a.}
+\]</span></p>
+<p>Escribiremos <span class="math inline">\(A'\)</span> para el conjunto de puntos de acumulación de <span class="math inline">\(A\)</span>, notación editorial usual en topología. Su relación con <span class="math inline">\(A\)</span> depende de cómo se distribuyen los elementos: un extremo de un intervalo puede ser punto de acumulación aunque ese extremo se encuentre excluido; un punto aislado del conjunto puede pertenecer a <span class="math inline">\(A\)</span> y carecer de acumulación a su alrededor.</p>
+<p><strong>Ampliación editorial — Caracterización por vecindades.</strong> La definición anterior es equivalente a</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\ \exists x\in A:
+\quad 0&lt;|x-a|&lt;\varepsilon.
+\]</span></p>
+<p>La sucesión explícita de la definición demuestra esta propiedad tomando un término suficientemente próximo a <span class="math inline">\(a\)</span>. Recíprocamente, eligiendo para cada <span class="math inline">\(n\)</span> un <span class="math inline">\(x_n\in A\)</span> tal que <span class="math inline">\(0&lt;|x_n-a|&lt;1/n\)</span>, se construye una sucesión admisible que converge a <span class="math inline">\(a\)</span>. Esta equivalencia anticipa las vecindades que se estudiarán en cursos posteriores; <strong>su prueba se incorpora editorialmente</strong>.</p>
+</section>
+<section id="intervalos-extremos-y-puntos-aislados" class="level3">
+<h3 class="anchored" data-anchor-id="intervalos-extremos-y-puntos-aislados">Intervalos, extremos y puntos aislados</h3>
+<p><strong>En la clase (40:16–51:40; recapitulación 1:04:08–1:16:55).</strong> Para el dominio <span class="math inline">\([0,1]\)</span> todos sus puntos son de acumulación, incluidos los extremos. También los puntos <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> son acumulación de <span class="math inline">\((0,1)\)</span>: desde dentro del intervalo se puede aproximar cualquiera de ellos tanto como se desee. En ambos casos,</p>
+<p><span class="math display">\[
+[0,1]'=[0,1],\qquad (0,1)'=[0,1].
+\]</span></p>
+<p>En cambio, el conjunto <span class="math inline">\(\{1\}\)</span> contiene un único punto aislado. Toda sucesión con términos en él es constante, de modo que ninguna satisface a la vez la condición de tener términos distintos de <span class="math inline">\(1\)</span> y converger a <span class="math inline">\(1\)</span>. Por ello <span class="math inline">\(\{1\}'=\varnothing\)</span>. Para un conjunto finito de puntos distintos la misma distancia positiva entre puntos impide aproximaciones infinitamente finas desde elementos diferentes. También <span class="math inline">\(\mathbb N'=\varnothing\)</span> como subconjunto de <span class="math inline">\(\mathbb R\)</span>: cada natural está separado del siguiente por una unidad.</p>
+<div id="fig-ic2021-c13-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial. Los conjuntos [0,1] y (0,1) tienen el mismo conjunto derivado [0,1]; el singleton {1/2} tiene derivado vacío.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c13-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_12_1/03_puntos_de_acumulacion.png" class="img-fluid figure-img" alt="Esquema editorial. Los conjuntos [0,1] y (0,1) tienen el mismo conjunto derivado [0,1]; el singleton {1/2} tiene derivado vacío.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c13-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Esquema editorial. Los conjuntos [0,1] y (0,1) tienen el mismo conjunto derivado [0,1]; el singleton {1/2} tiene derivado vacío.
+</figcaption>
+</figure>
+</div>
+<p>El profesor revisa además los dominios con huecos: si <span class="math inline">\(A=\mathbb R\setminus\{1\}\)</span>, las sucesiones <span class="math inline">\(1+1/n\)</span> o <span class="math inline">\(1-1/n\)</span> se aproximan a <span class="math inline">\(1\)</span> desde <span class="math inline">\(A\)</span>, y, por tanto, <span class="math inline">\(A'=\mathbb R\)</span>. Para el conjunto vacío también vale <span class="math inline">\(\varnothing'=\varnothing\)</span>.</p>
+<p>La clasificación queda resumida en la tabla siguiente.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Conjunto <span class="math inline">\(A\)</span></th>
+<th style="text-align: left;">Puntos de acumulación <span class="math inline">\(A'\)</span></th>
+<th style="text-align: left;">Idea de comprobación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(a+1/n\to a\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\([0,1]\)</span></td>
+<td style="text-align: left;"><span class="math inline">\([0,1]\)</span></td>
+<td style="text-align: left;">Aproximación desde el intervalo.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\((0,1)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\([0,1]\)</span></td>
+<td style="text-align: left;">Ambos extremos son alcanzables.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\setminus\{1\}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\)</span></td>
+<td style="text-align: left;">El punto excluido es alcanzable.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\{1\}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\varnothing\)</span></td>
+<td style="text-align: left;">Punto aislado.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\{0,1,2,3\}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\varnothing\)</span></td>
+<td style="text-align: left;">Conjunto finito.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathbb N\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\varnothing\)</span></td>
+<td style="text-align: left;">Distancia entre naturales consecutivos.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\varnothing\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\varnothing\)</span></td>
+<td style="text-align: left;">Ausencia de elementos con que construir la sucesión.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathbb Q\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\)</span></td>
+<td style="text-align: left;">Densidad de los racionales.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\setminus\mathbb Q\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb R\)</span></td>
+<td style="text-align: left;">Densidad de los irracionales.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Precisión editorial.</strong> El límite <span class="math inline">\(n\to\infty\)</span> de una sucesión <span class="math inline">\(s:\mathbb N\to\mathbb R\)</span> es una herramienta distinta del límite de funciones en un punto <strong>real finito</strong> de acumulación del dominio. La ausencia de puntos de acumulación reales de <span class="math inline">\(\mathbb N\)</span> concuerda con el uso del límite de sucesiones cuando el índice crece sin cota. El profesor hace expresamente esta distinción entre <strong>1:13:32 y 1:16:47</strong>.</p>
+</section>
+<section id="los-racionales-y-los-irracionales-se-acumulan-en-todo-real" class="level3">
+<h3 class="anchored" data-anchor-id="los-racionales-y-los-irracionales-se-acumulan-en-todo-real">Los racionales y los irracionales se acumulan en todo real</h3>
+<p><strong>En la clase (1:16:55–1:26:15).</strong> La densidad de los racionales afirma que, dados dos reales <span class="math inline">\(u&lt;v\)</span>, existe un racional <span class="math inline">\(r\)</span> tal que <span class="math inline">\(u&lt;r&lt;v\)</span>. El profesor propone construir, para un real <span class="math inline">\(a\)</span>, términos racionales <span class="math inline">\(r_n\)</span> que satisfagan</p>
+<p><span class="math display">\[
+a&lt;r_n&lt;a+\frac1n.
+\]</span></p>
+<p>El teorema del sándwich implica <span class="math inline">\(r_n\to a\)</span>, y cada <span class="math inline">\(r_n\)</span> pertenece a <span class="math inline">\(\mathbb Q\)</span> y difiere de <span class="math inline">\(a\)</span>. Por tanto, <strong>todo real es punto de acumulación de <span class="math inline">\(\mathbb Q\)</span></strong>. En particular, se pueden aproximar <span class="math inline">\(\sqrt2\)</span>, <span class="math inline">\(\pi\)</span> o <span class="math inline">\(e\)</span> mediante sucesiones racionales.</p>
+<p>La densidad de los irracionales produce el resultado análogo para <span class="math inline">\(\mathbb R\setminus\mathbb Q\)</span>. El profesor observa, por ejemplo, que cuando <span class="math inline">\(a\in\mathbb Q\)</span>, la sucesión <span class="math inline">\(a+\sqrt2/n\)</span> está formada por irracionales, converge a <span class="math inline">\(a\)</span> y tiene términos distintos del límite; cuando <span class="math inline">\(a\)</span> es irracional puede emplearse <span class="math inline">\(a+1/n\)</span>.</p>
+<p><span class="math display">\[
+\boxed{\mathbb Q'=\mathbb R,
+\qquad (\mathbb R\setminus\mathbb Q)'=\mathbb R.}
+\]</span></p>
+<p>Esta propiedad constituye una razón conceptual para estudiar límites en la frontera de un dominio. Una función inicialmente definida en <span class="math inline">\(\mathbb Q\)</span> puede examinarse mediante sucesiones racionales que convergen a números irracionales. La posibilidad de definir allí un valor por límite requiere además que <strong>todas</strong> las aproximaciones admisibles generen la misma tendencia de imágenes.</p>
+</section>
+</section>
+<section id="definición-rigurosa-del-límite-de-una-función" class="level2">
+<h2 class="anchored" data-anchor-id="definición-rigurosa-del-límite-de-una-función">Definición rigurosa del límite de una función</h2>
+<p><strong>En la clase (1:26:15–1:34:43).</strong> Llegamos a la definición que organiza los ejemplos anteriores. Sea <span class="math inline">\(f:A\to\mathbb R\)</span>, sea <span class="math inline">\(a\)</span> un punto de acumulación de <span class="math inline">\(A\)</span> y sea <span class="math inline">\(L\in\mathbb R\)</span>.</p>
+<p><strong>Definición — Límite secuencial de una función.</strong> Diremos que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>si para toda sucesión <span class="math inline">\((x_n)\)</span> que satisfaga</p>
+<p><span class="math display">\[
+x_n\in A,\qquad x_n\ne a\quad(n\ge1),
+\qquad x_n\longrightarrow a,
+\]</span></p>
+<p>la sucesión de imágenes satisface</p>
+<p><span class="math display">\[
+\boxed{f(x_n)\longrightarrow L.}
+\]</span></p>
+<p>Una formulación cuantificada permite identificar con precisión su estructura lógica:</p>
+<p><span class="math display">\[
+\boxed{\forall(x_n)\;\Bigl[
+\bigl((\forall n)\ x_n\in A\setminus\{a\}\bigr)
+\land x_n\to a
+\ \Longrightarrow\ f(x_n)\to L\Bigr].}
+\]</span></p>
+<div id="fig-ic2021-c13-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial. Cada sucesión admisible de argumentos convergente a a genera una sucesión de imágenes que converge al mismo L.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c13-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_12_1/06_criterio_secuencial.png" class="img-fluid figure-img" alt="Esquema editorial. Cada sucesión admisible de argumentos convergente a a genera una sucesión de imágenes que converge al mismo L.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c13-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Esquema editorial. Cada sucesión admisible de argumentos convergente a a genera una sucesión de imágenes que converge al mismo L.
+</figcaption>
+</figure>
+</div>
+<p><strong>Demostración desarrollada de la buena definición de las imágenes.</strong> Cada término <span class="math inline">\(x_n\)</span> se encuentra en el dominio <span class="math inline">\(A\)</span>. Por la regla funcional, <span class="math inline">\(f(x_n)\)</span> es un número real, y la asignación <span class="math inline">\(n\mapsto f(x_n)\)</span> define una función <span class="math inline">\(\mathbb N\to\mathbb R\)</span>, es decir, una sucesión. Este paso explica por qué el profesor insiste en la tercera condición. Se trata de una composición <span class="math inline">\(f\circ x\)</span>, donde la sucesión <span class="math inline">\(x:\mathbb N\to A\)</span> sirve de entrada a <span class="math inline">\(f\)</span>.</p>
+<p><strong>Ampliación editorial — Por qué exigimos un punto de acumulación.</strong> La hipótesis <span class="math inline">\(a\in A'\)</span> garantiza la existencia de sucesiones admisibles. Si <span class="math inline">\(a\)</span> fuese aislado, el enunciado «para toda sucesión admisible» quedaría satisfecho formalmente para todo valor <span class="math inline">\(L\)</span> por ausencia de tales sucesiones. Al reservar la definición de límite para puntos de acumulación preservamos la interpretación del concepto y la unicidad del límite cuando existe.</p>
+</section>
+<section id="ejemplos-formales-con-sucesiones" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-formales-con-sucesiones">Ejemplos formales con sucesiones</h2>
+<section id="función-identidad" class="level3">
+<h3 class="anchored" data-anchor-id="función-identidad">Función identidad</h3>
+<p><strong>En la clase (1:34:43–1:39:11).</strong> Sea <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span> definida por <span class="math inline">\(f(x)=x\)</span>. Para cada <span class="math inline">\(a\in\mathbb R\)</span>, tomamos una sucesión arbitraria <span class="math inline">\(x_n\to a\)</span> con <span class="math inline">\(x_n\ne a\)</span>. Entonces</p>
+<p><span class="math display">\[
+f(x_n)=x_n\longrightarrow a.
+\]</span></p>
+<p>Como la conclusión se obtiene para cualquier sucesión admisible, podemos escribir</p>
+<p><span class="math display">\[
+\boxed{\lim_{x\to a}x=a.}
+\]</span></p>
+<p>El profesor introduce también <span class="math inline">\(f(x)=2x\)</span>. En ese caso <span class="math inline">\(f(x_n)=2x_n\to2a\)</span> por el álgebra de límites de sucesiones; por tanto,</p>
+<p><span class="math display">\[
+\lim_{x\to a}2x=2a.
+\]</span></p>
+<p>La sencillez de estas pruebas resulta instructiva: una vez fijado correctamente el cuantificador «para toda sucesión», un teorema previo sobre sucesiones produce el nuevo resultado sobre funciones.</p>
+</section>
+<section id="dos-cocientes-con-denominador-1-x" class="level3">
+<h3 class="anchored" data-anchor-id="dos-cocientes-con-denominador-1-x">Dos cocientes con denominador <span class="math inline">\(1-x\)</span></h3>
+<p><strong>En la clase (1:39:11–1:43:02).</strong> La transcripción permite identificar dos cocientes estudiados cerca del punto <span class="math inline">\(1\)</span>:</p>
+<p><span class="math display">\[
+g(x)=\frac{x-1}{1-x},\qquad
+h(x)=\frac{x^2-1}{1-x},\qquad x\ne1.
+\]</span></p>
+<p><strong>Lectura incierta.</strong> La primera fórmula aparece parcialmente degradada en los subtítulos, pero la verbalización posterior del denominador <span class="math inline">\(1-x\)</span>, la simplificación y las respuestas <span class="math inline">\(-1\)</span> y <span class="math inline">\(-2\)</span> sustentan esta reconstrucción. Requiere cotejo final con la imagen de pizarra.</p>
+<p>Tomemos una sucesión <span class="math inline">\(x_n\to1\)</span> con <span class="math inline">\(x_n\ne1\)</span>. Entonces</p>
+<p><span class="math display">\[
+g(x_n)=\frac{x_n-1}{1-x_n}=-1
+\ \Longrightarrow\ \lim_{x\to1}g(x)=-1.
+\]</span></p>
+<p>Asimismo,</p>
+<p><span class="math display">\[
+h(x_n)=\frac{(x_n-1)(x_n+1)}{1-x_n}
+=-(x_n+1)\longrightarrow-2.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\lim_{x\to1}\frac{x^2-1}{1-x}=-2.}
+\]</span></p>
+<p>La simplificación se ha hecho en el dominio del cociente, en el que cada término <span class="math inline">\(x_n\)</span> satisface la restricción <span class="math inline">\(x_n\ne1\)</span>. La sucesión compuesta está definida y admite el cálculo de límite.</p>
+</section>
+</section>
+<section id="una-función-definida-según-racionalidad-prueba-y-contraejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="una-función-definida-según-racionalidad-prueba-y-contraejemplo">Una función definida según racionalidad: prueba y contraejemplo</h2>
+<p><strong>En la clase (1:43:18–1:50:26, con preguntas hasta 1:56:33).</strong> Se considera la función</p>
+<p><span class="math display">\[
+f:\mathbb R\longrightarrow\mathbb R,
+\qquad f(x)=\begin{cases}
+x,&amp;x\in\mathbb Q,\\
+x^2,&amp;x\in\mathbb R\setminus\mathbb Q.
+\end{cases}
+\]</span></p>
+<p>Cada real pertenece a exactamente una de las dos clases indicadas, de manera que <span class="math inline">\(f\)</span> asigna un único valor a cada argumento. El profesor pregunta por el límite en <span class="math inline">\(x=1\)</span> y señala que tanto la rama <span class="math inline">\(x\)</span> como la rama <span class="math inline">\(x^2\)</span> se aproximan allí al mismo valor <span class="math inline">\(1\)</span>.</p>
+<div id="fig-ic2021-c13-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Esquema editorial. Las curvas x y x² indican las fórmulas posibles; la función toma la primera sobre racionales y la segunda sobre irracionales. Coinciden en 1 y difieren en 1/2. Las líneas continuas del esquema representan fórmulas, no todas las imágenes efectivas de la función.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ic2021-c13-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figuras/IC2021_Catedra_12_1/05_ramas_racionales_irracionales.png" class="img-fluid figure-img" alt="Esquema editorial. Las curvas x y x² indican las fórmulas posibles; la función toma la primera sobre racionales y la segunda sobre irracionales. Coinciden en 1 y difieren en 1/2. Las líneas continuas del esquema representan fórmulas, no todas las imágenes efectivas de la función.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ic2021-c13-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Esquema editorial. Las curvas x y x² indican las fórmulas posibles; la función toma la primera sobre racionales y la segunda sobre irracionales. Coinciden en 1 y difieren en 1/2. Las líneas continuas del esquema representan fórmulas, no todas las imágenes efectivas de la función.
+</figcaption>
+</figure>
+</div>
+<p><strong>Demostración desarrollada (1:45:04–1:49:49).</strong> Consideremos una sucesión arbitraria <span class="math inline">\((x_n)\)</span> que converge a <span class="math inline">\(1\)</span>, con <span class="math inline">\(x_n\ne1\)</span>. Para cada índice, de acuerdo con la naturaleza racional del término,</p>
+<p><span class="math display">\[
+|f(x_n)-1|=\begin{cases}
+|x_n-1|,&amp;x_n\in\mathbb Q,\\
+|x_n^2-1|,&amp;x_n\notin\mathbb Q.
+\end{cases}
+\]</span></p>
+<p>Ambas posibilidades satisfacen la <strong>misma</strong> estimación</p>
+<p><span class="math display">\[
+0\le |f(x_n)-1|
+\le |x_n-1|+|x_n^2-1|.
+\]</span></p>
+<p>El miembro derecho converge a <span class="math inline">\(0\)</span> porque <span class="math inline">\(x_n\to1\)</span> implica <span class="math inline">\(x_n^2\to1\)</span>. El teorema del sándwich concluye</p>
+<p><span class="math display">\[
+|f(x_n)-1|\longrightarrow0,
+\qquad f(x_n)\longrightarrow1.
+\]</span></p>
+<p>El cálculo cubre incluso sucesiones que alternan términos racionales e irracionales. Como la sucesión elegida era arbitraria,</p>
+<p><span class="math display">\[
+\boxed{\lim_{x\to1}f(x)=1.}
+\]</span></p>
+<p><strong>Ejercicio propuesto en la clase (1:49:51).</strong> Estudiar <span class="math inline">\(\lim_{x\to0}f(x)\)</span>.</p>
+<p><strong>Ampliación editorial — Solución.</strong> Para toda sucesión <span class="math inline">\(x_n\to0\)</span>,</p>
+<p><span class="math display">\[
+0\le |f(x_n)|\le |x_n|+|x_n|^2\longrightarrow0.
+\]</span></p>
+<p>Así, <span class="math inline">\(\lim_{x\to0}f(x)=0\)</span>.</p>
+<p><strong>Ejercicio propuesto en la clase (1:50:01; discusión 1:55:23–1:56:33).</strong> Estudiar <span class="math inline">\(\lim_{x\to1/2}f(x)\)</span>.</p>
+<p><strong>Ampliación editorial — Solución.</strong> Por densidad, podemos elegir una sucesión racional <span class="math inline">\(r_n\to1/2\)</span> con <span class="math inline">\(r_n\ne1/2\)</span> y otra irracional <span class="math inline">\(t_n\to1/2\)</span>. Entonces</p>
+<p><span class="math display">\[
+f(r_n)=r_n\longrightarrow\frac12,
+\qquad f(t_n)=t_n^2\longrightarrow\frac14.
+\]</span></p>
+<p>Las dos aproximaciones admisibles generan límites de imágenes diferentes. Por el criterio secuencial, <strong>el límite de <span class="math inline">\(f\)</span> en <span class="math inline">\(1/2\)</span> no existe</strong>. La conclusión utiliza la unicidad del límite de una sucesión, ya conocida en el curso; el teorema específico de unicidad del límite de funciones se anuncia para la siguiente clase.</p>
+</section>
+<section id="herramientas-que-quedan-anunciadas" class="level2">
+<h2 class="anchored" data-anchor-id="herramientas-que-quedan-anunciadas">Herramientas que quedan anunciadas</h2>
+<p><strong>En la clase (1:50:19–1:51:01).</strong> San Martín anuncia para la siguiente sesión tres familias de resultados: unicidad del límite de una función, álgebra de los límites y teorema del sándwich para funciones. Explica que sus demostraciones se apoyarán en los resultados respectivos de sucesiones. <strong>Estas notas los registran como anuncios de la clase:</strong> el tratamiento sistemático de sus demostraciones corresponde a la cátedra siguiente.</p>
+<p><strong>Ampliación editorial — Puente conceptual.</strong> Si <span class="math inline">\(a\)</span> es un punto de acumulación de <span class="math inline">\(A\)</span> y una función tiene límite <span class="math inline">\(L\)</span> en <span class="math inline">\(a\)</span>, el mismo <span class="math inline">\(L\)</span> debe aparecer a lo largo de cada sucesión admisible. Esta universalidad es la clave para transferir resultados del cálculo con sucesiones al cálculo con funciones. Una sola sucesión sirve para explorar o descartar un límite candidato; demostrar la existencia de un límite exige controlar <strong>todas</strong> las sucesiones admisibles.</p>
+</section>
+<section id="taller-de-problemas-y-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="taller-de-problemas-y-soluciones">Taller de problemas y soluciones</h2>
+<p>Los ejercicios se presentan a continuación según la fuente de origen; las ampliaciones editoriales de cada apuntes permanecen expresamente identificadas.</p>
+<section id="práctica-adicional-con-soluciones-breves-cátedra-12.1" class="level3">
+<h3 class="anchored" data-anchor-id="práctica-adicional-con-soluciones-breves-cátedra-12.1">Práctica adicional con soluciones breves — cátedra 12.1</h3>
+<p>Los siguientes ocho ejercicios son <strong>ampliaciones editoriales</strong>, incorporadas para consolidar la clase. Se separan de los dos ejercicios propuestos por el docente en la sección anterior.</p>
+<p><strong>1. Punto acumulable de un intervalo.</strong> Hallar <span class="math inline">\(A'\)</span> para <span class="math inline">\(A=(-2,3]\)</span>.</p>
+<p><em>Solución.</em> Para cada <span class="math inline">\(a\in[-2,3]\)</span> existen puntos de <span class="math inline">\(A\)</span>, diferentes de <span class="math inline">\(a\)</span>, arbitrariamente próximos a él, y para todo <span class="math inline">\(a\)</span> fuera de ese intervalo existe una vecindad disjunta de <span class="math inline">\(A\)</span>. Por tanto, <span class="math inline">\(A'=[-2,3]\)</span>.</p>
+<p><strong>2. Punto aislado añadido.</strong> Hallar <span class="math inline">\(B'\)</span> para <span class="math inline">\(B=(0,1)\cup\{3\}\)</span>.</p>
+<p><em>Solución.</em> El intervalo contribuye con todos los puntos de <span class="math inline">\([0,1]\)</span>. El punto <span class="math inline">\(3\)</span> queda separado de <span class="math inline">\((0,1)\)</span> y de cualquier otro elemento de <span class="math inline">\(B\)</span>. Por tanto, <span class="math inline">\(B'=[0,1]\)</span>.</p>
+<p><strong>3. Sucesión admisible en un extremo.</strong> Construir una sucesión de <span class="math inline">\((2,5)\)</span> que tienda a <span class="math inline">\(5\)</span>.</p>
+<p><em>Solución.</em> <span class="math inline">\(x_n=5-1/(n+1)\)</span> pertenece a <span class="math inline">\((2,5)\)</span>, difiere de <span class="math inline">\(5\)</span> y converge a <span class="math inline">\(5\)</span>.</p>
+<p><strong>4. Límite de un cociente.</strong> Calcular <span class="math inline">\(\lim_{x\to3}(x^2-9)/(x-3)\)</span>.</p>
+<p><em>Solución.</em> Si <span class="math inline">\(x\ne3\)</span>, la fracción vale <span class="math inline">\(x+3\)</span>, y toda sucesión admisible convergente a <span class="math inline">\(3\)</span> produce imágenes convergentes a <span class="math inline">\(6\)</span>.</p>
+<p><strong>5. Valor en el punto alterado.</strong> Sea <span class="math inline">\(f(x)=2x\)</span> para <span class="math inline">\(x\ne1\)</span> y <span class="math inline">\(f(1)=17\)</span>. Calcular <span class="math inline">\(\lim_{x\to1}f(x)\)</span>.</p>
+<p><em>Solución.</em> Toda sucesión con términos distintos de <span class="math inline">\(1\)</span> produce <span class="math inline">\(f(x_n)=2x_n\to2\)</span>; el límite es <span class="math inline">\(2\)</span>.</p>
+<p><strong>6. Una función oscilante entre dos valores.</strong> Sea <span class="math inline">\(g(x)=1\)</span> para <span class="math inline">\(x\in\mathbb Q\)</span> y <span class="math inline">\(g(x)=2\)</span> para <span class="math inline">\(x\notin\mathbb Q\)</span>. Estudiar el límite de <span class="math inline">\(g\)</span> en cualquier real.</p>
+<p><em>Solución.</em> Las sucesiones racionales admisibles producen imágenes <span class="math inline">\(1\)</span>, y las irracionales producen imágenes <span class="math inline">\(2\)</span>. En cada real se obtienen límites distintos; en ninguno existe el límite.</p>
+<p><strong>7. Ramas que coinciden en otro punto.</strong> Para <span class="math inline">\(f(x)=x\)</span> sobre racionales y <span class="math inline">\(f(x)=x^2\)</span> sobre irracionales, encontrar todos los puntos donde existe el límite.</p>
+<p><em>Solución.</em> Si existe límite en <span class="math inline">\(a\)</span>, la rama racional exige <span class="math inline">\(L=a\)</span> y la irracional exige <span class="math inline">\(L=a^2\)</span>; luego <span class="math inline">\(a=a^2\)</span>, que equivale a <span class="math inline">\(a\in\{0,1\}\)</span>. En ambos puntos se aplica la estimación común utilizada en la clase; esos son precisamente los puntos pedidos.</p>
+<p><strong>8. Conjunto de reciprocidades.</strong> Sea <span class="math inline">\(C=\{1/n:n\in\mathbb N,\ n\ge1\}\)</span>. Hallar <span class="math inline">\(C'\)</span>.</p>
+<p><em>Solución.</em> La sucesión <span class="math inline">\(1/n\)</span> converge a <span class="math inline">\(0\)</span>, de modo que <span class="math inline">\(0\in C'\)</span>. Cada término <span class="math inline">\(1/k\)</span> se encuentra aislado de los demás; todo real fuera de <span class="math inline">\(C\cup\{0\}\)</span> tiene una vecindad que deja fuera a <span class="math inline">\(C\)</span>. Por tanto, <span class="math inline">\(C'=\{0\}\)</span>.</p>
+<hr>
+<hr>
+<p><em>Este capítulo pertenece a la edición temática no oficial del curso IC2021. <a href="../../../libros/otros/introduccion-al-calculo/index.html">Índice del libro</a> · <a href="../../../libros/otros/introduccion-al-calculo/apendices.html">Fuentes y concordancia</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-12.html" class="pagination-link" aria-label="12. La función exponencial y su inversa logarítmica">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">12. La función exponencial y su inversa logarítmica</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../libros/otros/introduccion-al-calculo/capitulo-14.html" class="pagination-link" aria-label="14. Álgebra, comparación y límites fundamentales">
+        <span class="nav-page-text">14. Álgebra, comparación y límites fundamentales</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
