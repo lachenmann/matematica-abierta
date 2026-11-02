@@ -1,6 +1,6 @@
 # Introducción al cálculo — IC2021
 
-Edición temática **no oficial** de apuntes elaborados a partir de las 28 cátedras de Jorge San Martín (2021). Quinto nivel de integración: conserva el proyecto Quarto `type: website` del sitio, MathJax, buscador, navegación local y estilos heredados. No se crea un proyecto Quarto anidado que el despliegue global pudiera omitir.
+Edición temática **no oficial** de apuntes elaborados a partir de las 28 cátedras de Jorge San Martín (2021). Conserva el proyecto Quarto `type: website` del sitio, MathJax, buscador, navegación local y estilos heredados. No se crea un proyecto Quarto anidado que el despliegue global pudiera omitir.
 
 Ruta solicitada: `/libros/otros/introduccion-al-calculo/`.
 

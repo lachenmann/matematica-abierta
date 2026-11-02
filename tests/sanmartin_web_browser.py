@@ -36,6 +36,10 @@ try:
      if page.locator('main figure').count():
       page.locator('main figure').first.scroll_into_view_if_needed()
       page.screenshot(path=str(OUT/f'{name}-{width}-figure.png'))
+   page.goto(origin+root+'index.html',wait_until='networkidle')
+   page.get_by_role('button',name='Search',exact=True).click()
+   page.locator('#autocomplete-0-input').fill('supremo')
+   page.locator('#autocomplete-0-documents-list a[href*="capitulo-09"]').first.wait_for(timeout=30000)
    context.close()
   browser.close()
 finally:
