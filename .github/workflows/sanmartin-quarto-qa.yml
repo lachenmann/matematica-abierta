@@ -1,0 +1,63 @@
+name: IC2021 — Quarto book QA
+
+on:
+  pull_request:
+    paths:
+      - "libros/otros/introduccion-al-calculo/**"
+      - "assets/books/san-martin/**"
+      - "tools/*sanmartin*.py"
+      - "tests/sanmartin_web_browser.py"
+      - "data/ma-fig-manifests/ic2021-*.json"
+      - ".github/workflows/sanmartin-quarto-qa.yml"
+      - "tools/sanmartin_archive.py"
+      - "tools/materialize_sanmartin_figures.py"
+      - "docs/ic2021/**"
+      - "_quarto.yml"
+      - "libros/otros/index.qmd"
+      - "libros/index.qmd"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-integrity-and-render:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.10.18"
+      - name: Verify 5 parts, 18 chapters and master consistency
+        run: python3 tools/generate_sanmartin_web.py --check
+      - name: Materialize 177 original figures and verify checksums
+        run: python3 tools/materialize_sanmartin_figures.py
+      - name: Render the complete book
+        run: quarto render libros/otros/introduccion-al-calculo
+      - name: Audit source conservation and rendered internal links
+        run: python3 tools/check_sanmartin_web.py --site-dir _site --report .ma-build/ic2021-inventory.json
+      - name: Check book style inheritance
+        run: python3 tools/check_book_layout.py --site-dir _site
+      - name: Install browser QA
+        run: |
+          python3 -m pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Check all 20 pages on phone, tablet and desktop
+        run: python3 tests/sanmartin_web_browser.py
+      - name: Preserve complete preview and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ic2021-complete-preview-and-qa
+          path: |
+            _site/libros/otros/introduccion-al-calculo/
+            _site/site_libs/
+            _site/assets/brand/
+            _site/assets/includes/
+            _site/assets/books/reader.css
+            _site/assets/books/san-martin/IC2021_fuentes_web_completas.zip
+            _site/search.json
+            .ma-build/ic2021-visual/
+            .ma-build/ic2021-inventory.json
+          include-hidden-files: true
+          retention-days: 14
