@@ -1,0 +1,48 @@
+name: IC2021 — Quarto book QA
+
+on:
+  pull_request:
+    paths:
+      - "libros/otros/introduccion-al-calculo-san-martin/**"
+      - "assets/books/san-martin/**"
+      - "tools/generate_sanmartin_web.py"
+      - "tools/sanmartin_archive.py"
+      - "tools/materialize_sanmartin_figures.py"
+      - "_quarto.yml"
+      - "libros/otros/index.qmd"
+      - "libros/index.qmd"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-integrity-and-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.10.18"
+      - name: Verify 5 parts, 18 chapters and master consistency
+        run: python3 tools/generate_sanmartin_web.py --check
+      - name: Materialize 175 original figures and verify checksums
+        run: python3 tools/materialize_sanmartin_figures.py
+      - name: Render table of contents and selected mathematical chapters
+        run: |
+          quarto render libros/otros/introduccion-al-calculo-san-martin/index.qmd
+          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-01.qmd
+          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-06.qmd
+          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-15.qmd
+          quarto render libros/otros/introduccion-al-calculo-san-martin/capitulo-18.qmd
+      - name: Verify expected HTML and embedded source paths
+        run: |
+          python3 - <<'PYQA'
+          from pathlib import Path
+          root = Path('_site/libros/otros/introduccion-al-calculo-san-martin')
+          for name in ['index','capitulo-01','capitulo-06','capitulo-15','capitulo-18']:
+              page = root / f'{name}.html'
+              assert page.is_file() and page.stat().st_size > 1000, page
+          assert any((root/'figuras').rglob('*.png'))
+          print('IC2021 Quarto smoke render: PASS')
+          PYQA
