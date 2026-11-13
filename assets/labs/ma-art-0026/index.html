@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="Laboratorio interactivo: sumas etiquetadas de Riemann, sumas de Darboux, refinaciones y convergencia." />
+  <title>Laboratorio de integración · Matemática Abierta</title>
+  <link rel="stylesheet" href="./estilos.css" />
+  <script src="./laboratorio.js" defer></script>
+</head>
+<body>
+<main class="lab-shell" id="laboratorio">
+  <header class="lab-header">
+    <div class="lab-breadcrumb"><span class="logo" aria-hidden="true">a²</span><span>MATEMÁTICA ABIERTA</span><span class="dot">/</span><span>LABORATORIOS</span></div>
+    <div class="lab-hero">
+      <div>
+        <div class="eyebrow">ARTÍCULO MA-ART-0026 <span class="eyebrow-dot">·</span> EXPERIENCIA INTERACTIVA</div>
+        <h1>Darboux <em>y</em> Riemann</h1>
+        <p class="subtitle">Una integral, distintas maneras de aproximarla. Modifica las particiones y descubre qué controla realmente el error.</p>
+      </div>
+      <div class="hero-emblem" aria-hidden="true"><span>∫</span><span class="emblem-small">a → b</span></div>
+    </div>
+  </header>
+
+  <nav class="lab-tabs" role="tablist" aria-label="Vistas del laboratorio">
+    <button id="tab-explorar" role="tab" class="tab active" aria-selected="true" aria-controls="panel-explorar" type="button" data-tab="explorar"><span class="tab-number">01</span> Explorar las sumas</button>
+    <button id="tab-convergencia" role="tab" class="tab" aria-selected="false" aria-controls="panel-convergencia" type="button" data-tab="convergencia" tabindex="-1"><span class="tab-number">02</span> Observar la convergencia</button>
+    <button id="tab-refinacion" role="tab" class="tab" aria-selected="false" aria-controls="panel-refinacion" type="button" data-tab="refinacion" tabindex="-1"><span class="tab-number">03</span> Refinación común</button>
+  </nav>
+
+  <div class="lab-layout">
+    <aside class="lab-controls" aria-labelledby="control-title">
+      <div class="controls-heading"><div class="controls-icon" aria-hidden="true">⌘</div><div><h2 id="control-title">Mesa de trabajo</h2><p>Cambia una variable cada vez.</p></div></div>
+      <div class="control-field"><label for="funcion">Función <span class="field-helper">en [0,1]</span></label>
+        <select id="funcion">
+          <option value="cuadrado">f(x) = x²</option>
+          <option value="seno">f(x) = sen(2πx)</option>
+          <option value="escalon">h(x) = 1 si x ≥ c</option>
+          <option value="dirichlet">q(x) = 1 si x es racional</option>
+        </select>
+      </div>
+      <div id="jump-control" class="control-field" hidden>
+        <div class="field-row"><label for="salto">Posición del salto c</label><output for="salto" id="salto-valor">0,43</output></div>
+        <input type="range" id="salto" min="0.1" max="0.9" step="0.01" value="0.43" />
+      </div>
+      <div class="control-field">
+        <div class="field-row"><label for="n">Número de tramos <span class="field-helper">n</span></label><output for="n" id="n-valor">8</output></div>
+        <input type="range" id="n" min="2" max="100" step="1" value="8" />
+        <div class="range-ticks"><span>2</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+      </div>
+      <div class="control-field"><label for="particion">Distribución de los tramos</label>
+        <select id="particion"><option value="uniforme">Partición uniforme</option><option value="irregular">Partición irregular</option></select>
+        <button id="redistribuir" class="inline-btn" type="button" disabled>↻ Redistribuir puntos</button>
+      </div>
+      <div class="control-field"><label for="etiquetas">Elección de etiquetas ξᵢ</label>
+        <select id="etiquetas">
+          <option value="izquierda">Extremos izquierdos</option><option value="medio" selected>Puntos medios</option>
+          <option value="derecha">Extremos derechos</option><option value="alternas">Alternadas</option>
+          <option value="aleatorias">Aleatorias reproducibles</option>
+        </select>
+        <p class="micro-note" id="etiquetas-ayuda">También puedes pulsar cada tramo del gráfico para mover su etiqueta.</p>
+      </div>
+      <div class="control-field"><label for="visualizacion">Rectángulos visibles</label>
+        <select id="visualizacion"><option value="ambos">Comparar Riemann y Darboux</option><option value="riemann">Solo Riemann</option><option value="darboux">Solo Darboux</option></select>
+      </div>
+      <button class="reset-btn" id="restablecer" type="button">Restablecer valores <span aria-hidden="true">↺</span></button>
+    </aside>
+
+    <div class="lab-content">
+      <section class="panel" id="panel-explorar" role="tabpanel" aria-labelledby="tab-explorar">
+        <div class="panel-heading"><div><span class="section-kicker">EXPERIMENTO I</span><h2>Las alturas no son únicas</h2><p>Una misma partición admite muchas sumas etiquetadas, pero queda encerrada entre las sumas de Darboux.</p></div><span class="section-id" aria-hidden="true">01 / 03</span></div>
+        <div class="plot-card">
+          <div class="plot-topline"><span id="funcion-titulo" class="formula-label">f(x) = x²</span><span id="particion-detalle" class="plot-subtitle">8 tramos · partición uniforme</span></div>
+          <svg id="grafico-principal" class="main-svg" viewBox="0 0 1000 430" role="img" aria-label="Gráfico de la función y los rectángulos de aproximación"></svg>
+          <div class="legend"><span><i class="legend-dot legend-riemann"></i> Suma etiquetada S</span><span><i class="legend-dot legend-darboux"></i> Oscilación: U − L</span><span><i class="legend-dot legend-curve"></i> Función</span></div>
+        </div>
+        <div class="metrics" aria-live="polite" aria-atomic="true">
+          <div class="metric metric-l"><span>SUMA INFERIOR</span><strong id="valor-l">—</strong><small>L(f,P)</small></div>
+          <div class="metric metric-s"><span>SUMA ETIQUETADA</span><strong id="valor-s">—</strong><small>S(f,P,ξ)</small></div>
+          <div class="metric metric-u"><span>SUMA SUPERIOR</span><strong id="valor-u">—</strong><small>U(f,P)</small></div>
+          <div class="metric metric-gap"><span>SEPARACIÓN</span><strong id="valor-gap">—</strong><small>U(f,P) − L(f,P)</small></div>
+        </div>
+        <div class="notice" id="conclusion" aria-live="polite"></div>
+        <div class="challenge">
+          <div class="challenge-title"><span class="challenge-icon" aria-hidden="true">◎</span><div><h3>Un pequeño reto</h3><p>Encuentra una partición para la cual la separación sea menor que ε.</p></div></div>
+          <div class="challenge-controls"><label for="epsilon">Precisión deseada</label><select id="epsilon"><option value="0.25">ε = 0,25</option><option value="0.1" selected>ε = 0,10</option><option value="0.05">ε = 0,05</option><option value="0.02">ε = 0,02</option></select><span id="reto-estado" class="challenge-result" aria-live="polite">—</span></div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-convergencia" role="tabpanel" aria-labelledby="tab-convergencia" hidden>
+        <div class="panel-heading"><div><span class="section-kicker">EXPERIMENTO II</span><h2>Al disminuir la malla</h2><p>Observa las sumas inferiores y superiores de <strong>particiones uniformes</strong> entre 2 y 100 tramos.</p></div><span class="section-id" aria-hidden="true">02 / 03</span></div>
+        <div class="plot-card">
+          <div class="plot-topline"><span class="formula-label" id="convergencia-titulo">Convergencia para f(x)=x²</span><span class="plot-subtitle">Pulsa una abscisa para elegir n</span></div>
+          <svg id="grafico-convergencia" class="main-svg" viewBox="0 0 1000 430" role="img" aria-label="Evolución de las sumas con el número de subintervalos"></svg>
+          <div class="legend"><span><i class="legend-dot legend-l"></i> L</span><span><i class="legend-dot legend-s"></i> S</span><span><i class="legend-dot legend-u"></i> U</span><span><i class="legend-dot legend-exact"></i> Integral, si existe</span></div>
+        </div>
+        <div class="convergence-bottom"><div class="notice" id="convergencia-lectura" aria-live="polite"></div><button type="button" class="secondary-btn" id="exportar-csv">↓ Exportar tabla CSV</button></div>
+        <div class="quick-n" aria-label="Elegir número de tramos"><span>Prueba con</span><button type="button" data-n="4">4</button><button type="button" data-n="8">8</button><button type="button" data-n="16">16</button><button type="button" data-n="32">32</button><button type="button" data-n="64">64</button><button type="button" data-n="100">100</button><span>tramos</span></div>
+      </section>
+
+      <section class="panel" id="panel-refinacion" role="tabpanel" aria-labelledby="tab-refinacion" hidden>
+        <div class="panel-heading"><div><span class="section-kicker">EXPERIMENTO III</span><h2>El puente entre los criterios</h2><p>Una partición fina Q no tiene por qué refinar a P*. La unión de sus puntos construye una refinación común R.</p></div><span class="section-id" aria-hidden="true">03 / 03</span></div>
+        <div class="plot-card">
+          <div class="plot-topline"><span class="formula-label">R = P* ∪ Q</span><span class="plot-subtitle">Los intervalos resaltados de Q se subdividen</span></div>
+          <svg id="grafico-refinacion" class="main-svg" viewBox="0 0 1000 300" role="img" aria-label="Tres rectas de particiones: P estrella, Q y su refinación R"></svg>
+          <div class="legend"><span><i class="legend-dot legend-p"></i> P* fija</span><span><i class="legend-dot legend-q"></i> Q modificable</span><span><i class="legend-dot legend-r"></i> R refinación común</span></div>
+        </div>
+        <div class="refine-metrics" aria-live="polite"><div><span>Brecha en P*</span><strong id="brecha-p">—</strong></div><div><span>Brecha en Q</span><strong id="brecha-q">—</strong></div><div><span>Brecha en R</span><strong id="brecha-r">—</strong></div><div><span>Tramos afectados de Q</span><strong id="afectados-q">—</strong></div></div>
+        <div class="proof-box"><h3>Estimación universal</h3><div class="proof-formula">U(Q) − L(Q) ≤ U(P*) − L(P*) + 4M(k − 1)‖Q‖</div><p id="prueba-lectura"></p><p class="proof-footnote">Aquí k es el número de tramos de P*, M es una cota de |f| y ‖Q‖ es su malla. La cota puede ser poco ajustada, pero es válida para toda Q.</p></div>
+      </section>
+
+      <footer class="lab-footer"><span>MA · Matemática Abierta</span><span>Laboratorio complementario al artículo MA-ART-0026</span><span>Funciona sin conexión y no recopila datos.</span></footer>
+    </div>
+  </div>
+</main>
+</body>
+</html>
