@@ -6,7 +6,7 @@ content-id: MA-BOK-0003
 content-type: book
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-22
+date-modified: 2026-11-24
 areas:
   - fundamentos
   - analisis
@@ -78,6 +78,18 @@ El tratado está concebido principalmente como una obra para la web, con navegac
 :::
 
 :::
+
+## Formalización en Lean 4
+
+La formalización matemática del tratado dispone de un repositorio abierto e independiente. Su objetivo es verificar los resultados mediante el asistente de demostraciones Lean, preservando las construcciones y las dependencias fundacionales de la obra.
+
+[**Consultar el repositorio en GitHub**](https://github.com/lachenmann/tratado-analisis-lean) · [**Primera versión (v0.1.0)**](https://github.com/lachenmann/tratado-analisis-lean/releases/tag/v0.1.0) · [Estado de la compilación automática](https://github.com/lachenmann/tratado-analisis-lean/actions)
+
+La instantánea inicial, correspondiente al checkpoint TA-LEAN-0010 (24 de noviembre de 2026), contiene 142 fuentes Lean y 833 consultas de auditoría axiomática. Incluye la construcción del cuerpo ordenado completo de Dedekind, con la existencia y unicidad de la raíz cuadrada positiva de dos. Utiliza Lean 4.32.1 y Mathlib v4.32.1.
+
+La auditoría distingue los axiomas del marco conjuntista de las dependencias metateóricas de Lean: entre las 833 consultas, 65 registran dependencias históricas de `Classical.choice` y ninguna registra `sorryAx`. El último checkpoint no introduce nuevas dependencias de elección. Cuando corresponde, el tercero excluido figura como hipótesis explícita.
+
+La formalización es progresiva: no certifica todavía la totalidad de la obra ni sustituye las demostraciones del manuscrito. El código propio se distribuye bajo la licencia Apache 2.0, independientemente de la licencia GFDL del texto.
 
 ## Prefacio
 
