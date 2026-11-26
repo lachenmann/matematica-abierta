@@ -1,8 +1,8 @@
 # Protocolo canónico de producción audiovisual
 ## Cálculo para matemáticos — Matemática Abierta
 
-**Versión:** 1.0  
-**Caso piloto validado:** `CPM-YT-C01-V01 — Los axiomas de cuerpo`  
+**Versión:** 2.0 — 5 de octubre de 2026
+**Referentes:** V01 como identidad visual; V02 cerrado y publicado por confirmación del autor el 5 de octubre de 2026.
 **Principio rector:** el guion gobierna la animación; el render final gobierna el QA.
 
 ---
@@ -12,15 +12,18 @@
 Cada video avanza por estos estados:
 
 ```text
-SCRIPT_DRAFT
-→ SCRIPT_LOCKED
+SCRIPT_DRAFT → SCRIPT_LOCKED
+→ VOICE_LOCKED
+→ SEMANTIC_TIMING_READY
+→ REPRESENTATIVE_SAMPLE
 → ANIMATION_DRAFT
 → ANIMATION_REFINEMENT
-→ ANIMATION_LOCKED
-→ VOICE_LOCKED
-→ FINAL_EDIT
 → AUDIOVISUAL_QA
+→ ANIMATION_LOCKED
+→ FINAL_EDIT
+→ FINAL_MASTER_QA
 → PRODUCTION_READY
+→ PUBLISHED_CLOSED
 ```
 
 No pasar a `PRODUCTION_READY` por compilación correcta ni por existencia del MP4.
@@ -36,7 +39,7 @@ Para cada video deben existir, como mínimo:
 - plan visual;
 - fuente Manim de producción;
 - WAV definitivo;
-- proyecto Reaper o fuente equivalente;
+- proyecto Reaper o fuente equivalente, cuando exista; no exigirlo si el WAV definitivo basta;
 - archivo de timing/marcadores;
 - script de render de producción;
 - master MP4;
@@ -57,13 +60,8 @@ Si la voz dice:
 A → B → C
 ```
 
-la pantalla debe construir:
-
-```text
-A
-→ A + B
-→ A + B + C
-```
+la pantalla debe acompañar cada idea en su momento. Puede conservar el contexto,
+transformarlo o sustituirlo; no acumular automáticamente A, B y C en pantalla.
 
 No debe mostrar información antes de que sea pronunciada.
 
@@ -165,6 +163,10 @@ Esta fase no es sólo corrección de errores. También puede mejorar:
 La calidad del movimiento debe juzgarse por el video resultante, no por la
 elegancia aparente del código.
 
+El diseño parte del WAV definitivo y del texto canónico. El autor no necesita
+escribir instrucciones de animación frase por frase. El realizador segmenta por
+microtramos semánticos y diseña el apoyo visual con libertad dentro del protocolo.
+
 El chat de diseño/redacción puede producir la primera implementación, pero
 `ANIMATION_LOCKED` sólo se alcanza después de inspección visual del render y
 refinamiento suficiente.
@@ -190,7 +192,7 @@ del siguiente marcador.
 
 El script de producción debe:
 
-1. validar WAV/proyecto de voz;
+1. validar WAV y proyecto de voz si está disponible;
 2. validar marcadores y rechazar duplicados;
 3. regenerar assets derivados cuando corresponda;
 4. comprobar sintaxis Python;
@@ -338,7 +340,7 @@ Antes de cerrar:
 - `git diff --check`;
 - verificadores específicos de layout si existen;
 - ausencia de `SYNC WARN` significativos;
-- SHA-256 de WAV/RPP igual al inicial;
+- SHA-256 de WAV igual al inicial y de RPP si se ha recibido;
 - verificación de audio del master contra el WAV en varios puntos de la línea temporal;
 - comprobación de ausencia de deriva;
 - SHA-256 del MP4 final.
@@ -418,3 +420,22 @@ sino temporales y espaciales:
 
 Por tanto, el QA de futuros videos debe tratar **ritmo y semántica temporal**
 como propiedades de corrección, no sólo como decisiones estéticas.
+
+
+## 15. Flujo operativo desde V03
+
+Aplicar conjuntamente este documento y [PROTOCOLO_VISUAL_CANAL.md](PROTOCOLO_VISUAL_CANAL.md). El primero gobierna producción y evidencia; el segundo, el lenguaje visual. Para empezar V03, consultar [cpm_yt_c01_v03/PRODUCTION_BRIEF.md](cpm_yt_c01_v03/PRODUCTION_BRIEF.md).
+
+- Recibir WAV definitivo y localizar el texto canónico en Obsidian/repositorio. Registrar fuentes, duración, silencios, huellas y offset de intro de 7 s. No inventar tiempos ni contenido cuando falta el audio.
+- Preparar un único mapa de microtramos con tiempos de voz/video, anclaje oral, hipótesis, objeto activo, transformación, énfasis y permanencia. Mantener contenido/timing separados del motor de animación.
+- Revisar una muestra representativa de 2–3 minutos antes de extender el diseño. Reutilizar V01 y las decisiones cerradas de V02; no someter cada escena rutinaria a aprobación.
+- Render de revisión completo a 720p30, revisión con audio y correcciones; producción a 1080p60 sólo después. Revisar inicio y último minuto como bloques completos, además de demostraciones y transiciones.
+- Usar una sola orden de construcción reproducible por video y un registro acumulado de correcciones. Evitar una cadena de scripts de parches que dependa de masters intermedios. Para correcciones locales, documentar intervalos, base, huellas y uniones; verificar duración, fotogramas y audio.
+- Registrar el alcance real del QA: muestreo visual, revisión audiovisual de intervalos o visionado continuo. Las láminas no prueban sincronización semántica ni escucha continua. Asociar evidencia al master vigente.
+- Entregar master, miniatura, textos de YouTube y capítulos derivados del timing real. Publicación sólo cuando la autorice o confirme el autor; registrar URL si la proporciona.
+
+## 16. Cierre y continuidad
+
+V02 quedó **PUBLISHED_CLOSED** por confirmación del autor el 5 de octubre de 2026. Su master local y huella constan en cpm_yt_c01_v02/QA_PRODUCTION_FINAL.md. No se verificó una URL pública y no se exige para registrar esta confirmación. No rerenderizar ni modificar V02 para preparar V03; reutilizar sus componentes mediante importación o extracción a módulos compartidos, conservando la fuente publicada.
+
+Mantener separadas la aprobación editorial del autor y la evidencia técnica del QA. El cierre no transforma un muestreo previo en revisión continua.
