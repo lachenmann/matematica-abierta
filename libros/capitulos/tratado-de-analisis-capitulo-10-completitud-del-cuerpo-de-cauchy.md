@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 10 — Completitud del cuerpo de Cauchy
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-11-dedekind-y-cauchy.md)
 
 *Parte I — Fundamentos y construcción de los reales*

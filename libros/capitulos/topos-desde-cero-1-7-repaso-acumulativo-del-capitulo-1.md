@@ -35,7 +35,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 1.7 Repaso acumulativo del capítulo 1 {#sec-1-7-repaso}
+## 1.7 Repaso acumulativo del capítulo 1 {#sec-1-7-repaso}
 
 ::: {.callout-note title="Continuidad editorial"}
 Esta unidad cierra el **Capítulo 1 — Proposiciones y razonamiento deductivo** de *Topos desde cero* (`MA-BCH-0002`). No introduce nociones nuevas: recupera e intercala los contenidos de §§1.1–1.6 para comprobar que pueden utilizarse sin que el enunciado anuncie de antemano qué técnica corresponde.
@@ -317,7 +317,7 @@ Las etiquetas **Recuperación**, **Consolidación**, **Diagnóstico** y **Sínte
 
     Después simbolízalo, demuestra su validez y explica por qué «válido» no significa «todas sus premisas son verdaderas».
 
-# Soluciones completas
+## Soluciones completas
 
 ## 1
 

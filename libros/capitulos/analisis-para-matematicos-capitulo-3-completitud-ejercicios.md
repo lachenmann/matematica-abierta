@@ -1,5 +1,6 @@
 ---
 title: Ejercicios — Capítulo 3
+description: "Colección de ejercicios del Capítulo 3 de Análisis real para matemáticos: supremo, ínfimo, axioma de completitud, propiedad arquimediana y densidad."
 content-id: MA-BCH-0093
 content-type: book-chapter
 collection: PM-ANA

@@ -1,5 +1,6 @@
 ---
 title: Ejercicios — Capítulo 2
+description: "Colección de ejercicios del Capítulo 2 de Análisis real para matemáticos: conjuntos acotados, cotas superiores e inferiores, máximos y mínimos."
 content-id: MA-BCH-0090
 content-type: book-chapter
 collection: PM-ANA

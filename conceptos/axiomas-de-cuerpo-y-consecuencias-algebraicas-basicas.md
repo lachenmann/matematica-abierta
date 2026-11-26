@@ -37,8 +37,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Axiomas de cuerpo y consecuencias algebraicas básicas
-
 En el álgebra escolar usamos continuamente reglas como
 
 $$

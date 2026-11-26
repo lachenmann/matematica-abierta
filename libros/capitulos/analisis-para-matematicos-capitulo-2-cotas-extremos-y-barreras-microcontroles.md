@@ -1,5 +1,6 @@
 ---
 title: Lectura del capítulo 2
+description: "Acceso al Capítulo 2 de Análisis real para matemáticos, donde los microcontroles sobre cotas y extremos están integrados en el capítulo."
 content-id: MA-BCH-0092
 content-type: book-chapter
 collection: PM-ANA

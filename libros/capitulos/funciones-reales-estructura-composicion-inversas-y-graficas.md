@@ -29,7 +29,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Funciones reales: estructura, composición, inversas y gráficas {#sec-t1-c03}
+## Funciones reales: estructura, composición, inversas y gráficas {#sec-t1-c03}
 
 [← Capítulo 1](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 3 →](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md)
 

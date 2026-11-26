@@ -1,5 +1,6 @@
 ---
 title: Capítulo 1 — La recta real como espacio ordenado y métrico
+description: "Capítulo 1 de Análisis real para matemáticos: la recta real como espacio ordenado y métrico, valor absoluto, desigualdad triangular e intervalos."
 content-id: MA-BCH-0083
 content-type: book-chapter
 collection: PM-ANA

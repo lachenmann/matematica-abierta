@@ -196,7 +196,7 @@ $$
 
 Así, el teorema de Bolzano es exactamente el caso $y=0$ del teorema del valor intermedio cuando los valores extremos tienen signos opuestos.
 
-# Demostración rigurosa del teorema del valor intermedio
+## Demostración rigurosa del teorema del valor intermedio
 
 La demostración mostrará de manera explícita dónde entra la completitud de $\mathbb R$.
 

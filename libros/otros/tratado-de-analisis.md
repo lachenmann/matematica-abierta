@@ -53,8 +53,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Tratado de análisis
-
 **Gustav A. Tacheck**
 
 Este tratado desarrolla el análisis matemático desde fundamentos explícitos y construye progresivamente los sistemas numéricos que el análisis utiliza. La edición web se publica por etapas: cada parte se incorpora cuando ha superado su revisión matemática y editorial.

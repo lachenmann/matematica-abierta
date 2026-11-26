@@ -759,7 +759,7 @@ La nueva competencia puede formularse así:
 C4 enseñó a leer la verdad de una fórmula. C5 enseña a transformar su forma sin cambiar esa verdad.
 
 ***
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios son originales para *Álgebra para matemáticos* y han sido calibrados con el corpus rector del capítulo. En las cadenas de equivalencias, justifica los pasos sustantivos.
 
@@ -1152,7 +1152,7 @@ Concluye explicando qué estructura general de las implicaciones está haciendo 
 
 
 ***
-# Soluciones
+## Soluciones
 
 ## A. Reconocer equivalencia y no equivalencia
 

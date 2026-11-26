@@ -35,7 +35,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Derivación de funciones elementales, inversas e implícitas {#sec-t1-c09}
+## Derivación de funciones elementales, inversas e implícitas {#sec-t1-c09}
 
 [← Capítulo 7](algebra-de-derivadas-y-regla-de-la-cadena.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 9 →](teoremas-de-rolle-y-del-valor-medio.md)
 

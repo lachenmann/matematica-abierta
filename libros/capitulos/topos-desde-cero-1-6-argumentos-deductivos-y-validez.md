@@ -35,7 +35,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 1.6 Argumentos deductivos y validez {#sec-1-6-argumentos-validez}
+## 1.6 Argumentos deductivos y validez {#sec-1-6-argumentos-validez}
 
 ::: {.callout-note title="Continuidad editorial"}
 Esta unidad continúa el **Capítulo 1 — Proposiciones y razonamiento deductivo** de *Topos desde cero* (`MA-BCH-0002`). Las secciones 1.4 y 1.5 se publican también como unidades modulares inmediatamente anteriores.
@@ -860,7 +860,7 @@ $$
 
 Por tanto, el argumento es válido.
 
-# Ejercicios de la sección 1.6
+## Ejercicios de la sección 1.6
 
 1. Identifica premisas y conclusión:
 
@@ -977,7 +977,7 @@ Por tanto, el argumento es válido.
 
     es válido. Justifica tu respuesta mediante inferencias o mediante una asignación refutadora.
 
-# Soluciones completas de los ejercicios de la sección 1.6
+## Soluciones completas de los ejercicios de la sección 1.6
 
 ## 1
 
@@ -1285,7 +1285,7 @@ $$
 
 Por tanto, el argumento es válido.
 
-# Cierre del capítulo 1
+## Cierre del capítulo 1
 
 El capítulo comenzó distinguiendo proposiciones de otras expresiones y terminó estudiando cadenas completas de inferencia. El recorrido lógico ha sido:
 

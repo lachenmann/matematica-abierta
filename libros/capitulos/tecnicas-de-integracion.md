@@ -45,7 +45,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Técnicas de integración {#sec-t1-c19}
+## Técnicas de integración {#sec-t1-c19}
 
 [← Capítulo 17](logaritmo-exponencial-y-funciones-relacionadas-desde-el-calculo.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 19 →](aplicaciones-geometricas-y-cuantitativas-de-la-integral.md)
 

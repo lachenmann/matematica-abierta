@@ -42,7 +42,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Teoremas de valor medio para integrales {#sec-t1-c16}
+## Teoremas de valor medio para integrales {#sec-t1-c16}
 
 [← Capítulo 14](integral-de-riemann-definicion-integrabilidad-y-propiedades.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 16 →](teorema-fundamental-del-calculo.md)
 

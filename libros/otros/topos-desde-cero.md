@@ -36,8 +36,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Topos desde cero
-
 **Topos desde cero** es un libro abierto en construcción cuyo objetivo es preparar, de manera autocontenida y progresiva, el camino hacia la teoría de haces, sitios y topoi de Grothendieck.
 
 El punto de partida es deliberadamente elemental. El libro no presupone que el lector domine ya el lenguaje de la demostración, la teoría de conjuntos, la topología general o la teoría de categorías. En lugar de comenzar por la definición de topos y retroceder cuando aparece una dificultad, construye las herramientas en el orden en que serán necesarias.

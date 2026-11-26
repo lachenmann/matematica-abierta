@@ -650,7 +650,7 @@ La pregunta final es:
 C4 nos enseña a leer esa arquitectura. En C5 aprenderemos a transformarla algebraicamente.
 
 ***
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y calibrados con el corpus rector del capítulo.
 
@@ -840,7 +840,7 @@ Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y cal
 
 
 ***
-# Soluciones
+## Soluciones
 
 ## A. Proposición, contexto y valor de verdad
 

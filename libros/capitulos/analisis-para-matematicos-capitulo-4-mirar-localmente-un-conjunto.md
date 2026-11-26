@@ -1,5 +1,6 @@
 ---
 title: Capítulo 4 — Mirar localmente un conjunto
+description: "Capítulo 4 de Análisis real para matemáticos: mirada local sobre subconjuntos de ℝ, entornos, interior, puntos de acumulación, adherencia y frontera."
 content-id: MA-BCH-0086
 content-type: book-chapter
 collection: PM-ANA

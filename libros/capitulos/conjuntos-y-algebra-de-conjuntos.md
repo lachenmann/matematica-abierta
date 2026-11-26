@@ -617,7 +617,7 @@ La meta del capítulo puede resumirse así:
 > **El álgebra de conjuntos es la lógica de pertenencia escrita como operaciones entre colecciones.**
 
 
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios se integran al capítulo con ID editorial único. Salvo las excepciones marcadas como inspiradas por el benchmark UChile, son originales para *Álgebra para matemáticos*.
 
@@ -1018,7 +1018,7 @@ Organiza la demostración de manera eficiente, indicando una cadena de implicaci
 
 **96.** Sean $A,B,C,D$ conjuntos arbitrarios. Demuestra o refuta $(A\times B)\setminus(C\times D)=((A\setminus C)\times B)\cup((A\cap C)\times(B\setminus D))$. Elige un método y verifica si requiere que alguno de los conjuntos sea no vacío.
 
-# Soluciones
+## Soluciones
 
 
 ## A. Pertenencia y descripción

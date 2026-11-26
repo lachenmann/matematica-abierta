@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 13 — Sucesiones reales
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-12-unicidad.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-14-series-numericas.md)
 
 *Parte II — Núcleo del análisis real*

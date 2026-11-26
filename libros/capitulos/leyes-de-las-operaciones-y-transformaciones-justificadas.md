@@ -822,7 +822,7 @@ No basta con mover símbolos hasta obtener una forma familiar.
 > **Transformar algebraicamente es reemplazar expresiones o condiciones mediante pasos cuya validez puede defenderse.**
 
 ***
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios son originales para *Álgebra para matemáticos*, calibrados con el corpus universitario y las fuentes rectoras del capítulo.
 
@@ -1066,7 +1066,7 @@ Luego determina qué soluciones de la ecuación final satisfacen la ecuación in
 
 
 ***
-# Soluciones
+## Soluciones
 
 ## A. Identificar la propiedad
 

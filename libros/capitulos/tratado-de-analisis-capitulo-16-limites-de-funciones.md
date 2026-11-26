@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 16 — Límites de funciones
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-17-continuidad.md)
 
 *Parte II — Núcleo del análisis real*

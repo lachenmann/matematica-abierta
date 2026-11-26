@@ -29,7 +29,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 1.5 Bicondicionales y condiciones necesarias y suficientes {#sec-1-5-bicondicionales}
+## 1.5 Bicondicionales y condiciones necesarias y suficientes {#sec-1-5-bicondicionales}
 
 ::: {.callout-note title="Continuidad editorial"}
 Esta unidad continúa el **Capítulo 1 — Proposiciones y razonamiento deductivo** de *Topos desde cero* (`MA-BCH-0002`). Presupone la sección 1.4, donde se introdujeron la implicación, la recíproca y la contrapositiva.
@@ -671,7 +671,7 @@ $$
 \boxed{\neg(P\leftrightarrow Q)\equiv(P\land\neg Q)\lor(\neg P\land Q).}
 $$
 
-# Ejercicios de la sección 1.5
+## Ejercicios de la sección 1.5
 
 1. Construye la tabla de verdad de $P\leftrightarrow Q$ a partir de $(P\to Q)\land(Q\to P)$.
 2. Decide el valor de verdad de los siguientes bicondicionales:
@@ -740,7 +740,7 @@ $$
 
     es una tautología. Interpreta verbalmente qué expresa.
 
-# Soluciones completas de los ejercicios de la sección 1.5
+## Soluciones completas de los ejercicios de la sección 1.5
 
 ## 1
 

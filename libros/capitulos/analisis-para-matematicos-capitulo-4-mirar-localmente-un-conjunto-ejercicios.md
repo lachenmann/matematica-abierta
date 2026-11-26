@@ -1,5 +1,6 @@
 ---
 title: Ejercicios — Capítulo 4
+description: "Colección de ejercicios del Capítulo 4 de Análisis real para matemáticos: entornos, puntos interiores, puntos de acumulación, adherencia y frontera."
 content-id: MA-BCH-0096
 content-type: book-chapter
 collection: PM-ANA

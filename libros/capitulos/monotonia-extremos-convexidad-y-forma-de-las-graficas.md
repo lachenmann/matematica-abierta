@@ -37,7 +37,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Monotonía, extremos, convexidad y forma de las gráficas {#sec-t1-c11}
+## Monotonía, extremos, convexidad y forma de las gráficas {#sec-t1-c11}
 
 [← Capítulo 9](teoremas-de-rolle-y-del-valor-medio.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 11 →](derivadas-superiores-y-formula-de-taylor-con-resto.md)
 

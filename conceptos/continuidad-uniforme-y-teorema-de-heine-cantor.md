@@ -101,7 +101,7 @@ $$
 
 Éste es el aspecto que cambia en la continuidad uniforme.
 
-# Continuidad uniforme
+## Continuidad uniforme
 
 ::: {#def-ma-con-0019-continuidad-uniforme .ma-block .ma-definicion}
 **Continuidad uniforme**
@@ -204,7 +204,7 @@ La continuidad uniforme afirma que, una vez fijada la precisión deseada en la s
 No necesitamos aumentar indefinidamente la precisión al desplazarnos por el dominio.
 :::
 
-# Toda función uniformemente continua es continua
+## Toda función uniformemente continua es continua
 
 ::: {.ma-block .ma-definicion}
 **Proposición**
@@ -254,7 +254,7 @@ $$
 
 La recíproca, sin hipótesis adicionales, es falsa.
 
-# Continuidad no implica continuidad uniforme
+## Continuidad no implica continuidad uniforme
 
 Consideremos
 
@@ -365,7 +365,7 @@ A medida que nos acercamos a $0$, para mantener una variación fija en la salida
 No existe una escala horizontal única que funcione simultáneamente en todo $(0,1]$.
 :::
 
-# Un segundo ejemplo: $x^2$ en toda la recta
+## Un segundo ejemplo: $x^2$ en toda la recta
 
 La función
 
@@ -488,7 +488,7 @@ $$
 
 La misma fórmula que fracasa globalmente en $\mathbb R$ funciona perfectamente cuando el dominio impone un control uniforme sobre $|x+y|$.
 
-# Una condición suficiente: funciones Lipschitz
+## Una condición suficiente: funciones Lipschitz
 
 El argumento anterior exhibe una estructura especialmente útil.
 
@@ -573,7 +573,7 @@ $$
 es el caso más simple.
 :::
 
-# La compacidad fuerza uniformidad
+## La compacidad fuerza uniformidad
 
 Los ejemplos anteriores muestran que una función continua puede requerir escalas $\delta$ cada vez más pequeñas al desplazarnos por el dominio.
 
@@ -581,7 +581,7 @@ La compacidad impide que ese deterioro local escape sin control.
 
 Éste es el contenido del teorema de Heine–Cantor.
 
-# Teorema de Heine–Cantor
+## Teorema de Heine–Cantor
 
 ::: {#res-ma-con-0019-heine-cantor .ma-block .ma-definicion}
 **Teorema de Heine–Cantor**
@@ -605,7 +605,7 @@ La hipótesis de compacidad es exactamente la estructura desarrollada en `MA-CON
 
 No tomaremos el resultado como una caja negra.
 
-# Demostración mediante un subrecubrimiento finito
+## Demostración mediante un subrecubrimiento finito
 
 Sea
 
@@ -688,7 +688,8 @@ Por tanto podemos tomar un mínimo positivo.
 Definamos
 
 $$
-\delta=rac12\min\{r_{a_1},\dots,r_{a_N}\}.
+\delta=
+rac12\min\{r_{a_1},\dots,r_{a_N}\}.
 $$
 
 Como se trata del mínimo de finitísimos números positivos,
@@ -829,7 +830,7 @@ es continua, entonces $f$ es uniformemente continua en $[a,b]$.
 
 Así, en un intervalo cerrado y acotado, la continuidad ordinaria automáticamente adquiere un control global.
 
-# Compacidad: suficiente, pero no necesaria
+## Compacidad: suficiente, pero no necesaria
 
 Heine–Cantor afirma
 
@@ -873,7 +874,7 @@ La compacidad garantiza continuidad uniforme para toda función continua definid
 No es una condición necesaria para que una función concreta sea uniformemente continua.
 :::
 
-# Uniformemente continua sin ser Lipschitz
+## Uniformemente continua sin ser Lipschitz
 
 La condición de Lipschitz también es suficiente, pero no necesaria.
 
@@ -956,7 +957,7 @@ $$
 
 El dominio no es compacto y no hemos usado una cota Lipschitz global.
 
-# Composición de funciones uniformemente continuas
+## Composición de funciones uniformemente continuas
 
 La continuidad uniforme se comporta bien bajo composición.
 
@@ -1028,7 +1029,7 @@ $$
 
 La prueba es la misma arquitectura de tolerancias que ya apareció en la composición de funciones continuas, pero ahora ninguna escala depende de puntos particulares.
 
-# Un criterio práctico para detectar fallo de uniformidad
+## Un criterio práctico para detectar fallo de uniformidad
 
 Para demostrar que una función **no** es uniformemente continua, conviene negar correctamente la definición.
 
@@ -1073,7 +1074,7 @@ Para probar que $f$ no es uniformemente continua:
 Si esto puede hacerse para todo $\delta>0$, no existe una escala global de control.
 :::
 
-# Por qué Heine–Cantor es más fuerte que la continuidad puntual
+## Por qué Heine–Cantor es más fuerte que la continuidad puntual
 
 Para una función continua sobre un compacto $K$, cada punto $a$ produce inicialmente su propio radio
 
@@ -1103,7 +1104,7 @@ $$
 
 No intercambiamos cuantificadores gratuitamente: la compacidad proporciona la razón matemática que lo hace posible.
 
-# Relación con Weierstrass
+## Relación con Weierstrass
 
 `MA-CON-0018` produjo dos consecuencias de la compacidad para funciones continuas:
 
@@ -1133,7 +1134,7 @@ $$
 
 Estas tres propiedades son formas diferentes de control global.
 
-# Relación con el teorema del valor intermedio
+## Relación con el teorema del valor intermedio
 
 `MA-CON-0017` mostró que la continuidad sobre un intervalo impide huecos entre valores alcanzados.
 
@@ -1159,7 +1160,7 @@ $$
 }
 $$
 
-# Una consecuencia operativa: controlar toda la función con una misma escala
+## Una consecuencia operativa: controlar toda la función con una misma escala
 
 Sea
 
@@ -1191,7 +1192,7 @@ La continuidad uniforme permite elegir una única resolución horizontal para to
 Ésta es precisamente la clase de control necesaria cuando se subdivide un intervalo entero en muchas piezas y se quiere que todas obedezcan simultáneamente la misma tolerancia.
 :::
 
-# Errores frecuentes
+## Errores frecuentes
 
 ## Error 1: creer que continua significa uniformemente continua
 
@@ -1245,7 +1246,7 @@ $$
 
 en $[0,\infty)$ muestra que pueden existir controles globales de forma no lineal.
 
-# Qué conviene recordar
+## Qué conviene recordar
 
 ::: {.ma-block .ma-comprobacion}
 **Continuidad vs. continuidad uniforme**
@@ -1291,7 +1292,7 @@ $$
 entonces $f$ es uniformemente continua, aunque el dominio no sea compacto.
 :::
 
-# Cierre del bloque Funciones → Análisis
+## Cierre del bloque Funciones → Análisis
 
 Con esta página queda completada una primera arquitectura rigurosa de funciones y análisis real elemental.
 

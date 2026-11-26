@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 21 — Integral de Riemann
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md)
 
 *Parte II — Núcleo del análisis real*

@@ -1,5 +1,6 @@
 ---
 title: Lectura del capítulo 3
+description: "Acceso al Capítulo 3 de Análisis real para matemáticos, donde los microcontroles sobre completitud y supremos están integrados en el texto."
 content-id: MA-BCH-0095
 content-type: book-chapter
 collection: PM-ANA

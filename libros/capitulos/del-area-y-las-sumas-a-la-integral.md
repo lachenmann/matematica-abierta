@@ -40,7 +40,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Del área y las sumas a la integral {#sec-t1-c14}
+## Del área y las sumas a la integral {#sec-t1-c14}
 
 [← Capítulo 12](aproximacion-metodo-de-newton-y-problemas-de-optimizacion.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 14 →](integral-de-riemann-definicion-integrabilidad-y-propiedades.md)
 

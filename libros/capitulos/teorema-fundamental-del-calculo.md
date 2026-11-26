@@ -43,7 +43,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Teorema fundamental del cálculo {#sec-t1-c17}
+## Teorema fundamental del cálculo {#sec-t1-c17}
 
 [← Capítulo 15](teoremas-de-valor-medio-para-integrales.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 17 →](logaritmo-exponencial-y-funciones-relacionadas-desde-el-calculo.md)
 

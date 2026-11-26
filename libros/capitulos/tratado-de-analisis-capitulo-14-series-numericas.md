@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 14 — Series numéricas
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-13-sucesiones-reales.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md)
 
 *Parte II — Núcleo del análisis real*

@@ -513,7 +513,7 @@ Hasta aquí hemos aprendido a **interpretar**.
 Ahora estamos preparados para preguntar por la **legitimidad de las transformaciones**.
 
 ***
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios de este capítulo son originales para *Álgebra para matemáticos*, aunque su dificultad y tipología se calibran con el corpus universitario y los textos de referencia del capítulo.
 
@@ -713,7 +713,7 @@ Determina el dominio natural de cada miembro y el dominio donde la cadena comple
 
 **60.** Fija dos parámetros reales distintos $a,b$. Construye dos expresiones en $x$ que den $x$ en cada entrada admisible y excluyan respectivamente sólo $a$ y sólo $b$. Compara ambas en las entradas $a$ y $b$ y en el dominio común. Decide qué cambiaría si los parámetros coincidieran. Identifica los papeles antes de interpretar las igualdades.
 
-# Soluciones
+## Soluciones
 
 ## A. El papel de las letras
 
