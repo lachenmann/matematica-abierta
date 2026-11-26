@@ -21,7 +21,7 @@ body {
 }
 
 body.quarto-light {
-  --ma-intuicion: #157f79;
+  --ma-intuicion: #12736d;
   --ma-intuicion-bg: #eaf7f5;
   --ma-intuicion-border: #8ed1cc;
 
@@ -293,15 +293,40 @@ div[id^="thm-"] {
   margin: 1.35rem 0;
 }
 
-/* Matemática larga: nunca debe romper la lectura móvil. */
+/* Matemática larga y tablas: nunca deben romper la lectura móvil. */
+
+#quarto-content.page-columns > main.content {
+  min-width: 0;
+  max-width: 100%;
+}
 
 .math.display {
   display: block;
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+  box-sizing: border-box;
   padding: 0.25rem 0 0.45rem;
   -webkit-overflow-scrolling: touch;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 991.98px) {
+  main.content table:not(.ma-chapter-table):not(.spv-cayley) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media screen {
@@ -808,6 +833,16 @@ body:has(.ma-section-page) main.content {
   border-color: var(--ma-section-accent);
   color: inherit;
   box-shadow: var(--ma-section-shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ma-card {
+    transition: none;
+  }
+
+  .ma-card:hover {
+    transform: none;
+  }
 }
 
 .ma-card-meta {
