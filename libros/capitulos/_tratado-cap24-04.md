@@ -63,7 +63,7 @@ $$
 \tag{24.4.5}
 $$
 
-con $0<dq<1$. La serie geométrica $\sum(dq)^n$ converge («Convergencia y suma de la serie geométrica para $»); la dominación eventual de «Dominación absoluta eventual» prueba la convergencia absoluta en todo punto de esa distancia. Los términos anteriores a $N_0$ son finitos y no se descarta ninguno sin justificar el criterio de colas.
+con $0<dq<1$. La serie geométrica $\sum(dq)^n$ converge («Convergencia y suma de la serie geométrica para $|r|<1$»); la dominación eventual de «Dominación absoluta eventual» prueba la convergencia absoluta en todo punto de esa distancia. Los términos anteriores a $N_0$ son finitos y no se descarta ninguno sin justificar el criterio de colas.
 
 Si $dL>1$, elijamos, también para esta distancia fija,
 

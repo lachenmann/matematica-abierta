@@ -1177,7 +1177,7 @@ $$
 |f(x)-f(y)|<\varepsilon
 $$
 
-para todos $x,y\in[a,b].
+para todos $x,y\in[a,b]$.
 
 Esto significa que cualquier partición del intervalo cuyos subintervalos tengan longitud menor que $\delta$ produce un control uniforme de la oscilación de $f$ dentro de cada subintervalo.
 

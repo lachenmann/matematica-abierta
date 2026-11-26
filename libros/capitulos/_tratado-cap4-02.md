@@ -88,8 +88,7 @@ Para (5), usamos sólo la comparabilidad positiva $0\leq x\lor x\leq0$ y $0\leq 
   $$
   xy=(-x)(-y)\geq0,
   $$
-  de modo que $|xy|=xy=(-x)(-y)=|x||y|.
-  $$
+  de modo que $|xy|=xy=(-x)(-y)=|x||y|$.
 - Si $x\leq0\leq y$, entonces $(-x)y\geq0$ y $xy=-((-x)y)\leq0$, de modo que
   $$
   |xy|=-xy=(-x)y=|x||y|.

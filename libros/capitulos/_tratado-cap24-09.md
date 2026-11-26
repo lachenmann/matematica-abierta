@@ -119,7 +119,7 @@ $$
 \tag{24.9.10}
 $$
 
-La cancelación es legítima porque $\eta_{N+1}>0$. Por (24.9.8), $0<\rho\le d/2<d$ y $A\rho\le1/2$; de ahí (24.9.9) simultáneamente para todo $x\in K_\rho$. La geométrica de razón $1/2$ converge («Convergencia y suma de la serie geométrica para $»), así que los restos tienden uniformemente a cero en $K_\rho$; en particular, puntualmente en el abierto $(c-\rho,c+\rho)$. El teorema anterior prueba la analiticidad en $c$. La cota factorial uniforme (24.9.7) es una condición suficiente adicional, no una propiedad atribuida a toda función suave. $\square$
+La cancelación es legítima porque $\eta_{N+1}>0$. Por (24.9.8), $0<\rho\le d/2<d$ y $A\rho\le1/2$; de ahí (24.9.9) simultáneamente para todo $x\in K_\rho$. La geométrica de razón $1/2$ converge («Convergencia y suma de la serie geométrica para $|r|<1$»), así que los restos tienden uniformemente a cero en $K_\rho$; en particular, puntualmente en el abierto $(c-\rho,c+\rho)$. El teorema anterior prueba la analiticidad en $c$. La cota factorial uniforme (24.9.7) es una condición suficiente adicional, no una propiedad atribuida a toda función suave. $\square$
 
 ### Lema 24.9.6 — Construcción interna de una serie auxiliar entera
 Definamos explícitamente $e:\mathbb N\to\mathbb R$ por $e_n:=1/\eta_n$, y su serie centrada en cero. La función suma, que denotaremos únicamente como auxiliar local a este desarrollo, satisface
