@@ -208,7 +208,7 @@ $$
 \tag{24.1.14}
 $$
 
-Aquí $q^n\ge0$; por eso es legítima la última desigualdad. La serie geométrica $\sum_{n=0}^{\infty}q^n$ converge por «Convergencia y suma de la serie geométrica para $». Como $M>0$, «Multiplicación de una serie por un escalar no nulo» autoriza multiplicar la serie numérica convergente por el escalar no nulo $M$; sus sumas parciales son precisamente $M$ veces las sumas parciales geométricas. En consecuencia, $\sum_{n=0}^{\infty}Mq^n$ converge. El criterio de comparación directa «Criterio de comparación directa», aplicado a (24.1.14), muestra que
+Aquí $q^n\ge0$; por eso es legítima la última desigualdad. La serie geométrica $\sum_{n=0}^{\infty}q^n$ converge por «Convergencia y suma de la serie geométrica para $|r|<1$». Como $M>0$, «Multiplicación de una serie por un escalar no nulo» autoriza multiplicar la serie numérica convergente por el escalar no nulo $M$; sus sumas parciales son precisamente $M$ veces las sumas parciales geométricas. En consecuencia, $\sum_{n=0}^{\infty}Mq^n$ converge. El criterio de comparación directa «Criterio de comparación directa», aplicado a (24.1.14), muestra que
 
 $$
 \sum_{n=0}^{\infty}|a_n(x-c)^n|
