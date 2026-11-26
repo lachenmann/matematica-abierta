@@ -1126,7 +1126,7 @@ $$
 
 **96.** Se permite aquí un dominio vacío. Para $D=\varnothing$, $D=\{a\}$ y $D=\{a,b\}$ con $a\ne b$, estudia $F:\forall x\in D\exists!y\in D\,(y=x)$ y $G:\exists!y\in D\forall x\in D\,(y=x)$. Separa existencia y unicidad y explica el papel del cuantificador exterior.
 
-# Soluciones razonadas
+## Soluciones razonadas
 
 Las soluciones forman parte del capítulo canónico. En los ejercicios de traducción puede haber variantes lingüísticas equivalentes; lo esencial es conservar dominio, cuantificadores, alcance y dependencia.
 

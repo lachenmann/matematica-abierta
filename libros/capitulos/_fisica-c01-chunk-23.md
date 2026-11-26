@@ -346,7 +346,7 @@ Responde:
 ::: {.ma-block .ma-comprobacion}
 **Solución**
 
-##### 1. Datos conocidos
+#### 1. Datos conocidos
 
 Para $M_1$:
 
@@ -379,7 +379,7 @@ M_1\sim D
 M_2\sim D.
 }
 $$
-##### 2. Repetir los extremos
+#### 2. Repetir los extremos
 
 En:
 
@@ -402,7 +402,7 @@ Necesitamos una condición donde:
 $$
 M_1(x_\ast)\neq M_2(x_\ast).
 $$
-##### 3. Elección de $x_\ast$
+#### 3. Elección de $x_\ast$
 
 Una elección sencilla es:
 
@@ -411,7 +411,7 @@ x_\ast=\frac12.
 $$
 
 Está dentro del intervalo ya explorado entre los dos datos originales.
-##### 4. Predicciones
+#### 4. Predicciones
 
 Para $M_1$:
 
@@ -440,7 +440,7 @@ P_1=\frac12,
 P_2=\frac14.
 }
 $$
-##### 5. Papel de `[OBS]`
+#### 5. Papel de `[OBS]`
 
 No basta que:
 
@@ -461,7 +461,7 @@ y
 $$
 
 capaz de separar las dos predicciones con la precisión pertinente.
-##### 6. Resultado $y=1/4$
+#### 6. Resultado $y=1/4$
 
 Si la nueva observación es compatible con:
 
@@ -482,7 +482,7 @@ y=\frac12,
 $$
 
 por lo que la nueva evidencia lo contradice bajo las condiciones y el régimen asumidos.
-##### 7. Por qué no hay unicidad absoluta
+#### 7. Por qué no hay unicidad absoluta
 
 Los tres datos:
 

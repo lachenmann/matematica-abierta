@@ -53,7 +53,7 @@ $$
 
 Un cambio en las entradas admitidas puede eliminar repeticiones de valores; un cambio en el conjunto de llegada puede dejar salidas sin alcanzar. Esas diferencias determinarán cuándo podemos recuperar la entrada a partir de la salida y cuándo tiene sentido encadenar dos funciones.
 
-### Un modelo periódico que podemos definir sin trigonometría
+## Un modelo periódico que podemos definir sin trigonometría
 
 Para disponer de ejemplos de oscilación sin presuponer seno ni coseno, construiremos dos funciones por tramos. Todo real $t$ pertenece a un único intervalo $[4m-1,4m+3)$, con $m\in\mathbb Z$; la existencia y unicidad de ese entero se deducen de la propiedad arquimediana. Escribamos $r=t-4m\in[-1,3)$ y definamos
 
