@@ -36,7 +36,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Teoremas de Rolle y del valor medio {#sec-t1-c10}
+## Teoremas de Rolle y del valor medio {#sec-t1-c10}
 
 [← Capítulo 8](derivacion-de-funciones-elementales-inversas-e-implicitas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 10 →](monotonia-extremos-convexidad-y-forma-de-las-graficas.md)
 

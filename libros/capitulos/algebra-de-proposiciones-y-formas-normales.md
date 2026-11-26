@@ -39,8 +39,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 5. Álgebra de proposiciones y formas normales
-
 En C4 aprendimos a **leer** una fórmula proposicional. Sabemos localizar su conectivo principal, construir una tabla de verdad, distinguir implicación de bicondicional y reconocer tautologías, contradicciones y contingencias.
 
 Ahora cambia la pregunta.
@@ -702,7 +700,7 @@ C4 enseñó a leer la verdad de una fórmula. C5 enseña a transformar su forma 
 
 ---
 
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios son originales para *Álgebra para matemáticos* y han sido calibrados con el corpus rector del capítulo. En las cadenas de equivalencias, justifica los pasos sustantivos.
 
@@ -1047,7 +1045,7 @@ Concluye explicando qué estructura general de las implicaciones está haciendo 
 
 ---
 
-# Soluciones
+## Soluciones
 
 ## A. Reconocer equivalencia y no equivalencia
 

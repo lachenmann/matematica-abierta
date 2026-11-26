@@ -44,8 +44,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Magnitudes, unidades y análisis dimensional
-
 Este capítulo desarrolla el tránsito desde la representación de una magnitud física hasta el análisis dimensional como herramienta de auditoría, reducción y modelización. Su hilo conductor distingue sistemáticamente:
 
 $$

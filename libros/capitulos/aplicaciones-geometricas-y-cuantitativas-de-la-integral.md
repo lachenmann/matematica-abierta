@@ -46,7 +46,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Aplicaciones geométricas y cuantitativas de la integral {#sec-t1-c20}
+## Aplicaciones geométricas y cuantitativas de la integral {#sec-t1-c20}
 
 [← Capítulo 18](tecnicas-de-integracion.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 20 →](ecuaciones-diferenciales-elementales-y-sintesis-newtonleibniz.md)
 

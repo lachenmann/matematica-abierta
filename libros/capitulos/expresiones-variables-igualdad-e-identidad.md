@@ -35,8 +35,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 2. Expresiones, variables, igualdad e identidad
-
 En el capítulo anterior aprendimos a mirar una escritura algebraica antes de lanzarnos a calcular. Distinguimos objetos, operaciones y relaciones; vimos que los ejemplos pueden sugerir una conjetura sin demostrarla y comenzamos a preguntar qué cambia y qué permanece.
 
 Ahora debemos afinar esa lectura.
@@ -474,7 +472,7 @@ Ahora estamos preparados para preguntar por la **legitimidad de las transformaci
 
 ---
 
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios de este capítulo son originales para *Álgebra para matemáticos*, aunque su dificultad y tipología se calibran con el corpus universitario y los textos rectores del `SOURCE_PACKET`.
 
@@ -609,7 +607,7 @@ Todos los ejercicios de este capítulo son originales para *Álgebra para matem�
 
 ---
 
-# Soluciones
+## Soluciones
 
 ## A. El papel de las letras
 

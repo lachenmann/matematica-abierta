@@ -1,5 +1,6 @@
 ---
 title: "Soluciones de microcontroles — Capítulo 4"
+description: "Soluciones de los microcontroles del Capítulo 4 de Análisis real para matemáticos sobre entornos, interior, adherencia, frontera y acumulación en ℝ."
 content-id: MA-BCH-0098
 content-type: book-chapter
 collection: PM-ANA
@@ -24,8 +25,6 @@ css: ../../assets/books/anm/reader.css
 ---
 
 [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.md)
-
-# Soluciones de microcontroles — Capítulo 4
 
 ## §4.1. Ventanas alrededor de un punto: vecindades
 

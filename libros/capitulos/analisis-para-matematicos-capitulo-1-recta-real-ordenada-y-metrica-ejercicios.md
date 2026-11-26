@@ -1,5 +1,6 @@
 ---
 title: "Ejercicios — Capítulo 1"
+description: "Colección de ejercicios del Capítulo 1 de Análisis real para matemáticos: orden, valor absoluto, distancia e intervalos en la recta real."
 content-id: MA-BCH-0087
 content-type: book-chapter
 collection: PM-ANA
@@ -24,8 +25,6 @@ css: ../../assets/books/anm/reader.css
 ---
 
 [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.md)
-
-# Ejercicios — Capítulo 1
 
 ## §1.1. La misma recta, varias estructuras
 

@@ -59,8 +59,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Teorías físicas: fenómenos, modelos y leyes
-
 Este capítulo abre *Física para matemáticos* antes de introducir una teoría física concreta. Su objetivo es fijar el vocabulario y el método con que leeremos el resto de la obra: distinguir el sistema real de su representación, declarar las idealizaciones, separar los distintos estatus de una ecuación y preguntar siempre en qué régimen una conclusión matemática describe adecuadamente un fenómeno físico.
 
 ::: {.ma-block .ma-intuicion}

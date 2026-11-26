@@ -1,5 +1,6 @@
 ---
 title: "Soluciones — Capítulo 2"
+description: "Soluciones completas de los ejercicios del Capítulo 2 de Análisis real para matemáticos sobre cotas, extremos, acotación y desigualdades en ℝ."
 content-id: MA-BCH-0091
 content-type: book-chapter
 collection: PM-ANA
@@ -24,8 +25,6 @@ css: ../../assets/books/anm/reader.css
 ---
 
 [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md)
-
-# Soluciones — Capítulo 2
 
 ## §2.1. Controlar un conjunto desde arriba y desde abajo
 

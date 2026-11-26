@@ -38,8 +38,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Física para matemáticos
-
 **Física para matemáticos** es un libro abierto concebido para estudiantes de matemática pura que quieren aprender física sin reducirla a una colección de fórmulas ni convertirla, en el extremo opuesto, en una teoría matemática desligada de los fenómenos.
 
 La obra se organiza alrededor de una relación que reaparecerá en todos los tomos:

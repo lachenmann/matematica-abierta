@@ -37,8 +37,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 3. Leyes de las operaciones y transformaciones justificadas
-
 Los dos primeros capítulos enseñaron a leer el lenguaje algebraico: distinguir objetos, operaciones y relaciones; reconocer el papel de una variable; controlar el dominio; diferenciar una ecuación de una identidad.
 
 Ahora aparece una pregunta más exigente.
@@ -736,7 +734,7 @@ No basta con mover símbolos hasta obtener una forma familiar.
 
 ---
 
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios son originales para *Álgebra para matemáticos*, calibrados con el corpus universitario y las fuentes rectoras del capítulo.
 
@@ -932,7 +930,7 @@ Luego determina qué soluciones de la ecuación final satisfacen la ecuación in
 
 ---
 
-# Soluciones
+## Soluciones
 
 ## A. Identificar la propiedad
 

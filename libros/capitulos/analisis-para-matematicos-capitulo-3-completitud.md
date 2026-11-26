@@ -1,5 +1,6 @@
 ---
 title: "Capítulo 3 — Completitud: una recta sin huecos"
+description: "Capítulo 3 de Análisis real para matemáticos: completitud de la recta real, supremo e ínfimo, propiedad arquimediana, densidad de ℚ e intervalos encajados."
 content-id: MA-BCH-0085
 content-type: book-chapter
 collection: PM-ANA

@@ -1082,7 +1082,7 @@ Todo subconjunto compacto y no vacío de $\mathbb R$ posee máximo y mínimo.
 
 Ésta es la pieza que faltaba para obtener el teorema del valor extremo.
 
-# Teorema de Weierstrass
+## Teorema de Weierstrass
 
 ::: {#res-ma-con-0018-weierstrass .ma-block .ma-definicion}
 **Teorema del valor extremo — Weierstrass**

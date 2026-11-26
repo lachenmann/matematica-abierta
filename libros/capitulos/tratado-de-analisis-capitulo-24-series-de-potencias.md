@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 24 — Series de potencias
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md)
 
 *Parte II — Núcleo del análisis real*

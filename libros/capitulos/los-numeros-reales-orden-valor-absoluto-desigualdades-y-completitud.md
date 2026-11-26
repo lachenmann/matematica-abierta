@@ -29,7 +29,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Los números reales: axiomas de cuerpo, orden y completitud {#sec-t1-c02}
+## Los números reales: axiomas de cuerpo, orden y completitud {#sec-t1-c02}
 
 [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 2 →](funciones-reales-estructura-composicion-inversas-y-graficas.md)
 

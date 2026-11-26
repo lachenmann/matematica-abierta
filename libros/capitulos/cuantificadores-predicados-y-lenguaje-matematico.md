@@ -39,8 +39,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 6. Cuantificadores, predicados y lenguaje matemático
-
 En los capítulos 4 y 5 trabajamos con proposiciones completas: afirmaciones que ya podían ser verdaderas o falsas. Pero la matemática real está llena de frases como “$x$ es par”, “$x^2<y$”, “$n$ divide a $m$” o “$x$ tiene una raíz cuadrada”. Antes de decidir su verdad necesitamos saber **qué objetos pueden ocupar esas variables** y **qué estamos afirmando acerca de ellos**.
 
 Aquí aparece una capa nueva del lenguaje matemático. Ya no basta con combinar proposiciones mediante $\neg$, $\land$, $\lor$ o $\Rightarrow$. Debemos aprender a manejar **predicados, dominios, variables libres y ligadas, cuantificadores, alcance y dependencia**.

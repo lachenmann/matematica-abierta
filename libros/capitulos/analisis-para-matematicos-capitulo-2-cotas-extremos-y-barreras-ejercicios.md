@@ -1,5 +1,6 @@
 ---
 title: "Ejercicios — Capítulo 2"
+description: "Colección de ejercicios del Capítulo 2 de Análisis real para matemáticos: conjuntos acotados, cotas superiores e inferiores, máximos y mínimos."
 content-id: MA-BCH-0090
 content-type: book-chapter
 collection: PM-ANA
@@ -24,8 +25,6 @@ css: ../../assets/books/anm/reader.css
 ---
 
 [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md)
-
-# Ejercicios — Capítulo 2
 
 ## §2.1. Controlar un conjunto desde arriba y desde abajo
 

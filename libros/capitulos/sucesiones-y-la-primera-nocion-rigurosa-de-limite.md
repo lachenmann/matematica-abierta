@@ -30,7 +30,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Sucesiones y la primera noción rigurosa de límite {#sec-t1-c04}
+## Sucesiones y la primera noción rigurosa de límite {#sec-t1-c04}
 
 [← Capítulo 2](funciones-reales-estructura-composicion-inversas-y-graficas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 4 →](limites-de-funciones.md)
 

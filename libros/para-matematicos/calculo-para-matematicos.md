@@ -51,8 +51,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Cálculo para matemáticos
-
 **Tomo I — Fundamentos del cálculo de una variable** reúne veinte capítulos y ochocientos ejercicios con soluciones desarrolladas. El recorrido comienza con la estructura de los números reales y culmina en aplicaciones de la integral y ecuaciones diferenciales elementales.
 
 La exposición combina motivación, definiciones, demostraciones, ejemplos y contraejemplos. Cada técnica se apoya en resultados construidos previamente y hace visibles sus hipótesis, dominios y límites de aplicación.

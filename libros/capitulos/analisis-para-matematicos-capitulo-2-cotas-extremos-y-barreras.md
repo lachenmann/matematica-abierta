@@ -1,5 +1,6 @@
 ---
 title: "Capítulo 2 — Cotas, extremos y barreras"
+description: "Capítulo 2 de Análisis real para matemáticos: cotas superiores e inferiores, acotación, máximos, mínimos y barreras numéricas en la recta real."
 content-id: MA-BCH-0084
 content-type: book-chapter
 collection: PM-ANA

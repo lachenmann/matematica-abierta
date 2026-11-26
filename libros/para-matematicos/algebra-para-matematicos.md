@@ -35,8 +35,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Álgebra para matemáticos
-
 **Álgebra para matemáticos** es una obra abierta de Matemática Abierta concebida como un recorrido progresivo desde el paso inicial de la aritmética al pensamiento algebraico hasta las estructuras que culminan en la teoría de Galois.
 
 La obra no trata el álgebra como una colección de reglas de manipulación simbólica. Su hilo conductor es aprender a reconocer **objetos, operaciones, relaciones, transformaciones e invariantes**, justificar cada paso y pasar gradualmente del cálculo concreto al razonamiento estructural.

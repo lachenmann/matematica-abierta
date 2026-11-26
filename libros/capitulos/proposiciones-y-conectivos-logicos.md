@@ -37,8 +37,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 4. Proposiciones y conectivos lógicos
-
 
 En el capítulo anterior aprendimos a preguntar qué autoriza una transformación algebraica y si un paso puede revertirse. Decíamos, por ejemplo:
 
@@ -613,7 +611,7 @@ C4 nos enseña a leer esa arquitectura. En C5 aprenderemos a transformarla algeb
 
 ---
 
-# Ejercicios
+## Ejercicios
 
 Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y calibrados con el corpus rector del capítulo.
 
@@ -755,7 +753,7 @@ Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y cal
 
 ---
 
-# Soluciones
+## Soluciones
 
 ## A. Proposición, contexto y valor de verdad
 

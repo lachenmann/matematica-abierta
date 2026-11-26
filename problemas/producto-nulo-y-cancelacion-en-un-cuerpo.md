@@ -34,8 +34,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Producto nulo y cancelación en un cuerpo
-
 ## Enunciado
 
 Sea $F$ un cuerpo y sean $a,b,c\in F$.

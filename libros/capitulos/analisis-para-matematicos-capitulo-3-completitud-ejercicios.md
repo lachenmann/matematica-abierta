@@ -1,5 +1,6 @@
 ---
 title: "Ejercicios — Capítulo 3"
+description: "Colección de ejercicios del Capítulo 3 de Análisis real para matemáticos: supremo, ínfimo, axioma de completitud, propiedad arquimediana y densidad."
 content-id: MA-BCH-0093
 content-type: book-chapter
 collection: PM-ANA
@@ -24,8 +25,6 @@ css: ../../assets/books/anm/reader.css
 ---
 
 [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.md)
-
-# Ejercicios — Capítulo 3
 
 ## §3.1. El problema heredado: definir no basta
 

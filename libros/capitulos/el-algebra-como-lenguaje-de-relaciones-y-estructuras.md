@@ -33,8 +33,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 1. El álgebra como lenguaje de relaciones y estructuras
-
 ## 1.1. Una operación puede convertirse en objeto de estudio
 
 Hay una diferencia entre **hacer una cuenta** y **estudiar una cuenta**.
@@ -455,7 +453,7 @@ También preguntamos:
 
 ---
 
-# Ejercicios
+## Ejercicios
 
 Los ejercicios están ordenados por función matemática. No todos piden calcular; varios exigen explicar, comparar o decidir qué puede concluirse.
 
@@ -557,7 +555,7 @@ Los ejercicios están ordenados por función matemática. No todos piden calcula
 
 ---
 
-# Soluciones
+## Soluciones
 
 Las soluciones respetan deliberadamente los prerrequisitos del Capítulo 1. Cuando una afirmación requiere teoría posterior, se explica qué puede concluirse ahora y qué deberá justificarse más adelante.
 

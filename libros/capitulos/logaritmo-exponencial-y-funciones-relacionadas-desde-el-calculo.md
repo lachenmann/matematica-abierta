@@ -44,7 +44,7 @@ format:
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-# Logaritmo, exponencial y funciones relacionadas desde el cálculo {#sec-t1-c18}
+## Logaritmo, exponencial y funciones relacionadas desde el cálculo {#sec-t1-c18}
 
 [← Capítulo 16](teorema-fundamental-del-calculo.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 18 →](tecnicas-de-integracion.md)
 

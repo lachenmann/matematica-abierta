@@ -41,8 +41,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 7. Conjuntos y álgebra de conjuntos
-
 Los capítulos anteriores construyeron un lenguaje para formular afirmaciones. Aprendimos a combinar proposiciones, transformar fórmulas equivalentes, trabajar con predicados y controlar cuantificadores. Ahora utilizaremos ese lenguaje para estudiar uno de los objetos más ubicuos de la matemática: los **conjuntos**.
 
 Un conjunto permite agrupar objetos y hablar de ellos como una sola entidad matemática. Pero su importancia no está sólo en servir como recipiente. La relación de pertenencia y las operaciones entre conjuntos convierten el lenguaje lógico de C4–C6 en un lenguaje algebraico nuevo. La conjunción reaparecerá como intersección; la disyunción, como unión; la negación, como complemento; la implicación, como inclusión.
@@ -605,7 +603,7 @@ La meta del capítulo puede resumirse así:
 > **El álgebra de conjuntos es la lógica de pertenencia escrita como operaciones entre colecciones.**
 
 
-# Ejercicios
+## Ejercicios
 
 Los ejercicios son de redacción original para *Álgebra para matemáticos*. Algunos problemas avanzados toman como benchmark estructural el corpus MA1101 de la Universidad de Chile, sin reproducir literalmente sus enunciados.
 
@@ -876,7 +874,7 @@ Demuestra que $A=B$. Luego muestra, mediante contraejemplos, que ninguna de las 
 
 Organiza la demostración de manera eficiente, indicando una cadena de implicaciones suficiente para establecer la equivalencia de las cinco condiciones.
 
-# Soluciones
+## Soluciones
 
 
 ## A. Pertenencia y descripción

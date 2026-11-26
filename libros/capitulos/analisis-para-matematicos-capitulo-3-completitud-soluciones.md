@@ -1,5 +1,6 @@
 ---
 title: "Soluciones — Capítulo 3"
+description: "Soluciones completas de los ejercicios del Capítulo 3 de Análisis real para matemáticos sobre completitud, supremo, ínfimo y propiedad arquimediana."
 content-id: MA-BCH-0094
 content-type: book-chapter
 collection: PM-ANA
@@ -24,8 +25,6 @@ css: ../../assets/books/anm/reader.css
 ---
 
 [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.md)
-
-# Soluciones — Capítulo 3
 
 ## §3.1. El problema heredado: definir no basta
 

@@ -67,8 +67,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Glosario matemático
-
 [**← Volver al Tratado de análisis**](tratado-de-analisis.md) ·
 [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) ·
 [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) ·

@@ -37,8 +37,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Leer y escribir matemáticas
-
 ::: {.callout-note title="Material histórico"}
 Esta página corresponde a la edición anterior de **Cálculo para matemáticos**. Ya no forma parte del índice ni de la numeración del libro vigente, que comienza con [Los números reales](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md). Se conserva en su dirección original para mantener los enlaces históricos.
 :::
