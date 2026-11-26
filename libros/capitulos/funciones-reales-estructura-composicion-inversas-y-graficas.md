@@ -55,7 +55,7 @@ $$
 
 El recorrido irá desde la definición completa de función hasta imágenes, preimágenes, composición, inversas, gráficas y monotonía. La idea será siempre la misma: no manipular una fórmula antes de haber identificado el objeto matemático al que esa fórmula pertenece.
 
-### Un modelo periódico que podemos definir sin trigonometría
+## Un modelo periódico que podemos definir sin trigonometría
 
 Para disponer de ejemplos de oscilación sin presuponer seno ni coseno, construiremos dos funciones por tramos. Todo real $t$ pertenece a un único intervalo $[4m-1,4m+3)$, con $m\in\mathbb Z$; la existencia y unicidad de ese entero se deducen de la propiedad arquimediana. Escribamos $r=t-4m\in[-1,3)$ y definamos
 

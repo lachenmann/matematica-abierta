@@ -854,7 +854,7 @@ $$
 (d) Explica si el fracaso está en la existencia, en la unicidad o en ambas.  
 (e) Escribe en lenguaje natural una negación exacta de la afirmación original.
 
-# Soluciones razonadas
+## Soluciones razonadas
 
 Las soluciones forman parte del capítulo canónico. En los ejercicios de traducción puede haber variantes lingüísticas equivalentes; lo esencial es conservar dominio, cuantificadores, alcance y dependencia.
 

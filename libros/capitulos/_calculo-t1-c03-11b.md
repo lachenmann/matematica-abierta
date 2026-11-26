@@ -2,7 +2,7 @@
 
 Las soluciones siguen exactamente el orden de los ejercicios. En los niveles iniciales se privilegia la lectura precisa de definiciones; en los niveles D–G se explicitan los puntos donde una implicación puede fallar y se construyen contraejemplos cuando son necesarios.
 
-#### Soluciones del nivel A
+### Soluciones del nivel A
 
 ::: {#sol-t1-0076}
 <!-- CPM-T1-SOL-0076 -->
@@ -228,7 +228,7 @@ $$
 No es necesario que una función alcance todo su codominio. Eso sería la condición adicional de sobreyectividad. Para ser función basta que cada entrada del dominio tenga exactamente una salida perteneciente al codominio.
 :::
 
-#### Soluciones del nivel B
+### Soluciones del nivel B
 
 ::: {#sol-t1-0083}
 <!-- CPM-T1-SOL-0083 -->
