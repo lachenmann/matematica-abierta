@@ -35,13 +35,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Integral de Riemann: definición, integrabilidad y propiedades {#sec-t1-c15}
+# Integral de Riemann: definición, integrabilidad y propiedades {#sec-t1-c15}
 
 [← Capítulo 13](del-area-y-las-sumas-a-la-integral.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 15 →](teoremas-de-valor-medio-para-integrales.md)
 

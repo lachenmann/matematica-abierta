@@ -40,13 +40,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Aplicaciones geométricas y cuantitativas de la integral {#sec-t1-c20}
+# Aplicaciones geométricas y cuantitativas de la integral {#sec-t1-c20}
 
 [← Capítulo 18](tecnicas-de-integracion.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 20 →](ecuaciones-diferenciales-elementales-y-sintesis-newtonleibniz.md)
 

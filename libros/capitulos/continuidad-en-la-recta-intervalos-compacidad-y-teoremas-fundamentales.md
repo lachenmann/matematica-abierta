@@ -26,13 +26,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Continuidad en la recta: intervalos, compacidad y teoremas fundamentales {#sec-t1-c06}
+# Continuidad en la recta: intervalos, compacidad y teoremas fundamentales {#sec-t1-c06}
 
 [← Capítulo 4](limites-de-funciones.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 6 →](la-derivada-y-la-aproximacion-lineal-local.md)
 

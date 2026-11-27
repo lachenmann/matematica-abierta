@@ -23,13 +23,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Los números reales: axiomas de cuerpo, orden y completitud {#sec-t1-c02}
+# Los números reales: axiomas de cuerpo, orden y completitud {#sec-t1-c02}
 
 En los cálculos elementales usamos los números reales con la familiaridad de quien conoce el terreno: sumamos, comparamos y escribimos raíces confiando en que cada operación permitida dará un número y en que los números que necesitamos estarán disponibles. El cálculo nos obligará a examinar esa confianza. Afirmar que una sucesión tiene un límite o que una función continua alcanza cierto valor exige una razón para asegurar la existencia de ese número.
 

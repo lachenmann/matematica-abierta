@@ -33,13 +33,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Aproximación, método de Newton y problemas de optimización {#sec-t1-c13}
+# Aproximación, método de Newton y problemas de optimización {#sec-t1-c13}
 
 [← Capítulo 11](derivadas-superiores-y-formula-de-taylor-con-resto.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 13 →](del-area-y-las-sumas-a-la-integral.md)
 

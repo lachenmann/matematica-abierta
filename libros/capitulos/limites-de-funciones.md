@@ -25,13 +25,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Límites de funciones {#sec-t1-c05}
+# Límites de funciones {#sec-t1-c05}
 
 [← Capítulo 3](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 5 →](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md)
 

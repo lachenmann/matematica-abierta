@@ -28,13 +28,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Álgebra de derivadas y regla de la cadena {#sec-t1-c08}
+# Álgebra de derivadas y regla de la cadena {#sec-t1-c08}
 
 [← Capítulo 6](la-derivada-y-la-aproximacion-lineal-local.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 8 →](derivacion-de-funciones-elementales-inversas-e-implicitas.md)
 

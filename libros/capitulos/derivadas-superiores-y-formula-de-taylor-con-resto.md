@@ -32,13 +32,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Derivadas superiores y fórmula de Taylor con resto {#sec-t1-c12}
+# Derivadas superiores y fórmula de Taylor con resto {#sec-t1-c12}
 
 [← Capítulo 10](monotonia-extremos-convexidad-y-forma-de-las-graficas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 12 →](aproximacion-metodo-de-newton-y-problemas-de-optimizacion.md)
 

@@ -41,13 +41,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## Ecuaciones diferenciales elementales y síntesis Newton–Leibniz {#sec-t1-c21}
+# Ecuaciones diferenciales elementales y síntesis Newton–Leibniz {#sec-t1-c21}
 
 [← Capítulo 19](aplicaciones-geometricas-y-cuantitativas-de-la-integral.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md)
 

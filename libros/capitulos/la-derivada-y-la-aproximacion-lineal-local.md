@@ -27,13 +27,15 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
-## La derivada y la aproximación lineal local {#sec-t1-c07}
+# La derivada y la aproximación lineal local {#sec-t1-c07}
 
 [← Capítulo 5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 7 →](algebra-de-derivadas-y-regla-de-la-cadena.md)
 
