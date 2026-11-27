@@ -1,5 +1,6 @@
 ---
 title: Ejercicios — Capítulo 1
+description: "Colección de ejercicios del Capítulo 1 de Análisis real para matemáticos: orden, valor absoluto, distancia e intervalos en la recta real."
 content-id: MA-BCH-0087
 content-type: book-chapter
 collection: PM-ANA

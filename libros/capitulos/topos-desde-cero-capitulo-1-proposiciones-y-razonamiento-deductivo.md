@@ -43,8 +43,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 1 — Proposiciones y razonamiento deductivo
-
 ::: {.callout-note title="Estado de esta edición"}
 Este capítulo se publica progresivamente. Las **secciones 1.1 — Proposiciones y valores de verdad**, **1.2 — Negación, conjunción y disyunción** y **1.3 — Tablas de verdad y equivalencia lógica** están disponibles completas en esta versión web. Las secciones siguientes se incorporarán en el mismo orden del manuscrito maestro.
 :::
@@ -57,7 +55,7 @@ Este capítulo introduce el lenguaje proposicional elemental. Más adelante, cua
 Durante buena parte de este volumen trabajaremos con la lógica clásica. Mucho después veremos que un topos posee, en general, una lógica interna intuicionista. Por ahora basta conservar una pregunta: **¿qué estructura tiene una afirmación matemática y cómo depende su verdad de otras afirmaciones?**
 :::
 
-# 1.1 Proposiciones y valores de verdad {#sec-1-1-proposiciones}
+## 1.1 Proposiciones y valores de verdad {#sec-1-1-proposiciones}
 
 ::: {.callout-note title="Resultados de aprendizaje"}
 Al terminar esta sección, el lector podrá:
@@ -683,7 +681,7 @@ Para la segunda forma:
 
 Nuevamente cambia el tema, pero permanece la arquitectura verbal «si ..., entonces ...».
 
-# Ejercicios de la sección 1.1
+## Ejercicios de la sección 1.1
 
 1. Clasifica cada expresión como proposición, pregunta, instrucción o expresión abierta:
    a. $0=1$;
@@ -725,7 +723,7 @@ Nuevamente cambia el tema, pero permanece la arquitectura verbal «si ..., enton
 19. Explica la diferencia entre estas dos preguntas: «¿es una proposición?» y «¿es verdadera?». Da un ejemplo en el que las respuestas sean, respectivamente, «sí» y «no».
 20. **Síntesis.** Diseña un procedimiento de cuatro pasos para clasificar una expresión nueva como proposición o no proposición y, cuando corresponda, determinar su valor de verdad. Debe distinguir al menos: pregunta/orden, vaguedad, variable no fijada y verdad/falsedad.
 
-# Soluciones completas de los ejercicios
+## Soluciones completas de los ejercicios
 
 ## 1
 
@@ -1041,7 +1039,7 @@ $$
 junto con su sintaxis y sus condiciones de verdad.
 :::
 
-# 1.2 Negación, conjunción y disyunción {#sec-1-2-conectivas}
+## 1.2 Negación, conjunción y disyunción {#sec-1-2-conectivas}
 
 ::: {.callout-note title="Resultados de aprendizaje"}
 Al terminar esta sección, el lector podrá:
@@ -1810,7 +1808,7 @@ $$
 
 No son fórmulas $P\neg Q$, porque $\neg$ no es una conectiva binaria que pueda colocarse entre dos fórmulas, y $\neg\land P$, porque después de $\neg$ debe aparecer una fórmula completa y $\land P$ no lo es.
 
-# Ejercicios de la sección 1.2
+## Ejercicios de la sección 1.2
 
 1. Sean $P$ verdadera y $Q$ falsa. Determina el valor de verdad de $\neg P$, $\neg Q$, $P\land Q$, $P\lor Q$, $(\neg P)\lor Q$.
 2. Sean $P=F$, $Q=V$, $R=F$. Calcula, respetando la estructura de cada fórmula: $\neg(P\lor R)$, $(\neg P)\land Q$, $P\lor(Q\land\neg R)$.
@@ -1854,7 +1852,7 @@ realiza las siguientes tareas:
    e. suponiendo $P=F$, $Q=V$, $R=F$, calcula su valor de verdad de adentro hacia afuera;
    f. explica en una frase qué parte del análisis fue sintáctica y qué parte fue semántica.
 
-# Soluciones completas de los ejercicios de la sección 1.2
+## Soluciones completas de los ejercicios de la sección 1.2
 
 ## 1
 
@@ -2230,7 +2228,7 @@ Todavía no se han introducido como herramientas:
 La siguiente sección desarrollará tablas de verdad completas y utilizará ese procedimiento para definir equivalencia lógica y justificar sistemáticamente leyes entre fórmulas.
 :::
 
-# 1.3 Tablas de verdad y equivalencia lógica {#sec-1-3-tablas-equivalencia}
+## 1.3 Tablas de verdad y equivalencia lógica {#sec-1-3-tablas-equivalencia}
 
 ::: {.callout-note title="Resultados de aprendizaje"}
 Al terminar esta sección, el lector podrá:
@@ -3060,7 +3058,7 @@ $$
 
 Identificar las subfórmulas y el orden de evaluación fue trabajo sintáctico. Sustituir los valores fijados por $\nu$ y aplicar las tablas de $\neg$, $\land$ y $\lor$ fue trabajo semántico.
 
-# Ejercicios de la sección 1.3
+## Ejercicios de la sección 1.3
 
 1. Construye una tabla de verdad para $\neg P\lor Q$.
 2. Construye una tabla de verdad para $(P\lor Q)\land(\neg P\lor R)$.
@@ -3102,7 +3100,7 @@ Identificar las subfórmulas y el orden de evaluación fue trabajo sintáctico. 
 14. **Encontrar el error.** Otro estudiante construye una tabla para tres letras con solo seis filas porque «algunas combinaciones parecen repetitivas». Explica el problema y determina el número correcto de filas.
 15. **Desafío.** Demuestra, utilizando únicamente las leyes de De Morgan y de doble negación, que cada una de las dos leyes de De Morgan puede obtenerse a partir de la otra.
 
-# Soluciones completas de los ejercicios de la sección 1.3
+## Soluciones completas de los ejercicios de la sección 1.3
 
 ## 1
 

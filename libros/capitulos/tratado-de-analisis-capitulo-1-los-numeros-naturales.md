@@ -34,8 +34,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 1 — Los números naturales
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-2-los-numeros-enteros.md)
 
 *Parte I — Fundamentos y construcción de los reales*

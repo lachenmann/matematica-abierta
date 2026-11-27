@@ -1,5 +1,6 @@
 ---
 title: Soluciones — Capítulo 1
+description: "Soluciones completas y verificadas de los ejercicios del Capítulo 1 de Análisis real para matemáticos sobre la recta real ordenada y métrica."
 content-id: MA-BCH-0088
 content-type: book-chapter
 collection: PM-ANA

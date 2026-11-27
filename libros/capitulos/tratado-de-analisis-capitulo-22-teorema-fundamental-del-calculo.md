@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 22 — Teorema fundamental del cálculo
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-21-integral-de-riemann.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md)
 
 *Parte II — Núcleo del análisis real*

@@ -44,7 +44,7 @@ $$
 k=3.
 $$
 
-##### Parte A
+#### Parte A
 
 Clasifica cada operación.
 
@@ -53,7 +53,7 @@ Clasifica cada operación.
 3. Medir después $y_2$ y compararlo con $15$.
 4. Usar también el segundo dato para modificar $k$ y después presentar ambos datos como «predicciones independientes».
 
-##### Parte B
+#### Parte B
 
 Sea ahora
 
@@ -73,7 +73,7 @@ $$
 
 Si el estado actual es $c$, determina todos los estados anteriores posibles.
 
-##### Parte C
+#### Parte C
 
 Un estudiante afirma:
 
@@ -85,7 +85,7 @@ Analiza la afirmación.
 ::: {.ma-block .ma-comprobacion}
 **Solución**
 
-##### Parte A.1
+#### Parte A.1
 
 Comprobar
 
@@ -103,7 +103,7 @@ $$
 
 No es una predicción independiente.
 
-##### Parte A.2
+#### Parte A.2
 
 El cálculo
 
@@ -125,7 +125,7 @@ $$
 
 Es una consecuencia `[MATH]` del modelo ya fijado.
 
-##### Parte A.3
+#### Parte A.3
 
 Medir $y_2$ y compararlo con $15$ es:
 
@@ -139,7 +139,7 @@ Si la observación coincide, el nuevo dato apoya el modelo dentro del régimen c
 
 Si no coincide, habrá que diagnosticar qué componente falla.
 
-##### Parte A.4
+#### Parte A.4
 
 Si utilizamos también el segundo dato para volver a escoger $k$, ese dato deja de ser independiente respecto del ajuste resultante.
 
@@ -151,7 +151,7 @@ $$
 \boxed{\text{nuevo ajuste, no predicción independiente}}.
 $$
 
-##### Parte B
+#### Parte B
 
 Buscamos todos los $s_0\in\mathcal S$ tales que
 
@@ -181,7 +181,7 @@ No podemos distinguirlos utilizando solo el estado actual $c$.
 
 Por tanto, la retrodicción no es única.
 
-##### Parte C
+#### Parte C
 
 La afirmación es demasiado fuerte.
 

@@ -1,5 +1,6 @@
 ---
 title: Soluciones — Capítulo 4
+description: "Soluciones completas de los ejercicios del Capítulo 4 de Análisis real para matemáticos sobre topología local de la recta real y puntos de acumulación."
 content-id: MA-BCH-0097
 content-type: book-chapter
 collection: PM-ANA

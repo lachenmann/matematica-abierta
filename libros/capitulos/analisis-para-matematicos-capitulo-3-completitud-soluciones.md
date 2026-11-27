@@ -1,5 +1,6 @@
 ---
 title: Soluciones — Capítulo 3
+description: "Soluciones completas de los ejercicios del Capítulo 3 de Análisis real para matemáticos sobre completitud, supremo, ínfimo y propiedad arquimediana."
 content-id: MA-BCH-0094
 content-type: book-chapter
 collection: PM-ANA

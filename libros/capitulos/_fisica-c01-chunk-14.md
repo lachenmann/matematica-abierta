@@ -260,7 +260,7 @@ Después explica por qué no existe una función que, leyendo únicamente la cad
 ::: {.ma-block .ma-comprobacion}
 **Solución**
 
-##### 1. Como definición
+#### 1. Como definición
 
 Definimos una nueva variable:
 
@@ -271,7 +271,7 @@ y:=kx.
 $$
 La ecuación fija qué significa $y$.
 
-##### 2. Como relación empírica
+#### 2. Como relación empírica
 
 Medimos $x$ e $y$ y encontramos experimentalmente que, dentro de cierto intervalo,
 
@@ -282,7 +282,7 @@ y\approx kx.
 $$
 La relación resume la evidencia.
 
-##### 3. Como hipótesis de modelo
+#### 3. Como hipótesis de modelo
 
 Decidimos idealizar un sistema mediante una dependencia exactamente lineal:
 
@@ -293,7 +293,7 @@ y=kx.
 $$
 La linealidad exacta pertenece al modelo.
 
-##### 4. Como consecuencia matemática
+#### 4. Como consecuencia matemática
 
 Partimos de
 
@@ -312,7 +312,7 @@ $$
 \qquad
 y=kx.
 $$
-##### Conclusión
+#### Conclusión
 
 La secuencia de caracteres
 

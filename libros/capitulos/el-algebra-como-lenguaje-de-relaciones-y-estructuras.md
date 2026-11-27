@@ -478,7 +478,7 @@ También preguntamos:
 > ¿qué clase de objeto estoy mirando?, ¿qué operación actúa?, ¿qué relación se afirma?, ¿qué patrón se repite?, ¿qué permanece y qué tendría que demostrar?
 
 ***
-# Ejercicios
+## Ejercicios
 
 Los ejercicios están ordenados por función matemática. No todos piden calcular; varios exigen explicar, comparar o decidir qué puede concluirse.
 
@@ -623,7 +623,7 @@ Los ejercicios están ordenados por función matemática. No todos piden calcula
 
 **48.** Dos procedimientos de rebaja de un precio positivo son: A, quitar $2$ unidades; B, quitar la quinta parte del precio. Para un precio de $10$, ambos dan $8$. Escribe cada regla en palabras y con símbolos; elige un segundo precio que las distinga y organiza ambos casos en una tabla. Identifica los objetos, operaciones y relaciones. Explica qué concluirías si sólo estuvieran permitidos estos dos procedimientos, y qué no concluirías sin esa restricción.
 
-# Soluciones
+## Soluciones
 
 Las soluciones respetan deliberadamente los prerrequisitos del Capítulo 1. Cuando una afirmación requiere teoría posterior, se explica qué puede concluirse ahora y qué deberá justificarse más adelante.
 

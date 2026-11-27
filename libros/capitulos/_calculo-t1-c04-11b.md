@@ -2,7 +2,7 @@
 
 Las soluciones siguen exactamente el orden de los ejercicios. En los niveles A–C se hace visible la herramienta utilizada; en D–G se insiste en la arquitectura lógica, la verificación de contraejemplos y la frontera de no circularidad del capítulo.
 
-#### Soluciones del nivel A
+### Soluciones del nivel A
 
 ::: {#sol-t1-0116}
 <!-- CPM-T1-SOL-0116 -->
@@ -270,7 +270,7 @@ $$
 La primera expresa reaparición arbitrariamente tardía; la segunda, control de toda una cola.
 :::
 
-#### Soluciones del nivel B
+### Soluciones del nivel B
 
 ::: {#sol-t1-0123}
 <!-- CPM-T1-SOL-0123 -->

@@ -1,5 +1,6 @@
 ---
 title: Lectura del capítulo 4
+description: "Acceso al Capítulo 4 de Análisis real para matemáticos, donde los microcontroles sobre topología local en ℝ están integrados en el capítulo."
 content-id: MA-BCH-0098
 content-type: book-chapter
 collection: PM-ANA

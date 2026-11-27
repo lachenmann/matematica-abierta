@@ -1,5 +1,6 @@
 ---
 title: Soluciones — Capítulo 2
+description: "Soluciones completas de los ejercicios del Capítulo 2 de Análisis real para matemáticos sobre cotas, extremos, acotación y desigualdades en ℝ."
 content-id: MA-BCH-0091
 content-type: book-chapter
 collection: PM-ANA

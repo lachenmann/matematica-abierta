@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 18 — Compacidad y conexidad en la recta
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-17-continuidad.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-19-diferenciacion.md)
 
 *Parte II — Núcleo del análisis real*

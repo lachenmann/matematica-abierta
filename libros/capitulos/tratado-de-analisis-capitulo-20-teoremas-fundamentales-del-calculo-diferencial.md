@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 20 — Teoremas fundamentales del cálculo diferencial
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-19-diferenciacion.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-21-integral-de-riemann.md)
 
 *Parte II — Núcleo del análisis real*

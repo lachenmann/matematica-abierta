@@ -1,5 +1,6 @@
 ---
 title: Lectura del capítulo 1
+description: "Acceso al Capítulo 1 de Análisis real para matemáticos, donde los microcontroles y sus respuestas están integrados en la lectura principal."
 content-id: MA-BCH-0089
 content-type: book-chapter
 collection: PM-ANA

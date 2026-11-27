@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 11 — Dedekind y Cauchy
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-12-unicidad.md)
 
 *Parte I — Fundamentos y construcción de los reales*

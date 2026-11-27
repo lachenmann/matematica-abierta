@@ -38,7 +38,7 @@ $$
 \tag{24.7.4}
 $$
 
-La fórmula finita es la identidad geométrica de «Convergencia y suma de la serie geométrica para $», y la última desigualdad utiliza $t^{n+1}\ge0$ y $1-t>0$. Al multiplicar por $s^n\ge0$ resulta $(n+1)q^n\le s^n/(1-q/s)$. El número $B$ propuesto es un real positivo independiente de $n$; no se ha derivado la serie geométrica para construirlo. $\square$
+La fórmula finita es la identidad geométrica de «Convergencia y suma de la serie geométrica para $|r|<1$», y la última desigualdad utiliza $t^{n+1}\ge0$ y $1-t>0$. Al multiplicar por $s^n\ge0$ resulta $(n+1)q^n\le s^n/(1-q/s)$. El número $B$ propuesto es un real positivo independiente de $n$; no se ha derivado la serie geométrica para construirlo. $\square$
 
 ### Teorema 24.7.3 — Igualdad exacta de los radios de la serie y su derivada formal
 Para toda sucesión real $a$ y todo centro $c$, si $b=\partial a$, los radios definidos mediante «Radio finito y radio infinito» satisfacen

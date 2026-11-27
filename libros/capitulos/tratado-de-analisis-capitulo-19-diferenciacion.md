@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 19 — Diferenciación
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-18-compacidad-y-conexidad-en-la-recta.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md)
 
 *Parte II — Núcleo del análisis real*

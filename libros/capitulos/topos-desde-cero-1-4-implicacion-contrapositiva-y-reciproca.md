@@ -31,7 +31,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 1.4 Implicación, contrapositiva y recíproca {#sec-1-4-implicacion}
+## 1.4 Implicación, contrapositiva y recíproca {#sec-1-4-implicacion}
 
 ::: {.callout-note title="Continuidad editorial"}
 Esta unidad continúa el **Capítulo 1 — Proposiciones y razonamiento deductivo** de *Topos desde cero* (`MA-BCH-0002`). Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo; desde esta sección la publicación web adopta unidades modulares para mantener cada archivo editorial manejable y reutilizable.
@@ -671,7 +671,7 @@ $$
 \boxed{(P\to Q)\land(P\to R)\equiv P\to(Q\land R).}
 $$
 
-# Ejercicios de la sección 1.4
+## Ejercicios de la sección 1.4
 
 1. Construye la tabla de verdad de $P\to Q$ a partir de la fórmula equivalente $\neg P\lor Q$.
 2. Determina el valor de verdad de cada afirmación:
@@ -699,7 +699,7 @@ $$
 17. **Encontrar el error.** Otro estudiante afirma: «$P\to Q$ y $Q\to P$ son equivalentes porque ambas fórmulas contienen las mismas letras». Da una refutación mínima.
 18. **Desafío.** Demuestra que la recíproca $Q\to P$ es equivalente a la inversa $\neg P\to\neg Q$ sin construir una tabla completa.
 
-# Soluciones completas de los ejercicios de la sección 1.4
+## Soluciones completas de los ejercicios de la sección 1.4
 
 ## 1
 

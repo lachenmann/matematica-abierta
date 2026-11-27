@@ -162,7 +162,7 @@ Clasifica cada descripción principalmente como **ley**, **modelo** o **teoría*
 ::: {.ma-block .ma-comprobacion}
 **Solución**
 
-##### 1. Relación experimental $Y=kX$
+#### 1. Relación experimental $Y=kX$
 
 La clasificación principal es:
 
@@ -179,7 +179,7 @@ $$
 $$
 
 Pero para usarla en un problema concreto todavía necesitamos un modelo.
-##### 2. Descripción detallada del péndulo
+#### 2. Descripción detallada del péndulo
 
 La clasificación principal es:
 
@@ -197,7 +197,7 @@ porque la descripción especifica un sistema particular y organiza:
 - régimen.
 
 No basta con que utilice leyes: la característica decisiva es que **sitúa** esas relaciones en una representación concreta.
-##### 3. Marco general para muchos sistemas mecánicos
+#### 3. Marco general para muchos sistemas mecánicos
 
 La clasificación principal es:
 
@@ -206,7 +206,7 @@ $$
 $$
 
 porque proporciona una arquitectura común capaz de generar o estructurar muchos modelos.
-##### 4. $Y=kX$ sin interpretación
+#### 4. $Y=kX$ sin interpretación
 
 No podemos clasificarla todavía como ley física.
 
@@ -223,7 +223,7 @@ Necesitamos saber:
 - qué función cumple.
 
 Este es exactamente el aprendizaje de §§5–6.
-##### 5. Reglas para un instrumento concreto
+#### 5. Reglas para un instrumento concreto
 
 La clasificación principal es:
 
@@ -236,7 +236,7 @@ más precisamente, **modelo del instrumento**.
 Puede incluir relaciones `[OBS]`, calibraciones e idealizaciones.
 
 No constituye necesariamente una teoría física amplia.
-##### 6. Un «modelo» histórico que funciona como marco general
+#### 6. Un «modelo» histórico que funciona como marco general
 
 Aquí la respuesta correcta exige separar **nombre histórico** y **función**.
 
@@ -252,7 +252,7 @@ Diríamos:
 
 > «Se llama tradicionalmente modelo, pero en este contexto desempeña una función teórica más amplia.»
 
-##### Conclusión
+#### Conclusión
 
 La clasificación no depende del título.
 

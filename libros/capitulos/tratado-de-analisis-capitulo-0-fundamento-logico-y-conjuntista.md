@@ -29,8 +29,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 0 — Fundamento lógico y conjuntista
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-1-los-numeros-naturales.md)
 
 *Parte I — Fundamentos y construcción de los reales*

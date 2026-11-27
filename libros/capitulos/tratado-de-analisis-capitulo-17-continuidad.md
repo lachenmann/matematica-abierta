@@ -25,8 +25,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 17 — Continuidad
-
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-16-limites-de-funciones.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-18-compacidad-y-conexidad-en-la-recta.md)
 
 *Parte II — Núcleo del análisis real*

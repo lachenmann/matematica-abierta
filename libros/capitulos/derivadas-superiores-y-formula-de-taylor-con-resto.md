@@ -32,6 +32,8 @@ crossref:
   chapters: true
 format:
   html:
+    template-partials:
+      - ../../assets/partials/title-block.html
     css: calculo-para-matematicos.css
     html-math-method:
       method: mathjax
